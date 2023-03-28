@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'validations/nmap_params'
 
 describe Validations::NmapParams do
-  describe "rules" do
-  end
+  describe "rules"
 
   describe ".call" do
     subject { described_class }

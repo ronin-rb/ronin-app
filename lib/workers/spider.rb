@@ -77,7 +77,7 @@ module Workers
 
       return result.to_h
     end
-    
+
     #
     # Spiders a host, domain, or site.
     #
