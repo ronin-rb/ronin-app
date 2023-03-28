@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-db.git
-  revision: 15e612f24429e44df3ecfe88b6ce887ac659069f
+  revision: 05aa2ff8af1a82bfd7464465e0ea4341970d6234
   branch: 0.2.0
   specs:
     ronin-db (0.2.0)
@@ -370,4 +370,4 @@ DEPENDENCIES
   yard-spellcheck
 
 BUNDLED WITH
-   2.4.9
+   2.4.7
