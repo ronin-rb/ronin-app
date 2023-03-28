@@ -1,0 +1,37 @@
+<h1>masscan</h1>
+
+<form action="/masscan" method="post">
+  <div class="field">
+    <label class="label">Targets</label>
+    <div class="control">
+      <% if @errors && @errors[:ips] %>
+        <input class="input is-danger" type="text" name="ips" placeholder="192.168.1.1" value="<%=hattr params[:ips] %>">
+
+        <% @errors[:ips].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ips" placeholder="192.168.1.1" value="<%=hattr params[:ips] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ports</label>
+    <div class="control">
+      <% if @errors && @errors[:ports] %>
+        <input class="input is-danger" type="text" name="ports" placeholder="22,25,80,443,8000-9000" value="<%=hattr params[:ports] %>">
+
+        <% @errors[:ports].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+       <input class="input" type="text" name="ports" placeholder="22,25,80,443,8000-9000" value="<%=hattr params[:ports] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Scan</button>
+  </div>
+</form>

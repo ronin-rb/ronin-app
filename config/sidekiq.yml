@@ -1,0 +1,8 @@
+:verbose: true
+:pidfile: ./tmp/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:concurrency: 4
+:queues:
+  - default
+  - scan
+  - spider

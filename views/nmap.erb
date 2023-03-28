@@ -1,0 +1,39 @@
+<h1>nmap</h1>
+
+<form action="/nmap" method="post">
+  <div class="field">
+    <label class="label">Targets</label>
+
+    <div class="control">
+      <% if @errors && @errors[:targets] %>
+        <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>">
+
+        <% @errors[:targets].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="targets" placeholder="192.168.1.1" value="<%=hattr params[:targets] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ports</label>
+
+    <div class="control">
+      <% if @errors && @errors[:ports] %>
+        <input class="input is-danger" type="text" name="ports" value="<%=hattr params[:ports] %>">
+
+        <% @errors[:ports].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ports" placeholder="22,25,80,443,8000-9000" value="<%=hattr params[:ports] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Scan</button>
+  </div>
+</form>

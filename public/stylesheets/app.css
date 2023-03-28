@@ -1,0 +1,75 @@
+:root {
+	--bg-color: white;
+	--fg-color: black;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	color: var(--fg-color);
+	background-color: var(--bg-color);
+}
+
+main {
+	clear: both;
+}
+
+header {
+	width: 100vw;
+	background-color: black;
+}
+
+#logo {
+	margin: 0.5em;
+}
+
+nav.navbar {
+	font-size: 140%;
+}
+
+nav.navbar a.navbar-item, nav.navbar a.navbar-link {
+	color: white;
+	font-weight: bold;
+}
+
+nav.navbar a:hover {
+	color: black;
+}
+
+.content {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.content .column {
+	height: 100%;
+}
+
+.content a {
+	color: var(--fg-color);
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.content a:hover {
+	color: var(--bg-color);
+	background-color: var(--fg-color);
+	text-decoration: none;
+}
+
+.content pre {
+	color: var(--bg-color);
+	background-color: var(--fg-color);
+	padding: 1em 1.5em;
+	margin-bottom: 1em;
+	overflow-x: auto;
+}
+
+footer.footer {
+	clear: both;
+	margin-top: 10rem;
+	color: gray;
+	background-color: var(--fg-color);
+	font-size: medium;
+	background-color: black;
+}

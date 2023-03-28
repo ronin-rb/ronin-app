@@ -1,0 +1,62 @@
+<h1>URL: <%=h @url %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Scheme:</strong></td>
+      <td><%=h @url.scheme %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Host name:</strong></td>
+      <td><%=h @url.host_name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Port:</strong></td>
+      <td><%=h @url.port.number %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Path:</strong></td>
+      <td><%=h @url.path %></td>
+    </tr>
+
+    <% if @url.query %>
+    <tr>
+      <td><strong>Query:</strong></td>
+      <td><%=h @url.query %></td>
+    </tr>
+    <% end %>
+
+    <% unless @url.query_params.empty? %>
+    <tr>
+      <td><strong>Query Params:</strong></td>
+      <td>
+        <ul>
+        <% @url.query_params.each do |query_param| %>
+          <li><%=h query_param %></li>
+        <% end %>
+        </ul>
+      </td>
+    </tr>
+    <% end %>
+
+    <% if @url.fragment %>
+    <tr>
+      <td><strong>Fragment:</strong></td>
+      <td><%=h @url.fragment %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @url.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Scanned:</strong></td>
+      <td><%=h @url.last_scanned_at %></td>
+    </tr>
+  </tbody>
+</table>

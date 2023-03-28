@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+
+#
+# Prints a log message.
+#
+function log()
+{
+	if [[ -t 1 ]]; then
+		echo -e "\x1b[1m\x1b[32m>>>\x1b[0m \x1b[1m$1\x1b[0m"
+	else
+		echo ">>> $1"
+	fi
+}
+
+#
+# Prints a warn message.
+#
+function warn()
+{
+	if [[ -t 1 ]]; then
+		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m$1\x1b[0m" >&2
+	else
+		echo "*** $1" >&2
+	fi
+}
+
+#
+# Prints an error message.
+#
+function error()
+{
+	if [[ -t 1 ]]; then
+		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m$1\x1b[0m" >&2
+	else
+		echo "!!! $1" >&2
+	fi
+}
+
+#
+# Prints an error message and exists with -1.
+#
+function fail()
+{
+	error "$@"
+	exit -1
+}
+
+environment="production"
+
+function print_usage()
+{
+	cat <<USAGE
+usage: ./scripts/server [OPTIONS]
+
+Options:
+	-e, --environment production|development
+	    			Sets the environment
+	-V, --version		Prints the version
+	-h, --help		Prints this message
+
+USAGE
+}
+
+function parse_options()
+{
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+			-e|--environment)
+				case "$2" in
+					production|development)
+						environment="$2"
+						shift 2
+						;;
+					*)
+						echo "server: invalid environment $2" >&2
+						return 1
+						;;
+				esac
+				;;
+			-h|--help)
+				print_usage
+				exit
+				;;
+			-*)
+				echo "server: unrecognized option $1" >&2
+				return 1
+				;;
+			*)
+				echo "server: unexpected argument $1" >&2
+				return 1
+				;;
+		esac
+	done
+}
+
+parse_options "$@" || exit $?
+
+pids=()
+
+if [[ -z "$(pgrep redis-server)" ]]; then
+	if ! command -v redis-server >/dev/null; then
+		fail "server: redis-server is not installed!"
+	fi
+
+	redis-server &
+	pids+=($!)
+fi
+
+log "Starting Web server on localhost:${PORT:-5000} and Sidekiq ..."
+
+case "$environment" in
+	production)	bundle exec foreman start ;;
+	development)	bundle exec foreman start -f Procfile.dev ;;
+esac
+
+for pid in "${pids[@]}"; do
+	wait "$pid"
+done

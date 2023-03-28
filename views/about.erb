@@ -1,0 +1,30 @@
+<h1>ronin-app <%=h VERSION %></h1>
+
+<h2>OS</h2>
+
+<pre><code><%=h `uname -a` %></code></pre>
+
+<h2>Ruby</h2>
+
+<pre><code><%=h RUBY_DESCRIPTION %></code></pre>
+
+<h2>Nmap</h2>
+
+<pre><code><%=h `nmap --version` %></code></pre>
+
+<h2>Masscan</h2>
+
+<pre><code><%=h `masscan --version` %></code></pre>
+
+<h2>Gems</h2>
+
+<table class="table">
+  <tbody>
+    <% @lockfile.specs.each do |spec| %>
+    <tr>
+      <td><%=h spec.name %></td>
+      <td><%=h spec.version %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

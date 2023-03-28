@@ -1,0 +1,31 @@
+<h1>Spider</h1>
+
+<form action="/web/spider" method="post">
+  <div class="field has-addons">
+    <div class="control">
+      <div class="select">
+        <select name="type">
+          <option value="host" <%= "selected" if params[:type] == 'host' %>>Host</option>
+          <option value="domain" <%= "selected" if params[:type] == 'domain' %>>Domain</option>
+          <option value="site" <%= "selected" if params[:type] == 'site' %>>Site</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control">
+      <% if @errors && @errors[:target] %>
+        <input class="input is-danger" type="text" name="target" placeholder="example.com OR www.example.com OR https://example.com/" value="<%=hattr params[:target] %>">
+
+        <% @errors[:target].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="target" placeholder="example.com OR www.example.com OR https://example.com/" value="<%=hattr params[:target] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Spider</button>
+  </div>
+</form>

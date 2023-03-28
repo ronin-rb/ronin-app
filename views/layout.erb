@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta name="charset" value="utf-8" />
+
+    <link rel="icon" href="/images/favicon.png" />
+    <link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/app.css" />
+    <script type="text/javascript" src="/javascript/app.js"></script>
+  </head>
+
+  <body>
+    <header class="hero">
+      <div class="container">
+        <div id="logo">
+          <a href="/" title="Home">
+            <img src="/images/logo.svg" alt="Ronin logo" />
+          </a>
+        </div>
+
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-menu">
+            <div class="navbar-start">
+              <a href="/" class="navbar-item">home</a>
+              <a href="/db" class="navbar-item">db</a>
+              <a href="/nmap" class="navbar-item">nmap</a>
+              <a href="/masscan" class="navbar-item">masscan</a>
+              <a href="/web/spider" class="navbar-item">spider</a>
+              <a href="/sidekiq" class="navbar-item">sidekiq</a>
+              <a href="/about" class="navbar-item">about</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <% unless flash.empty? %>
+        <% flash.each do |type,text| %>
+          <div class="notification is-<%= type %> is-light">
+            <button class="delete"></button>
+            <%= text %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <section class="content">
+        <%= yield %>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-full">
+            <span>(c) 2023 Hal Brodigan</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

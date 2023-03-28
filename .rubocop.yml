@@ -1,0 +1,21 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.1
+
+inherit_gem:
+  rubocop-ronin: rubocop.yml
+
+#
+# ronin-app specific exceptions
+#
+
+# dry-types constructor requires an explicit block with one block argument
+Style/SymbolProc:
+  Exclude:
+    - 'lib/types.rb'
+
+# $redis global variable is fine.
+Style/GlobalVars:
+  Exclude:
+    - 'config/redis.rb'

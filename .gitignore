@@ -1,0 +1,13 @@
+/coverage
+/doc
+/log
+/tmp
+/vendor/bundle
+/.bundle
+/.yardoc
+.DS_Store
+*.db
+*.log
+*.swp
+*~
+dump.rdb

@@ -1,0 +1,24 @@
+<h1>IP address: <%=h @ip_address %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Host names:</strong></td>
+      <td>
+        <% @ip_address.host_names.each do |host_name| %>
+          <p><a href="/db/host_names/<%=h host_name.id %>"><%=h host_name %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @ip_address.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Scanned:</strong></td>
+      <td><%=h @ip_address.last_scanned_at %></td>
+    </tr>
+  </tbody>
+</table>

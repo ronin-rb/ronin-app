@@ -1,0 +1,5 @@
+<h1>URLs</h1>
+
+<% @urls.each do |url| %>
+  <p><a href="/db/urls/<%=h url.id %>"><%=h url %></a></p>
+<% end %>

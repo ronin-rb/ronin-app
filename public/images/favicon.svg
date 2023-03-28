@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666662 8.4666662"
+   version="1.1"
+   id="svg324"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title447">Ronin</title>
+  <style>
+  path { fill: #000000; }
+  @media (prefers-color-scheme: dark) {
+    path { fill: #ffffff; }
+  }
+  </style>
+  <defs
+     id="defs321" />
+  <g
+     id="layer1">
+    <g
+       id="g6932"
+       transform="matrix(0.0208635,0,0,0.0208635,-2.4801773,-3.1118599)"
+       style="display:inline">
+      <g
+         id="g350">
+        <path
+           style="font-variation-settings:'wght' 700;display:inline;fill:none;stroke:#000000;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:7;stroke-dasharray:none;stroke-opacity:0.991918"
+           d="M 10.556199,32.237999 35.277035,27.91055 72.742093,32.490384 66.652961,55.405256 45.288701,61.015098 62.972493,89.246954 35.726284,66.293348 10.397131,101.36149 32.991476,34.955974 Z"
+           id="path904"
+           class="UnoptimicedTransforms"
+           transform="matrix(4.8235651,0,0,4.8235651,141.024,21.83731)" />
+        <path
+           style="font-variation-settings:'wght' 700;display:inline;fill:none;stroke:#ffffff;stroke-width:14.4707;stroke-linecap:square;stroke-miterlimit:7;stroke-dasharray:none;stroke-opacity:0.991918"
+           d="m 342.21527,195.81028 103.34653,12.69086 -14.06653,51.18699 -119.65288,25.46828 z"
+           id="path1799" />
+        <path
+           style="font-variation-settings:'wght' 700;fill:#000000;stroke:#000000;stroke-width:15.8166;stroke-linecap:square;stroke-miterlimit:7.5;stroke-opacity:0.991918"
+           d="m 311.14109,159.64411 c -20.21344,4.23648 -41.28571,5.48348 -60.90879,12.03137 -6.32158,3.74656 0.0386,10.9274 5.6154,9.96607 16.13661,2.5686 32.40244,4.20214 48.6157,6.19567 -30.90135,89.9687 -61.49081,180.04724 -91.66838,270.2606 -1.46878,6.80489 8.4863,8.002 10.3885,1.87713 30.44717,-40.08696 59.20005,-81.51916 89.06101,-121.95603 33.50724,24.95491 63.86279,53.93701 97.17414,79.14896 6.64432,2.19405 6.72304,-6.25505 3.04054,-9.50025 -18.55988,-31.49151 -38.53903,-62.11618 -57.41306,-93.41711 34.38372,-9.34933 68.99526,-17.88434 103.27156,-27.6099 6.14812,-7.55269 5.69051,-18.86028 9.24056,-27.83752 6.31539,-24.65117 13.25336,-49.19081 18.77258,-74.02001 -2.92843,-7.20626 -13.42398,-3.74059 -19.58309,-6.03564 -51.84339,-6.53554 -103.71905,-13.08667 -155.60667,-19.10334 z m 29.28551,33.71021 c 36.31995,3.48281 72.47493,7.76831 108.59243,12.76147 -4.56709,18.76009 -9.57555,37.22359 -15.51316,55.49496 -41.84395,10.46883 -84.24342,18.37316 -126.37794,27.70801 11.14562,-31.90735 21.37954,-64.58812 33.29867,-95.96444 z"
+           id="path6851" />
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata445">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Ronin</dc:title>
+        <dc:date>2023-01-31</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Hal Brodigan</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nd/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

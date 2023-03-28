@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bundle exec irb -Ilib -r ./app.rb
