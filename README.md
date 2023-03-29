@@ -57,8 +57,8 @@ container user must have the same `UID` and `GID` as the host's user.
 ## Security
 
 * This app is intended to be ran locally.
-* Allow HTML output is escaped with `Rack::Utils.escape_html`.
-* Allow HTTP params are validated using [dry-validation].
+* All HTML output is escaped with `Rack::Utils.escape_html`.
+* All HTTP params are validated using [dry-validation].
 
 ## Development
 
