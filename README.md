@@ -88,13 +88,13 @@ $ ./scripts server -e development
 * `workers.rb` - The main entry point for Sidekiq which loads all worker classes
   from `lib/workers/`.
 * `config/` - Contains all app configuration files.
-* `lib/workers/` - Contains all Sidekiq worker classes.
+* `lib/helpers/` - Contains all Sinatra helper modules which define methods that
+  can be called within the views.
 * `lib/types.rb` - Defines custom [dry-types].
 * `lib/schemas/` - Contains common [dry-schema]s for coercing/processing params.
 * `lib/validations/` - Contains [dry-validation]s logic for validating
   submitted HTTP params.
-* `lib/helpers/` - Contains all Sinatra helper modules which define methods that
-  can be called within the views.
+* `lib/workers/` - Contains all Sidekiq worker classes.
 * `views/` - Contains all ERB views that are rendered by `app.rb`.
 * `public/` - Contains all static assets (images, CSS stylesheets, and
   JavaScript).
