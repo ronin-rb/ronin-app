@@ -29,7 +29,7 @@ module Validations
   class SpiderParams < Dry::Validation::Contract
 
     # Regular expression to loosely validate any hostname (local or DNS).
-    HOST_NAME_REGEX = %r{\A[A-Za-z0-9\._-]+\z}
+    HOST_NAME_REGEX = /\A[A-Za-z0-9\._-]+\z/
 
     params Dry::Schema::Params(parent: Schemas::SpiderParams)
 
