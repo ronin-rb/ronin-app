@@ -26,6 +26,8 @@ Sidekiq.configure_client do |config|
   config.redis = {url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}"}
 end
 
-# BUG: Sidekiq::Web.set :session_secret, App.session_secret
+# give Sidekiq::Web it's own unique rack.session cookie
+Sidekiq::Web.use Rack::Session::Cookie, path:   '/sidekiq',
+                                        secret: SecureRandom.hex(40)
 
 run Rack::URLMap.new('/' => App, '/sidekiq' => Sidekiq::Web)
