@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/nmap_params'
+require 'validations/spider_params'
 
-describe Validations::NmapParams do
+describe Validations::SpiderParams do
   describe "rules"
 
   describe ".call" do
