@@ -28,7 +28,27 @@ module Validations
   #
   class SpiderParams < Dry::Validation::Contract
 
+    # Regular expression to loosely validate any hostname (local or DNS).
+    HOST_NAME_REGEX = %r{\A[A-Za-z0-9\._-]+\z}
+
     params Dry::Schema::Params(parent: Schemas::SpiderParams)
+
+    rule(:target) do
+      case values[:type]
+      when 'host'
+        unless values[:target] =~ HOST_NAME_REGEX
+          key.failure('host must be a valid host name')
+        end
+      when 'domain'
+        unless values[:target] =~ HOST_NAME_REGEX
+          key.failure('domain must be a valid host name')
+        end
+      when 'site'
+        unless values[:target] =~ %r{\Ahttp(?:s)?://.+\z}
+          key.failure('site must be a valid http:// or https:// URI')
+        end
+      end
+    end
 
     #
     # Initializes and calls the validation contract.
