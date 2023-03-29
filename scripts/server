@@ -47,6 +47,9 @@ function fail()
 
 environment="production"
 
+#
+# Print the --help usage.
+#
 function print_usage()
 {
 	cat <<USAGE
@@ -61,6 +64,9 @@ Options:
 USAGE
 }
 
+#
+# Parse additional command-line options.
+#
 function parse_options()
 {
 	while [[ $# -gt 0 ]]; do
