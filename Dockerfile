@@ -25,6 +25,7 @@ RUN groupadd -g "${RONIN_GID}" ronin && \
 USER ronin
 
 ENV PORT 5000
+ENV HOST 0.0.0.0
 EXPOSE 5000
 
 CMD ["bundle", "exec", "foreman", "start"]
