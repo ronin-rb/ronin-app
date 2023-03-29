@@ -17,6 +17,8 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 * Provides a web interface to the [ronin-db].
 * Supports automating [nmap] and [masscan] scans and importing their results
   into the [ronin-db].
+* Small memory footprint (~184K).
+* Fast (~1.251ms response time).
 
 ## Requirements
 
