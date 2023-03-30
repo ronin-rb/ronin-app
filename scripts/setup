@@ -193,6 +193,20 @@ function install_packages()
 }
 
 #
+# Install redis-server if it's not already installed.
+#
+function auto_install_redis()
+{
+	if ! command redis-server >/dev/null; then
+		log "Installing redis ..."
+		case "$package_manager" in
+			apt)	install_packages redis-server ;;
+			*)	install_packages redis ;;
+		esac
+	fi
+}
+
+#
 # Installs git, if it's not installed.
 #
 function auto_install_git()
@@ -404,6 +418,7 @@ function parse_options()
 
 parse_options "$@" || exit $?
 detect_system
+auto_install_redis
 auto_install_git
 auto_install_gcc
 auto_install_gpp
