@@ -53,8 +53,12 @@ module Workers
       kwargs = validate(params)
 
       Tempfile.open(['nmap-', '.xml']) do |tempfile|
-        status = ::Nmap::Command.run(**kwargs, privileged: true,
-                                               output_xml: tempfile.path)
+        status = ::Nmap::Command.run(
+          **kwargs,
+          verbose:    true,
+          privileged: true,
+          output_xml: tempfile.path
+        )
 
         case status
         when true
