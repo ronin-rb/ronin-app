@@ -53,8 +53,12 @@ module Workers
       kwargs = validate(params)
 
       Tempfile.open(['masscan-', '.bin']) do |tempfile|
-        status = ::Masscan::Command.run(**kwargs, output_format: :bin,
-                                                  output_file:   tempfile.path)
+        status = ::Masscan::Command.run(
+          **kwargs,
+          interactive:   true,
+          output_format: :bin,
+          output_file:   tempfile.path
+        )
 
         case status
         when true
