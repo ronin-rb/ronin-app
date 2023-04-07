@@ -32,8 +32,32 @@ module Validations
     params Dry::Schema::Params(parent: Schemas::MasscanParams)
 
     rule(:ports) do
-      unless value =~ Masscan::Command::PortList::REGEXP
+      if value && value !~ Masscan::Command::PortList::REGEXP
         key.failure("invalid masscan port list")
+      end
+    end
+
+    rule(:adapter_port) do
+      if value && value !~ Masscan::Command::PortRange::REGEXP
+        key.failure('invalid port or port range')
+      end
+    end
+
+    rule(:router_mac) do
+      if value && value !~ Masscan::Command::MACAddress::REGEXP
+        key.failure('invalid MAC address')
+      end
+    end
+
+    rule(:exclude) do
+      if value && value !~ Masscan::Command::Target::REGEXP
+        key.failure('invalid IP or IP range')
+      end
+    end
+
+    rule(:shards) do
+      if value && value !~ Masscan::Command::Shards::REGEXP
+        key.failure('invalid shards value')
       end
     end
 

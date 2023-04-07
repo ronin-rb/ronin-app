@@ -30,4 +30,23 @@ module Types
   Args = Types::Array.of(Types::String).constructor do |value|
     value.split
   end
+
+  # Represents an HTTP method name.
+  HTTPMethod = Types::String.enum(
+    'COPY',
+    'DELETE',
+    'GET',
+    'HEAD',
+    'LOCK',
+    'MKCOL',
+    'MOVE',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PROPFIND',
+    'PROPPATCH',
+    'PUT',
+    'TRACE',
+    'UNLOCK'
+  )
 end
