@@ -93,8 +93,18 @@
   </div>
 
   <div class="field">
-    <label class="has-text-weight-semibold">Retries:</label>
-    <input type="checkbox" name="retries"<%= " checked" if params[:retries] %>>
+    <label class="label">Retries:</label>
+    <div class="control">
+      <% if @errors && @errors[:retries] %>
+        <input class="input is-danger" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
+
+        <% @errors[:retries].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
+      <% end %>
+    </div>
   </div>
 
   <h3>Routing Options:</h3>
@@ -289,6 +299,7 @@
     <label class="label">HTTP Method:</label>
     <div class="control">
       <select name="http_method">
+        <option value="">
         <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
         <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
         <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>

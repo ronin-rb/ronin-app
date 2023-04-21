@@ -134,7 +134,7 @@ class App < Sinatra::Base
     result = Validations::NmapParams.call(params)
 
     if result.success?
-      @jid = Workers::Nmap.perform_async(params.to_h)
+      @jid = Workers::Nmap.perform_async(result.to_h)
 
       targets = result[:targets]
 
@@ -157,7 +157,7 @@ class App < Sinatra::Base
     result = Validations::MasscanParams.call(params)
 
     if result.success?
-      @jid = Workers::Masscan.perform_async(params.to_h)
+      @jid = Workers::Masscan.perform_async(result.to_h)
 
       targets = result[:ips]
 

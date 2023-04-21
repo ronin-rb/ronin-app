@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/postmodern/ruby-masscan.git
-  revision: c8e4f618809f6f8f8e2567f6af1b73132702010f
+  revision: fd9320ed1246f28cb21f493f23ecf00860b85814
   branch: 0.3.0
   specs:
     ruby-masscan (0.3.0)

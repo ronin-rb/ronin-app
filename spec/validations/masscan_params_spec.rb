@@ -3,10 +3,26 @@ require 'validations/masscan_params'
 
 describe Validations::MasscanParams do
   describe "rules" do
+    describe ":ips" do
+      it "must require an :ips key" do
+        result = subject.call({})
+
+        expect(result).to be_failure
+        expect(result.errors[:ips]).to eq(["is missing"])
+      end
+
+      it "must require a non-empty value for :ips" do
+        result = subject.call({ips: ""})
+
+        expect(result).to be_failure
+        expect(result.errors[:ips]).to eq(["is missing"])
+      end
+    end
+
     describe ":ports" do
       context "and when :ports is a valid masscan ports list" do
         it "must return a valid result" do
-          result = subject.call({ports: "1,2,3,4-10", ips: ['192.168.1.1']})
+          result = subject.call({ips: ['192.168.1.1'], ports: "1,2,3,4-10"})
 
           expect(result).to be_success
         end
@@ -14,12 +30,59 @@ describe Validations::MasscanParams do
 
       context "but when :ports is not a valid masscan ports list" do
         it "must reject invalid masscan ports list" do
-          result = subject.call({ports: "1,2,3,xyz"})
+          result = subject.call({ips: "192.168.1.1", ports: "1,2,3,xyz"})
 
           expect(result).to be_failure
           expect(result.errors[:ports]).to eq(["invalid masscan port list"])
         end
       end
+    end
+
+    shared_examples_for "optional value" do |key|
+      it "must coerce an empty value for #{key.inspect} into nil" do
+        result = subject.call({:ips => "192.168.1.1", key => ""})
+
+        expect(result).to be_success
+        expect(result[key]).to be(nil)
+      end
+    end
+
+    [
+      :ports,
+      :banners,
+      :rate,
+      :config_file,
+      :adapter,
+      :adapter_ip,
+      :adapter_port,
+      :adapter_mac,
+      :adapter_vlan,
+      :router_mac,
+      :ping,
+      :exclude,
+      :exclude_file,
+      :include_file,
+      :retries,
+      :pcap_payloads,
+      :nmap_payloads,
+      :http_method,
+      :http_url,
+      :http_version,
+      :http_host,
+      :http_user_agent,
+      :http_field,
+      :http_cookie,
+      :http_payload,
+      :open_only,
+      :pcap,
+      :packet_trace,
+      :pfring,
+      :shards,
+      :seed,
+      :ttl,
+      :wait
+    ].each do |key|
+      include_context "optional value", key
     end
   end
 

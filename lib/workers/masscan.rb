@@ -35,7 +35,44 @@ module Workers
     include Sidekiq::Worker
     sidekiq_options queue: :scan, retry: false, backtrace: true
 
-    Params = Dry::Schema::JSON(parent: Schemas::MasscanParams)
+    # The accepted JSON params which will be passed to {Masscan#perform}.
+    Params = Dry::Schema::JSON() do
+      required(:ips).array(:string)
+
+      optional(:ports).value(:string)
+      optional(:banners).value(:bool)
+      optional(:rate).value(:integer)
+      optional(:config_file).value(:string)
+      optional(:adapter).value(:string)
+      optional(:adapter_ip).value(:string)
+      optional(:adapter_port).value(:string)
+      optional(:adapter_mac).value(:string)
+      optional(:adapter_vlan).value(:string)
+      optional(:router_mac).value(:string)
+      optional(:ping).value(:bool)
+      optional(:exclude).value(:string)
+      optional(:exclude_file).value(:string)
+      optional(:include_file).value(:string)
+      optional(:pcap_payloads).value(:string)
+      optional(:nmap_payloads).value(:string)
+      optional(:http_method).value(Types::HTTPMethod)
+      optional(:http_url).value(:string)
+      optional(:http_version).value(:string)
+      optional(:http_host).value(:string)
+      optional(:http_user_agent).value(:string)
+      optional(:http_field).value(:string)
+      optional(:http_cookie).value(:string)
+      optional(:http_payload).value(:string)
+      optional(:open_only).value(:bool)
+      optional(:pcap).value(:string)
+      optional(:packet_trace).value(:bool)
+      optional(:pfring).value(:bool)
+      optional(:shards).value(:string)
+      optional(:seed).value(:integer)
+      optional(:ttl).value(:integer)
+      optional(:wait).value(:integer)
+      optional(:retries).value(:integer)
+    end
 
     #
     # Processes an `masscan` job.
@@ -56,7 +93,7 @@ module Workers
         status = ::Masscan::Command.run(
           **kwargs,
           interactive:   true,
-          output_format: :bin,
+          output_format: :binary,
           output_file:   tempfile.path
         )
 
@@ -69,10 +106,6 @@ module Workers
           raise("masscan command not installed")
         end
       end
-
-      output_file = Ronin::Masscan.scan(**params)
-
-      Ronin::Masscan::Importer.import(output_file)
     end
 
     #
