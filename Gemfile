@@ -16,7 +16,7 @@ gem 'ronin-db',         '~> 0.2', github: 'ronin-rb/ronin-db',
 gem 'ronin-payloads',   '~> 0.1'
 gem 'ronin-exploits',   '~> 1.0'
 gem 'ronin-vulns',      '~> 0.1'
-gem 'ronin-web',        '~> 1.0'
+gem 'ronin-web',        '~> 1.0', github: 'ronin-rb/ronin-web'
 
 gem 'dry-schema',       '~> 1.0'
 gem 'dry-validation',   '~> 1.0'

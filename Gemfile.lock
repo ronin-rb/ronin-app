@@ -35,6 +35,23 @@ GIT
       ronin-db (~> 0.2)
       ruby-nmap (~> 1.0)
 
+GIT
+  remote: https://github.com/ronin-rb/ronin-web.git
+  revision: e10cb9a8b3945420f89eae5e5cf13b045488c144
+  specs:
+    ronin-web (1.0.2)
+      mechanize (~> 2.0)
+      nokogiri (~> 1.4)
+      nokogiri-diff (~> 0.2)
+      nokogiri-ext (~> 0.1)
+      open_namespace (~> 0.4)
+      robots (~> 0.10)
+      ronin-core (~> 0.1)
+      ronin-support (~> 1.0)
+      ronin-web-server (~> 0.1, >= 0.1.1)
+      ronin-web-spider (~> 0.1)
+      ronin-web-user_agents (~> 0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -181,6 +198,7 @@ GEM
     reline (0.3.3)
       io-console (~> 0.5)
     rexml (3.2.5)
+    robots (0.10.1)
     ronin-code-asm (1.0.0)
       ruby-yasm (~> 0.3)
     ronin-code-sql (2.0.0)
@@ -222,17 +240,6 @@ GEM
     ronin-vulns (0.1.2)
       ronin-core (~> 0.1)
       ronin-support (~> 1.0, >= 1.0.1)
-    ronin-web (1.0.2)
-      mechanize (~> 2.0)
-      nokogiri (~> 1.4)
-      nokogiri-diff (~> 0.2)
-      nokogiri-ext (~> 0.1)
-      open_namespace (~> 0.4)
-      ronin-core (~> 0.1)
-      ronin-support (~> 1.0)
-      ronin-web-server (~> 0.1, >= 0.1.1)
-      ronin-web-spider (~> 0.1)
-      ronin-web-user_agents (~> 0.1)
     ronin-web-server (0.1.1)
       rack (~> 2.2)
       rack-user_agent (~> 0.5)
@@ -354,7 +361,7 @@ DEPENDENCIES
   ronin-repos (~> 0.1)
   ronin-support (~> 1.0)
   ronin-vulns (~> 0.1)
-  ronin-web (~> 1.0)
+  ronin-web (~> 1.0)!
   rspec (~> 3.0)
   rubocop
   rubocop-ronin
