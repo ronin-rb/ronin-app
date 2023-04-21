@@ -20,8 +20,6 @@
 
 require 'sidekiq'
 
-require 'schemas/masscan_params'
-
 require 'tempfile'
 require 'masscan/command'
 require 'ronin/masscan/importer'

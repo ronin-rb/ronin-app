@@ -20,7 +20,6 @@
 
 require 'dry/validation'
 
-require 'schemas/masscan_params'
 require 'masscan/command'
 
 module Validations
