@@ -171,11 +171,11 @@ class App < Sinatra::Base
     end
   end
 
-  get '/web/spider' do
-    erb :"web/spider"
+  get '/spider' do
+    erb :spider
   end
 
-  post '/web/spider' do
+  post '/spider' do
     result = Validations::SpiderParams.call(params)
 
     if result.success?
@@ -185,12 +185,12 @@ class App < Sinatra::Base
       target = result[:target]
 
       flash[:success] = "Web spider of #{type} #{target} enqueued"
-      redirect '/web/spider'
+      redirect '/spider'
     else
       @errors = result.errors
 
       flash[:danger] = 'Failed to submit spider scan!'
-      halt 400, erb(:"web/spider")
+      halt 400, erb(:spider)
     end
   end
 
