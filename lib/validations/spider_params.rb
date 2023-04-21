@@ -19,8 +19,7 @@
 #
 
 require 'dry/validation'
-
-require 'schemas/spider_params'
+require 'types/spider'
 
 module Validations
   #
@@ -31,7 +30,41 @@ module Validations
     # Regular expression to loosely validate any hostname (local or DNS).
     HOST_NAME_REGEX = /\A[A-Za-z0-9\._-]+\z/
 
-    params Dry::Schema::Params(parent: Schemas::SpiderParams)
+    params do
+      required(:type).filled(Types::Spider::TargetType)
+      required(:target).filled(:string)
+
+      optional(:host_header).maybe(:string)
+      # optional(:host_headers)
+      # optional(:default_headers)
+      optional(:user_agent).maybe(:string)
+      optional(:referer).maybe(:string)
+      optional(:open_timeout).value(:integer)
+      optional(:read_timeout).value(:integer)
+      optional(:ssl_timeout).value(:integer)
+      optional(:continue_timeout).value(:integer)
+      optional(:keep_alive_timeout).value(:integer)
+      optional(:proxy).maybe(:string)
+      optional(:delay).value(:integer)
+      optional(:limit).value(:integer)
+      optional(:max_depth).value(:integer)
+      optional(:strip_fragments).value(:bool)
+      optional(:strip_query).value(:bool)
+      optional(:host).maybe(:string)
+      optional(:hosts).array(:string)
+      optional(:ignore_hosts).array(:string)
+      optional(:ports).array(:integer)
+      optional(:ignore_ports).array(:integer)
+      optional(:urls).array(:string)
+      optional(:ignore_urls).array(:string)
+      optional(:exts).array(:string)
+      optional(:ignore_exts).array(:string)
+      optional(:robots).value(:bool)
+
+      before(:value_coercer) do |result|
+        result.to_h.reject { |key,value| value.empty? }
+      end
+    end
 
     rule(:target) do
       case values[:type]

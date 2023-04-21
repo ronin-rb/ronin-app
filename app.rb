@@ -179,7 +179,7 @@ class App < Sinatra::Base
     result = Validations::SpiderParams.call(params)
 
     if result.success?
-      @jid = Workers::Spider.perform_async(params.to_h)
+      @jid = Workers::Spider.perform_async(result.to_h)
 
       type   = result[:type]
       target = result[:target]

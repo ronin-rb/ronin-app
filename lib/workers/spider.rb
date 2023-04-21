@@ -19,8 +19,7 @@
 #
 
 require 'sidekiq'
-
-require 'schemas/spider_params'
+require 'types/spider'
 
 require 'ronin/web/spider'
 
@@ -33,7 +32,36 @@ module Workers
     include Sidekiq::Worker
     sidekiq_options queue: :spider, retry: false, backtrace: true
 
-    Params = Dry::Schema::JSON(parent: Schemas::SpiderParams)
+    Params = Dry::Schema::JSON() do
+      required(:type).filled(Types::Spider::TargetType)
+      required(:target).filled(:string)
+
+      optional(:host_header).value(:string)
+      # optional(:host_headers)
+      # optional(:default_headers)
+      optional(:user_agent).value(:string)
+      optional(:referer).value(:string)
+      optional(:open_timeout).value(:integer)
+      optional(:read_timeout).value(:integer)
+      optional(:ssl_timeout).value(:integer)
+      optional(:continue_timeout).value(:integer)
+      optional(:keep_alive_timeout).value(:integer)
+      optional(:proxy).value(:string)
+      optional(:delay).value(:integer)
+      optional(:limit).value(:integer)
+      optional(:max_depth).value(:integer)
+      optional(:strip_fragments).value(:bool)
+      optional(:strip_query).value(:bool)
+      optional(:hosts).array(:string)
+      optional(:ignore_hosts).array(:string)
+      optional(:ports).array(:integer)
+      optional(:ignore_ports).array(:integer)
+      optional(:urls).array(:string)
+      optional(:ignore_urls).array(:string)
+      optional(:exts).array(:string)
+      optional(:ignore_exts).array(:string)
+      optional(:robots).value(:bool)
+    end
 
     #
     # Processes a web spider job.

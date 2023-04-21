@@ -28,4 +28,329 @@
   <div class="field">
     <button type="submit" class="button is-primary">Spider</button>
   </div>
+
+  <div class="field">
+    <label class="label">Proxy:</label>
+    <div class="control">
+      <% if @errors && @errors[:proxy] %>
+        <input class="input is-danger" type="text" name="proxy" placeholder="http://www.example.com:8080" value="<%=hattr params[:proxy] %>">
+
+        <% @errors[:proxy].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="proxy" placeholder="http://www.example.com:8080" value="<%=hattr params[:proxy] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Delay:</label>
+    <div class="control">
+      <% if @errors && @errors[:delay] %>
+        <input class="input is-danger" type="text" name="delay" placeholder="SECS" value="<%=hattr params[:delay] %>">
+
+        <% @errors[:delay].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="delay" placeholder="SECS" value="<%=hattr params[:delay] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Header Options:</h3>
+
+  <div class="field">
+    <label class="label">Host Header:</label>
+    <div class="control">
+      <% if @errors && @errors[:host_header] %>
+        <input class="input is-danger" type="text" name="host_header" placeholder="www.example.com" value="<%=hattr params[:host_header] %>">
+
+        <% @errors[:host_header].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="host_header" placeholder="www.example.com" value="<%=hattr params[:host_header] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">User-Agent Header:</label>
+    <div class="control">
+      <% if @errors && @errors[:user_agent] %>
+        <input class="input is-danger" type="text" name="user_agent" placeholder="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" value="<%=hattr params[:user_agent] %>">
+
+        <% @errors[:user_agent].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="user_agent" placeholder="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" value="<%=hattr params[:user_agent] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Referer Header:</label>
+    <div class="control">
+      <% if @errors && @errors[:referer] %>
+        <input class="input is-danger" type="text" name="referer" placeholder="https://www.example.com/..." value="<%=hattr params[:referer] %>">
+
+        <% @errors[:referer].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="referer" placeholder="https://www.example.com/..." value="<%=hattr params[:referer] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Timeout Options:</h3>
+
+  <div class="field">
+    <label class="label">Open Timeout:</label>
+    <div class="control">
+      <% if @errors && @errors[:open_timeout] %>
+        <input class="input is-danger" type="text" name="open_timeout" placeholder="SECS" value="<%=hattr params[:open_timeout] %>">
+
+        <% @errors[:open_timeout].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="open_timeout" placeholder="SECS" value="<%=hattr params[:open_timeout] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Read Timeout:</label>
+    <div class="control">
+      <% if @errors && @errors[:read_timeout] %>
+        <input class="input is-danger" type="text" name="read_timeout" placeholder="SECS" value="<%=hattr params[:read_timeout] %>">
+
+        <% @errors[:read_timeout].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="read_timeout" placeholder="SECS" value="<%=hattr params[:read_timeout] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">SSL Timeout:</label>
+    <div class="control">
+      <% if @errors && @errors[:ssl_timeout] %>
+        <input class="input is-danger" type="text" name="ssl_timeout" placeholder="SECS" value="<%=hattr params[:ssl_timeout] %>">
+
+        <% @errors[:ssl_timeout].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ssl_timeout" placeholder="SECS" value="<%=hattr params[:ssl_timeout] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Continue Timeout:</label>
+    <div class="control">
+      <% if @errors && @errors[:continue_timeout] %>
+        <input class="input is-danger" type="text" name="continue_timeout" placeholder="SECS" value="<%=hattr params[:continue_timeout] %>">
+
+        <% @errors[:continue_timeout].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="continue_timeout" placeholder="SECS" value="<%=hattr params[:continue_timeout] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Keep-Alive Timeout:</label>
+    <div class="control">
+      <% if @errors && @errors[:keep_alive_timeout] %>
+        <input class="input is-danger" type="text" name="keep_alive_timeout" placeholder="SECS" value="<%=hattr params[:keep_alive_timeout] %>">
+
+        <% @errors[:keep_alive_timeout].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="keep_alive_timeout" placeholder="SECS" value="<%=hattr params[:keep_alive_timeout] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Limit Options:</h3>
+
+  <div class="field">
+    <label class="label">Limit:</label>
+    <div class="control">
+      <% if @errors && @errors[:limit] %>
+        <input class="input is-danger" type="text" name="limit" placeholder="NUM" value="<%=hattr params[:limit] %>">
+
+        <% @errors[:limit].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="limit" placeholder="NUM" value="<%=hattr params[:limit] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Max Depth:</label>
+    <div class="control">
+      <% if @errors && @errors[:max_depth] %>
+        <input class="input is-danger" type="text" name="max_depth" placeholder="NUM" value="<%=hattr params[:max_depth] %>">
+
+        <% @errors[:max_depth].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="max_depth" placeholder="NUM" value="<%=hattr params[:max_depth] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <h3>URI Normalization Options:</h3>
+
+  <div class="field">
+    <label class="label">Strip Fragment:</label>
+    <input type="checkbox" name="strip_fragment"<%= " checked" if params[:strip_fragment] %>>
+  </div>
+
+  <div class="field">
+    <label class="label">Strip Query:</label>
+    <input type="checkbox" name="strip_query"<%= " checked" if params[:strip_query] %>>
+  </div>
+
+  <h3>Allow/Ignore Options:</h3>
+
+  <div class="field">
+    <label class="label">Allow Hosts:</label>
+    <div class="control">
+      <% if @errors && @errors[:hosts] %>
+        <input class="input is-danger" type="text" name="hosts" placeholder="www.example.com, ..." value="<%=hattr params[:hosts] %>">
+
+        <% @errors[:hosts].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="hosts" placeholder="www.example.com, ..." value="<%=hattr params[:hosts] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ignore Hosts:</label>
+    <div class="control">
+      <% if @errors && @errors[:ignore_hosts] %>
+        <input class="input is-danger" type="text" name="ignore_hosts" placeholder="www.example.com, ..." value="<%=hattr params[:ignore_hosts] %>">
+
+        <% @errors[:ignore_hosts].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ignore_hosts" placeholder="www.example.com, ..." value="<%=hattr params[:ignore_hosts] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Allow Ports:</label>
+    <div class="control">
+      <% if @errors && @errors[:ports] %>
+        <input class="input is-danger" type="text" name="ports" placeholder="PORT, ..." value="<%=hattr params[:ports] %>">
+
+        <% @errors[:ports].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ports" placeholder="PORT, ..." value="<%=hattr params[:ports] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ignore Ports:</label>
+    <div class="control">
+      <% if @errors && @errors[:ignore_ports] %>
+        <input class="input is-danger" type="text" name="ignore_ports" placeholder="PORT, ..." value="<%=hattr params[:ignore_ports] %>">
+
+        <% @errors[:ignore_ports].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ignore_ports" placeholder="PORT, ..." value="<%=hattr params[:ignore_ports] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Allow URLs:</label>
+    <div class="control">
+      <% if @errors && @errors[:urls] %>
+        <input class="input is-danger" type="text" name="urls" placeholder="https://www.example.com/..., ..." value="<%=hattr params[:urls] %>">
+
+        <% @errors[:urls].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="urls" placeholder="https://www.example.com/..., ..." value="<%=hattr params[:urls] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ignore URLs:</label>
+    <div class="control">
+      <% if @errors && @errors[:ignore_urls] %>
+        <input class="input is-danger" type="text" name="ignore_urls" placeholder="https://www.example.com/..., ..." value="<%=hattr params[:ignore_urls] %>">
+
+        <% @errors[:ignore_urls].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ignore_urls" placeholder="https://www.example.com/..., ..." value="<%=hattr params[:ignore_urls] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Allow EXTs:</label>
+    <div class="control">
+      <% if @errors && @errors[:exts] %>
+        <input class="input is-danger" type="text" name="exts" placeholder=".xml, ..." value="<%=hattr params[:exts] %>">
+
+        <% @errors[:exts].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="exts" placeholder=".xml, ..." value="<%=hattr params[:exts] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Ignore EXTs:</label>
+    <div class="control">
+      <% if @errors && @errors[:ignore_exts] %>
+        <input class="input is-danger" type="text" name="ignore_exts" placeholder=".zip, ..." value="<%=hattr params[:ignore_exts] %>">
+
+        <% @errors[:ignore_exts].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="ignore_exts" placeholder=".zip, ..." value="<%=hattr params[:ignore_exts] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Robots:</label>
+    <input type="checkbox" name="robots"<%= " checked" if params[:robots] %>>
+  </div>
 </form>
