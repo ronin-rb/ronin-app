@@ -79,6 +79,7 @@ module Workers
 
       spider(type,target,**params) do |agent|
         agent.every_page do |page|
+          puts page.url
           import_url(page.url)
         end
       end
