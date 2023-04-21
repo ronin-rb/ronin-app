@@ -19,6 +19,7 @@
 #
 
 require 'sidekiq'
+require 'dry-schema'
 require 'types/spider'
 
 require 'ronin/web/spider'
