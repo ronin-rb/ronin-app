@@ -13,7 +13,7 @@ ready(() => {
   });
 
   (document.querySelectorAll('.advanced > a.advanced-toggle') || []).forEach(($toggle) => {
-    var $advanced = $toggle.parentNode;
+    const $advanced = $toggle.parentNode;
 
     $advanced.classList.add('hidden');
 
