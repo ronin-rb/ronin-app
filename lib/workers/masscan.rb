@@ -19,6 +19,8 @@
 #
 
 require 'sidekiq'
+require 'dry-schema'
+require 'types'
 
 require 'tempfile'
 require 'masscan/command'
