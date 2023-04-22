@@ -125,6 +125,126 @@ describe Validations::SpiderParams do
     ].each do |key|
       include_context "optional value", key
     end
+
+    it "must split the :hosts String into an Array of Strings" do
+      host1 = 'www1.example.com'
+      host2 = 'www2.example.com'
+      hosts = "#{host1}, #{host2}"
+
+      result = subject.call(
+        type:   'host',
+        target: 'example.com',
+        hosts:  hosts
+      )
+
+      expect(result).to be_success
+      expect(result[:hosts]).to eq([host1, host2])
+    end
+
+    it "must split the :ignore_hosts String into an Array of Strings" do
+      host1 = 'www1.example.com'
+      host2 = 'www2.example.com'
+      hosts = "#{host1}, #{host2}"
+
+      result = subject.call(
+        type:         'host',
+        target:       'example.com',
+        ignore_hosts: hosts
+      )
+
+      expect(result).to be_success
+      expect(result[:ignore_hosts]).to eq([host1, host2])
+    end
+
+    it "must split the :ports String into an Array of Strings" do
+      port1 = 80
+      port2 = 443
+      ports = "#{port1}, #{port2}"
+
+      result = subject.call(
+        type:   'host',
+        target: 'example.com',
+        ports:  ports
+      )
+
+      expect(result).to be_success
+      expect(result[:ports]).to eq([port1, port2])
+    end
+
+    it "must split the :ignore_ports String into an Array of Strings" do
+      port1 = 80
+      port2 = 443
+      ports = "#{port1}, #{port2}"
+
+      result = subject.call(
+        type:         'host',
+        target:       'example.com',
+        ignore_ports: ports
+      )
+
+      expect(result).to be_success
+      expect(result[:ignore_ports]).to eq([port1, port2])
+    end
+
+    it "must split the :urls String into an Array of Strings" do
+      url1 = 'https://www1.example.com'
+      url2 = 'https://www2.example.com'
+      urls = "#{url1}, #{url2}"
+
+      result = subject.call(
+        type:   'host',
+        target: 'example.com',
+        urls:   urls
+      )
+
+      expect(result).to be_success
+      expect(result[:urls]).to eq([url1, url2])
+    end
+
+    it "must split the :ignore_urls String into an Array of Strings" do
+      url1 = 'https://www1.example.com'
+      url2 = 'https://www2.example.com'
+      urls = "#{url1}, #{url2}"
+
+      result = subject.call(
+        type:         'host',
+        target:       'example.com',
+        ignore_urls:  urls
+      )
+
+      expect(result).to be_success
+      expect(result[:ignore_urls]).to eq([url1, url2])
+    end
+
+    it "must split the :exts String into an Array of Strings" do
+      ext1 = '.html'
+      ext2 = '.xhtml'
+      exts = "#{ext1}, #{ext2}"
+
+      result = subject.call(
+        type:   'host',
+        target: 'example.com',
+        exts:   exts
+      )
+
+      expect(result).to be_success
+      expect(result[:exts]).to eq([ext1, ext2])
+    end
+
+    it "must split the :ignore_exts String into an Array of Strings" do
+      ext1 = '.zip'
+      ext2 = '.rar'
+      exts = "#{ext1}, #{ext2}"
+
+      result = subject.call(
+        type:         'host',
+        target:       'example.com',
+        ignore_exts:  exts
+      )
+
+      expect(result).to be_success
+      expect(result[:ignore_exts]).to eq([ext1, ext2])
+    end
   end
 
   describe ".call" do
