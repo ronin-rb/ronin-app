@@ -21,6 +21,9 @@
 require 'types'
 
 module Types
+  #
+  # Types for {Validations::Spider}.
+  #
   module Spider
     # The type of web spider targets
     TargetType = Types::String.enum('host', 'domain', 'site')
