@@ -11,4 +11,21 @@ ready(() => {
       $notification.parentNode.removeChild($notification);
     });
   });
+
+  (document.querySelectorAll('.advanced > a.advanced-toggle') || []).forEach(($toggle) => {
+    var $advanced = $toggle.parentNode;
+
+    $advanced.classList.add('hidden');
+
+    $toggle.addEventListener('click', (e) => {
+      if ($advanced.classList.contains('hidden'))
+      {
+        $advanced.classList.remove('hidden');
+      }
+      else
+      {
+         $advanced.classList.add('hidden');
+      }
+    });
+  });
 });
