@@ -50,7 +50,6 @@ module Validations
       optional(:max_depth).value(:integer)
       optional(:strip_fragments).value(:bool)
       optional(:strip_query).value(:bool)
-      optional(:host).maybe(:string)
       optional(:hosts).value(Types::Spider::HostList)
       optional(:ignore_hosts).value(Types::Spider::HostList)
       optional(:ports).value(Types::Spider::PortList)
