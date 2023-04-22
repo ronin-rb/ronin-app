@@ -17,6 +17,15 @@ describe Validations::MasscanParams do
         expect(result).to be_failure
         expect(result.errors[:ips]).to eq(["is missing"])
       end
+
+      it "must split the String value for :ips into an Array of Strings" do
+        ip1    = '192.168.1.1'
+        ip2    = '192.168.1.2'
+        result = subject.call({ips: "#{ip1} #{ip2}"})
+
+        expect(result).to be_success
+        expect(result[:ips]).to eq([ip1, ip2])
+      end
     end
 
     describe ":ports" do
