@@ -9,8 +9,8 @@ module Types
     HostList = Types::CommaSeparatedList
 
     # Represents a comma separated list of ports.
-    PortList = Types::Array.of(Types::String).constructor do |value|
-      value.split(/,\s*/).map(&:to_i)
+    PortList = Types::Array.of(Types::Integer).constructor do |value|
+      value.split(/(?:,\s*|\s+)/).map(&:to_i)
     end
 
     # Represents a list of URLs.
