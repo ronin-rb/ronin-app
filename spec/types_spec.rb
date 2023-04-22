@@ -28,25 +28,22 @@ describe Types do
     subject { described_class::CommaSeparatedList }
 
     context "when given a String" do
+      let(:value1) { 'foo' }
+      let(:value2) { 'bar' }
+
       it "must split a ',' separated list" do
-        value1 = 'foo'
-        value2 = 'bar'
         string = "#{value1},#{value2}"
 
         expect(subject.call(string)).to eq([value1, value2])
       end
 
       it "must split a ', ' separated list" do
-        value1 = 'foo'
-        value2 = 'bar'
         string = "#{value1}, #{value2}"
 
         expect(subject.call(string)).to eq([value1, value2])
       end
 
       it "must split a ' ' separated list" do
-        value1 = 'foo'
-        value2 = 'bar'
         string = "#{value1} #{value2}"
 
         expect(subject.call(string)).to eq([value1, value2])
