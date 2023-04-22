@@ -31,6 +31,11 @@ module Types
     value.split
   end
 
+  # Represents a comma separated list of values.
+  CommaSeparatedList = Types::Array.of(Types::String).constructor do |value|
+    value.split(/,\s*/)
+  end
+
   # Represents an HTTP method name.
   HTTPMethod = Types::String.enum(
     'COPY',
