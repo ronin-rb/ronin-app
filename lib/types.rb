@@ -33,7 +33,7 @@ module Types
 
   # Represents a comma separated list of values.
   CommaSeparatedList = Types::Array.of(Types::String).constructor do |value|
-    value.split(/,\s*/)
+    value.split(/(?:,\s*|\s+)/)
   end
 
   # Represents an HTTP method name.
