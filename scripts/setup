@@ -428,9 +428,10 @@ auto_install_bundler
 install_dependencies
 set_caps
 
-bundle install
+bundle install || fail "Failed to install gems!"
+
 log "Creating the default database ..."
-bundle exec rake db:migrate
+bundle exec rake db:migrate || fail "Failed to create database!"
 
 log "ronin-app is now ready to be ran!"
 echo
