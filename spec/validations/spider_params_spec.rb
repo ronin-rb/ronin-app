@@ -87,6 +87,44 @@ describe Validations::SpiderParams do
         end
       end
     end
+
+    shared_examples_for "optional value" do |key|
+      it "must coerce an empty value for #{key.inspect} into nil" do
+        result = subject.call({type: "host", target: 'example.com', key => ""})
+
+        expect(result).to be_success
+        expect(result[key]).to be(nil)
+      end
+    end
+
+    [
+      :host_header,
+      :user_agent,
+      :referer,
+      :open_timeout,
+      :read_timeout,
+      :ssl_timeout,
+      :continue_timeout,
+      :keep_alive_timeout,
+      :proxy,
+      :delay,
+      :limit,
+      :max_depth,
+      :strip_fragments,
+      :strip_query,
+      :host,
+      :hosts,
+      :ignore_hosts,
+      :ports,
+      :ignore_ports,
+      :urls,
+      :ignore_urls,
+      :exts,
+      :ignore_exts,
+      :robots
+    ].each do |key|
+      include_context "optional value", key
+    end
   end
 
   describe ".call" do
