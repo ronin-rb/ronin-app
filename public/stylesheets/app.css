@@ -1,6 +1,8 @@
 :root {
 	--bg-color: white;
 	--fg-color: black;
+	--dark-mode-bg-color: #0f0f1b;
+	--dark-mode-fg-color: white;
 }
 
 body {
@@ -17,6 +19,34 @@ main {
 header {
 	width: 100vw;
 	background-color: black;
+}
+
+nav#top-menu {
+	margin-left: auto;
+	padding: 0.5em 0.5em;
+}
+
+nav#top-menu .level-item {
+	padding-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+nav#top-menu svg {
+	width: 2.5em;
+	height: 2.5em;
+}
+
+button#dark-mode-toggle {
+	background: none;
+	border: none;
+}
+
+button#dark-mode-toggle svg#dark-mode-sun {
+	display: inline;
+}
+
+button#dark-mode-toggle svg#dark-mode-moon {
+	display: none;
 }
 
 #logo {
@@ -85,4 +115,33 @@ footer.footer {
 	background-color: var(--fg-color);
 	font-size: medium;
 	background-color: black;
+}
+
+body.dark-mode {
+	color: var(--dark-mode-fg-color);
+	background-color: var(--dark-mode-bg-color);
+}
+
+body.dark-mode main .box,
+body.dark-mode main table {
+	color: var(--dark-mode-fg-color);
+	background-color: var(--dark-mode-bg-color);
+}
+
+body.dark-mode main code {
+	color: var(--dark-mode-fg-color);
+	background-color: black;
+}
+
+body.dark-mode main h1,
+body.dark-mode main h2,
+body.dark-mode main h3,
+body.dark-mode main h4,
+body.dark-mode main h5,
+body.dark-mode main h6,
+body.dark-mode main p,
+body.dark-mode main label,
+body.dark-mode main strong,
+body.dark-mode main a {
+	color: var(--dark-mode-fg-color);
 }
