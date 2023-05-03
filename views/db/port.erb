@@ -13,6 +13,19 @@
     </tr>
 
     <tr>
+      <td><strong>IP Addresses:</strong></td>
+      <td>
+        <% @port.ip_addresses.each do |ip_address| %>
+          <p>
+            <a href="/db/ip_addresses/<%=h ip_address.id %>">
+              <%=h ip_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Open Ports:</strong></td>
       <td>
         <% @port.open_ports.each do |open_port| %>
