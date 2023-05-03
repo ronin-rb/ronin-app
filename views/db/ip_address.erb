@@ -16,6 +16,19 @@
     </tr>
 
     <tr>
+      <td><strong>Open Ports:</strong></td>
+      <td>
+        <% @ip_address.open_ports.each do |open_port| %>
+          <p>
+            <a href="/db/open_ports/<%=h open_port.id %>">
+              <%=h open_port %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Created:</strong></td>
       <td><%=h @ip_address.created_at %></td>
     </tr>
