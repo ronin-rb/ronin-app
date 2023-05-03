@@ -49,6 +49,8 @@
     </header>
 
     <main class="container">
+      <%= yield_content :breadcrumbs %>
+
       <% unless flash.empty? %>
         <% flash.each do |type,text| %>
           <div class="notification is-<%= type %> is-light">

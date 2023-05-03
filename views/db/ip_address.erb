@@ -1,3 +1,4 @@
+<% content_for :breadcrumbs  do %>
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li><a href="/">Home</a></li>
@@ -5,6 +6,7 @@
     <li><a href="/db/ip_addresses">IP Addresses</a></li>
   </ul>
 </nav>
+<% end %>
 
 <h1>IP Address: <%=h @ip_address %></h1>
 

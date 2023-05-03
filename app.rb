@@ -22,6 +22,7 @@ $LOAD_PATH.unshift(File.join(__dir__,'lib'))
 
 # classes
 require 'sinatra/base'
+require 'sinatra/content_for'
 require 'sinatra/flash'
 require 'sinatra/reloader'
 
@@ -53,6 +54,7 @@ class App < Sinatra::Base
   configure do
     enable :sessions
     register Sinatra::Flash
+    helpers Sinatra::ContentFor
     helpers Helpers::HTML
   end
 
