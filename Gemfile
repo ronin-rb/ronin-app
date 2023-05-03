@@ -13,6 +13,10 @@ gem 'ronin-masscan',    '~> 0.1', github: 'ronin-rb/ronin-masscan'
 gem 'ronin-repos',      '~> 0.1'
 gem 'ronin-db',         '~> 0.2', github: 'ronin-rb/ronin-db',
                                   branch: '0.2.0'
+
+gem 'ronin-db-activerecord', '~> 0.2', github: 'ronin-rb/ronin-db-activerecord',
+                                       branch: '0.2.0'
+
 gem 'ronin-payloads',   '~> 0.1'
 gem 'ronin-exploits',   '~> 1.0'
 gem 'ronin-vulns',      '~> 0.1'

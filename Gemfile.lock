@@ -7,6 +7,15 @@ GIT
       command_mapper (~> 0.1)
 
 GIT
+  remote: https://github.com/ronin-rb/ronin-db-activerecord.git
+  revision: e06178d83a436f1032b8f7d7336d0dc5b0b1a575
+  branch: 0.2.0
+  specs:
+    ronin-db-activerecord (0.2.0)
+      activerecord (~> 7.0)
+      uri-query_params (~> 0.6)
+
+GIT
   remote: https://github.com/ronin-rb/ronin-db.git
   revision: 05aa2ff8af1a82bfd7464465e0ea4341970d6234
   branch: 0.2.0
@@ -127,7 +136,7 @@ GEM
     highline (2.0.3)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     io-console (0.6.0)
@@ -207,9 +216,6 @@ GEM
       command_kit (~> 0.4)
       irb (~> 1.0)
       reline (~> 0.1)
-    ronin-db-activerecord (0.1.1)
-      activerecord (~> 7.0)
-      uri-query_params (~> 0.6)
     ronin-exploits (1.0.1)
       ronin-code-sql (~> 2.0)
       ronin-core (~> 0.1)
@@ -354,6 +360,7 @@ DEPENDENCIES
   redis (~> 5.0)
   redis-namespace (~> 1.10)
   ronin-db (~> 0.2)!
+  ronin-db-activerecord (~> 0.2)!
   ronin-exploits (~> 1.0)
   ronin-masscan (~> 0.1)!
   ronin-nmap (~> 0.1)!
