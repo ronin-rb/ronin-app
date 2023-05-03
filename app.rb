@@ -151,6 +151,16 @@ class App < Sinatra::Base
     erb :"db/services"
   end
 
+  get '/db/services/:id' do
+    @service = Ronin::DB::Service.find(params[:id])
+
+    if @service
+      erb :"db/service"
+    else
+      halt 404
+    end
+  end
+
   get '/db/urls' do
     @urls = Ronin::DB::URL.all
 

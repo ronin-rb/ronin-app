@@ -1,0 +1,23 @@
+<h1>Service: <%=h @service %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%=h @service.name %>/</td>
+    </tr>
+
+    <tr>
+      <td><strong>Open Ports:</strong></td>
+      <td>
+        <% @service.open_ports.each do |open_port| %>
+          <p>
+            <a href="/db/open_ports/<%=h open_port.id %>">
+              <%=h open_port %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
