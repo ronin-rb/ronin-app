@@ -134,6 +134,16 @@ class App < Sinatra::Base
     erb :"db/ports"
   end
 
+  get '/db/ports/:id' do
+    @port = Ronin::DB::Port.find(params[:id])
+
+    if @port
+      erb :"db/port"
+    else
+      halt 404
+    end
+  end
+
   get '/db/urls' do
     @urls = Ronin::DB::URL.all
 

@@ -1,0 +1,28 @@
+<h1>Port: <%=h @port %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Protocol:</strong></td>
+      <td><%=h @port.protocol.upcase %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Number:</strong></td>
+      <td><%=h @port.number %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Open Ports:</strong></td>
+      <td>
+        <% @port.open_ports.each do |open_port| %>
+          <p>
+            <a href="/db/open_ports/<%=h open_port.id %>">
+              <%=h open_port %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
