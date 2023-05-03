@@ -24,5 +24,18 @@
         <% end %>
       </td>
     </tr>
+
+    <tr>
+      <td><strong>Services:</strong></td>
+      <td>
+        <% @port.services.each do |service| %>
+          <p>
+            <a href="/db/services/<%=h service.id %>">
+              <%=h service %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>
