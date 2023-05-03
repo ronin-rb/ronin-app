@@ -1,9 +1,9 @@
-<h1>Host name: <%=h @host_name %></h1>
+<h1>Host Name: <%=h @host_name %></h1>
 
 <table class="table">
   <tbody>
     <tr>
-      <td><strong>IP addresses:</strong></td>
+      <td><strong>IP Addresses:</strong></td>
       <td>
         <% @host_name.ip_addresses.each do |ip_address| %>
           <p><a href="/db/ip_addresses/<%=h ip_address.id %>"><%=h ip_address %></a></p>
