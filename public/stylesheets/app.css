@@ -71,6 +71,24 @@ nav.navbar a:hover {
 	margin-bottom: 1em;
 }
 
+.content .breadcrumb > ul {
+	margin-left: 0;
+}
+
+.content .breadcrumb > ul > li+li {
+	margin-top: 0;
+}
+
+.content .breadcrumb a {
+	filter: brightness(70%);
+	text-decoration: none;
+}
+
+.content .bradcrumb a:hover {
+	filter: brightness(90%);
+	background-color: inherit;
+}
+
 .content .column {
 	height: 100%;
 }
