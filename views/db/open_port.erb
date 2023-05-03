@@ -1,0 +1,45 @@
+<h3>Open Port: <%=h @open_port %></h3>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>IP address:</strong></td>
+      <td>
+        <a href="/db/ip_addresses/<%=h @open_port.ip_address.id %>=">
+          <%=h @open_port.ip_address %>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Port:</strong></td>
+      <td>
+        <a href="/db/ports/<%=h @open_port.port.id %>">
+          <%=h @open_port.port %>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Service:</strong></td>
+      <td>
+        <% if @open_port.service %>
+          <a href="/db/services/<%=h @open_port.service.id %>">
+            <%=h @open_port.service %>
+          </a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @open_port.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Scanned:</strong></td>
+      <td><%=h @open_port.last_scanned_at %></td>
+    </tr>
+  </tbody>
+  </tbody>
+</table>
