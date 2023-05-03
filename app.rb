@@ -73,6 +73,7 @@ class App < Sinatra::Base
   get '/db' do
     @ip_address_count = Ronin::DB::IPAddress.count
     @host_name_count  = Ronin::DB::HostName.count
+    @open_port_count  = Ronin::DB::OpenPort.count
     @url_count        = Ronin::DB::URL.count
 
     erb :db
@@ -108,6 +109,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/open_ports' do
+    @open_ports = Ronin::DB::OpenPort.all
+
+    erb :"db/open_ports"
   end
 
   get '/db/urls' do

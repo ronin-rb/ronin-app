@@ -1,0 +1,5 @@
+<h1>Open Ports</h1>
+
+<% @open_ports.each do |open_port| %>
+  <p><a href="/db/open_ports/<%=h open_port.id %>"><%=h open_port %></a></p>
+<% end %>
