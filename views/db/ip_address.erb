@@ -6,7 +6,11 @@
       <td><strong>Host names:</strong></td>
       <td>
         <% @ip_address.host_names.each do |host_name| %>
-          <p><a href="/db/host_names/<%=h host_name.id %>"><%=h host_name %></a></p>
+          <p>
+            <a href="/db/host_names/<%=h host_name.id %>">
+              <%=h host_name %>
+            </a>
+          </p>
         <% end %>
       </td>
     </tr>
