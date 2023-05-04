@@ -226,6 +226,16 @@ class App < Sinatra::Base
     erb :"db/url_schemes"
   end
 
+  get '/db/url_schemes/:id' do
+    @url_scheme = Ronin::DB::URLScheme.find(params[:id])
+
+    if @url_scheme
+      erb :"db/url_scheme"
+    else
+      halt 404
+    end
+  end
+
   get '/db/url_query_param_names' do
     @url_query_param_names = Ronin::DB::URLQueryParamName.all
 
