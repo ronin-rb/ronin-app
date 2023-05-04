@@ -1,0 +1,100 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/advisories">Advisories</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Advisory: <%=h @advisory %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>ID:</strong></td>
+      <td><%=h @advisory.id %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Prefix:</strong></td>
+      <td><%=h @advisory.prefix %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Year:</strong></td>
+      <td><%=h @advisory.year %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Identifier:</strong></td>
+      <td><%=h @advisory.identifier %></td>
+    </tr>
+
+    <tr>
+      <td><strong>IP Addresses:</strong></td>
+      <td>
+        <% @advisory.ip_addresses.each do |ip_address| %>
+          <p>
+            <a href="/db/ip_addresses/<%=h ip_address.id %>">
+              <%=h ip_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Open Ports:</strong></td>
+      <td>
+        <% @advisory.open_ports.each do |open_port| %>
+          <p>
+            <a href="/db/open_ports/<%=h open_port.id %>">
+              <%=h open_port %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Host Names:</strong></td>
+      <td>
+        <% @advisory.host_names.each do |host_name| %>
+          <p>
+            <a href="/db/host_names/<%=h host_name.id %>">
+              <%=h host_name %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>URLs:</strong></td>
+      <td>
+        <% @advisory.urls.each do |url| %>
+          <p>
+            <a href="/db/urls/<%=h url.id %>">
+              <%=h url %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>MAC Addresses:</strong></td>
+      <td>
+        <% @advisory.mac_addresses.each do |mac_address| %>
+          <p>
+            <a href="/db/mac_addresses/<%=h mac_address.id %>">
+              <%=h mac_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -259,6 +259,12 @@ class App < Sinatra::Base
     erb :"db/advisories"
   end
 
+  get '/db/advisories/:id' do
+    @advisory = Ronin::DB::Advisory.find(params[:id])
+
+    erb :"db/advisory"
+  end
+
   get '/nmap' do
     erb :nmap
   end
