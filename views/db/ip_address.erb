@@ -18,6 +18,17 @@
     </tr>
 
     <tr>
+      <td><strong>ASN:</strong></td>
+      <td>
+        <% if (asn = @ip_address.asn) %>
+          <a href="/db/asns/<%=h asn.id %>">
+            <%=h @ip_address.asn %>
+          </a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Host Names:</strong></td>
       <td>
         <% @ip_address.host_names.each do |host_name| %>
