@@ -81,6 +81,7 @@ class App < Sinatra::Base
     @port_count                 = Ronin::DB::Port.count
     @service_count              = Ronin::DB::Service.count
     @url_count                  = Ronin::DB::URL.count
+    @url_scheme_count           = Ronin::DB::URLScheme.count
     @url_query_param_name_count = Ronin::DB::URLQueryParamName.count
     @email_address_count        = Ronin::DB::EmailAddress.count
     @user_name_count            = Ronin::DB::UserName.count
@@ -217,6 +218,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/url_schemes' do
+    @url_schemes = Ronin::DB::URLScheme.all
+
+    erb :"db/url_schemes"
   end
 
   get '/db/url_query_param_names' do
