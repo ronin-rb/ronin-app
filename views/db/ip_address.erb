@@ -57,6 +57,19 @@
     </tr>
 
     <tr>
+      <td><strong>Advisories:</strong></td>
+      <td>
+        <% @ip_address.advisories.each do |advisory| %>
+          <p>
+            <a href="/db/advisories/<%=h advisory.id %>">
+              <%=h advisory %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Created:</strong></td>
       <td><%=h @ip_address.created_at %></td>
     </tr>
