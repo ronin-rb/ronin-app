@@ -82,6 +82,7 @@ class App < Sinatra::Base
     @url_count           = Ronin::DB::URL.count
     @email_address_count = Ronin::DB::EmailAddress.count
     @user_name_count     = Ronin::DB::UserName.count
+    @password_count      = Ronin::DB::Password.count
 
     erb :db
   end
@@ -224,6 +225,12 @@ class App < Sinatra::Base
     @user_name = Ronin::DB::UserName.find(params[:id])
 
     erb :"db/user_name"
+  end
+
+  get '/db/passwords' do
+    @passwords = Ronin::DB::Password.all
+
+    erb :"db/passwords"
   end
 
   get '/nmap' do
