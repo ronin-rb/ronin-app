@@ -122,6 +122,16 @@ class App < Sinatra::Base
     erb :"db/mac_addresses"
   end
 
+  get '/db/mac_addresses/:id' do
+    @mac_address = Ronin::DB::MACAddress.find(params[:id])
+
+    if @mac_address
+      erb :"db/mac_address"
+    else
+      halt 404
+    end
+  end
+
   get '/db/open_ports' do
     @open_ports = Ronin::DB::OpenPort.all
 

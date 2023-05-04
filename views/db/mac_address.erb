@@ -1,0 +1,43 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/mac_addresses">MAC Addresses</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>MAC Address: <%=h @mac_address %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%=h @mac_address.address %></td>
+    </tr>
+
+    <tr>
+      <td><strong>IP Addresses:</strong></td>
+      <td>
+        <% @mac_address.ip_addresses.each do |ip_address| %>
+          <p>
+            <a href="/db/ip_addresses/<%=h ip_address.id %>">
+              <%=h ip_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @mac_address.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Scanned:</strong></td>
+      <td><%=h @mac_address.last_scanned_at %></td>
+    </tr>
+  </tbody>
+</table>
