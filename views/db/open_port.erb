@@ -42,6 +42,19 @@
     </tr>
 
     <tr>
+      <td><strong>Credentials:</strong></td>
+      <td>
+        <% @open_port.credentials.each do |credential| %>
+          <p>
+            <a href="/db/credentials/<%=h credential.id %>">
+              <%=h credential %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Created:</strong></td>
       <td><%=h @open_port.created_at %></td>
     </tr>
