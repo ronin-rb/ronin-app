@@ -1,0 +1,14 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Advisories</h1>
+
+<% @advisories.each do |advisory| %>
+  <p><a href="/db/advisories/<%=h advisory.id %>"><%=h advisory %></a></p>
+<% end %>
