@@ -73,30 +73,14 @@ class App < Sinatra::Base
   end
 
   get '/db' do
-    @ip_address_count = Ronin::DB::IPAddress.count
     @host_name_count  = Ronin::DB::HostName.count
+    @ip_address_count = Ronin::DB::IPAddress.count
     @open_port_count  = Ronin::DB::OpenPort.count
     @port_count       = Ronin::DB::Port.count
     @service_count    = Ronin::DB::Service.count
     @url_count        = Ronin::DB::URL.count
 
     erb :db
-  end
-
-  get '/db/ip_addresses' do
-    @ip_addresses = Ronin::DB::IPAddress.all
-
-    erb :"db/ip_addresses"
-  end
-
-  get '/db/ip_addresses/:id' do
-    @ip_address = Ronin::DB::IPAddress.find(params[:id])
-
-    if @ip_address
-      erb :"db/ip_address"
-    else
-      halt 404
-    end
   end
 
   get '/db/host_names' do
@@ -110,6 +94,22 @@ class App < Sinatra::Base
 
     if @host_name
       erb :"db/host_name"
+    else
+      halt 404
+    end
+  end
+
+  get '/db/ip_addresses' do
+    @ip_addresses = Ronin::DB::IPAddress.all
+
+    erb :"db/ip_addresses"
+  end
+
+  get '/db/ip_addresses/:id' do
+    @ip_address = Ronin::DB::IPAddress.find(params[:id])
+
+    if @ip_address
+      erb :"db/ip_address"
     else
       halt 404
     end
