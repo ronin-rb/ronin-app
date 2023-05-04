@@ -1,0 +1,38 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/ip_addresses">IP Addresses</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Email Address: <%=h @email_address %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%=h @email_address.address %></td>
+    </tr>
+
+    <tr>
+      <td><strong>User Name:</strong></td>
+      <td>
+        <a href="/db/user_names/<%=h @email_address.user_name.id %>">
+          <%=h @email_address.user_name %>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Host Name:</strong></td>
+      <td>
+        <a href="/db/host_names/<%=h @email_address.host_name.id %>">
+          <%=h @email_address.host_name %>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -203,6 +203,16 @@ class App < Sinatra::Base
     erb :"db/email_addresses"
   end
 
+  get '/db/email_addresses/:id' do
+    @email_address = Ronin::DB::EmailAddress.find(params[:id])
+
+    if @email_address
+      erb :"db/email_address"
+    else
+      halt 404
+    end
+  end
+
   get '/nmap' do
     erb :nmap
   end
