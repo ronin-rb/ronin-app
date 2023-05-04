@@ -81,6 +81,7 @@ class App < Sinatra::Base
     @service_count       = Ronin::DB::Service.count
     @url_count           = Ronin::DB::URL.count
     @email_address_count = Ronin::DB::EmailAddress.count
+    @user_name_count     = Ronin::DB::UserName.count
 
     erb :db
   end
@@ -211,6 +212,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/user_names' do
+    @user_names = Ronin::DB::UserName.all
+
+    erb :"db/user_names"
   end
 
   get '/nmap' do

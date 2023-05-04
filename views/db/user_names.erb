@@ -1,0 +1,14 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>User Names</h1>
+
+<% @user_names.each do |user_name| %>
+  <p><a href="/db/user_names/<%=h user_name.id %>"><%=h user_name %></a></p>
+<% end %>
