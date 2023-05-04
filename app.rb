@@ -226,7 +226,11 @@ class App < Sinatra::Base
   get '/db/user_names/:id' do
     @user_name = Ronin::DB::UserName.find(params[:id])
 
-    erb :"db/user_name"
+    if @user_name
+      erb :"db/user_name"
+    else
+      halt 404
+    end
   end
 
   get '/db/passwords' do
@@ -238,7 +242,11 @@ class App < Sinatra::Base
   get '/db/passwords/:id' do
     @password = Ronin::DB::Password.find(params[:id])
 
-    erb :"db/password"
+    if @password
+      erb :"db/password"
+    else
+      halt 404
+    end
   end
 
   get '/db/credentials' do
@@ -250,7 +258,11 @@ class App < Sinatra::Base
   get '/db/credentials/:id' do
     @credential = Ronin::DB::Credential.find(params[:id])
 
-    erb :"db/credential"
+    if @credential
+      erb :"db/credential"
+    else
+      halt 404
+    end
   end
 
   get '/db/advisories' do
@@ -262,7 +274,11 @@ class App < Sinatra::Base
   get '/db/advisories/:id' do
     @advisory = Ronin::DB::Advisory.find(params[:id])
 
-    erb :"db/advisory"
+    if @advisory
+      erb :"db/advisory"
+    else
+      halt 404
+    end
   end
 
   get '/nmap' do
