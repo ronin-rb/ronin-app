@@ -246,6 +246,12 @@ class App < Sinatra::Base
     erb :"db/credentials"
   end
 
+  get '/db/credentials/:id' do
+    @credential = Ronin::DB::Credential.find(params[:id])
+
+    erb :"db/credential"
+  end
+
   get '/nmap' do
     erb :nmap
   end
