@@ -73,13 +73,14 @@ class App < Sinatra::Base
   end
 
   get '/db' do
-    @host_name_count   = Ronin::DB::HostName.count
-    @ip_address_count  = Ronin::DB::IPAddress.count
-    @mac_address_count = Ronin::DB::MACAddress.count
-    @open_port_count   = Ronin::DB::OpenPort.count
-    @port_count        = Ronin::DB::Port.count
-    @service_count     = Ronin::DB::Service.count
-    @url_count         = Ronin::DB::URL.count
+    @host_name_count     = Ronin::DB::HostName.count
+    @ip_address_count    = Ronin::DB::IPAddress.count
+    @mac_address_count   = Ronin::DB::MACAddress.count
+    @open_port_count     = Ronin::DB::OpenPort.count
+    @port_count          = Ronin::DB::Port.count
+    @service_count       = Ronin::DB::Service.count
+    @url_count           = Ronin::DB::URL.count
+    @email_address_count = Ronin::DB::EmailAddress.count
 
     erb :db
   end
@@ -194,6 +195,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/email_addresses' do
+    @email_addresses = Ronin::DB::EmailAddress.all
+
+    erb :"db/email_addresses"
   end
 
   get '/nmap' do
