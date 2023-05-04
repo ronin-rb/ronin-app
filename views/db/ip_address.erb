@@ -44,6 +44,19 @@
     </tr>
 
     <tr>
+      <td><strong>MAC Addresses:</strong></td>
+      <td>
+        <% @ip_address.mac_addresses.each do |mac_address| %>
+          <p>
+            <a href="/db/mac_addresses/<%=h mac_address.id %>">
+              <%=h mac_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Created:</strong></td>
       <td><%=h @ip_address.created_at %></td>
     </tr>
