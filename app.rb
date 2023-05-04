@@ -112,6 +112,16 @@ class App < Sinatra::Base
     erb :"db/asns"
   end
 
+  get '/db/asns/:id' do
+    @asn = Ronin::DB::ASN.find(params[:id])
+
+    if @asn
+      erb :"db/asn"
+    else
+      halt 404
+    end
+  end
+
   get '/db/ip_addresses' do
     @ip_addresses = Ronin::DB::IPAddress.all
 

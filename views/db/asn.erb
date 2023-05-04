@@ -1,0 +1,45 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/asns">ASNs</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>ASN: <%=h @asn %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>IP Version:</strong></td>
+      <td><%=h @asn.version %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Range Start:</strong></td>
+      <td><%=h @asn.range_start %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Range End:</strong></td>
+      <td><%=h @asn.range_end %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Number:</strong></td>
+      <td><%=h @asn.number %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Country Code:</strong></td>
+      <td><%=h @asn.country_code %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%=h @asn.name %></td>
+    </tr>
+  </tbody>
+</table>
