@@ -233,6 +233,12 @@ class App < Sinatra::Base
     erb :"db/passwords"
   end
 
+  get '/db/passwords/:id' do
+    @password = Ronin::DB::Password.find(params[:id])
+
+    erb :"db/password"
+  end
+
   get '/nmap' do
     erb :nmap
   end
