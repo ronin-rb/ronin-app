@@ -31,7 +31,8 @@ nav#top-menu .level-item {
 	margin-right: 0.5em;
 }
 
-nav#top-menu svg {
+nav#top-menu svg,
+nav#top-menu img {
 	width: 2.5em;
 	height: 2.5em;
 }
