@@ -1,0 +1,43 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/user_names">Host Names</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>User Name: <%=h @user_name %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Email Addresses:</strong></td>
+      <td><%=h @user_name.name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Email Addresses:</strong></td>
+      <td>
+        <% @user_name.email_addresses.each do |email_address| %>
+          <p><a href="/db/email_addresses/<%=h email_address.id %>"><%=h email_address %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Credentials:</strong></td>
+      <td>
+        <% @user_name.credentials.each do |credential| %>
+          <p><a href="/db/credentials/<%=h credential.id %>"><%=h credential%></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @user_name.created_at %></td>
+    </tr>
+  </tbody>
+</table>

@@ -220,6 +220,12 @@ class App < Sinatra::Base
     erb :"db/user_names"
   end
 
+  get '/db/user_names/:id' do
+    @user_name = Ronin::DB::UserName.find(params[:id])
+
+    erb :"db/user_name"
+  end
+
   get '/nmap' do
     erb :nmap
   end
