@@ -225,6 +225,16 @@ class App < Sinatra::Base
     erb :"db/url_query_param_names"
   end
 
+  get '/db/url_query_param_names/:id' do
+    @url_query_param_name = Ronin::DB::URLQueryParamName.find(params[:id])
+
+    if @url_query_param_name
+      erb :"db/url_query_param_name"
+    else
+      halt 404
+    end
+  end
+
   get '/db/email_addresses' do
     @email_addresses = Ronin::DB::EmailAddress.all
 
