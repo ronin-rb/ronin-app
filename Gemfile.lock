@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-db-activerecord.git
-  revision: 3b157455dee7165fc4424245b70d5c53ff23efc6
+  revision: 508f071520146003879ea4facc4fe9a6cc929fce
   branch: 0.2.0
   specs:
     ronin-db-activerecord (0.2.0)
