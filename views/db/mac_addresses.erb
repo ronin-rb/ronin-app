@@ -1,0 +1,14 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>MAC Addresses</h1>
+
+<% @mac_addresses.each do |mac_address| %>
+  <p><a href="/db/mac_addresses/<%=h mac_address.id %>"><%=h mac_address %></a></p>
+<% end %>
