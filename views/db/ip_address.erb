@@ -13,6 +13,11 @@
 <table class="table">
   <tbody>
     <tr>
+      <td><strong>Address:</strong></td>
+      <td><%=h @ip_address.address %></td>
+    </tr>
+
+    <tr>
       <td><strong>Host Names:</strong></td>
       <td>
         <% @ip_address.host_names.each do |host_name| %>
