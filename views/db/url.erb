@@ -60,6 +60,19 @@
     <% end %>
 
     <tr>
+      <td><strong>Credentials:</strong></td>
+      <td>
+        <% @url.credentials.each do |credential| %>
+          <p>
+            <a href="/db/credentials/<%=h credential.id %>">
+              <%=h credential %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
       <td><strong>Created:</strong></td>
       <td><%=h @url.created_at %></td>
     </tr>
