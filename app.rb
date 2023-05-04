@@ -73,19 +73,20 @@ class App < Sinatra::Base
   end
 
   get '/db' do
-    @host_name_count     = Ronin::DB::HostName.count
-    @asn_count           = Ronin::DB::ASN.count
-    @ip_address_count    = Ronin::DB::IPAddress.count
-    @mac_address_count   = Ronin::DB::MACAddress.count
-    @open_port_count     = Ronin::DB::OpenPort.count
-    @port_count          = Ronin::DB::Port.count
-    @service_count       = Ronin::DB::Service.count
-    @url_count           = Ronin::DB::URL.count
-    @email_address_count = Ronin::DB::EmailAddress.count
-    @user_name_count     = Ronin::DB::UserName.count
-    @password_count      = Ronin::DB::Password.count
-    @credential_count    = Ronin::DB::Credential.count
-    @advisory_count      = Ronin::DB::Advisory.count
+    @host_name_count            = Ronin::DB::HostName.count
+    @asn_count                  = Ronin::DB::ASN.count
+    @ip_address_count           = Ronin::DB::IPAddress.count
+    @mac_address_count          = Ronin::DB::MACAddress.count
+    @open_port_count            = Ronin::DB::OpenPort.count
+    @port_count                 = Ronin::DB::Port.count
+    @service_count              = Ronin::DB::Service.count
+    @url_count                  = Ronin::DB::URL.count
+    @url_query_param_name_count = Ronin::DB::URLQueryParamName.count
+    @email_address_count        = Ronin::DB::EmailAddress.count
+    @user_name_count            = Ronin::DB::UserName.count
+    @password_count             = Ronin::DB::Password.count
+    @credential_count           = Ronin::DB::Credential.count
+    @advisory_count             = Ronin::DB::Advisory.count
 
     erb :db
   end
@@ -216,6 +217,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/url_query_param_names' do
+    @url_query_param_names = Ronin::DB::URLQueryParamName.all
+
+    erb :"db/url_query_param_names"
   end
 
   get '/db/email_addresses' do
