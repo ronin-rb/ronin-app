@@ -27,6 +27,9 @@ require 'ronin/nmap/importer'
 require 'ronin/masscan/importer'
 
 module Workers
+  #
+  # Worker which imports `nmap` or `masscan` scan files.
+  #
   class Import
 
     include Sidekiq::Worker
