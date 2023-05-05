@@ -88,6 +88,7 @@ class App < Sinatra::Base
     @password_count             = Ronin::DB::Password.count
     @credential_count           = Ronin::DB::Credential.count
     @advisory_count             = Ronin::DB::Advisory.count
+    @software_count             = Ronin::DB::Software.count
     @oses_count                 = Ronin::DB::OS.count
 
     erb :db
@@ -331,6 +332,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/software' do
+    @software = Ronin::DB::Software.all
+    
+    erb :"db/softwares"
   end
 
   get '/db/oses' do
