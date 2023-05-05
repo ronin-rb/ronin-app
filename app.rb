@@ -357,6 +357,12 @@ class App < Sinatra::Base
     erb :"db/software_vendors"
   end
 
+  get '/db/software_vendors/:id' do
+    @software_vendor = Ronin::DB::SoftwareVendor.find(params[:id])
+    
+    erb :"db/software_vendor"
+  end
+
   get '/db/oses' do
     @oses = Ronin::DB::OS.all
 
