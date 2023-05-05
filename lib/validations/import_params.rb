@@ -18,12 +18,32 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-$LOAD_PATH.unshift(File.join(__dir__,'lib'))
+require 'dry/validation'
+require 'types/import'
 
-require './config/sidekiq'
-require './config/database'
+module Validations
+  #
+  # Validations for the form params submitted to `POST /import`.
+  #
+  class ImportParams < Dry::Validation::Contract
 
-require 'workers/nmap'
-require 'workers/masscan'
-require 'workers/import'
-require 'workers/spider'
+    params do
+      required(:type).filled(Types::Import::TypeType)
+      required(:path).filled(:string)
+    end
+
+    #
+    # Initializes and calls the validation contract.
+    #
+    # @param [Hash{String => Object}] params
+    #   The HTTP params to validate.
+    #
+    # @return [Dry::Validation::Result]
+    #   The validation result.
+    #
+    def self.call(params)
+      new.call(params)
+    end
+
+  end
+end

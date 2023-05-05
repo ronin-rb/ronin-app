@@ -1,0 +1,32 @@
+<h1>Import File</h1>
+
+<form action="/import" method="post">
+  <div class="field">
+    <div class="field has-addons">
+      <div class="control">
+        <div class="select">
+          <select name="type">
+            <option value="nmap" <%= "selected" if params[:type] == 'nmap' %>>Nmap</option>
+            <option value="masscan" <%= "selected" if params[:type] == 'masscan' %>>Masscan</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control">
+        <% if @errors && @errors[:path] %>
+          <input class="input is-danger" type="text" name="path" value="<%=hattr params[:path] %>">
+  
+          <% @errors[:path].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+          <% end %>
+        <% else %>
+          <input class="input" type="text" name="path" placeholder="/path/to/file" value="<%=hattr params[:path] %>">
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Import</button>
+  </div>
+</form>

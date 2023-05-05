@@ -33,11 +33,13 @@ require './config/sidekiq'
 # worker classes
 require 'workers/nmap'
 require 'workers/masscan'
+require 'workers/import'
 require 'workers/spider'
 
 # param validations
 require 'validations/nmap_params'
 require 'validations/masscan_params'
+require 'validations/import_params'
 require 'validations/spider_params'
 
 # helpers
@@ -421,6 +423,29 @@ class App < Sinatra::Base
 
       flash[:danger] = 'Failed to submit masscan scan!'
       halt 400, erb(:masscan)
+    end
+  end
+
+  get '/import' do
+    erb :import
+  end
+
+  post '/import' do
+    result = Validations::ImportParams.call(params)
+
+    if result.success?
+      @jid = Workers::Import.perform_async(result.to_h)
+
+      type = result[:type]
+      path = result[:path]
+
+      flash[:success] = "Import of #{type} file #{path} enqueued"
+      redirect '/import'
+    else
+      @errors = result.errors
+
+      flash[:danger] = 'Failed to submit import job!'
+      halt 400, erb(:import)
     end
   end
 

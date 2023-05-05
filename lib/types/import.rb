@@ -18,12 +18,14 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-$LOAD_PATH.unshift(File.join(__dir__,'lib'))
+require 'types'
 
-require './config/sidekiq'
-require './config/database'
-
-require 'workers/nmap'
-require 'workers/masscan'
-require 'workers/import'
-require 'workers/spider'
+module Types
+  #
+  # Types for {Validations::Import} and {Workers::Import}.
+  #
+  module Import
+    # The type of file type
+    TypeType = Types::String.enum('nmap', 'masscan')
+  end
+end
