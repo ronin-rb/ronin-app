@@ -20,6 +20,9 @@
 
 require 'dry/validation'
 require 'types/import'
+require 'set'
+
+require 'masscan/output_file'
 
 module Validations
   #
@@ -30,6 +33,20 @@ module Validations
     params do
       required(:type).filled(Types::Import::TypeType)
       required(:path).filled(:string)
+    end
+
+    # Mapping of `type` values to their set of valid file extension names.
+    VALID_FILE_EXTS = {
+      'nmap'    => Set['.xml'],
+      'masscan' => Masscan::OutputFile::FILE_FORMATS.keys.to_set
+    }
+
+    rule(:path) do
+      valid_file_exts = VALID_FILE_EXTS.fetch(values[:type])
+
+      unless valid_file_exts.include?(File.extname(value))
+        key.failure("#{values[:type]} file path must end with #{valid_file_exts.join(', ')}")
+      end
     end
 
     #
