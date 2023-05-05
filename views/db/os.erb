@@ -1,0 +1,42 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/oses">OSes</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>OS: <%=h @os %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Flavor:</strong></td>
+      <td><%=h @os.flavor_before_type_cast %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%=h @os.name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Version:</strong></td>
+      <td><%=h @os.version %></td>
+    </tr>
+
+    <tr>
+      <td><strong>IP Addresses:</strong></td>
+      <td>
+        <% @os.ip_addresses.each do |ip_address| %>
+          <p>
+            <a href="/db/ip_addresses/<%=h ip_address.id %>">
+              <%=h ip_address %>
+            </a>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

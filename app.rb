@@ -339,6 +339,16 @@ class App < Sinatra::Base
     erb :"db/oses"
   end
 
+  get '/db/oses/:id' do
+    @os = Ronin::DB::OS.find(params[:id])
+
+    if @os
+      erb :"db/os"
+    else
+      halt 404
+    end
+  end
+
   get '/nmap' do
     erb :nmap
   end
