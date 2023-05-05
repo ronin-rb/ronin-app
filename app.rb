@@ -89,6 +89,7 @@ class App < Sinatra::Base
     @credential_count           = Ronin::DB::Credential.count
     @advisory_count             = Ronin::DB::Advisory.count
     @software_count             = Ronin::DB::Software.count
+    @software_vendor_count      = Ronin::DB::SoftwareVendor.count
     @oses_count                 = Ronin::DB::OS.count
 
     erb :db
@@ -348,6 +349,12 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  get '/db/software_vendors' do
+    @software_vendors = Ronin::DB::SoftwareVendor.all
+    
+    erb :"db/software_vendors"
   end
 
   get '/db/oses' do
