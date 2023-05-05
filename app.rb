@@ -339,13 +339,13 @@ class App < Sinatra::Base
 
   get '/db/software' do
     @software = Ronin::DB::Software.all
-    
+
     erb :"db/softwares"
   end
 
   get '/db/software/:id' do
     @software = Ronin::DB::Software.find(params[:id])
-    
+
     if @software
       erb :"db/software"
     else
@@ -355,13 +355,13 @@ class App < Sinatra::Base
 
   get '/db/software_vendors' do
     @software_vendors = Ronin::DB::SoftwareVendor.all
-    
+
     erb :"db/software_vendors"
   end
 
   get '/db/software_vendors/:id' do
     @software_vendor = Ronin::DB::SoftwareVendor.find(params[:id])
-    
+
     erb :"db/software_vendor"
   end
 

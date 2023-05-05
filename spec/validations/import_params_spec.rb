@@ -29,7 +29,7 @@ describe Validations::ImportParams do
     end
 
     context "when type is 'masscan'" do
-      Masscan::OutputFile::FILE_FORMATS.keys.each do |ext|
+      Masscan::OutputFile::FILE_FORMATS.each_key do |ext|
         context "and the path ends with '#{ext}'" do
           let(:params) do
             {'type' => 'masscan', 'path' => "/path/to/file#{ext}"}
