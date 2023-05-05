@@ -19,7 +19,7 @@ describe Validations::SpiderParams do
           {'type' => 'host', 'target' => 'http://not.a.host.name'}
         end
 
-        it "must return success" do
+        it "must return failure" do
           result = subject.call(params)
 
           expect(result).to be_failure
@@ -44,7 +44,7 @@ describe Validations::SpiderParams do
           {'type' => 'domain', 'target' => 'http://not.a.host.name'}
         end
 
-        it "must return success" do
+        it "must return failure" do
           result = subject.call(params)
 
           expect(result).to be_failure
@@ -79,7 +79,7 @@ describe Validations::SpiderParams do
           {'type' => 'site', 'target' => 'foo://not.a.http.uri'}
         end
 
-        it "must return success" do
+        it "must return failure" do
           result = subject.call(params)
 
           expect(result).to be_failure
