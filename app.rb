@@ -340,6 +340,16 @@ class App < Sinatra::Base
     erb :"db/softwares"
   end
 
+  get '/db/software/:id' do
+    @software = Ronin::DB::Software.find(params[:id])
+    
+    if @software
+      erb :"db/software"
+    else
+      halt 404
+    end
+  end
+
   get '/db/oses' do
     @oses = Ronin::DB::OS.all
 
