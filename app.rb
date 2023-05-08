@@ -80,7 +80,7 @@ class App < Sinatra::Base
   get '/repos' do
     @repos = Ronin::Repos::CacheDir.new
 
-    erb :repos
+    erb :"repos/index"
   end
 
   get '/db' do
@@ -109,14 +109,14 @@ class App < Sinatra::Base
   get '/db/host_names' do
     @host_names = Ronin::DB::HostName.all
 
-    erb :"db/host_names"
+    erb :"db/host_names/index"
   end
 
   get '/db/host_names/:id' do
     @host_name = Ronin::DB::HostName.find(params[:id])
 
     if @host_name
-      erb :"db/host_name"
+      erb :"db/host_names/show"
     else
       halt 404
     end
@@ -125,14 +125,14 @@ class App < Sinatra::Base
   get '/db/asns' do
     @asns = Ronin::DB::ASN.all
 
-    erb :"db/asns"
+    erb :"db/asns/index"
   end
 
   get '/db/asns/:id' do
     @asn = Ronin::DB::ASN.find(params[:id])
 
     if @asn
-      erb :"db/asn"
+      erb :"db/asns/show"
     else
       halt 404
     end
@@ -141,14 +141,14 @@ class App < Sinatra::Base
   get '/db/ip_addresses' do
     @ip_addresses = Ronin::DB::IPAddress.all
 
-    erb :"db/ip_addresses"
+    erb :"db/ip_addresses/index"
   end
 
   get '/db/ip_addresses/:id' do
     @ip_address = Ronin::DB::IPAddress.find(params[:id])
 
     if @ip_address
-      erb :"db/ip_address"
+      erb :"db/ip_addresses/show"
     else
       halt 404
     end
@@ -157,14 +157,14 @@ class App < Sinatra::Base
   get '/db/mac_addresses' do
     @mac_addresses = Ronin::DB::MACAddress.all
 
-    erb :"db/mac_addresses"
+    erb :"db/mac_addresses/index"
   end
 
   get '/db/mac_addresses/:id' do
     @mac_address = Ronin::DB::MACAddress.find(params[:id])
 
     if @mac_address
-      erb :"db/mac_address"
+      erb :"db/mac_addresses/show"
     else
       halt 404
     end
@@ -173,14 +173,14 @@ class App < Sinatra::Base
   get '/db/open_ports' do
     @open_ports = Ronin::DB::OpenPort.all
 
-    erb :"db/open_ports"
+    erb :"db/open_ports/index"
   end
 
   get '/db/open_ports/:id' do
     @open_port = Ronin::DB::OpenPort.find(params[:id])
 
     if @open_port
-      erb :"db/open_port"
+      erb :"db/open_ports/show"
     else
       halt 404
     end
@@ -189,14 +189,14 @@ class App < Sinatra::Base
   get '/db/ports' do
     @ports = Ronin::DB::Port.all
 
-    erb :"db/ports"
+    erb :"db/ports/index"
   end
 
   get '/db/ports/:id' do
     @port = Ronin::DB::Port.find(params[:id])
 
     if @port
-      erb :"db/port"
+      erb :"db/ports/show"
     else
       halt 404
     end
@@ -205,14 +205,14 @@ class App < Sinatra::Base
   get '/db/services' do
     @services = Ronin::DB::Service.all
 
-    erb :"db/services"
+    erb :"db/services/index"
   end
 
   get '/db/services/:id' do
     @service = Ronin::DB::Service.find(params[:id])
 
     if @service
-      erb :"db/service"
+      erb :"db/services/show"
     else
       halt 404
     end
@@ -221,14 +221,14 @@ class App < Sinatra::Base
   get '/db/urls' do
     @urls = Ronin::DB::URL.all
 
-    erb :"db/urls"
+    erb :"db/urls/index"
   end
 
   get '/db/urls/:id' do
     @url = Ronin::DB::URL.find(params[:id])
 
     if @url
-      erb :"db/url"
+      erb :"db/urls/show"
     else
       halt 404
     end
@@ -237,14 +237,14 @@ class App < Sinatra::Base
   get '/db/url_schemes' do
     @url_schemes = Ronin::DB::URLScheme.all
 
-    erb :"db/url_schemes"
+    erb :"db/url_schemes/index"
   end
 
   get '/db/url_schemes/:id' do
     @url_scheme = Ronin::DB::URLScheme.find(params[:id])
 
     if @url_scheme
-      erb :"db/url_scheme"
+      erb :"db/url_schemes/show"
     else
       halt 404
     end
@@ -253,14 +253,14 @@ class App < Sinatra::Base
   get '/db/url_query_param_names' do
     @url_query_param_names = Ronin::DB::URLQueryParamName.all
 
-    erb :"db/url_query_param_names"
+    erb :"db/url_query_param_names/index"
   end
 
   get '/db/url_query_param_names/:id' do
     @url_query_param_name = Ronin::DB::URLQueryParamName.find(params[:id])
 
     if @url_query_param_name
-      erb :"db/url_query_param_name"
+      erb :"db/url_query_param_names/show"
     else
       halt 404
     end
@@ -269,14 +269,14 @@ class App < Sinatra::Base
   get '/db/email_addresses' do
     @email_addresses = Ronin::DB::EmailAddress.all
 
-    erb :"db/email_addresses"
+    erb :"db/email_addresses/index"
   end
 
   get '/db/email_addresses/:id' do
     @email_address = Ronin::DB::EmailAddress.find(params[:id])
 
     if @email_address
-      erb :"db/email_address"
+      erb :"db/email_addresses/show"
     else
       halt 404
     end
@@ -285,14 +285,14 @@ class App < Sinatra::Base
   get '/db/user_names' do
     @user_names = Ronin::DB::UserName.all
 
-    erb :"db/user_names"
+    erb :"db/user_names/index"
   end
 
   get '/db/user_names/:id' do
     @user_name = Ronin::DB::UserName.find(params[:id])
 
     if @user_name
-      erb :"db/user_name"
+      erb :"db/user_names/show"
     else
       halt 404
     end
@@ -301,14 +301,14 @@ class App < Sinatra::Base
   get '/db/passwords' do
     @passwords = Ronin::DB::Password.all
 
-    erb :"db/passwords"
+    erb :"db/passwords/index"
   end
 
   get '/db/passwords/:id' do
     @password = Ronin::DB::Password.find(params[:id])
 
     if @password
-      erb :"db/password"
+      erb :"db/passwords/show"
     else
       halt 404
     end
@@ -317,14 +317,14 @@ class App < Sinatra::Base
   get '/db/credentials' do
     @credentials = Ronin::DB::Credential.all
 
-    erb :"db/credentials"
+    erb :"db/credentials/index"
   end
 
   get '/db/credentials/:id' do
     @credential = Ronin::DB::Credential.find(params[:id])
 
     if @credential
-      erb :"db/credential"
+      erb :"db/credentials/show"
     else
       halt 404
     end
@@ -333,14 +333,14 @@ class App < Sinatra::Base
   get '/db/advisories' do
     @advisories = Ronin::DB::Advisory.all
 
-    erb :"db/advisories"
+    erb :"db/advisories/index"
   end
 
   get '/db/advisories/:id' do
     @advisory = Ronin::DB::Advisory.find(params[:id])
 
     if @advisory
-      erb :"db/advisory"
+      erb :"db/advisories/show"
     else
       halt 404
     end
@@ -349,14 +349,14 @@ class App < Sinatra::Base
   get '/db/software' do
     @software = Ronin::DB::Software.all
 
-    erb :"db/softwares"
+    erb :"db/software/index"
   end
 
   get '/db/software/:id' do
     @software = Ronin::DB::Software.find(params[:id])
 
     if @software
-      erb :"db/software"
+      erb :"db/software/show"
     else
       halt 404
     end
@@ -365,26 +365,26 @@ class App < Sinatra::Base
   get '/db/software_vendors' do
     @software_vendors = Ronin::DB::SoftwareVendor.all
 
-    erb :"db/software_vendors"
+    erb :"db/software_vendors/index"
   end
 
   get '/db/software_vendors/:id' do
     @software_vendor = Ronin::DB::SoftwareVendor.find(params[:id])
 
-    erb :"db/software_vendor"
+    erb :"db/software_vendors/show"
   end
 
   get '/db/oses' do
     @oses = Ronin::DB::OS.all
 
-    erb :"db/oses"
+    erb :"db/oses/index"
   end
 
   get '/db/oses/:id' do
     @os = Ronin::DB::OS.find(params[:id])
 
     if @os
-      erb :"db/os"
+      erb :"db/oses/show"
     else
       halt 404
     end
