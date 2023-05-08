@@ -10,7 +10,8 @@ gem 'ruby-masscan', '~> 0.3', github: 'postmodern/ruby-masscan',
 gem 'ronin-support',    '~> 1.0'
 gem 'ronin-nmap',       '~> 0.1', github: 'ronin-rb/ronin-nmap'
 gem 'ronin-masscan',    '~> 0.1', github: 'ronin-rb/ronin-masscan'
-gem 'ronin-repos',      '~> 0.1'
+gem 'ronin-repos',      '~> 0.2', github: 'ronin-rb/ronin-repos',
+                                  branch: '0.2.0'
 gem 'ronin-db',         '~> 0.2', github: 'ronin-rb/ronin-db',
                                   branch: '0.2.0'
 

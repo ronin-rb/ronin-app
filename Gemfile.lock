@@ -45,6 +45,14 @@ GIT
       ruby-nmap (~> 1.0)
 
 GIT
+  remote: https://github.com/ronin-rb/ronin-repos.git
+  revision: b501ec8f8e729fb534216a102b9ac0365d4534d8
+  branch: 0.2.0
+  specs:
+    ronin-repos (0.2.0)
+      ronin-core (~> 0.1)
+
+GIT
   remote: https://github.com/ronin-rb/ronin-web.git
   revision: e10cb9a8b3945420f89eae5e5cf13b045488c144
   specs:
@@ -235,8 +243,6 @@ GEM
       fake_io (~> 0.1)
       hexdump (~> 1.0)
       ronin-core (~> 0.1)
-    ronin-repos (0.1.0)
-      ronin-core (~> 0.1)
     ronin-support (1.0.1)
       addressable (~> 2.0)
       chars (~> 0.3, >= 0.3.2)
@@ -365,7 +371,7 @@ DEPENDENCIES
   ronin-masscan (~> 0.1)!
   ronin-nmap (~> 0.1)!
   ronin-payloads (~> 0.1)
-  ronin-repos (~> 0.1)
+  ronin-repos (~> 0.2)!
   ronin-support (~> 1.0)
   ronin-vulns (~> 0.1)
   ronin-web (~> 1.0)!
