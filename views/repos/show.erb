@@ -1,0 +1,24 @@
+<h1>Repository: <%=h @repo.name %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%=h @repo.name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>URL:</strong></td>
+      <td><%=h @repo.url %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Files:</strong></td>
+      <td>
+        <% @repo.list_files.each do |file| %>
+          <p><%=h file %></p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

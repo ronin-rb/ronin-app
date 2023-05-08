@@ -83,6 +83,18 @@ class App < Sinatra::Base
     erb :"repos/index"
   end
 
+  get '/repos/:name' do
+    @repos = Ronin::Repos::CacheDir.new
+
+    begin
+      @repo = @repos[params[:name]]
+
+      erb :"repos/show"
+    rescue Ronin::Repos::RepositoryNotFound
+      halt 404
+    end
+  end
+
   get '/db' do
     @host_name_count            = Ronin::DB::HostName.count
     @asn_count                  = Ronin::DB::ASN.count
