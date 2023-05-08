@@ -1,0 +1,9 @@
+<h1>Repositories</h1>
+
+<% @repos.each do |repo| %>
+  <p>
+    <a href="/repos/<%=h repo.name %>">
+      <%=h repo.name %>
+    </a>
+  </p>
+<% end %>

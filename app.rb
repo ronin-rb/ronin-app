@@ -30,6 +30,9 @@ require 'sinatra/reloader'
 require './config/database'
 require './config/sidekiq'
 
+# ronin libraries
+require 'ronin/repos'
+
 # worker classes
 require 'workers/nmap'
 require 'workers/masscan'
@@ -72,6 +75,12 @@ class App < Sinatra::Base
     @lockfile = Bundler::LockfileParser.new(File.read(Bundler.default_lockfile))
 
     erb :about
+  end
+
+  get '/repos' do
+    @repos = Ronin::Repos::CacheDir.new
+
+    erb :repos
   end
 
   get '/db' do
