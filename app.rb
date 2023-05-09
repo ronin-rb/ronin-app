@@ -33,6 +33,7 @@ require './config/sidekiq'
 # ronin libraries
 require 'ronin/repos'
 require 'ronin/payloads'
+require 'ronin/exploits'
 
 # worker classes
 require 'workers/nmap'
@@ -107,6 +108,22 @@ class App < Sinatra::Base
       @payload = Ronin::Payloads.load_class(payload_id)
 
       erb :"payloads/show"
+    rescue Ronin::Core::ClassRegistry::ClassNotFound
+      halt 404
+    end
+  end
+
+  get '/exploits' do
+    @exploits = Ronin::Exploits.list_files
+
+    erb :"exploits/index"
+  end
+
+  Ronin::Exploits.list_files.each do |exploit_id|
+    get("/exploits/#{exploit_id}") do
+      @exploit = Ronin::Exploits.load_class(exploit_id)
+
+      erb :"exploits/show"
     rescue Ronin::Core::ClassRegistry::ClassNotFound
       halt 404
     end
