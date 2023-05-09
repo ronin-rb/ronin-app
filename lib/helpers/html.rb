@@ -26,6 +26,19 @@ module Helpers
   #
   module HTML
     #
+    # Renders a partial template.
+    #
+    # @param [Symbol] name
+    #   The partial template name without the `_`.
+    #
+    # @param [Hash{Symbol => Object}] locals
+    #   Additional local variables to pass to the partial.
+    #
+    def partial(name,**locals)
+      erb(:"_#{name}", layout: nil, locals: locals)
+    end
+
+    #
     # Escapes the text as HTML text.
     #
     # @param [String] text
