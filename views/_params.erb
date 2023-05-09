@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Type</td>
+      <td>Required</td>
+      <td>Default</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% params.each do |name,param| %>
+      <tr>
+        <td>
+          <kbd><%=h name %></kbd>
+        </td>
+        <td>
+          <kbd><%=h param.type.class.name.split('::').last %></kbd>
+        </td>
+        <td>
+          <% if param.required? %>
+            <strong>Required</strong>
+          <% end %>
+        </td>
+        <td>
+          <kbd><%=h param.default_value %></kbd>
+        </td>
+        <td>
+          <%=h param.desc %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
