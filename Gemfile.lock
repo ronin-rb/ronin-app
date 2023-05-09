@@ -45,8 +45,19 @@ GIT
       ruby-nmap (~> 1.0)
 
 GIT
+  remote: https://github.com/ronin-rb/ronin-payloads.git
+  revision: 49f71c04c973f002acf6abffa7712c7d2c93ef54
+  specs:
+    ronin-payloads (0.1.2)
+      ronin-code-asm (~> 1.0)
+      ronin-core (~> 0.1)
+      ronin-post_ex (~> 0.1)
+      ronin-repos (~> 0.1)
+      ronin-support (~> 1.0)
+
+GIT
   remote: https://github.com/ronin-rb/ronin-repos.git
-  revision: b501ec8f8e729fb534216a102b9ac0365d4534d8
+  revision: d4569810d7e35d0eb75b4397dfbc118251a95b90
   branch: 0.2.0
   specs:
     ronin-repos (0.2.0)
@@ -233,12 +244,6 @@ GEM
       ronin-support (~> 1.0, >= 1.0.1)
       ronin-vulns (~> 0.1, >= 0.1.1)
       uri-query_params (~> 0.6)
-    ronin-payloads (0.1.1)
-      ronin-code-asm (~> 1.0)
-      ronin-core (~> 0.1)
-      ronin-post_ex (~> 0.1)
-      ronin-repos (~> 0.1)
-      ronin-support (~> 1.0)
     ronin-post_ex (0.1.0)
       fake_io (~> 0.1)
       hexdump (~> 1.0)
@@ -370,7 +375,7 @@ DEPENDENCIES
   ronin-exploits (~> 1.0)
   ronin-masscan (~> 0.1)!
   ronin-nmap (~> 0.1)!
-  ronin-payloads (~> 0.1)
+  ronin-payloads (~> 0.1)!
   ronin-repos (~> 0.2)!
   ronin-support (~> 1.0)
   ronin-vulns (~> 0.1)
