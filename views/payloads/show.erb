@@ -1,0 +1,142 @@
+<h1>Payload: <%=h @payload.id %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td>
+        <kbd><%=h @payload.id %></kbd>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Authors:</strong></td>
+      <td>
+        <% @payload.authors.each do |author| %>
+          <p>
+            <%=h author.name %>
+
+            <% if author.email %>
+              (<a href="mailto:<%=h author.email %>"><%= author.email %></a>)
+            <% end %>
+          </p>
+
+          <ul>
+            <% if author.website? %>
+            <li>
+              Website:
+              <a href="<%=h author.website %>">
+                <%=h author.website %>
+              </a>
+            </li>
+            <% end %>
+
+            <% if author.blog? %>
+            <li>
+              Blog:
+              <a href="<%=h author.blog %>">
+                <%=h author.blog %>
+              </a>
+            </li>
+            <% end %>
+
+            <% if author.github? %>
+            <li>
+              GitHub:
+              <a href="<%=h author.github_url %>">
+                <%=h author.github %>
+              </a>
+            </li>
+            <% end %>
+
+            <% if author.gitlab? %>
+            <li>
+              GitLab:
+              <a href="<%=h author.gitlab_url %>">
+                <%=h author.gitlab %>
+              </a>
+            </li>
+            <% end %>
+
+            <% if author.twitter? %>
+            <li>
+              Twitter:
+              <a href="<%=h author.twitter_url %>">
+                <%=h author.twitter %>
+              </a>
+            </li>
+            <% end %>
+
+            <% if author.discord? %>
+            <li>
+              Discord: <%=h author.discord %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Summary:</strong></td>
+      <td><%=h @payload.summary %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Description:</strong></td>
+      <td>
+        <%=h @payload.description %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>References:</strong></td>
+      <td>
+        <% @payload.references.each do |reference| %>
+          <p><a href="<%=h reference %>"><%=h reference %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Params:</strong></td>
+      <td>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Type</td>
+              <td>Required</td>
+              <td>Default</td>
+              <td>Description</td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @payload.params.each do |name,param| %>
+              <tr>
+                <td>
+                  <kbd><%=h name %></kbd>
+                </td>
+                <td>
+                  <kbd><%=h param.type.class.name.split('::').last %></kbd>
+                </td>
+                <td>
+                  <% if param.required? %>
+                    <strong>Required</strong>
+                  <% end %>
+                </td>
+                <td>
+                  <kbd><%=h param.default_value %></kbd>
+                </td>
+                <td>
+                  <%=h param.desc %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

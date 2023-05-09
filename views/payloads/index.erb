@@ -1,0 +1,9 @@
+<h1>Payloads</h1>
+
+<% @payloads.each do |payload_id| %>
+  <p>
+    <a href="/payloads/<%=h payload_id %>">
+      <%=h payload_id %>
+    </a>
+  </p>
+<% end %>
