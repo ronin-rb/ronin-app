@@ -14,9 +14,15 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 
 ## Features
 
-* Provides a web interface to the [ronin-db].
+* Provides a web interface to explore and search the [ronin database][ronin-db].
+* Allows managing [ronin-repos] from the web interface.
+* Allows listing and building the built-in or installed 3rd-party
+  [payloads][ronin-payloads].
+* Allows listing installed 3rd-party [exploits][ronin-exploits].
 * Supports automating [nmap] and [masscan] scans and importing their results
-  into the [ronin-db].
+  into the [ronin database][ronin-db].
+* Supports automating [spidering websites][ronin-web-spider] and importing all
+  visited URLs into the [ronin database][ronin-db].
 * Small memory footprint (~184K).
 * Fast (~1.251ms response time).
 
