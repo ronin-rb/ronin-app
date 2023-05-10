@@ -73,12 +73,6 @@ class App < Sinatra::Base
     erb :index
   end
 
-  get '/about' do
-    @lockfile = Bundler::LockfileParser.new(File.read(Bundler.default_lockfile))
-
-    erb :about
-  end
-
   get '/repos' do
     @repos = Ronin::Repos.cache_dir
 
@@ -525,6 +519,12 @@ class App < Sinatra::Base
       flash[:danger] = 'Failed to submit spider scan!'
       halt 400, erb(:spider)
     end
+  end
+
+  get '/about' do
+    @lockfile = Bundler::LockfileParser.new(File.read(Bundler.default_lockfile))
+
+    erb :about
   end
 
 end
