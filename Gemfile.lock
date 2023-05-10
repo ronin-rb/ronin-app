@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-repos.git
-  revision: 0de23c22200f783d87a262b72209fc57b563fb6d
+  revision: 2c8d027ee0b5d8542682392ee089d6995b1e1504
   branch: 0.2.0
   specs:
     ronin-repos (0.2.0)

@@ -80,13 +80,13 @@ class App < Sinatra::Base
   end
 
   get '/repos' do
-    @repos = Ronin::Repos::CacheDir.new
+    @repos = Ronin::Repos.cache_dir
 
     erb :"repos/index"
   end
 
   get '/repos/:name' do
-    @repos = Ronin::Repos::CacheDir.new
+    @repos = Ronin::Repos.cache_dir
 
     begin
       @repo = @repos[params[:name]]
