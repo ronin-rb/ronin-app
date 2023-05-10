@@ -29,7 +29,7 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 ## Requirements
 
 * [libsqlite3][sqlite]
-* [redis-server][redis]
+* [redis-server][redis] >= 6.2
 * [nmap]
 * [masscan]
 * [Ruby] >= 3.1.0
