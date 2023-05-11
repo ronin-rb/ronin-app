@@ -89,10 +89,10 @@ $ ./scripts server -e development
 * `Procfile` - defines the various services of the app that will be started.
 * `Procfile.dev` - defines the various services of the app that will be started
   in development mode.
-* `config.ru` - The main entry point for `rackup`/`puma`.
 * `app.rb` - The main Rack app that contains all of the HTTP routes.
 * `workers.rb` - The main entry point for Sidekiq which loads all worker classes
   from `lib/workers/`.
+* `config.ru` - The main entry point for `rackup`/`puma`.
 * `config/` - Contains all app configuration files.
 * `lib/helpers/` - Contains all Sinatra helper modules which define methods that
   can be called within the views.
