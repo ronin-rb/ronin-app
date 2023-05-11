@@ -102,6 +102,7 @@ $ ./scripts server -e development
   submitted HTTP params.
 * `lib/workers/` - Contains all Sidekiq worker classes.
 * `views/` - Contains all ERB views that are rendered by `app.rb`.
+* `views/layout.erb` - The main page layout view.
 * `public/` - Contains all static assets (images, CSS stylesheets, and
   JavaScript).
 * `scripts/` - Contains scripts for setting up or starting the app.
