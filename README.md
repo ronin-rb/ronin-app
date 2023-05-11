@@ -97,7 +97,6 @@ $ ./scripts server -e development
 * `lib/helpers/` - Contains all Sinatra helper modules which define methods that
   can be called within the views.
 * `lib/types.rb` - Defines custom [dry-types].
-* `lib/schemas/` - Contains common [dry-schema]s for coercing/processing params.
 * `lib/validations/` - Contains [dry-validation]s logic for validating
   submitted HTTP params.
 * `lib/workers/` - Contains all Sidekiq worker classes.
