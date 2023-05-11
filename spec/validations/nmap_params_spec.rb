@@ -3,6 +3,15 @@ require 'validations/nmap_params'
 
 describe Validations::NmapParams do
   describe "rules" do
+    describe ":targets" do
+      it "must require a :targets key" do
+        result = subject.call({})
+
+        expect(result).to be_failure
+        expect(result.errors[:targets]).to eq(["is missing"])
+      end
+    end
+
     describe ":ports" do
       context "and when :ports is a valid nmap ports list" do
         it "must return a valid result" do

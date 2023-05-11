@@ -19,8 +19,7 @@
 #
 
 require 'sidekiq'
-
-require 'schemas/nmap_params'
+require 'dry-schema'
 
 require 'tempfile'
 require 'nmap/command'
@@ -35,7 +34,11 @@ module Workers
     include Sidekiq::Worker
     sidekiq_options queue: :scan, retry: false, backtrace: true
 
-    Params = Dry::Schema::JSON(parent: Schemas::NmapParams)
+    # The accepted JSON params which will be passed to {Nmap#perform}.
+    Params = Dry::Schema::JSON() do
+      required(:targets).array(:string)
+      optional(:ports).value(:string)
+    end
 
     #
     # Processes an `nmap` job.

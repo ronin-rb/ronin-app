@@ -19,8 +19,8 @@
 #
 
 require 'dry/validation'
+require 'types'
 
-require 'schemas/nmap_params'
 require 'nmap/command'
 
 module Validations
@@ -29,7 +29,10 @@ module Validations
   #
   class NmapParams < Dry::Validation::Contract
 
-    params Dry::Schema::Params(parent: Schemas::NmapParams)
+    params do
+      required(:targets).filled(Types::Args).each(:filled?)
+      optional(:ports).maybe(:string)
+    end
 
     rule(:ports) do
       unless value =~ Nmap::Command::PortRangeList::REGEXP
