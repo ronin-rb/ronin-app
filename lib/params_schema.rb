@@ -1,6 +1,11 @@
 require 'dry-schema'
 require 'types'
 
+#
+# Module which can build a `Dry::Schema` from a class'es [params].
+#
+# [params]: https://ronin-rb.dev/docs/ronin-core/Ronin/Core/Params/Mixin.html
+#
 module ParamsSchema
   #
   # Builds a `Dry::Schema::Params` schema using a class'es defined params.
