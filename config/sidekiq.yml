@@ -5,6 +5,7 @@
 :queues:
   - default
   - repos
+  - recon
   - scan
   - import
   - spider

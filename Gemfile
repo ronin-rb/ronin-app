@@ -8,6 +8,7 @@ gem 'ruby-masscan', '~> 0.3', github: 'postmodern/ruby-masscan',
 # Ronin dependencies
 #
 gem 'ronin-support',    '~> 1.0'
+gem 'ronin-recon',      '~> 0.1', github: 'ronin-rb/ronin-recon'
 gem 'ronin-nmap',       '~> 0.1', github: 'ronin-rb/ronin-nmap'
 gem 'ronin-masscan',    '~> 0.1', github: 'ronin-rb/ronin-masscan'
 gem 'ronin-repos',      '~> 0.2', github: 'ronin-rb/ronin-repos',
@@ -22,6 +23,8 @@ gem 'ronin-payloads',   '~> 0.1', github: 'ronin-rb/ronin-payloads'
 gem 'ronin-exploits',   '~> 1.0'
 gem 'ronin-vulns',      '~> 0.1'
 gem 'ronin-web',        '~> 1.0', github: 'ronin-rb/ronin-web'
+gem 'ronin-web-spider', '~> 0.2', github: 'ronin-rb/ronin-web-spider',
+                                  branch: '0.2.0'
 
 gem 'dry-schema',       '~> 1.0'
 gem 'dry-validation',   '~> 1.0'

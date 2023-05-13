@@ -1,0 +1,45 @@
+<h1>Recon</h1>
+
+<form id="recon" action="/recon" method="post">
+  <div class="field">
+    <label class="label">Scope</label>
+
+    <div class="control">
+      <% if @errors && @errors[:values] %>
+        <textarea class="textarea is-danger" name="scope" required><%=h params[:scope] %></textarea>
+
+        <% @errors[:values].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <textarea class="textarea" name="scope" placeholder="example.com, www.example.com, *.example.com,  192.168.1.1, 192.168.1.0/24, https://example.com, ..." required><%=h params[:scope] %></textarea>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Recon</button>
+  </div>
+
+  <div class="advanced">
+    <a class="advanced-toggle">Advanced Options</a>
+
+    <div class="advanced-content">
+      <div class="field">
+        <label class="label">Max Depth</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_depth] %>
+            <input class="input is-danger" type="text" name="max_depth" value="<%=hattr params[:max_depth] %>">
+    
+            <% @errors[:max_depth].each do |error| %>
+            <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="values" placeholder="3" value="<%=hattr params[:max_depth] %>">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

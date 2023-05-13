@@ -46,9 +46,11 @@ require 'workers/nmap'
 require 'workers/masscan'
 require 'workers/import'
 require 'workers/spider'
+require 'workers/recon'
 
 # param validations
 require 'validations/install_repo_params'
+require 'validations/recon_params'
 require 'validations/nmap_params'
 require 'validations/masscan_params'
 require 'validations/import_params'
@@ -603,6 +605,29 @@ class App < Sinatra::Base
       erb :"db/oses/show"
     else
       halt 404
+    end
+  end
+
+  get '/recon' do
+    erb :recon
+  end
+
+  post '/recon' do
+    result = Validations::ReconParams.call(params)
+
+    if result.success?
+      @jid = Workers::Recon.perform_async(result.to_h)
+
+      scope = result[:scope]
+
+      flash[:success] = "Recon of #{scope.join(', ')} enqueued"
+      redirect '/recon'
+    else
+      @params = params
+      @errors = result.errors
+
+      flash[:danger] = 'Failed to submit recon request!'
+      halt 400, erb(:recon)
     end
   end
 
