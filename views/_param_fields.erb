@@ -13,19 +13,51 @@
   <div class="control">
     <% case param.type
        when Ronin::Core::Params::Types::Boolean %>
-       <input class="checkbox" type="checkbox" name="<%=h prefix %>[<%=h name %>]" value="<%=h params_values && params_values[name] %><%= " checked" if default_value %>">
-    <% when Ronin::Core::Params::Types::Enum %>
-      <select class="select" name="<%=h prefix %>[<%=h name %>]">
-        <% unless param.required? %>
-          <option value="" />
-        <% end %>
+      <% if @errors && @errors[name] %>
+        <input class="checkbox is-danger" type="checkbox" name="<%=h prefix %>[<%=h name %>]" value="<%=h params_values && params_values[name] %><%= " checked" if default_value %>">
 
-        <% param.type.values.each do |value| %>
-          <option value="<%=h value %>"<%= " selected" if (params_values && params_values[name] == value.to_s) || (value == default_value)%><%=h value %></option>
+        <% @errors[name].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
         <% end %>
-      </select>
+      <% else %>
+        <input class="checkbox" type="checkbox" name="<%=h prefix %>[<%=h name %>]" value="<%=h params_values && params_values[name] %><%= " checked" if default_value %>">
+      <% end %>
+    <% when Ronin::Core::Params::Types::Enum %>
+      <% if @errors && @errors[name] %>
+        <select class="select is-danger" name="<%=h prefix %>[<%=h name %>]">
+          <% unless param.required? %>
+            <option value="" />
+          <% end %>
+
+          <% param.type.values.each do |value| %>
+            <option value="<%=h value %>"<%= " selected" if (params_values && params_values[name] == value.to_s) || (value == default_value)%><%=h value %></option>
+          <% end %>
+        </select>
+
+        <% @errors[name].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <select class="select" name="<%=h prefix %>[<%=h name %>]">
+          <% unless param.required? %>
+            <option value="" />
+          <% end %>
+
+          <% param.type.values.each do |value| %>
+            <option value="<%=h value %>"<%= " selected" if (params_values && params_values[name] == value.to_s) || (value == default_value)%><%=h value %></option>
+          <% end %>
+        </select>
+      <% end %>
     <% else %>
-      <input class="input" type="text" name="<%=h prefix %>[<%=h name %>]" placeholder="<%=h default_value %>" value="<%=h params_values && params_values[name] %>">
+      <% if @errors && @errors[name] %>
+        <input class="input is-danger" type="text" name="<%=h prefix %>[<%=h name %>]" placeholder="<%=h default_value %>" value="<%=h params_values && params_values[name] %>">
+
+        <% @errors[name].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="<%=h prefix %>[<%=h name %>]" placeholder="<%=h default_value %>" value="<%=h params_values && params_values[name] %>">
+      <% end %>
     <% end %>
   </div>
 
