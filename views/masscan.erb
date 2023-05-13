@@ -41,12 +41,12 @@
     <div class="advanced-content">
       <div class="field">
         <label class="has-text-weight-semibold">Ping:</label>
-        <input type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
+        <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
       </div>
 
       <div class="field">
         <label class="has-text-weight-semibold">Banners:</label>
-        <input type="checkbox" name="banners"<%= " checked" if params[:banners] %>>
+        <input class="checkbox" type="checkbox" name="banners"<%= " checked" if params[:banners] %>>
       </div>
 
       <div class="field">
@@ -302,7 +302,7 @@
       <div class="field">
         <label class="label">HTTP Method:</label>
         <div class="control">
-          <select name="http_method">
+          <select class="select" name="http_method">
             <option value="">
             <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
             <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
@@ -387,7 +387,7 @@
 
       <div class="field">
         <label class="has-text-weight-semibold">Packet Trace:</label>
-        <input type="checkbox" name="packet_trace"<%= " checked" if params[:packet_trace] %>>
+        <input class="checkbox" type="checkbox" name="packet_trace"<%= " checked" if params[:packet_trace] %>>
       </div>
 
       <div class="field">
@@ -409,7 +409,7 @@
 
       <div class="field">
         <label class="has-text-weight-semibold">PF_RING:</label>
-        <input type="checkbox" name="pfring"<%= " checked" if params[:pfring] %>>
+        <input class="checkbox" type="checkbox" name="pfring"<%= " checked" if params[:pfring] %>>
       </div>
 
       <div class="field">
