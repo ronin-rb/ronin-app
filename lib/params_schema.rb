@@ -21,6 +21,8 @@
 require 'dry-schema'
 require 'types'
 
+require 'ronin/core/params/types'
+
 #
 # Module which can build a `Dry::Schema` from a class'es [params].
 #
