@@ -34,6 +34,7 @@ require './config/sidekiq'
 require 'ronin/repos'
 require 'ronin/payloads'
 require 'ronin/exploits'
+require 'ronin/support/encoding'
 
 # worker classes
 require 'workers/nmap'
