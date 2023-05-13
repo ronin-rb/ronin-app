@@ -48,7 +48,7 @@ module Helpers
     #   The HTML escaped string.
     #
     def h(text)
-      Rack::Utils.escape_html(text) if text
+      Rack::Utils.escape_html(text.to_s) if text
     end
 
     #
@@ -61,7 +61,7 @@ module Helpers
     #   The escaped HTML attribute.
     #
     def hattr(text)
-      Rack::Utils.escape_path(text) if text
+      Rack::Utils.escape_path(text.to_s) if text
     end
   end
 end
