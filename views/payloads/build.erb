@@ -1,0 +1,38 @@
+<h1>Build Payload: <%=h @payload.class.id %></h1>
+
+<form method="post">
+  <%= partial :param_fields, object: @payload %>
+
+  <div class="field">
+    <label class="label">Format:</label>
+    <div class="control">
+      <% if @errors && @errors[:format] %>
+        <select class="select is-danger" name="format">
+          <option value="raw"<%= ' selected' if params[:format] == 'raw' %>>Raw</option>
+          <option value="ruby"<%= ' selected' if params[:format] == 'ruby' %>>Ruby</option>
+          <option value="hex"<%= ' selected' if params[:format] == 'hex' %>>Hex</option>
+        </select>
+
+        <% @errors[:format].each do |error| %>
+          <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <select class="select" name="format">
+          <option value="raw"<%= ' selected' if params[:format] == 'raw' %>>Raw</option>
+          <option value="ruby"<%= ' selected' if params[:format] == 'ruby' %>>Ruby</option>
+          <option value="hex"<%= ' selected' if params[:format] == 'hex' %>>Hex</option>
+        </select>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Build</button>
+  </div>
+</form>
+
+<% if @built_payload %>
+  <h2>Built Payload</h2>
+
+  <pre><%=h @built_payload %></pre>
+<% end %>

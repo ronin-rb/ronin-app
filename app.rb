@@ -46,6 +46,10 @@ require 'validations/nmap_params'
 require 'validations/masscan_params'
 require 'validations/import_params'
 require 'validations/spider_params'
+require 'params_schema'
+
+# additional dry-types
+require 'types/payloads/build'
 
 # helpers
 require 'helpers/html'
@@ -95,6 +99,65 @@ class App < Sinatra::Base
     @payloads = Ronin::Payloads.list_files
 
     erb :"payloads/index"
+  end
+
+  get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
+    @payload_class = Ronin::Payloads.load_class(params[:payload_id])
+    @payload       = @payload_class.new
+
+    erb :"payloads/build"
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
+  end
+
+  post %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
+    @payload_class = Ronin::Payloads.load_class(params[:payload_id])
+    @payload       = @payload_class.new
+
+    # dynamically build the dry-schema based on the payload's params
+    params_schema = ParamsSchema.build(@payload_class.params)
+    form_schema   = Dry::Schema::Params() do
+      required(:params).hash(params_schema)
+      required(:format).value(Types::Payloads::Build::FormatType)
+    end
+
+    result = form_schema.call(params)
+
+    if result.success?
+      payload_params = result[:params].to_h
+      payload_params.compact!
+
+      begin
+        @payload.params = payload_params
+      rescue Ronin::Core::Params::ParamError => error
+        flash[:error] = "Failed to set params: #{error.message}"
+
+        halt 400, erb(:"payloads/build")
+      end
+
+      begin
+        @payload.perform_validate
+        @payload.perform_build
+      rescue => error
+        flash[:error] = "Failed to build payload: #{error.message}"
+
+        halt 500, erb(:"payloads/build")
+      end
+
+      @built_payload = case result[:format]
+                       when 'ruby' then @payload.to_s.inspect
+                       when 'raw'  then @payload.to_s
+                       end
+
+      erb :"payloads/build"
+    else
+      @params = params
+      @errors = result.errors
+
+      halt 400, erb(:"payloads/build")
+    end
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
   end
 
   get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
