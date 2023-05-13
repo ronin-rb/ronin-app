@@ -1,0 +1,33 @@
+<% title ||= 'Params' %>
+<% params_values ||= params[:params] %>
+
+<h2><%=h title %></h2>
+
+<% object.class.params.each do |name,param| %>
+<div class="field">
+  <label class="label"><%=h name %></label>
+
+  <% default_value = object.params[name] %>
+
+  <div class="control">
+    <% case param.type
+       when Ronin::Core::Params::Types::Boolean %>
+      <input class="checkbox" type="checkbox" name="params[<%=h name %>]" value="<%=h params_values && params_values[name] %><%= " checked" if default_value %>">
+    <% when Ronin::Core::Params::Types::Enum %>
+      <select class="select" name="params[<%=h name %>]">
+        <% unless param.required? %>
+          <option value="" />
+        <% end %>
+
+        <% param.type.values.each do |value| %>
+          <option value="<%=h value %>"<%= " selected" if (params_values && params_values[name] == value.to_s) || (value == default_value)%><%=h value %></option>
+        <% end %>
+      </select>
+    <% else %>
+      <input class="input" type="text" name="params[<%=h name %>]" placeholder="<%=h default_value %>" value="<%=h params_values && params_values[name] %>">
+    <% end %>
+  </div>
+
+  <p class="help"><%=h param.desc %></p>
+</div>
+<% end %>
