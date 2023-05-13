@@ -97,14 +97,12 @@ class App < Sinatra::Base
     erb :"payloads/index"
   end
 
-  Ronin::Payloads.list_files.each do |payload_id|
-    get("/payloads/#{payload_id}") do
-      @payload = Ronin::Payloads.load_class(payload_id)
+  get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+    @payload = Ronin::Payloads.load_class(params[:payload_id])
 
-      erb :"payloads/show"
-    rescue Ronin::Core::ClassRegistry::ClassNotFound
-      halt 404
-    end
+    erb :"payloads/show"
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
   end
 
   get '/exploits' do
@@ -113,14 +111,12 @@ class App < Sinatra::Base
     erb :"exploits/index"
   end
 
-  Ronin::Exploits.list_files.each do |exploit_id|
-    get("/exploits/#{exploit_id}") do
-      @exploit = Ronin::Exploits.load_class(exploit_id)
+  get %r{/exploits(?<exploit_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+    @exploit = Ronin::Exploits.load_class(params[:exploit_id])
 
-      erb :"exploits/show"
-    rescue Ronin::Core::ClassRegistry::ClassNotFound
-      halt 404
-    end
+    erb :"exploits/show"
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
   end
 
   get '/db' do
