@@ -3,11 +3,13 @@
 <form action="/spider" method="post">
   <div class="field has-addons">
     <div class="control">
-      <select class="select" name="type">
-        <option value="host" <%= "selected" if params[:type] == 'host' %>>Host</option>
-        <option value="domain" <%= "selected" if params[:type] == 'domain' %>>Domain</option>
-        <option value="site" <%= "selected" if params[:type] == 'site' %>>Site</option>
-      </select>
+      <div class="select">
+        <select name="type">
+          <option value="host" <%= "selected" if params[:type] == 'host' %>>Host</option>
+          <option value="domain" <%= "selected" if params[:type] == 'domain' %>>Domain</option>
+          <option value="site" <%= "selected" if params[:type] == 'site' %>>Site</option>
+        </select>
+      </div>
     </div>
 
     <div class="control">
