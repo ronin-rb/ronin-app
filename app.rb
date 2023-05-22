@@ -119,7 +119,6 @@ class App < Sinatra::Base
     params_schema = ParamsSchema.build(@payload_class.params)
     form_schema   = Dry::Schema::Params() do
       required(:params).hash(params_schema)
-      required(:format).value(Types::Payloads::Build::FormatType)
     end
 
     result = form_schema.call(params)
@@ -145,10 +144,7 @@ class App < Sinatra::Base
         halt 500, erb(:"payloads/build")
       end
 
-      @built_payload = case result[:format]
-                       when 'ruby' then @payload.to_s.inspect
-                       when 'raw'  then @payload.to_s
-                       end
+      @built_payload = @payload.to_s
 
       erb :"payloads/build"
     else
