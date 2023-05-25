@@ -1,0 +1,25 @@
+<div class="tabs is-boxed">
+  <ul>
+    <li class="is-active"><a data-tab-id="built-payload-raw">Raw</a></li>
+    <li><a data-tab-id="built-payload-hex">Hex</a></li>
+    <li><a data-tab-id="built-payload-c">C</a></li>
+    <li><a data-tab-id="built-payload-shell">Shell</a></li>
+    <li><a data-tab-id="built-payload-powershell">PowerShell</a></li>
+    <li><a data-tab-id="built-payload-xml">XML</a></li>
+    <li><a data-tab-id="built-payload-html">HTML</a></li>
+    <li><a data-tab-id="built-payload-js">JavaScript</a></li>
+    <li><a data-tab-id="built-payload-ruby">Ruby</a></li>
+  </ul>
+</div>
+
+<div class="tabs-content">
+  <pre id="built-payload-raw"><%=h string %></pre>
+  <pre id="built-payload-hex"><%=h Ronin::Support::Encoding::Hex.quote(string) %></pre>
+  <pre id="built-payload-c"><%=h Ronin::Support::Encoding::C.quote(string) %></pre>
+  <pre id="built-payload-shell"><%=h Ronin::Support::Encoding::Shell.quote(string) %></pre>
+  <pre id="built-payload-powershell"><%=h Ronin::Support::Encoding::PowerShell.quote(string) %></pre>
+  <pre id="built-payload-xml"><%=h Ronin::Support::Encoding::XML.encode(string) %></pre>
+  <pre id="built-payload-html"><%=h Ronin::Support::Encoding::HTML.encode(string) %></pre>
+  <pre id="built-payload-js"><%=h Ronin::Support::Encoding::JS.quote(string) %></pre>
+  <pre id="built-payload-ruby"><%=h Ronin::Support::Encoding::Ruby.quote(string) %></pre>
+</div>
