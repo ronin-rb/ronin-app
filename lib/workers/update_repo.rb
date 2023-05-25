@@ -18,18 +18,25 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-$LOAD_PATH.unshift(File.join(__dir__,'lib'))
+require 'sidekiq'
+require 'ronin/repos'
 
-require './config/sidekiq'
-require './config/database'
+module Workers
+  #
+  # A worker that updates a single [ronin repo][ronin-repos].
+  #
+  # [ronin-repos]: https://github.com/ronin-rb/ronin-repos#readme
+  #
+  class UpdateRepo
 
-require 'workers/install_repo'
-require 'workers/update_repo'
-require 'workers/update_repos'
-require 'workers/remove_repo'
-require 'workers/purge_repos'
+    include Sidekiq::Worker
+    sidekiq_options queue: :repos, retry: false, backtrace: true
 
-require 'workers/nmap'
-require 'workers/masscan'
-require 'workers/import'
-require 'workers/spider'
+    def perform(name)
+      repo = Ronin::Repos.cache_dir[name]
+
+      repo.update
+    end
+
+  end
+end

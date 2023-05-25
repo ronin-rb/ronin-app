@@ -7,3 +7,23 @@
     </a>
   </p>
 <% end %>
+
+<div class="field is-grouped">
+  <div class="control">
+    <a href="/repos/install">
+      <button class="button is-primary">Install</button>
+    </a>
+  </div>
+
+  <div class="control">
+    <form action="/repos/update" method="POST">
+      <button type="submit" class="button is-primary">Update</button>
+    </form>
+  </div>
+
+  <div class="control">
+    <form action="/repos" method="DELETE">
+      <button type="submit" class="button is-danger">Purge</button>
+    </form>
+  </div>
+</div>

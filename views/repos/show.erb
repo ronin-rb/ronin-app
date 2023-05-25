@@ -22,3 +22,17 @@
     </tr>
   </tbody>
 </table>
+
+<div class="field is-grouped">
+  <div class="control">
+    <form action="/repos/<%=hattr @repo.name %>/update" method="POST">
+      <button type="submit" class="button is-primary">Update</button>
+    </form>
+  </div>
+
+  <div class="control">
+    <form action="/repos/<%=hattr @repo.name %>" method="DELETE">
+      <button type="submit" class="button is-danger">Remove</button>
+    </form>
+  </div>
+</div>

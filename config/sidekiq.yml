@@ -4,6 +4,7 @@
 :concurrency: 4
 :queues:
   - default
+  - repos
   - scan
   - import
   - spider

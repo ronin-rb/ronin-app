@@ -1,0 +1,45 @@
+<h1>nmap</h1>
+
+<form action="/repos/install" method="post">
+  <div class="field">
+    <label class="label">URI</label>
+
+    <div class="control">
+      <% if @errors && @errors[:uri] %>
+        <input class="input is-danger" type="text" name="uri" placeholder="https://example.com/path/to/repo.git OR git@example.com:path/to/repo.git" value="<%=hattr params[:uri] %>">
+
+        <% @errors[:uri].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="uri" placeholder="https://example.com/path/to/repo.git OR git@example.com:path/to/repo.git" value="<%=hattr params[:uri] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="advanced">
+    <a class="advanced-toggle">Advanced Options</a>
+
+    <div class="advanced-content">
+      <div class="field">
+        <label class="label">Name</label>
+
+        <div class="control">
+          <% if @errors && @errors[:name] %>
+            <input class="input is-danger" type="text" name="name" placeholder="foo-bar" value="<%=hattr params[:name] %>">
+
+            <% @errors[:name].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="name" placeholder="foo-bar" value="<%=hattr params[:name] %>">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Install</button>
+  </div>
+</form>
