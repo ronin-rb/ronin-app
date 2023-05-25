@@ -35,7 +35,7 @@ module Validations
 
     # Regular expression that matches both `https://` URIs and
     # `git@host.com:path/to/repo.git` URIs.
-    GIT_URI_REGEX = %r{\A(?:#{URI.regexp('https')}|[^@]+@[A-Za-z0-9._-]+(?::\d+)?:[A-Za-z0-9./_-]+)\z}
+    GIT_URI_REGEX = %r{\A(?:#{URI.regexp(%w[https http git ssh])}|[^@]+@[A-Za-z0-9._-]+(?::\d+)?:[A-Za-z0-9./_-]+)\z}
 
     rule(:uri) do
       unless value =~ GIT_URI_REGEX
