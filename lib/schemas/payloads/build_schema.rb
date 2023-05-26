@@ -23,6 +23,9 @@ require 'dry/schema'
 require 'schemas/params_schema'
 
 module Schemas
+  #
+  # Contains class methods for building dry-schemas for the `/payloads` routes.
+  #
   module Payloads
     #
     # Builds a `Dry::Schema::Params` schema for the given payload class and for

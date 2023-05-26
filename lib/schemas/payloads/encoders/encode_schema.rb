@@ -4,6 +4,10 @@ require 'schemas/params_schema'
 
 module Schemas
   module Payloads
+    #
+    # Contains class methods for building dry-schemas for the
+    # `/payloads/encoders` routes.
+    #
     module Encoders
       #
       # Builds a `Dry::Schema::Params` schema for the given payload encoder
