@@ -23,19 +23,14 @@ require 'types'
 
 require 'ronin/core/params/types'
 
-#
-# Module which can build a `Dry::Schema` from a class'es [params].
-#
-# [params]: https://ronin-rb.dev/docs/ronin-core/Ronin/Core/Params/Mixin.html
-#
-module ParamsSchema
+module Schemas
   #
   # Builds a `Dry::Schema::Params` schema using a class'es defined params.
   #
   # @param [Hash{Symbol => Ronin::Core::Params::Param}] params
   #   The class'es params.
   #
-  def self.build(params)
+  def self.ParamsSchema(params)
     dsl = Dry::Schema::DSL.new(processor_type: Dry::Schema::Params)
 
     params.each do |name,param|

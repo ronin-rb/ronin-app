@@ -53,7 +53,10 @@ require 'validations/nmap_params'
 require 'validations/masscan_params'
 require 'validations/import_params'
 require 'validations/spider_params'
-require 'params_schema'
+
+# schema builders
+require 'schemas/payloads/encoders/encode_schema'
+require 'schemas/payloads/build_schema'
 
 # additional dry-types
 require 'types/payloads/build'
@@ -183,14 +186,8 @@ class App < Sinatra::Base
     @encoder_class = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
     @encoder       = @encoder_class.new
 
-    # dynamically encode the dry-schema based on the encoder's params
-    params_schema = ParamsSchema.build(@encoder_class.params)
-    form_schema   = Dry::Schema::Params() do
-      required(:data).filled(:string)
-      required(:params).hash(params_schema)
-    end
-
-    result = form_schema.call(params)
+    form_schema = Schemas::Payloads::Encoders::EncodeSchema(@encoder_class)
+    result      = form_schema.call(params)
 
     if result.success?
       encoder_params = result[:params].to_h
@@ -246,13 +243,8 @@ class App < Sinatra::Base
     @payload_class = Ronin::Payloads.load_class(params[:payload_id])
     @payload       = @payload_class.new
 
-    # dynamically build the dry-schema based on the payload's params
-    params_schema = ParamsSchema.build(@payload_class.params)
-    form_schema   = Dry::Schema::Params() do
-      required(:params).hash(params_schema)
-    end
-
-    result = form_schema.call(params)
+    form_schema = Schemas::Payloads::BuildSchema(@payload_class)
+    result      = form_schema.call(params)
 
     if result.success?
       payload_params = result[:params].to_h
