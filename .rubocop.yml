@@ -19,3 +19,8 @@ Style/SymbolProc:
 Style/GlobalVars:
   Exclude:
     - 'config/redis.rb'
+
+# in lib/schema we use Dry::Schema::Params() style class-methods
+Naming/MethodName:
+  Exclude:
+    - 'lib/schemas/**/*'
