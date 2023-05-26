@@ -35,7 +35,7 @@ module Validations
 
     # Regular expression that matches `https://`, `http://`, `ssh://`, and
     # `git://` URIs.
-    URI_REGEX = URI.regexp(%w[https http git ssh])
+    URI_REGEX = URI::DEFAULT_PARSER.make_regexp(%w[https http git ssh])
 
     # Regular expression that matches both `https://` URIs and
     # `git@host.com:path/to/repo.git` URIs.
