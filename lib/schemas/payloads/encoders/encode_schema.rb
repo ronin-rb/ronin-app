@@ -21,7 +21,10 @@ module Schemas
 
         return Dry::Schema::Params() do
           required(:data).filled(:string)
-          required(:params).hash(params_schema)
+
+          unless encoder_class.params.empty?
+            required(:params).hash(params_schema)
+          end
         end
       end
     end

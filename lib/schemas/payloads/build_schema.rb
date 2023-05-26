@@ -39,7 +39,9 @@ module Schemas
       params_schema = Schemas::ParamsSchema(payload_class.params)
 
       return Dry::Schema::Params() do
-        required(:params).hash(params_schema)
+        unless payload_class.params.empty?
+          required(:params).hash(params_schema)
+        end
       end
     end
   end
