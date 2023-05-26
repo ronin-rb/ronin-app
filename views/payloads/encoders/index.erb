@@ -1,0 +1,9 @@
+<h1>Payload Encoders</h1>
+
+<% @payload_encoders.each do |encoder_id| %>
+  <p>
+    <a href="/payloads/encoders/<%=hattr encoder_id %>">
+      <%=h encoder_id %>
+    </a>
+  </p>
+<% end %>

@@ -164,6 +164,12 @@ class App < Sinatra::Base
     erb :"payloads/index"
   end
 
+  get '/payloads/encoders' do
+    @payload_encoders = Ronin::Payloads::Encoders.list_files
+
+    erb :"payloads/encoders/index"
+  end
+
   get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
     @payload_class = Ronin::Payloads.load_class(params[:payload_id])
     @payload       = @payload_class.new
