@@ -1,0 +1,47 @@
+<h1>Payload Encoder: <%=h @encoder.id %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td>
+        <kbd><%=h @encoder.id %></kbd>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Authors:</strong></td>
+      <td>
+        <%= partial(:authors, authors: @encoder.authors) %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Summary:</strong></td>
+      <td><%=h @encoder.summary %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Description:</strong></td>
+      <td>
+        <pre><%=h @encoder.description %></pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>References:</strong></td>
+      <td>
+        <% @encoder.references.each do |reference| %>
+          <p><a href="<%=h reference %>"><%=h reference %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Params:</strong></td>
+      <td>
+        <%= partial(:params, params: @encoder.params) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

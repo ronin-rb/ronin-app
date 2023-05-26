@@ -170,6 +170,14 @@ class App < Sinatra::Base
     erb :"payloads/encoders/index"
   end
 
+  get %r{/payloads/encoders/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+    @encoder = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
+
+    erb :"payloads/encoders/show"
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
+  end
+
   get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
     @payload_class = Ronin::Payloads.load_class(params[:payload_id])
     @payload       = @payload_class.new
