@@ -170,6 +170,61 @@ class App < Sinatra::Base
     erb :"payloads/encoders/index"
   end
 
+  get %r{/payloads/encoders/encode/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+    @encoder_class = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
+    @encoder       = @encoder_class.new
+
+    erb :"payloads/encoders/encode"
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
+  end
+
+  post %r{/payloads/encoders/encode/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+    @encoder_class = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
+    @encoder       = @encoder_class.new
+
+    # dynamically encode the dry-schema based on the encoder's params
+    params_schema = ParamsSchema.build(@encoder_class.params)
+    form_schema   = Dry::Schema::Params() do
+      required(:data).filled(:string)
+      required(:params).hash(params_schema)
+    end
+
+    result = form_schema.call(params)
+
+    if result.success?
+      encoder_params = result[:params].to_h
+      encoder_params.compact!
+
+      begin
+        @encoder.params = encoder_params
+      rescue Ronin::Core::Params::ParamError => error
+        flash[:error] = "Failed to set params: #{error.message}"
+
+        halt 400, erb(:"payloads/encoders/encode")
+      end
+
+      begin
+        @encoder.validate
+      rescue => error
+        flash[:error] = "Failed to encode encoder: #{error.message}"
+
+        halt 500, erb(:"payloads/encoders/encode")
+      end
+
+      @encoded_data = @encoder.encode(result[:data])
+
+      erb :"payloads/encoders/encode"
+    else
+      @params = params
+      @errors = result.errors
+
+      halt 400, erb(:"payloads/encoders/encode")
+    end
+  rescue Ronin::Core::ClassRegistry::ClassNotFound
+    halt 404
+  end
+
   get %r{/payloads/encoders/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
     @encoder = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
 

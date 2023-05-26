@@ -1,0 +1,35 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
+
+<h1>Encode Payload: <%=h @encoder.class.id %></h1>
+
+<form method="post">
+  <div class="field">
+    <label class="label">Data</label>
+
+    <div class="control">
+      <% if @errors && @errors[:data] %>
+        <input class="input is-danger" type="text" name="data" value="<%=hattr params[:data] %>">
+
+        <% @errors[:data].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="data" placeholder="data to encode" value="<%=hattr params[:data] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <% unless @encoder.class.params.empty? %>
+    <%= partial :param_fields, object: @encoder %>
+  <% end %>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Encode</button>
+  </div>
+</form>
+
+<% if @encoded_data %>
+  <h2>Encoded Data</h2>
+
+  <%= partial :encoding_tabs, string: @encoded_data %>
+<% end %>
