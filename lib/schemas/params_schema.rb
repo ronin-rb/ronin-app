@@ -23,6 +23,9 @@ require 'types'
 
 require 'ronin/core/params/types'
 
+#
+# Contains class methods for building dynamic dry-schemas.
+#
 module Schemas
   #
   # Builds a `Dry::Schema::Params` schema using a class'es defined params.
