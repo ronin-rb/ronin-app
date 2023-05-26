@@ -3,7 +3,9 @@
 <h1>Build Payload: <%=h @payload.class.id %></h1>
 
 <form method="post">
-  <%= partial :param_fields, object: @payload %>
+  <% unless @payload.class.params.empty? %>
+    <%= partial :param_fields, object: @payload %>
+  <% end %>
 
   <div class="field">
     <button type="submit" class="button is-primary">Build</button>
