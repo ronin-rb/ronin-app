@@ -227,7 +227,7 @@ class App < Sinatra::Base
     halt 404
   end
 
-  get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
+  get %r{/payloads/build/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
     @payload_class = Ronin::Payloads.load_class(params[:payload_id])
     @payload       = @payload_class.new
 
@@ -236,7 +236,7 @@ class App < Sinatra::Base
     halt 404
   end
 
-  post %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:(?!/build)/[a-z0-9_-]+)*)/build} do
+  post %r{/payloads/build/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
     @payload_class = Ronin::Payloads.load_class(params[:payload_id])
     @payload       = @payload_class.new
 
