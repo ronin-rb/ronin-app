@@ -58,9 +58,6 @@ require 'validations/spider_params'
 require 'schemas/payloads/encoders/encode_schema'
 require 'schemas/payloads/build_schema'
 
-# additional dry-types
-require 'types/payloads/build'
-
 # helpers
 require 'helpers/html'
 
