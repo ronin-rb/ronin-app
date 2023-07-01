@@ -40,9 +40,11 @@ module Validations
       optional(:max_depth).maybe(:integer)
     end
 
-    rule(:scope).each do
-      if value !~ VALUE_REGEX
-        key.failure('value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL')
+    rule(:scope) do
+      bad_values = value.select { |str| str !~ VALUE_REGEX }
+
+      unless bad_values.empty?
+        key.failure("value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL: #{bad_values.join(', ')}")
       end
     end
 
