@@ -4,6 +4,7 @@ services:
   web:
     build:
       context: .
+    privileged: true
     command: bundle exec foreman start web
     ports:
       - "5000:5000"
@@ -26,6 +27,7 @@ services:
   sidekiq:
     build:
       context: .
+    privileged: true
     cap_add:
       - "NET_RAW"
       - "NET_ADMIN"
