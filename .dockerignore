@@ -1,0 +1,3 @@
+.bundle/config
+Gemfile.lock
+vendor/bundle
