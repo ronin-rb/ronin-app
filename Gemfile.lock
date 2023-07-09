@@ -7,6 +7,16 @@ GIT
       command_mapper (~> 0.1)
 
 GIT
+  remote: https://github.com/ronin-rb/ronin-core.git
+  revision: 850564692807e291d87db26452c1f0ef06a0efdf
+  branch: 0.2.0
+  specs:
+    ronin-core (0.2.0)
+      command_kit (~> 0.4)
+      irb (~> 1.0)
+      reline (~> 0.1)
+
+GIT
   remote: https://github.com/ronin-rb/ronin-db-activerecord.git
   revision: 508f071520146003879ea4facc4fe9a6cc929fce
   branch: 0.2.0
@@ -46,9 +56,9 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-payloads.git
-  revision: 49f71c04c973f002acf6abffa7712c7d2c93ef54
+  revision: 0c38a781749608d25554484722355f31ebcd95b8
   specs:
-    ronin-payloads (0.1.2)
+    ronin-payloads (0.1.3)
       ronin-code-asm (~> 1.0)
       ronin-core (~> 0.1)
       ronin-post_ex (~> 0.1)
@@ -148,7 +158,7 @@ GEM
     commander (4.6.0)
       highline (~> 2.0.0)
     concurrent-ruby (1.2.2)
-    connection_pool (2.4.0)
+    connection_pool (2.4.1)
     console (1.17.2)
       fiber-annotation
       fiber-local
@@ -169,7 +179,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-schema (1.13.1)
+    dry-schema (1.13.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
@@ -210,11 +220,12 @@ GEM
     ice_nine (0.11.2)
     io-console (0.6.0)
     io-event (1.2.2)
-    irb (1.7.0)
+    irb (1.7.1)
       reline (>= 0.3.0)
     json (2.6.3)
     kramdown (2.4.0)
       rexml
+    language_server-protocol (3.17.0.3)
     mechanize (2.9.1)
       addressable (~> 2.8)
       domain_name (~> 0.5, >= 0.5.20190701)
@@ -251,8 +262,9 @@ GEM
       parser
       rainbow (~> 3.0)
       sorbet-runtime (>= 0.5)
-    parser (3.2.2.0)
+    parser (3.2.2.3)
       ast (~> 2.4.1)
+      racc
     protocol-hpack (1.4.2)
     protocol-http (0.24.4)
     protocol-http1 (0.15.0)
@@ -261,10 +273,10 @@ GEM
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-protection (3.0.6)
       rack
     rack-user_agent (0.5.3)
@@ -272,28 +284,24 @@ GEM
       woothee (>= 1.0.0)
     rainbow (3.1.1)
     rake (13.0.6)
-    rbs (2.8.4)
+    rbs (3.1.0)
     redcarpet (3.6.0)
     redis (5.0.6)
       redis-client (>= 0.9.0)
     redis-client (0.14.1)
       connection_pool
-    redis-namespace (1.10.0)
+    redis-namespace (1.11.0)
       redis (>= 4)
-    regexp_parser (2.8.0)
-    reline (0.3.5)
+    regexp_parser (2.8.1)
+    reline (0.3.6)
       io-console (~> 0.5)
     rexml (3.2.5)
     robots (0.10.1)
     ronin-code-asm (1.0.0)
       ruby-yasm (~> 0.3)
-    ronin-code-sql (2.0.0)
+    ronin-code-sql (2.1.0)
       ronin-support (~> 1.0)
-    ronin-core (0.1.1)
-      command_kit (~> 0.4)
-      irb (~> 1.0)
-      reline (~> 0.1)
-    ronin-exploits (1.0.1)
+    ronin-exploits (1.0.2)
       ronin-code-sql (~> 2.0)
       ronin-core (~> 0.1)
       ronin-payloads (~> 0.1, >= 0.1.1)
@@ -326,28 +334,29 @@ GEM
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.1)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
-    rubocop (1.50.2)
+    rspec-support (3.12.1)
+    rubocop (1.54.0)
       json (~> 2.3)
+      language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
-      parser (>= 3.2.0.0)
+      parser (>= 3.2.2.3)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
       rubocop-ast (>= 1.28.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.28.0)
+    rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-ronin (0.2.1)
+    rubocop-ronin (0.2.2)
       rubocop (~> 1.0)
     ruby-nmap (1.0.1)
       command_mapper (~> 0.3)
@@ -357,11 +366,11 @@ GEM
       command_mapper (~> 0.1)
     ruby2_keywords (0.0.5)
     rubyntlm (0.6.3)
-    sidekiq (7.0.9)
+    sidekiq (7.1.2)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
-      redis-client (>= 0.11.0)
+      redis-client (>= 0.14.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -381,11 +390,11 @@ GEM
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    sorbet-runtime (0.5.10784)
-    sord (5.0.0)
+    sorbet-runtime (0.5.10898)
+    sord (6.0.0)
       commander (~> 4.5)
       parlour (~> 5.0)
-      rbs (~> 2.0)
+      rbs (~> 3.0)
       sorbet-runtime
       yard
     spidr (0.7.0)
@@ -394,7 +403,7 @@ GEM
     stackprof (0.2.25)
     tdiff (0.3.4)
     thread-local (1.1.0)
-    tilt (2.1.0)
+    tilt (2.2.0)
     timers (4.3.5)
     traces (0.11.1)
     tzinfo (2.0.6)
@@ -412,7 +421,7 @@ GEM
     yard-spellcheck (0.1.5)
       ffi-hunspell (~> 0.2)
       yard (~> 0.6)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   x86_64-linux
@@ -429,6 +438,7 @@ DEPENDENCIES
   redcarpet
   redis (~> 5.0)
   redis-namespace (~> 1.10)
+  ronin-core (~> 0.2)!
   ronin-db (~> 0.2)!
   ronin-db-activerecord (~> 0.2)!
   ronin-exploits (~> 1.0)
