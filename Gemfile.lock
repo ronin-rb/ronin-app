@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-db-activerecord.git
-  revision: 508f071520146003879ea4facc4fe9a6cc929fce
+  revision: 7c63bedf87cd6edfaae0c96c90020ccdccc16b29
   branch: 0.2.0
   specs:
     ronin-db-activerecord (0.2.0)
@@ -38,19 +38,19 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-masscan.git
-  revision: a22096cb91d40086624959db4360cf1590b38f1f
+  revision: 9f7995c884400ba67203dec82f053fc65d5f8134
   specs:
     ronin-masscan (0.1.0)
-      ronin-core (~> 0.1)
+      ronin-core (~> 0.2)
       ronin-db (~> 0.2)
       ruby-masscan (~> 0.1)
 
 GIT
   remote: https://github.com/ronin-rb/ronin-nmap.git
-  revision: c80cfa0a5af152c51b99c12102642d23374d6014
+  revision: 364fc7848383ccb23d4ddf5ba5119cc2996c1b93
   specs:
     ronin-nmap (0.1.0)
-      ronin-core (~> 0.1)
+      ronin-core (~> 0.2)
       ronin-db (~> 0.2)
       ruby-nmap (~> 1.0)
 
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-recon.git
-  revision: dd976a7aaa4df991411f7690db67d769fa631619
+  revision: 7071a9bc8b1b95d172e5f4b302ae966d48ab7f70
   specs:
     ronin-recon (0.1.0)
       async-dns (~> 1.0)
@@ -248,7 +248,7 @@ GEM
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
     nio4r (2.5.9)
-    nokogiri (1.15.2-x86_64-linux)
+    nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     nokogiri-diff (0.2.0)
       nokogiri (~> 1.5)
