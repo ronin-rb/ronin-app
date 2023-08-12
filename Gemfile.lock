@@ -116,6 +116,34 @@ GIT
       ronin-web-spider (~> 0.1)
       ronin-web-user_agents (~> 0.1)
 
+PATH
+  remote: .
+  specs:
+    ronin-app (0.1.0)
+      dry-schema (~> 1.0)
+      dry-struct (~> 1.0)
+      dry-validation (~> 1.0)
+      foreman (~> 0.80)
+      puma (~> 6.0)
+      redis (~> 5.0)
+      redis-namespace (~> 1.10)
+      ronin-core (~> 0.2)
+      ronin-db (~> 0.2)
+      ronin-db-activerecord (~> 0.2)
+      ronin-exploits (~> 1.0)
+      ronin-masscan (~> 0.1)
+      ronin-nmap (~> 0.1)
+      ronin-payloads (~> 0.1)
+      ronin-recon (~> 0.1)
+      ronin-support (~> 1.0)
+      ronin-vulns (~> 0.1)
+      ronin-web (~> 1.0)
+      ronin-web-spider (~> 0.2)
+      sidekiq (~> 7.0)
+      sinatra (~> 3.0)
+      sinatra-contrib (~> 3.0)
+      sinatra-flash (~> 0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -429,39 +457,29 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bundler (~> 2.0)
   dead_end
-  dry-schema (~> 1.0)
-  dry-struct (~> 1.0)
-  dry-validation (~> 1.0)
-  foreman (~> 0.80)
+  foreman
   kramdown (~> 2.0)
-  puma (~> 6.0)
+  puma
   rake
   redcarpet
-  redis (~> 5.0)
-  redis-namespace (~> 1.10)
+  ronin-app!
   ronin-core (~> 0.2)!
   ronin-db (~> 0.2)!
   ronin-db-activerecord (~> 0.2)!
-  ronin-exploits (~> 1.0)
   ronin-masscan (~> 0.1)!
   ronin-nmap (~> 0.1)!
   ronin-payloads (~> 0.1)!
   ronin-recon (~> 0.1)!
   ronin-repos (~> 0.2)!
-  ronin-support (~> 1.0)
-  ronin-vulns (~> 0.1)
   ronin-web (~> 1.0)!
   ronin-web-spider (~> 0.2)!
   rspec (~> 3.0)
   rubocop
   rubocop-ronin
   ruby-masscan (~> 0.3)!
-  sidekiq (~> 7.0)
   simplecov (~> 0.20)
-  sinatra (~> 3.0)
-  sinatra-contrib (~> 3.0)
-  sinatra-flash (~> 0.3)
   sord
   stackprof
   yard (~> 0.9)

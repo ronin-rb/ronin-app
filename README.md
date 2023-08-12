@@ -33,7 +33,6 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 * [nmap]
 * [masscan]
 * [Ruby] >= 3.1.0
-* [bundler] >= 2.0.0
 
 ## Setup
 
@@ -130,7 +129,6 @@ along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 [masscan]: https://github.com/robertdavidgraham/masscan#readme
 
 [Ruby]: https://www.ruby-lang.org/
-[bundler]: https://bundler.io/
 [dry-types]: https://dry-rb.org/gems/dry-types/
 [dry-schema]: https://dry-rb.org/gems/dry-schema/
 [dry-validation]: https://dry-rb.org/gems/dry-validation/
