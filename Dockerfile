@@ -7,6 +7,9 @@ ENV LANG=en_US.UTF-8
 
 WORKDIR /app
 ADD Gemfile /app
+ADD gemspec.yml /app
+ADD lib/ronin/app/version.rb /app/lib/ronin/app/
+ADD ronin-app.gemspec /app
 
 ARG NMAP_CAPS=cap_net_raw,cap_net_admin,cap_net_bind_service
 ARG MASSCAN_CAPS=cap_net_raw,cap_net_admin,cap_net_bind_service
