@@ -36,6 +36,8 @@ gem 'ronin-repos',      '~> 0.2', github: 'ronin-rb/ronin-repos',
 group :development do
   gem 'rake', require: false
 
+  gem 'rubygems-tasks',   '~> 0.2'
+
   gem 'rspec',            '~> 3.0', require: false
   gem 'simplecov',        '~> 0.20', require: false
 

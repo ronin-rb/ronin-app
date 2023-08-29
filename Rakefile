@@ -18,6 +18,9 @@ end
 
 require 'rake'
 
+require 'rubygems/tasks'
+Gem::Tasks.new(sign: {checksum: true, pgp: true})
+
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 task :test    => :spec
