@@ -63,15 +63,14 @@ require './workers/import'
 require './workers/spider'
 require './workers/recon'
 
+require 'ronin/app/version'
+
 #
 # Main app class.
 #
 class App < Sinatra::Base
 
   include Ronin::App
-
-  # ronin-app version
-  VERSION = '0.1.0'
 
   configure do
     enable :sessions

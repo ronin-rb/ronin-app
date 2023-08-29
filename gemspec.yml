@@ -1,5 +1,4 @@
 name: ronin-app
-version: 0.1.0
 summary: A local web interface for Ronin
 description: |
  ronin-app is a small web application that is meant to be ran locally by the
