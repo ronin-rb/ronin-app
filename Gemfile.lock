@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-core.git
-  revision: 850564692807e291d87db26452c1f0ef06a0efdf
+  revision: fb7289a63b2f63423c3dc742a2c71dfb00d21f28
   branch: 0.2.0
   specs:
     ronin-core (0.2.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-db-activerecord.git
-  revision: 7c63bedf87cd6edfaae0c96c90020ccdccc16b29
+  revision: 60e42d49f2ed237b7fa5bab174e8628802dea7d5
   branch: 0.2.0
   specs:
     ronin-db-activerecord (0.2.0)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-db.git
-  revision: 05aa2ff8af1a82bfd7464465e0ea4341970d6234
+  revision: bb8dd3ba922575ebf2cf08556286e4129fd0e310
   branch: 0.2.0
   specs:
     ronin-db (0.2.0)
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-payloads.git
-  revision: 0c38a781749608d25554484722355f31ebcd95b8
+  revision: 4d88b830c1664523b3d7990ce7397f42550b3010
   specs:
     ronin-payloads (0.1.3)
       ronin-code-asm (~> 1.0)
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-recon.git
-  revision: 7071a9bc8b1b95d172e5f4b302ae966d48ab7f70
+  revision: dfeeddbffe433ce722528f598da2dda717633967
   specs:
     ronin-recon (0.1.0)
       async-dns (~> 1.0)
@@ -80,7 +80,7 @@ GIT
       ronin-support (~> 1.0)
       ronin-web-spider (~> 0.2)
       thread-local (~> 1.0)
-      wordlist (~> 1.0)
+      wordlist (~> 1.0, >= 1.0.3)
 
 GIT
   remote: https://github.com/ronin-rb/ronin-repos.git
@@ -101,7 +101,7 @@ GIT
 
 GIT
   remote: https://github.com/ronin-rb/ronin-web.git
-  revision: e10cb9a8b3945420f89eae5e5cf13b045488c144
+  revision: 225f12a52a82eed63af62bf9a161ec0b49da90cf
   specs:
     ronin-web (1.0.2)
       mechanize (~> 2.0)
@@ -119,20 +119,20 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.6)
-      activesupport (= 7.0.6)
-    activerecord (7.0.6)
-      activemodel (= 7.0.6)
-      activesupport (= 7.0.6)
-    activesupport (7.0.6)
+    activemodel (7.0.7.2)
+      activesupport (= 7.0.7.2)
+    activerecord (7.0.7.2)
+      activemodel (= 7.0.7.2)
+      activesupport (= 7.0.7.2)
+    activesupport (7.0.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.4)
+    addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    async (2.6.2)
+    async (2.6.4)
       console (~> 1.10)
       fiber-annotation
       io-event (~> 1.1)
@@ -151,6 +151,7 @@ GEM
       async
     async-pool (0.4.0)
       async (>= 1.25)
+    base64 (0.1.1)
     chars (0.3.2)
     combinatorics (0.4.4)
     command_kit (0.4.0)
@@ -159,7 +160,7 @@ GEM
       highline (~> 2.0.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
-    console (1.17.2)
+    console (1.23.2)
       fiber-annotation
       fiber-local
     dead_end (4.0.0)
@@ -167,10 +168,10 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dry-configurable (1.0.1)
+    dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-core (1.0.0)
+    dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     dry-inflector (1.0.0)
@@ -179,7 +180,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-schema (1.13.2)
+    dry-schema (1.13.3)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
@@ -219,9 +220,9 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     io-console (0.6.0)
-    io-event (1.2.2)
-    irb (1.7.1)
-      reline (>= 0.3.0)
+    io-event (1.3.2)
+    irb (1.7.4)
+      reline (>= 0.3.6)
     json (2.6.3)
     kramdown (2.4.0)
       rexml
@@ -237,10 +238,10 @@ GEM
       rubyntlm (~> 0.6, >= 0.6.3)
       webrick (~> 1.7)
       webrobots (~> 0.1.2)
-    mime-types (3.4.1)
+    mime-types (3.5.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0218.1)
-    minitest (5.18.1)
+    mime-types-data (3.2023.0808)
+    minitest (5.19.0)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
@@ -248,7 +249,7 @@ GEM
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
     nio4r (2.5.9)
-    nokogiri (1.15.3-x86_64-linux)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     nokogiri-diff (0.2.0)
       nokogiri (~> 1.5)
@@ -266,36 +267,36 @@ GEM
       ast (~> 2.4.1)
       racc
     protocol-hpack (1.4.2)
-    protocol-http (0.24.4)
-    protocol-http1 (0.15.0)
+    protocol-http (0.24.7)
+    protocol-http1 (0.15.1)
       protocol-http (~> 0.22)
     protocol-http2 (0.15.1)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
-    public_suffix (5.0.1)
-    puma (6.3.0)
+    public_suffix (5.0.3)
+    puma (6.3.1)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.7)
-    rack-protection (3.0.6)
-      rack
+    rack (2.2.8)
+    rack-protection (3.1.0)
+      rack (~> 2.2, >= 2.2.4)
     rack-user_agent (0.5.3)
       rack (>= 1.5)
       woothee (>= 1.0.0)
     rainbow (3.1.1)
     rake (13.0.6)
-    rbs (3.1.0)
+    rbs (3.2.1)
     redcarpet (3.6.0)
-    redis (5.0.6)
+    redis (5.0.7)
       redis-client (>= 0.9.0)
-    redis-client (0.14.1)
+    redis-client (0.16.0)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
     regexp_parser (2.8.1)
-    reline (0.3.6)
+    reline (0.3.8)
       io-console (~> 0.5)
-    rexml (3.2.5)
+    rexml (3.2.6)
     robots (0.10.1)
     ronin-code-asm (1.0.0)
       ruby-yasm (~> 0.3)
@@ -320,7 +321,7 @@ GEM
       combinatorics (~> 0.4)
       hexdump (~> 1.0)
       uri-query_params (~> 0.8)
-    ronin-vulns (0.1.2)
+    ronin-vulns (0.1.3)
       ronin-core (~> 0.1)
       ronin-support (~> 1.0, >= 1.0.1)
     ronin-web-server (0.1.1)
@@ -339,11 +340,12 @@ GEM
     rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.5)
+    rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
-    rubocop (1.54.0)
+    rubocop (1.56.2)
+      base64 (~> 0.1.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -351,12 +353,12 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.28.0, < 2.0)
+      rubocop-ast (>= 1.28.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-ronin (0.2.2)
+    rubocop-ronin (0.2.4)
       rubocop (~> 1.0)
     ruby-nmap (1.0.1)
       command_mapper (~> 0.3)
@@ -377,20 +379,20 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sinatra (3.0.6)
+    sinatra (3.1.0)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
-      rack-protection (= 3.0.6)
+      rack-protection (= 3.1.0)
       tilt (~> 2.0)
-    sinatra-contrib (3.0.6)
+    sinatra-contrib (3.1.0)
       multi_json
       mustermann (~> 3.0)
-      rack-protection (= 3.0.6)
-      sinatra (= 3.0.6)
+      rack-protection (= 3.1.0)
+      sinatra (= 3.1.0)
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    sorbet-runtime (0.5.10898)
+    sorbet-runtime (0.5.10990)
     sord (6.0.0)
       commander (~> 4.5)
       parlour (~> 5.0)
@@ -399,7 +401,7 @@ GEM
       yard
     spidr (0.7.0)
       nokogiri (~> 1.3)
-    sqlite3 (1.6.3-x86_64-linux)
+    sqlite3 (1.6.4-x86_64-linux)
     stackprof (0.2.25)
     tdiff (0.3.4)
     thread-local (1.1.0)
@@ -416,12 +418,12 @@ GEM
     webrick (1.8.1)
     webrobots (0.1.2)
     woothee (1.13.0)
-    wordlist (1.0.0)
+    wordlist (1.0.3)
     yard (0.9.34)
     yard-spellcheck (0.1.5)
       ffi-hunspell (~> 0.2)
       yard (~> 0.6)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   x86_64-linux
