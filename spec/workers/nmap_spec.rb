@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'workers/nmap'
+require './workers/nmap'
 
 describe Workers::Nmap do
   describe "Params" do

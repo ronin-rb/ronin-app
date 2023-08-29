@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'workers/masscan'
+require './workers/masscan'
 
 describe Workers::Masscan do
   describe "Params" do

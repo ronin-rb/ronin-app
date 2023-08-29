@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'workers/spider'
+require './workers/spider'
 
 describe Workers::Spider do
   describe "Params" do

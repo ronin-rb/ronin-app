@@ -36,18 +36,6 @@ require 'ronin/payloads'
 require 'ronin/exploits'
 require 'ronin/support/encoding'
 
-# worker classes
-require 'workers/install_repo'
-require 'workers/update_repo'
-require 'workers/update_repos'
-require 'workers/remove_repo'
-require 'workers/purge_repos'
-require 'workers/nmap'
-require 'workers/masscan'
-require 'workers/import'
-require 'workers/spider'
-require 'workers/recon'
-
 # param validations
 require 'validations/install_repo_params'
 require 'validations/recon_params'
@@ -62,6 +50,18 @@ require 'schemas/payloads/build_schema'
 
 # helpers
 require 'helpers/html'
+
+# worker classes
+require './workers/install_repo'
+require './workers/update_repo'
+require './workers/update_repos'
+require './workers/remove_repo'
+require './workers/purge_repos'
+require './workers/nmap'
+require './workers/masscan'
+require './workers/import'
+require './workers/spider'
+require './workers/recon'
 
 #
 # Main app class.
