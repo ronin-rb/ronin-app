@@ -41,7 +41,7 @@ module Validations
     end
 
     rule(:scope) do
-      bad_values = value.select { |str| str !~ VALUE_REGEX }
+      bad_values = value.grep_v(VALUE_REGEX)
 
       unless bad_values.empty?
         key.failure("value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL: #{bad_values.join(', ')}")
