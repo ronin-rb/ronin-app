@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/recon_params'
+require 'ronin/app/validations/recon_params'
 
-describe Validations::ReconParams do
+describe Ronin::App::Validations::ReconParams do
   describe "rules" do
     describe ":scope" do
       it "must require a :scope key" do

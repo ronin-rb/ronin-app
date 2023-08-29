@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'schemas/payloads/build_schema'
+require 'ronin/app/schemas/payloads/build_schema'
 
 require 'ronin/payloads/payload'
 
-describe "Schemas::Payloads::BuildSchema" do
+describe "Ronin::App::Schemas::Payloads::BuildSchema" do
   context "when the given payload class has no params" do
     module TestBuildSchema
       class PayloadWithoutParams < Ronin::Payloads::Payload
@@ -12,7 +12,7 @@ describe "Schemas::Payloads::BuildSchema" do
 
     let(:payload_class) { TestBuildSchema::PayloadWithoutParams }
 
-    subject { Schemas::Payloads::BuildSchema(payload_class) }
+    subject { Ronin::App::Schemas::Payloads::BuildSchema(payload_class) }
 
     it "must build an empty schema" do
       expect(subject.call({})).to be_success
@@ -33,7 +33,7 @@ describe "Schemas::Payloads::BuildSchema" do
 
     let(:payload_class) { TestBuildSchema::PayloadWithParams }
 
-    subject { Schemas::Payloads::BuildSchema(payload_class) }
+    subject { Ronin::App::Schemas::Payloads::BuildSchema(payload_class) }
 
     it "must build an empty schema" do
       result = subject.call({params: {}})

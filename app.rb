@@ -37,19 +37,19 @@ require 'ronin/exploits'
 require 'ronin/support/encoding'
 
 # param validations
-require 'validations/install_repo_params'
-require 'validations/recon_params'
-require 'validations/nmap_params'
-require 'validations/masscan_params'
-require 'validations/import_params'
-require 'validations/spider_params'
+require 'ronin/app/validations/install_repo_params'
+require 'ronin/app/validations/recon_params'
+require 'ronin/app/validations/nmap_params'
+require 'ronin/app/validations/masscan_params'
+require 'ronin/app/validations/import_params'
+require 'ronin/app/validations/spider_params'
 
 # schema builders
-require 'schemas/payloads/encoders/encode_schema'
-require 'schemas/payloads/build_schema'
+require 'ronin/app/schemas/payloads/encoders/encode_schema'
+require 'ronin/app/schemas/payloads/build_schema'
 
 # helpers
-require 'helpers/html'
+require 'ronin/app/helpers/html'
 
 # worker classes
 require './workers/install_repo'
@@ -67,6 +67,8 @@ require './workers/recon'
 # Main app class.
 #
 class App < Sinatra::Base
+
+  include Ronin::App
 
   # ronin-app version
   VERSION = '0.1.0'

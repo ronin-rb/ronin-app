@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/masscan_params'
+require 'ronin/app/validations/masscan_params'
 
-describe Validations::MasscanParams do
+describe Ronin::App::Validations::MasscanParams do
   describe "rules" do
     describe ":ips" do
       it "must require an :ips key" do

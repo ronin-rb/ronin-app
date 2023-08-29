@@ -13,7 +13,7 @@ inherit_gem:
 # dry-types constructor requires an explicit block with one block argument
 Style/SymbolProc:
   Exclude:
-    - 'lib/types.rb'
+    - 'lib/ronin/app/types.rb'
 
 # $redis global variable is fine.
 Style/GlobalVars:
@@ -23,4 +23,4 @@ Style/GlobalVars:
 # in lib/schema we use Dry::Schema::Params() style class-methods
 Naming/MethodName:
   Exclude:
-    - 'lib/schemas/**/*'
+    - 'lib/ronin/app/schemas/**/*'

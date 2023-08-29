@@ -20,8 +20,8 @@
 
 require 'sidekiq'
 require 'dry-schema'
-require 'types'
-require 'types/import'
+require 'ronin/app/types'
+require 'ronin/app/types/import'
 
 require 'ronin/nmap/importer'
 require 'ronin/masscan/importer'
@@ -32,6 +32,7 @@ module Workers
   #
   class Import
 
+    include Ronin::App
     include Sidekiq::Worker
     sidekiq_options queue: :import, retry: false, backtrace: true
 

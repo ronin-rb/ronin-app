@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/nmap_params'
+require 'ronin/app/validations/nmap_params'
 
-describe Validations::NmapParams do
+describe Ronin::App::Validations::NmapParams do
   describe "rules" do
     describe ":targets" do
       it "must require a :targets key" do

@@ -1,17 +1,17 @@
 require 'spec_helper'
-require 'types/spider'
+require 'ronin/app/types/spider'
 
-describe Types::Spider do
-  describe "Types::Spider::HostList" do
-    subject { Types::Spider::HostList }
+describe Ronin::App::Types::Spider do
+  describe "Ronin::App::Types::Spider::HostList" do
+    subject { Ronin::App::Types::Spider::HostList }
 
     it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Types::CommaSeparatedList)
+      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
     end
   end
 
-  describe "Types::Spider::PortList" do
-    subject { Types::Spider::PortList }
+  describe "Ronin::App::Types::Spider::PortList" do
+    subject { Ronin::App::Types::Spider::PortList }
 
     context "when given a String" do
       let(:value1) { 42 }
@@ -37,19 +37,19 @@ describe Types::Spider do
     end
   end
 
-  describe "Types::Spider::URLList" do
-    subject { Types::Spider::URLList }
+  describe "Ronin::App::Types::Spider::URLList" do
+    subject { Ronin::App::Types::Spider::URLList }
 
     it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Types::CommaSeparatedList)
+      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
     end
   end
 
-  describe "Types::Spider::ExtList" do
-    subject { Types::Spider::ExtList }
+  describe "Ronin::App::Types::Spider::ExtList" do
+    subject { Ronin::App::Types::Spider::ExtList }
 
     it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Types::CommaSeparatedList)
+      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
     end
   end
 end

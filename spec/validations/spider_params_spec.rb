@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/spider_params'
+require 'ronin/app/validations/spider_params'
 
-describe Validations::SpiderParams do
+describe Ronin::App::Validations::SpiderParams do
   describe "rules" do
     context "when type is 'host'" do
       context "and 'target' is a valid host name" do

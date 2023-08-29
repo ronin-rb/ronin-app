@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/import_params'
+require 'ronin/app/validations/import_params'
 
-describe Validations::ImportParams do
+describe Ronin::App::Validations::ImportParams do
   describe "rules" do
     context "when type is 'nmap'" do
       context "and the path ends with '.xml'" do

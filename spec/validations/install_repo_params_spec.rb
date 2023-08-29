@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'validations/install_repo_params'
+require 'ronin/app/validations/install_repo_params'
 
-describe Validations::InstallRepoParams do
+describe Ronin::App::Validations::InstallRepoParams do
   let(:uri) { 'https://github.com/foo/bar.git' }
 
   describe "rules" do

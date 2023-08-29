@@ -18,33 +18,31 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'dry/schema'
+require 'ronin/app/types'
 
-require 'schemas/params_schema'
+module Ronin
+  module App
+    module Types
+      #
+      # Types for {Validations::Spider}.
+      #
+      module Spider
+        # The type of web spider targets
+        TargetType = Types::String.enum('host', 'domain', 'site')
 
-module Schemas
-  #
-  # Contains class methods for building dry-schemas for the `/payloads` routes.
-  #
-  module Payloads
-    #
-    # Builds a `Dry::Schema::Params` schema for the given payload class and for
-    # the `POST /payloads/.../build` route.
-    #
-    # @param [Class<Ronin::Payloads::Payload>] payload_class
-    #   The payload class to build the schema for.
-    #
-    # @return [Dry::Schema::Params]
-    #   The built schema.
-    #
-    def self.BuildSchema(payload_class)
-      # dynamically build the dry-schema based on the payload's params
-      params_schema = Schemas::ParamsSchema(payload_class.params)
+        # Represents a list of hosts.
+        HostList = Types::CommaSeparatedList
 
-      return Dry::Schema::Params() do
-        unless payload_class.params.empty?
-          required(:params).hash(params_schema)
+        # Represents a comma separated list of ports.
+        PortList = Types::Array.of(Types::Integer).constructor do |value|
+          value.split(/(?:,\s*|\s+)/).map(&:to_i)
         end
+
+        # Represents a list of URLs.
+        URLList = Types::CommaSeparatedList
+
+        # Represents a list of file exts.
+        ExtList = Types::CommaSeparatedList
       end
     end
   end

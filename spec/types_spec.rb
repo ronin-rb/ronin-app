@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'types'
+require 'ronin/app/types'
 
-describe Types do
+describe Ronin::App::Types do
   describe "Types::Args" do
     subject { described_class::Args }
 

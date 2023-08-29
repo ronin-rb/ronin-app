@@ -18,14 +18,18 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'types'
+require 'ronin/app/types'
 
-module Types
-  #
-  # Types for {Validations::Import} and {Workers::Import}.
-  #
-  module Import
-    # The type of file type
-    TypeType = Types::String.enum('nmap', 'masscan')
+module Ronin
+  module App
+    module Types
+      #
+      # Types for {Validations::Import} and {Workers::Import}.
+      #
+      module Import
+        # The type of file type
+        TypeType = Types::String.enum('nmap', 'masscan')
+      end
+    end
   end
 end

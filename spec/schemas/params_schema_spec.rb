@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'schemas/params_schema'
+require 'ronin/app/schemas/params_schema'
 
 require 'ronin/core/params/mixin'
 
-describe "Schemas::ParamsSchema" do
+describe "Ronin::App::Schemas::ParamsSchema" do
   context "when the given params are empty" do
     module TestParamsSchema
       class ClassWithoutParams
@@ -13,7 +13,7 @@ describe "Schemas::ParamsSchema" do
 
     let(:params_class) { TestParamsSchema::ClassWithoutParams }
 
-    subject { Schemas::ParamsSchema(params_class.params) }
+    subject { Ronin::App::Schemas::ParamsSchema(params_class.params) }
 
     it "must build an empty schema" do
       expect(subject.call({})).to be_success
@@ -36,7 +36,7 @@ describe "Schemas::ParamsSchema" do
 
     let(:params_class) { TestParamsSchema::ClassWithParams }
 
-    subject { Schemas::ParamsSchema(params_class.params) }
+    subject { Ronin::App::Schemas::ParamsSchema(params_class.params) }
 
     it "must build an empty schema" do
       result = subject.call({})

@@ -20,7 +20,7 @@
 
 require 'sidekiq'
 require 'dry-schema'
-require 'types'
+require 'ronin/app/types'
 
 require 'tempfile'
 require 'masscan/command'
@@ -32,6 +32,7 @@ module Workers
   #
   class Masscan
 
+    include Ronin::App
     include Sidekiq::Worker
     sidekiq_options queue: :scan, retry: false, backtrace: true
 

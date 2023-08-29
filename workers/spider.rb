@@ -20,7 +20,7 @@
 
 require 'sidekiq'
 require 'dry-schema'
-require 'types/spider'
+require 'ronin/app/types/spider'
 
 require 'ronin/web/spider'
 
@@ -30,6 +30,7 @@ module Workers
   #
   class Spider
 
+    include Ronin::App
     include Sidekiq::Worker
     sidekiq_options queue: :spider, retry: false, backtrace: true
 

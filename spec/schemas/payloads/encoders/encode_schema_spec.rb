@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'schemas/payloads/encoders/encode_schema'
+require 'ronin/app/schemas/payloads/encoders/encode_schema'
 
 require 'ronin/payloads/encoders/encoder'
 
-describe "Schemas::Payloads::Encoders::EncodeSchema" do
+describe "Ronin::App::Schemas::Payloads::Encoders::EncodeSchema" do
   context "when the given payload class has no params" do
     module TestEncodeSchema
       class EncoderWithoutParams < Ronin::Payloads::Encoders::Encoder
@@ -12,7 +12,9 @@ describe "Schemas::Payloads::Encoders::EncodeSchema" do
 
     let(:encoder_class) { TestEncodeSchema::EncoderWithoutParams }
 
-    subject { Schemas::Payloads::Encoders::EncodeSchema(encoder_class) }
+    subject do
+      Ronin::App::Schemas::Payloads::Encoders::EncodeSchema(encoder_class)
+    end
 
     it "must build an empty :params schema" do
       expect(subject.call({data: 'foo'})).to be_success
@@ -43,7 +45,9 @@ describe "Schemas::Payloads::Encoders::EncodeSchema" do
 
     let(:encoder_class) { TestEncodeSchema::EncoderWithParams }
 
-    subject { Schemas::Payloads::Encoders::EncodeSchema(encoder_class) }
+    subject do
+      Ronin::App::Schemas::Payloads::Encoders::EncodeSchema(encoder_class)
+    end
 
     it "must build an empty schema" do
       result = subject.call({data: 'foo', params: {}})

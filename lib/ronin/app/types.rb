@@ -20,38 +20,42 @@
 
 require 'dry/types'
 
-#
-# Types used by `ronin-app`.
-#
-module Types
-  include Dry::Types()
+module Ronin
+  module App
+    #
+    # Types used by `ronin-app`.
+    #
+    module Types
+      include Dry::Types()
 
-  # Represents an Array of argument values.
-  Args = Types::Array.of(Types::String).constructor do |value|
-    value.split
+      # Represents an Array of argument values.
+      Args = Types::Array.of(Types::String).constructor do |value|
+        value.split
+      end
+
+      # Represents a comma separated list of values.
+      CommaSeparatedList = Types::Array.of(Types::String).constructor do |value|
+        value.split(/(?:,\s*|\s+)/)
+      end
+
+      # Represents an HTTP method name.
+      HTTPMethod = Types::String.enum(
+        'COPY',
+        'DELETE',
+        'GET',
+        'HEAD',
+        'LOCK',
+        'MKCOL',
+        'MOVE',
+        'OPTIONS',
+        'PATCH',
+        'POST',
+        'PROPFIND',
+        'PROPPATCH',
+        'PUT',
+        'TRACE',
+        'UNLOCK'
+      )
+    end
   end
-
-  # Represents a comma separated list of values.
-  CommaSeparatedList = Types::Array.of(Types::String).constructor do |value|
-    value.split(/(?:,\s*|\s+)/)
-  end
-
-  # Represents an HTTP method name.
-  HTTPMethod = Types::String.enum(
-    'COPY',
-    'DELETE',
-    'GET',
-    'HEAD',
-    'LOCK',
-    'MKCOL',
-    'MOVE',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PROPFIND',
-    'PROPPATCH',
-    'PUT',
-    'TRACE',
-    'UNLOCK'
-  )
 end
