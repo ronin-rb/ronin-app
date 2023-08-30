@@ -54,16 +54,16 @@ module Ronin
 
       option :host, short: '-H',
                     value: {
-                      type:  String,
-                      usage: 'IP',
+                      type:    String,
+                      usage:   'IP',
                       default: 'localhost'
                     },
                     desc: 'The host to listen on'
 
       option :port, short: '-p',
                     value: {
-                      type: Integer,
-                      usage: 'PORT',
+                      type:    Integer,
+                      usage:   'PORT',
                       default: 1337
                     },
                     desc: 'The port to listen on'
