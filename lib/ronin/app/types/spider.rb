@@ -24,7 +24,7 @@ module Ronin
   module App
     module Types
       #
-      # Types for {Validations::Spider}.
+      # Types for {Validations::SpiderParams}.
       #
       module Spider
         # The type of web spider targets

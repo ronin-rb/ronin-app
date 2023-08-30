@@ -24,7 +24,7 @@ module Ronin
   module App
     module Types
       #
-      # Types for {Validations::Import} and {Workers::Import}.
+      # Types for {Validations::ImportParams} and {Workers::Import}.
       #
       module Import
         # The type of file type
