@@ -437,5 +437,5 @@ log "ronin-app is now ready to be ran!"
 echo
 echo "  $ ./scripts/server"
 echo
-echo "Then open http://localhost:5000 in your browser"
+echo "Then open http://localhost:1337 in your browser"
 echo

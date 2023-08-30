@@ -46,7 +46,7 @@ function fail()
 }
 
 environment="production"
-port=5000
+port=1337
 
 #
 # Print the --help usage.

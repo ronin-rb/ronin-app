@@ -26,8 +26,8 @@ RUN groupadd -g "${RONIN_GID}" ronin && \
     useradd -u "${RONIN_UID}" -g ronin -ms /bin/bash ronin
 USER ronin
 
-ENV PORT 5000
+ENV PORT 1337
 ENV HOST 0.0.0.0
-EXPOSE 5000
+EXPOSE 1337
 
 CMD ["bundle", "exec", "foreman", "start"]

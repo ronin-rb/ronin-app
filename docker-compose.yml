@@ -7,7 +7,7 @@ services:
     privileged: true
     command: bundle exec foreman start web
     ports:
-      - "5000:5000"
+      - "1337:1337"
     volumes:
       - "${HOME}/.config/ronin-db:/home/ronin/.config/ronin-db:z"
       - "${HOME}/.local/share/ronin-db:/home/ronin/.local/share/ronin-db:z"
@@ -20,7 +20,7 @@ services:
     links:
       - redis
     environment:
-      - PORT=5000
+      - PORT=1337
       - REDIS_HOST=redis
       - REDIS_PORT=6379
 

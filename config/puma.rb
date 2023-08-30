@@ -9,8 +9,8 @@
 threads_count = ENV.fetch('PUMA_THREADS',5).to_i
 threads threads_count, threads_count
 
-# Default to running on localhost:5000 since this is a local web ap.
-bind "tcp://#{ENV.fetch('HOST','localhost')}:#{ENV.fetch('PORT',3000)}"
+# Default to running on localhost:1337 since this is a local web ap.
+bind "tcp://#{ENV.fetch('HOST','localhost')}:#{ENV.fetch('PORT',1337)}"
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together

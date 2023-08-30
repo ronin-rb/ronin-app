@@ -14,7 +14,7 @@ Starts the local Ronin web application.
   The IP address to listen on. Defaults to `localhost` if not specified.
 
 `-p`, `--port` *PORT*
-  The port to listen on. Defaults to `4000` if not specified.
+  The port to listen on. Defaults to `1337` if not specified.
 
 `-V`, `--version`
   Prints the `ronin-app` version.

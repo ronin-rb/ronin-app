@@ -46,7 +46,7 @@ $ ./scripts/setup
 $ ./scripts/server
 ```
 
-Then visit http://localhost:5000/
+Then visit http://localhost:1337/
 
 ### docker-compose
 

@@ -39,7 +39,7 @@ module Ronin
     #
     #     -V, --version                    Prints the version and exits
     #     -H, --host IP                    The host to listen on (Default: localhost)
-    #     -p, --port PORT                  The port to listen on (Default: 4000)
+    #     -p, --port PORT                  The port to listen on (Default: 1337)
     #     -h, --help                       Print help information
     #
     # @api private
@@ -64,7 +64,7 @@ module Ronin
                     value: {
                       type: Integer,
                       usage: 'PORT',
-                      default: 4000
+                      default: 1337
                     },
                     desc: 'The port to listen on'
 
