@@ -6,7 +6,9 @@ gemspec
 gem 'ruby-masscan', '~> 0.3', github: 'postmodern/ruby-masscan',
                               branch: '0.3.0'
 
-gem 'puma', require: false
+# NOTE: do not auto-load gems which are meant to be executed at runtime
+gem 'puma',    require: false
+gem 'sidekiq', require: false
 
 #
 # Ronin dependencies
