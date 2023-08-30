@@ -1,0 +1,6 @@
+app.rb
+lib/**/*.rb
+workers/**/*.rb
+- 
+ChangeLog.md
+COPYING.txt
