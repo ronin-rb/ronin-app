@@ -1,0 +1,18 @@
+[Unit]
+PartOf=ronin-app.target
+StopWhenUnneeded=yes
+
+[Service]
+User=ronin-app
+WorkingDirectory=/srv/ronin-app
+Environment=PORT=1337
+Environment=PS=web.1
+ExecStart=/bin/bash -lc 'exec -a "ronin-app-web.1" bundle exec puma -C ./config/puma.rb -e production'
+Restart=always
+RestartSec=14s
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+KillMode=mixed
+TimeoutStopSec=5

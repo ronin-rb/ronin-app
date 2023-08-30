@@ -1,0 +1,5 @@
+[Unit]
+Wants=redis.service ronin-app-web.1.service ronin-app-sidekiq.1.service
+
+[Install]
+WantedBy=multi-user.target
