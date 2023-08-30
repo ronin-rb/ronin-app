@@ -46,6 +46,7 @@ function fail()
 }
 
 environment="production"
+port=5000
 
 #
 # Print the --help usage.
@@ -58,6 +59,7 @@ usage: ./scripts/server [OPTIONS]
 Options:
 	-e, --environment production|development
 	    			Sets the environment
+	-p, --port PORT		Sets the web server port
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -82,6 +84,10 @@ function parse_options()
 						return 1
 						;;
 				esac
+				;;
+			-p|--port)
+				port="$2"
+				shift 2
 				;;
 			-h|--help)
 				print_usage
@@ -112,11 +118,11 @@ if [[ -z "$(pgrep redis-server)" ]]; then
 	pids+=($!)
 fi
 
-log "Starting Web server on localhost:${PORT:-5000} and Sidekiq ..."
+log "Starting Web server on localhost:${port} and Sidekiq ..."
 
 case "$environment" in
-	production)	bundle exec foreman start ;;
-	development)	bundle exec foreman start -f Procfile.dev ;;
+	production)	bundle exec foreman start -p "$port" ;;
+	development)	bundle exec foreman start -p "$port" -f Procfile.dev ;;
 esac
 
 for pid in "${pids[@]}"; do
