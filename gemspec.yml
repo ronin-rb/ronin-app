@@ -34,7 +34,6 @@ dependencies:
   sinatra-flash: ~> 0.3
   sidekiq: ~> 7.0
   puma: ~> 6.0
-  foreman: ~> 0.80
   # Ronin dependencies:
   ronin-support: ~> 1.0
   ronin-core: ~> 0.2
