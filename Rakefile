@@ -30,5 +30,8 @@ require 'yard'
 YARD::Rake::YardocTask.new
 task :docs => :yard
 
+require 'kramdown/man/task'
+Kramdown::Man::Task.new
+
 require 'ronin/db/tasks'
 Ronin::DB::Tasks.new
