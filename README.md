@@ -88,18 +88,18 @@ $ ./scripts server -e development
 * `Procfile` - defines the various services of the app that will be started.
 * `Procfile.dev` - defines the various services of the app that will be started
   in development mode.
+* `config.ru` - The main entry point for `rackup`/`puma`.
+* `config/` - Contains all app configuration files.
+* `lib/ronin/app/helpers/` - Contains all Sinatra helper modules which define methods that
 * `app.rb` - The main Rack app that contains all of the HTTP routes.
 * `workers.rb` - The main entry point for Sidekiq which loads all worker classes
   from `lib/workers/`.
-* `config.ru` - The main entry point for `rackup`/`puma`.
-* `config/` - Contains all app configuration files.
-* `lib/helpers/` - Contains all Sinatra helper modules which define methods that
+* `workers/` - Contains all Sidekiq worker classes.
   can be called within the views.
-* `lib/types.rb` - Defines custom [dry-types].
-* `lib/types/` - Contains additional custom types.
-* `lib/validations/` - Contains [dry-validation]s logic for validating
+* `lib/ronin/app/types.rb` - Defines custom [dry-types].
+* `lib/ronin/app/types/` - Contains additional custom types.
+* `lib/ronin/app/validations/` - Contains [dry-validation]s logic for validating
   submitted HTTP params.
-* `lib/workers/` - Contains all Sidekiq worker classes.
 * `views/` - Contains all ERB views that are rendered by `app.rb`.
 * `views/layout.erb` - The main page layout view.
 * `public/` - Contains all static assets (images, CSS stylesheets, and
