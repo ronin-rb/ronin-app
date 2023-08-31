@@ -5,8 +5,8 @@ describe Ronin::App::Types::Spider do
   describe "Ronin::App::Types::Spider::HostList" do
     subject { Ronin::App::Types::Spider::HostList }
 
-    it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
+    it "must use Types::List" do
+      expect(subject).to be(Ronin::App::Types::List)
     end
   end
 
@@ -40,16 +40,16 @@ describe Ronin::App::Types::Spider do
   describe "Ronin::App::Types::Spider::URLList" do
     subject { Ronin::App::Types::Spider::URLList }
 
-    it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
+    it "must use Types::List" do
+      expect(subject).to be(Ronin::App::Types::List)
     end
   end
 
   describe "Ronin::App::Types::Spider::ExtList" do
     subject { Ronin::App::Types::Spider::ExtList }
 
-    it "must use Types::CommaSeparatedList" do
-      expect(subject).to be(Ronin::App::Types::CommaSeparatedList)
+    it "must use Types::List" do
+      expect(subject).to be(Ronin::App::Types::List)
     end
   end
 end

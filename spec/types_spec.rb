@@ -24,8 +24,8 @@ describe Ronin::App::Types do
     end
   end
 
-  describe "Types::CommaSeparatedList" do
-    subject { described_class::CommaSeparatedList }
+  describe "Types::List" do
+    subject { described_class::List }
 
     context "when given a String" do
       let(:value1) { 'foo' }
@@ -47,6 +47,34 @@ describe Ronin::App::Types do
         string = "#{value1} #{value2}"
 
         expect(subject.call(string)).to eq([value1, value2])
+      end
+    end
+  end
+
+  describe "Types::CommaSeparatedList" do
+    subject { described_class::CommaSeparatedList }
+
+    context "when given a String" do
+      let(:value1) { 'foo' }
+      let(:value2) { 'bar' }
+      let(:value3) { 'baz' }
+
+      it "must split a ',' separated list" do
+        string = "#{value1},#{value2}"
+
+        expect(subject.call(string)).to eq([value1, value2])
+      end
+
+      it "must split a ', ' separated list" do
+        string = "#{value1}, #{value2}"
+
+        expect(subject.call(string)).to eq([value1, value2])
+      end
+
+      it "must not split a ' ' separated list" do
+        string = "#{value1} #{value2}, #{value3}"
+
+        expect(subject.call(string)).to eq(["#{value1} #{value2}", value3])
       end
     end
   end

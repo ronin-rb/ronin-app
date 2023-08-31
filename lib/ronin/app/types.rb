@@ -33,9 +33,14 @@ module Ronin
         value.split
       end
 
+      # Represents a space or comma separated list of values.
+      List = Types::Array.of(Types::String).constructor do |value|
+        value.split(/(?:,\s*|\s+)/)
+      end
+
       # Represents a comma separated list of values.
       CommaSeparatedList = Types::Array.of(Types::String).constructor do |value|
-        value.split(/(?:,\s*|\s+)/)
+        value.split(/,\s*/)
       end
 
       # Represents an HTTP method name.

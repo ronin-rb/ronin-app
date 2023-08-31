@@ -31,7 +31,7 @@ module Ronin
         TargetType = Types::String.enum('host', 'domain', 'site')
 
         # Represents a list of hosts.
-        HostList = Types::CommaSeparatedList
+        HostList = Types::List
 
         # Represents a comma separated list of ports.
         PortList = Types::Array.of(Types::Integer).constructor do |value|
@@ -39,10 +39,10 @@ module Ronin
         end
 
         # Represents a list of URLs.
-        URLList = Types::CommaSeparatedList
+        URLList = Types::List
 
         # Represents a list of file exts.
-        ExtList = Types::CommaSeparatedList
+        ExtList = Types::List
       end
     end
   end
