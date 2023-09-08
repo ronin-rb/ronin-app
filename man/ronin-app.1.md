@@ -20,8 +20,11 @@ Starts the local Ronin web application.
   Specifies the `ronin-db` database name for the app to connect to.
 
 `--db-uri` *URI*
-  Specifies a database URI for the app to connect to
-  (ex: `mysql://user:password@host/ronin`).
+  Specifies a database URI for the app to connect to.
+
+  * **sqlite3**: `sqlite3:relative/path.db` or `sqlite3:///absolute/path.db`
+  * **mysql**: `mysql://user:password@host/database`
+  * **postgres**: `postgres://user:password@host/database`
 
 `-V`, `--version`
   Prints the `ronin-app` version.
