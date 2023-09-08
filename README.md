@@ -25,6 +25,29 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 * Small memory footprint (~184K).
 * Fast (~1.251ms response time).
 
+## Synopsis
+
+```
+Usage: ronin-app [options]
+
+Options:
+    -V, --version                    Prints the version and exits
+    -H, --host IP                    The host to listen on (Default: localhost)
+    -p, --port PORT                  The port to listen on (Default: 1337)
+        --db NAME                    The ronin-db database to connect to
+        --db-uri URI                 The ronin-db database URI to connect to
+    -h, --help                       Print help information
+
+Starts the ronin web app
+```
+
+```shell
+$ ronin-app
+```
+
+**Note:** the `ronin-app` command will automatically open a browser for
+http://localhost:1337, if ran in a real terminal.
+
 ## Requirements
 
 * [libsqlite3][sqlite]
@@ -32,31 +55,6 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 * [nmap]
 * [masscan]
 * [Ruby] >= 3.1.0
-
-## Setup
-
-```shell
-$ ./scripts/setup
-```
-
-## Start
-
-```shell
-$ ./scripts/server
-```
-
-Then visit http://localhost:1337/
-
-### docker-compose
-
-```shell
-$ docker-compose build --build-arg RONIN_UID=$(id -u) --build-arg RONIN_GID=$(id -g)
-$ docker-compose up
-```
-
-**Note:** In order for `docker-compose` to use [ronin-db] and [ronin-repos]
-files, in `~/.local/share/ronin-db` and `~/.cache/ronin-repos`, the Docker
-container user must have the same `UID` and `GID` as the host's user.
 
 ## Security
 
@@ -69,17 +67,25 @@ container user must have the same `UID` and `GID` as the host's user.
 1. [Fork It!](https://github.com/ronin-rb/ronin/fork)
 2. Clone It!
 3. `cd ronin-app`
-4. `bundle install`
+4. `./scripts/setup`
 5. `git checkout -b my_feature`
 6. Code It!
-7. `bundle exec rake spec`
-8. `git push origin my_feature`
+7. Test It - `bundle exec rake spec`
+8. Try It - `./scripts/server` then visit http://localhost:1337/
+9. Push It - `git push origin my_feature`
 
-### Development mode
+### docker-compose
+
+You can also use [docker-compose] to build and run the app:
 
 ```shell
-$ ./scripts server -e development
+$ docker-compose build --build-arg RONIN_UID=$(id -u) --build-arg RONIN_GID=$(id -g)
+$ docker-compose up
 ```
+
+**Note:** In order for `docker-compose` to use [ronin-db] and [ronin-repos]
+files, in `~/.local/share/ronin-db` and `~/.cache/ronin-repos`, the Docker
+container user must have the same `UID` and `GID` as the host's user.
 
 ### Directory Structure
 
