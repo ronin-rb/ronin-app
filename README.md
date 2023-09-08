@@ -87,6 +87,8 @@ $ docker-compose up
 files, in `~/.local/share/ronin-db` and `~/.cache/ronin-repos`, the Docker
 container user must have the same `UID` and `GID` as the host's user.
 
+[docker-compose]: https://docs.docker.com/compose/install/
+
 ### Directory Structure
 
 * `Gemfile` - defines all gem dependencies.
