@@ -41,6 +41,967 @@
     <a class="advanced-toggle">Advanced Options</a>
 
     <div class="advanced-content">
+      <h3>Target Options:</h3>
+
+      <div class="field">
+        <label class="label">Target File</label>
+
+        <div class="control">
+          <% if @errors && @errors[:target_file] %>
+            <input class="input is-danger" type="text" name="target_file" value="<%=hattr params[:target_file] %>">
+
+            <% @errors[:target_file].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="target_file" placeholder="/path/to/file" value="<%=hattr params[:target_file] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Random Targets</label>
+
+        <div class="control">
+          <% if @errors && @errors[:random_targets] %>
+            <input class="input is-danger" type="number" name="random_targets" value="<%=hattr params[:random_targets] %>">
+
+            <% @errors[:random_targets].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="random_targets" value="<%=hattr params[:random_targets] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Exclude Targets</label>
+
+        <div class="control">
+          <% if @errors && @errors[:exclude] %>
+            <input class="input is-danger" type="text" name="exclude" value="<%=hattr params[:exclude] %>">
+
+            <% @errors[:exclude].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="exclude" placeholder="target1,target2,..." value="<%=hattr params[:exclude] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Exclude File</label>
+
+        <div class="control">
+          <% if @errors && @errors[:exclude_file] %>
+            <input class="input is-danger" type="text" name="exclude_file" value="<%=hattr params[:exclude_file] %>">
+
+            <% @errors[:exclude_file].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="exclude_file" placeholder="/path/to/file" value="<%=hattr params[:exclude_file] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <h3>Host Discovery Options:</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Ping Scan:</label>
+        <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SYN Discovery:</label>
+        <input class="checkbox" type="checkbox" name="syn_discovery"<%= " checked" if params[:syn_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ACK Discovery:</label>
+        <input class="checkbox" type="checkbox" name="ack_discovery"<%= " checked" if params[:ack_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">UDP Discovery:</label>
+        <input class="checkbox" type="checkbox" name="udp_discovery"<%= " checked" if params[:udp_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SCTP Init Ping:</label>
+        <input class="checkbox" type="checkbox" name="sctp_init_ping"<%= " checked" if params[:sctp_init_ping] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ICMP Echo Discovery:</label>
+        <input class="checkbox" type="checkbox" name="icmp_echo_discovery"<%= " checked" if params[:icmp_echo_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ICMP Timestamp Discovery:</label>
+        <input class="checkbox" type="checkbox" name="icmp_timestamp_discovery"<%= " checked" if params[:icmp_timestamp_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ICMP Netmask Discovery:</label>
+        <input class="checkbox" type="checkbox" name="icmp_netmask_discovery"<%= " checked" if params[:icmp_netmask_discovery] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">IP Ping:</label>
+        <input class="checkbox" type="checkbox" name="ip_ping"<%= " checked" if params[:ip_ping] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ARP Ping:</label>
+        <input class="checkbox" type="checkbox" name="arp_ping"<%= " checked" if params[:arp_ping] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Traceroute:</label>
+        <input class="checkbox" type="checkbox" name="traceroute"<%= " checked" if params[:traceroute] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">No Reverse DNS Lookup:</label>
+        <input class="checkbox" type="checkbox" name="disable_dns"<%= " checked" if params[:disable_dns] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Always Reverse DNS Lookup:</label>
+        <input class="checkbox" type="checkbox" name="enable_dns"<%= " checked" if params[:enable_dns] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Resolve All:</label>
+        <input class="checkbox" type="checkbox" name="resolve_all"<%= " checked" if params[:resolve_all] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Unique:</label>
+        <input class="checkbox" type="checkbox" name="unique"<%= " checked" if params[:unique] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">DNS Servers</label>
+
+        <div class="control">
+          <% if @errors && @errors[:dns_servers] %>
+            <input class="input is-danger" type="text" name="dns_servers" value="<%=hattr params[:dns_servers] %>">
+
+            <% @errors[:dns_servers].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="dns_servers" placeholder="nameserver1,nameserver2,..." value="<%=hattr params[:dns_servers] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">System DNS:</label>
+        <input class="checkbox" type="checkbox" name="system_dns"<%= " checked" if params[:system_dns] %>>
+      </div>
+
+      <h3>Port Scanning Options:</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SYN Scan:</label>
+        <input class="checkbox" type="checkbox" name="syn_scan"<%= " checked" if params[:syn_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Connect Scan:</label>
+        <input class="checkbox" type="checkbox" name="connect_scan"<%= " checked" if params[:connect_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">UDP Scan:</label>
+        <input class="checkbox" type="checkbox" name="udp_scan"<%= " checked" if params[:udp_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SCTP Init Scan:</label>
+        <input class="checkbox" type="checkbox" name="sctp_init_scan"<%= " checked" if params[:sctp_init_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">NULL Scan:</label>
+        <input class="checkbox" type="checkbox" name="null_scan"<%= " checked" if params[:null_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">FIN Scan:</label>
+        <input class="checkbox" type="checkbox" name="fin_scan"<%= " checked" if params[:fin_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">XMAS Scan:</label>
+        <input class="checkbox" type="checkbox" name="xmas_scan"<%= " checked" if params[:xmas_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">ACK Scan:</label>
+        <input class="checkbox" type="checkbox" name="ack_scan"<%= " checked" if params[:ack_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Window Scan:</label>
+        <input class="checkbox" type="checkbox" name="window_scan"<%= " checked" if params[:window_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Maimon Scan:</label>
+        <input class="checkbox" type="checkbox" name="maimon_scan"<%= " checked" if params[:maimon_scan] %>>
+      </div>
+
+      <h4>Scan Flags</h4>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SYN:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[syn]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:syn] %>>
+
+        <label class="has-text-weight-semibold">ACK:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[ack]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:ack] %>>
+
+        <label class="has-text-weight-semibold">PSH:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[psh]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:psh] %>>
+
+        <label class="has-text-weight-semibold">URG:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[urg]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:urg] %>>
+
+        <label class="has-text-weight-semibold">RST:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[rst]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:rst] %>>
+
+        <label class="has-text-weight-semibold">FIN:</label>
+        <input class="checkbox" type="checkbox" name="scan_flags[fin]"<%= " checked" if params[:scan_flags] && params[:scan_flags][:fin] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SCTP Cookie Echo Scan:</label>
+        <input class="checkbox" type="checkbox" name="sctp_cookie_echo_scan"<%= " checked" if params[:sctp_cookie_echo_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Idle Scan</label>
+
+        <div class="control">
+          <% if @errors && @errors[:idle_scan] %>
+            <input class="input is-danger" type="text" name="idle_scan" value="<%=hattr params[:idle_scan] %>">
+
+            <% @errors[:idle_scan].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="idle_scan" placeholder="HOST:PORT" value="<%=hattr params[:idle_scan] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">IP Scan:</label>
+        <input class="checkbox" type="checkbox" name="ip_scan"<%= " checked" if params[:ip_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">FTP Bounce Scan</label>
+
+        <div class="control">
+          <% if @errors && @errors[:ftp_bounce_scan] %>
+            <input class="input is-danger" type="text" name="ftp_bounce_scan" value="<%=hattr params[:ftp_bounce_scan] %>">
+
+            <% @errors[:ftp_bounce_scan].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="ftp_bounce_scan" placeholder="ftp.example.com" value="<%=hattr params[:ftp_bounce_scan] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <h3>Scan Order Options:</h3>
+
+      <div class="field">
+        <label class="label">Exclude Ports</label>
+
+        <div class="control">
+          <% if @errors && @errors[:exclude_ports] %>
+            <input class="input is-danger" type="text" name="exclude_ports" value="<%=hattr params[:exclude_ports] %>">
+
+            <% @errors[:exclude_ports].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="exclude_ports" placeholder="port1,port2,..." value="<%=hattr params[:exclude_ports] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Fast mode:</label>
+        <input class="checkbox" type="checkbox" name="fast"<%= " checked" if params[:fast] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Consecutively:</label>
+        <input class="checkbox" type="checkbox" name="consecutively"<%= " checked" if params[:consecutively] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Top Ports</label>
+
+        <div class="control">
+          <% if @errors && @errors[:top_ports] %>
+            <input class="input is-danger" type="number" name="top_ports" value="<%=hattr params[:top_ports] %>">
+
+            <% @errors[:top_ports].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="top_ports" value="<%=hattr params[:top_ports] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Port Ratio</label>
+
+        <div class="control">
+          <% if @errors && @errors[:port_ratio] %>
+            <input class="input is-danger" type="text" name="port_ratio" value="<%=hattr params[:port_ratio] %>">
+
+            <% @errors[:port_ratio].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="port_ratio" placeholder="0.0 - 1.0" value="<%=hattr params[:port_ratio] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <h3>Service Scan Options</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Service Scan:</label>
+        <input class="checkbox" type="checkbox" name="service_scan"<%= " checked" if params[:service_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">All Ports:</label>
+        <input class="checkbox" type="checkbox" name="all_ports"<%= " checked" if params[:all_ports] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Version Intensity</label>
+
+        <div class="control">
+          <select name="nsock_engine">
+            <option<%= " selected" unless params[:version_intensity] %>></option>
+            <% (0..9).each do |level| %>
+            <option value="<%= level %>"<%= " selected" if params[:version_intensity] == level.to_s %>><%= level %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Light Version Scan:</label>
+        <input class="checkbox" type="checkbox" name="version_light"<%= " checked" if params[:version_light] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">All Version Scan:</label>
+        <input class="checkbox" type="checkbox" name="version_all"<%= " checked" if params[:version_all] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Version Scan Trace:</label>
+        <input class="checkbox" type="checkbox" name="version_trace"<%= " checked" if params[:version_trace] %>>
+      </div>
+
+      <h3>OS Detection Options</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">OS Fingerprint:</label>
+        <input class="checkbox" type="checkbox" name="os_fingerprint"<%= " checked" if params[:os_fingerprint] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Limit OS Scan:</label>
+        <input class="checkbox" type="checkbox" name="limit_os_scan"<%= " checked" if params[:limit_os_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Max OS Scan:</label>
+        <input class="checkbox" type="checkbox" name="max_os_scan"<%= " checked" if params[:max_os_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Max OS Scan:</label>
+        <input class="checkbox" type="checkbox" name="max_os_scan"<%= " checked" if params[:max_os_scan] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Max OS Tries:</label>
+        <input class="checkbox" type="checkbox" name="max_os_tries"<%= " checked" if params[:max_os_tries] %>>
+      </div>
+
+      <h3>Timing and Performance Options</h3>
+
+      <div class="field">
+        <label class="label">Minimum Host Group:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:min_host_group] %>
+            <input class="input is-danger" type="number" name="min_host_group" value="<%=hattr params[:min_host_group] %>">
+
+            <% @errors[:min_host_group].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="min_host_group" value="<%=hattr params[:min_host_group] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Maximum Host Group:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_host_group] %>
+            <input class="input is-danger" type="number" name="max_host_group" value="<%=hattr params[:max_host_group] %>">
+
+            <% @errors[:max_host_group].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="max_host_group" value="<%=hattr params[:max_host_group] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Minimum Parallelism:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:min_parallelism] %>
+            <input class="input is-danger" type="number" name="min_parallelism" value="<%=hattr params[:min_parallelism] %>">
+
+            <% @errors[:min_parallelism].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="min_parallelism" value="<%=hattr params[:min_parallelism] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Maximum Parallelism:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_parallelism] %>
+            <input class="input is-danger" type="number" name="max_parallelism" value="<%=hattr params[:max_parallelism] %>">
+
+            <% @errors[:max_parallelism].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="max_parallelism" value="<%=hattr params[:max_parallelism] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Minimum RTT Timeout:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:min_rtt_timeout] %>
+            <input class="input is-danger" type="text" name="min_rtt_timeout" value="<%=hattr params[:min_rtt_timeout] %>">
+
+            <% @errors[:min_rtt_timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="min_rtt_timeout" placeholder="100ms" value="<%=hattr params[:min_rtt_timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Maximum RTT Timeout:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_rtt_timeout] %>
+            <input class="input is-danger" type="text" name="max_rtt_timeout" value="<%=hattr params[:max_rtt_timeout] %>">
+
+            <% @errors[:max_rtt_timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="max_rtt_timeout" placeholder="100ms" value="<%=hattr params[:max_rtt_timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Initial RTT Timeout:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:initial_rtt_timeout] %>
+            <input class="input is-danger" type="text" name="initial_rtt_timeout" value="<%=hattr params[:initial_rtt_timeout] %>">
+
+            <% @errors[:initial_rtt_timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="initial_rtt_timeout" placeholder="100ms" value="<%=hattr params[:initial_rtt_timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Max Retries:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_retries] %>
+            <input class="input is-danger" type="number" name="max_retries" value="<%=hattr params[:max_retries] %>">
+
+            <% @errors[:max_retries].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="max_retries" value="<%=hattr params[:max_retries] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Host Timeout:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:host_timeout] %>
+            <input class="input is-danger" type="text" name="host_timeout" value="<%=hattr params[:host_timeout] %>">
+
+            <% @errors[:host_timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="host_timeout" placeholder="10s" value="<%=hattr params[:host_timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Script Timeout:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:script_timeout] %>
+            <input class="input is-danger" type="text" name="script_timeout" value="<%=hattr params[:script_timeout] %>">
+
+            <% @errors[:script_timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="script_timeout" placeholder="10s" value="<%=hattr params[:script_timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Scan Delay:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:scan_delay] %>
+            <input class="input is-danger" type="text" name="scan_delay" value="<%=hattr params[:scan_delay] %>">
+
+            <% @errors[:scan_delay].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="scan_delay" placeholder="1s" value="<%=hattr params[:scan_delay] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Maximum Scan Delay:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_scan_delay] %>
+            <input class="input is-danger" type="text" name="max_scan_delay" value="<%=hattr params[:max_scan_delay] %>">
+
+            <% @errors[:max_scan_delay].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="max_scan_delay" placeholder="10s" value="<%=hattr params[:max_scan_delay] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Minimum Rate:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:min_rate] %>
+            <input class="input is-danger" type="number" name="min_rate" value="<%=hattr params[:min_rate] %>">
+
+            <% @errors[:min_rate].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="min_rate" value="<%=hattr params[:min_rate] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Maximum Rate:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:max_rate] %>
+            <input class="input is-danger" type="number" name="max_rate" value="<%=hattr params[:max_rate] %>">
+
+            <% @errors[:max_rate].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="max_rate" value="<%=hattr params[:max_rate] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Defeat RST Ratelimit:</label>
+        <input class="checkbox" type="checkbox" name="defeat_rst_ratelimit"<%= " checked" if params[:defeat_rst_ratelimit] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Defeat ICMP Ratelimit:</label>
+        <input class="checkbox" type="checkbox" name="defeat_icmp_ratelimit"<%= " checked" if params[:defeat_icmp_ratelimit] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">NSock Engine:</label>
+
+        <div class="control">
+          <select name="nsock_engine">
+            <option<%= " selected" unless params[:nsock_engine] %>></option>
+            <option value="iocp"<%= " selected" if params[:nsock_engine] == 'iocp' %>>iocp</option>
+            <option value="epoll"<%= " selected" if params[:nsock_engine] == 'epoll' %>>epoll</option>
+            <option value="kqueue"<%= " selected" if params[:nsock_engine] == 'kqueue' %>>kqueue</option>
+            <option value="poll"<%= " selected" if params[:nsock_engine] == 'poll' %>>poll</option>
+            <option value="select"<%= " selected" if params[:nsock_engine] == 'select' %>>select</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Timing Template:</label>
+
+        <div class="control">
+          <select name="timing_template">
+            <option<%= " selected" unless params[:timing_template] %>></option>
+            <option value="paranoid"<%= " selected" if params[:timing_template] == 'paranoid' %>>paranoid</option>
+            <option value="sneaky"<%= " selected" if params[:timing_template] == 'sneaky' %>>sneaky</option>
+            <option value="polite"<%= " selected" if params[:timing_template] == 'polite' %>>polite</option>
+            <option value="normal"<%= " selected" if params[:timing_template] == 'normal' %>>normal</option>
+            <option value="aggressive"<%= " selected" if params[:timing_template] == 'aggressive' %>>aggressive</option>
+            <option value="insane"<%= " selected" if params[:timing_template] == 'insane' %>>insane</option>
+          </select>
+        </div>
+      </div>
+
+      <h3>Evasion and Spoofing Options</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Packet Fragments:</label>
+        <input class="checkbox" type="checkbox" name="packet_fragments"<%= " checked" if params[:packet_fragments] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">MTU:</label>
+        <input class="checkbox" type="checkbox" name="mtu"<%= " checked" if params[:mtu] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Decoys:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:decoys] %>
+            <input class="input is-danger" type="text" name="decoys" value="<%=hattr params[:decoys] %>">
+
+            <% @errors[:decoys].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="decoys" placeholder="decoy1,decoy2,..." value="<%=hattr params[:decoys] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Spoof Source Address:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:spoof] %>
+            <input class="input is-danger" type="text" name="spoof" value="<%=hattr params[:spoof] %>">
+
+            <% @errors[:spoof].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="spoof" placeholder="IP" value="<%=hattr params[:spoof] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Network Interface:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:interface] %>
+            <input class="input is-danger" type="text" name="interface" value="<%=hattr params[:interface] %>">
+
+            <% @errors[:interface].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="interface" placeholder="enp1s0" value="<%=hattr params[:interface] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Source Port:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:source_port] %>
+            <input class="input is-danger" type="text" name="source_port" value="<%=hattr params[:source_port] %>">
+
+            <% @errors[:source_port].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="source_port" placeholder="1024" value="<%=hattr params[:source_port] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Proxies:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:proxies] %>
+            <input class="input is-danger" type="text" name="proxies" value="<%=hattr params[:proxies] %>">
+
+            <% @errors[:proxies].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="proxies" placeholder="http://proxy.com/" value="<%=hattr params[:proxies] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Data:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:data] %>
+            <input class="input is-danger" type="text" name="data" value="<%=hattr params[:data] %>">
+
+            <% @errors[:data].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="data" placeholder="0x1234567890ABCDEF" value="<%=hattr params[:data] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Data String:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:data_string] %>
+            <input class="input is-danger" type="text" name="data_string" value="<%=hattr params[:data_string] %>">
+
+            <% @errors[:data_string].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="data_string" placeholder="Hack the planet!" value="<%=hattr params[:data_string] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Data Length:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:data_length] %>
+            <input class="input is-danger" type="text" name="data_length" value="<%=hattr params[:data_length] %>">
+
+            <% @errors[:data_length].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="data_length" placeholder="NUM" value="<%=hattr params[:data_length] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">IP Options:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:ip_options] %>
+            <input class="input is-danger" type="text" name="ip_options" value="<%=hattr params[:ip_options] %>">
+
+            <% @errors[:ip_options].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="ip_options" placeholder="IP options" value="<%=hattr params[:ip_options] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">TTL:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:ttl] %>
+            <input class="input is-danger" type="number" name="ttl" value="<%=hattr params[:ttl] %>">
+
+            <% @errors[:ttl].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="ttl" placeholder="NUM" value="<%=hattr params[:ttl] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Randomize Hosts:</label>
+        <input class="checkbox" type="checkbox" name="randomize_hosts"<%= " checked" if params[:randomize_hosts] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Spoof MAC Address:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:spoof_mac] %>
+            <input class="input is-danger" type="text" name="spoof_mac" value="<%=hattr params[:spoof_mac] %>">
+
+            <% @errors[:spoof_mac].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="spoof_mac" placeholder="MAC address" value="<%=hattr params[:spoof_mac] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Bad Checksum:</label>
+        <input class="checkbox" type="checkbox" name="bad_checksum"<%= " checked" if params[:bad_checksum] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">SCTP Adler32:</label>
+        <input class="checkbox" type="checkbox" name="sctp_adler32"<%= " checked" if params[:sctp_adler32] %>>
+      </div>
+
+      <h3>Misc Options</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">IPv6 Scanning:</label>
+        <input class="checkbox" type="checkbox" name="ipv6"<%= " checked" if params[:ipv6] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Enable Everything:</label>
+        <input class="checkbox" type="checkbox" name="all"<%= " checked" if params[:all] %>>
+      </div>
+
+      <div class="field">
+        <label class="label">Nmap Data Directory:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:nmap_datadir] %>
+            <input class="input is-danger" type="text" name="nmap_datadir" value="<%=hattr params[:nmap_datadir] %>">
+
+            <% @errors[:nmap_datadir].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="nmap_datadir" placeholder="/path/to/dir" value="<%=hattr params[:nmap_datadir] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Service DB File:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:servicedb] %>
+            <input class="input is-danger" type="text" name="servicedb" value="<%=hattr params[:servicedb] %>">
+
+            <% @errors[:servicedb].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="servicedb" placeholder="/path/to/file" value="<%=hattr params[:servicedb] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Version DB File:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:versiondb] %>
+            <input class="input is-danger" type="text" name="versiondb" value="<%=hattr params[:versiondb] %>">
+
+            <% @errors[:versiondb].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="versiondb" placeholder="/path/to/file" value="<%=hattr params[:versiondb] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Send Raw Ethernet Packets:</label>
+        <input class="checkbox" type="checkbox" name="send_eth"<%= " checked" if params[:send_eth] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Send Raw IP Packets:</label>
+        <input class="checkbox" type="checkbox" name="send_ip"<%= " checked" if params[:send_ip] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Privileged Mode:</label>
+        <input class="checkbox" type="checkbox" name="privileged"<%= " checked" if params[:privileged] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Unprivileged Mode:</label>
+        <input class="checkbox" type="checkbox" name="unprivileged"<%= " checked" if params[:unprivileged] %>>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Release Memory:</label>
+        <input class="checkbox" type="checkbox" name="release_memory"<%= " checked" if params[:release_memory] %>>
+      </div>
     </div>
   </div>
 </form>
