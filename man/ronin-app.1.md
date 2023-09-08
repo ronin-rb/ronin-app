@@ -16,6 +16,13 @@ Starts the local Ronin web application.
 `-p`, `--port` *PORT*
   The port to listen on. Defaults to `1337` if not specified.
 
+`--db` *NAME*
+  Specifies the `ronin-db` database name for the app to connect to.
+
+`--db-uri` *URI*
+  Specifies a database URI for the app to connect to
+  (ex: `mysql://user:password@host/ronin`).
+
 `-V`, `--version`
   Prints the `ronin-app` version.
 

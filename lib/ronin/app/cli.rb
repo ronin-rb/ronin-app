@@ -20,6 +20,7 @@
 
 require 'ronin/core/cli/command'
 require 'ronin/core/cli/logging'
+require 'ronin/db/config_file'
 require 'ronin/app/root'
 require 'ronin/app/version'
 
@@ -39,6 +40,8 @@ module Ronin
     #
     #     -V, --version                    Prints the version and exits
     #     -H, --host IP                    The host to listen on (Default: localhost)
+    #         --db NAME                    The ronin-db database to connect to
+    #         --db-uri URI                 The ronin-db database URI to connect to
     #     -p, --port PORT                  The port to listen on (Default: 1337)
     #     -h, --help                       Print help information
     #
@@ -67,6 +70,18 @@ module Ronin
                       default: 1337
                     },
                     desc: 'The port to listen on'
+
+      option :db, value: {
+                    type:  DB::ConfigFile.load.keys,
+                    usage: 'NAME'
+                  },
+                  desc: 'The ronin-db database to connect to'
+
+      option :db_uri, value: {
+                        type:  String,
+                        usage: 'URI'
+                      },
+                      desc: 'The ronin-db database URI to connect to'
 
       description 'Starts the ronin web app'
 
@@ -146,7 +161,7 @@ module Ronin
         command = %w[puma -C ./config/puma.rb -e production]
         command << '-b' << "tcp://#{options[:host]}:#{options[:port]}"
 
-        Process.spawn(*command)
+        Process.spawn(app_env,*command)
       end
 
       #
@@ -156,7 +171,25 @@ module Ronin
       #   The PID of the `sidekiq` process.
       #
       def start_sidekiq
-        Process.spawn("sidekiq -C ./config/sidekiq.yml -e production -r ./config/sidekiq.rb -r ./workers.rb")
+        Process.spawn(app_env,"sidekiq -C ./config/sidekiq.yml -e production -r ./config/sidekiq.rb -r ./workers.rb")
+      end
+
+      #
+      # The environment variables Hash for the app processes.
+      #
+      # @return [Hash{String => String}]
+      #   The env Hash to pass into the app processes.
+      #
+      def app_env
+        env = {}
+
+        if options[:db_uri]
+          env['DATABASE_URL'] = options[:db_uri]
+        elsif options[:db]
+          env['DATABASE_NAME'] = options[:db].to_s
+        end
+
+        return env
       end
 
     end
