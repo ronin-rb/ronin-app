@@ -68,7 +68,7 @@ container user must have the same `UID` and `GID` as the host's user.
 
 1. [Fork It!](https://github.com/ronin-rb/ronin/fork)
 2. Clone It!
-3. `cd ronin`
+3. `cd ronin-app`
 4. `bundle install`
 5. `git checkout -b my_feature`
 6. Code It!
