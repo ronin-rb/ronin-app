@@ -26,7 +26,7 @@ describe Ronin::App::Validations::NmapParams do
           result = subject.call({ports: "1,2,,,,3"})
 
           expect(result).to be_failure
-          expect(result.errors[:ports]).to eq(["invalid nmap port list"])
+          expect(result.errors[:ports]).to eq(["is in invalid format"])
         end
       end
     end
