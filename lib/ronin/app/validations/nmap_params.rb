@@ -43,7 +43,6 @@ module Ronin
           optional(:exclude_file).maybe(:string)
 
           # HOST DISCOVERY:
-          optional(:list).maybe(:bool)
           optional(:ping).maybe(:bool)
           optional(:skip_discovery).maybe(:bool)
           optional(:syn_discovery).maybe(Types::Bool | Types::Nmap::PortRangeList)
@@ -95,7 +94,6 @@ module Ronin
           optional(:version_light).maybe(:bool)
           optional(:version_all).maybe(:bool)
           optional(:version_trace).maybe(:bool)
-          optional(:rpc_scan).maybe(:bool)
 
           # OS DETECTION:
           optional(:os_fingerprint).maybe(:bool)
@@ -125,7 +123,7 @@ module Ronin
 
           # FIREWALL/IDS EVASION AND SPOOFING:
           optional(:packet_fragments).maybe(:bool)
-          optional(:mtu).maybe(:bool)
+          optional(:mtu).maybe(Types::Bool | Types::Integer)
           optional(:decoys).maybe(Types::List)
           optional(:spoof).maybe(:string)
           optional(:interface).maybe(:string)

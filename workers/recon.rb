@@ -37,7 +37,7 @@ module Workers
     # The accepted JSON params which will be passed to {Recon#perform}.
     Params = Dry::Schema::JSON() do
       required(:scope).array(:string).each(:filled?)
-      optional(:max_depth).value(:integer)
+      optional(:max_depth).maybe(:integer)
     end
 
     #
