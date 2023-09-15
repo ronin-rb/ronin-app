@@ -6,4 +6,8 @@ database = if    ENV['DATABASE_URL']  then ENV['DATABASE_URL']
            else                            :default
            end
 
-Ronin::DB.connect(database)
+pool_size = if ENV['DB_POOL'] then ENV['DB_POOL'].to_i
+            else                   4
+            end
+
+Ronin::DB.connect(database, pool: pool_size)
