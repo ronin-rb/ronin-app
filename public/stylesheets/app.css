@@ -38,6 +38,7 @@ nav#top-menu img {
 }
 
 button#dark-mode-toggle {
+	cursor: pointer;
 	background: none;
 	border: none;
 }
