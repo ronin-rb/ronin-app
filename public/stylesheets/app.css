@@ -155,3 +155,8 @@ body.dark-mode main strong,
 body.dark-mode main a {
 	color: var(--dark-mode-fg-color);
 }
+
+.label.is-required::after {
+	content: ' *';
+	color: red;
+  }
