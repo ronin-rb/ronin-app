@@ -2,7 +2,7 @@
 
 <form action="/import" method="post">
   <div class="field has-addons">
-    <div class="control">
+    <div class="control is-required">
       <div class="select">
         <select name="type">
           <option value="nmap" <%= "selected" if params[:type] == 'nmap' %>>Nmap</option>

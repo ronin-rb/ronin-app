@@ -34,7 +34,6 @@ module Ronin
 
         params do
           required(:targets).filled(Types::Args).each(:filled?)
-          optional(:ports).maybe(Types::Nmap::PortRangeList)
 
           # TARGET SPECIFICATIONS:
           optional(:target_file).maybe(:string)

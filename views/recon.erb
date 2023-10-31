@@ -4,7 +4,7 @@
   <div class="field">
     <label class="label">Scope</label>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:scope] %>
         <textarea class="textarea is-danger" name="scope" required><%=h params[:scope] %></textarea>
 

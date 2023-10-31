@@ -2,7 +2,7 @@
 
 <form action="/spider" method="post">
   <div class="field has-addons">
-    <div class="control">
+    <div class="control is-required">
       <div class="select">
         <select name="type">
           <option value="host" <%= "selected" if params[:type] == 'host' %>>Host</option>
@@ -23,7 +23,7 @@
         <input class="input" type="text" name="target" placeholder="example.com OR www.example.com OR https://example.com/" value="<%=hattr params[:target] %>">
       <% end %>
     </div>
-  </div>
+  </div>  
 
   <div class="field">
     <button type="submit" class="button is-primary">Spider</button>

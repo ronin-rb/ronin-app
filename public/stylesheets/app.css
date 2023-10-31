@@ -1,146 +1,147 @@
 :root {
-	--bg-color: white;
-	--fg-color: black;
-	--dark-mode-bg-color: #0f0f1b;
-	--dark-mode-fg-color: white;
+  --bg-color: white;
+  --fg-color: black;
+  --dark-mode-bg-color: #0f0f1b;
+  --dark-mode-fg-color: white;
 }
 
 body {
-	width: 100%;
-	height: 100%;
-	color: var(--fg-color);
-	background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
 }
 
 main {
-	clear: both;
+  clear: both;
 }
 
 header {
-	width: 100vw;
-	background-color: black;
+  width: 100vw;
+  background-color: black;
 }
 
 nav#top-menu {
-	margin-left: auto;
-	padding: 0.5em 0.5em;
+  margin-left: auto;
+  padding: 0.5em 0.5em;
 }
 
 nav#top-menu .level-item {
-	padding-left: 0.5em;
-	margin-right: 0.5em;
+  padding-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 nav#top-menu svg,
 nav#top-menu img {
-	width: 2.5em;
-	height: 2.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 button#dark-mode-toggle {
-	cursor: pointer;
-	background: none;
-	border: none;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 button#dark-mode-toggle svg#dark-mode-sun {
-	display: inline;
+  display: inline;
 }
 
 button#dark-mode-toggle svg#dark-mode-moon {
-	display: none;
+  display: none;
 }
 
 #logo {
-	margin: 0.5em;
+  margin: 0.5em;
 }
 
 nav.navbar {
-	font-size: 140%;
+  font-size: 140%;
 }
 
-nav.navbar a.navbar-item, nav.navbar a.navbar-link {
-	color: white;
-	font-weight: bold;
+nav.navbar a.navbar-item,
+nav.navbar a.navbar-link {
+  color: white;
+  font-weight: bold;
 }
 
 nav.navbar a:hover {
-	color: black;
+  color: black;
 }
 
 main > nav.breadcrumb {
-	margin-top: 1em;
+  margin-top: 1em;
 }
 
 main > nav.breadcrumb a {
-	color: var(--fg-color);
+  color: var(--fg-color);
 }
 
 .content {
-	margin-top: 1em;
-	margin-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .content .column {
-	height: 100%;
+  height: 100%;
 }
 
 .content a {
-	color: var(--fg-color);
-	font-weight: bold;
-	text-decoration: underline;
+  color: var(--fg-color);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .content a:hover {
-	color: var(--bg-color);
-	background-color: var(--fg-color);
-	text-decoration: none;
+  color: var(--bg-color);
+  background-color: var(--fg-color);
+  text-decoration: none;
 }
 
 .content pre {
-	color: var(--bg-color);
-	background-color: var(--fg-color);
-	padding: 1em 1.5em;
-	margin-bottom: 1em;
-	overflow-x: auto;
+  color: var(--bg-color);
+  background-color: var(--fg-color);
+  padding: 1em 1.5em;
+  margin-bottom: 1em;
+  overflow-x: auto;
 }
 
 .content .advanced {
-	transition: all 0.2s ease-in-out;
-	overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .content .advanced > a.advanced-toggle {
-	border-bottom: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
 }
 
 .content .advanced.hidden > .advanced-content {
-	display: none;
+  display: none;
 }
 
 footer.footer {
-	clear: both;
-	margin-top: 10rem;
-	color: gray;
-	background-color: var(--fg-color);
-	font-size: medium;
-	background-color: black;
+  clear: both;
+  margin-top: 10rem;
+  color: gray;
+  background-color: var(--fg-color);
+  font-size: medium;
+  background-color: black;
 }
 
 body.dark-mode {
-	color: var(--dark-mode-fg-color);
-	background-color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-fg-color);
+  background-color: var(--dark-mode-bg-color);
 }
 
 body.dark-mode main .box,
 body.dark-mode main table {
-	color: var(--dark-mode-fg-color);
-	background-color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-fg-color);
+  background-color: var(--dark-mode-bg-color);
 }
 
 body.dark-mode main code {
-	color: var(--dark-mode-fg-color);
-	background-color: black;
+  color: var(--dark-mode-fg-color);
+  background-color: black;
 }
 
 body.dark-mode main h1,
@@ -153,10 +154,12 @@ body.dark-mode main p,
 body.dark-mode main label,
 body.dark-mode main strong,
 body.dark-mode main a {
-	color: var(--dark-mode-fg-color);
+  color: var(--dark-mode-fg-color);
 }
 
-.label.is-required::after {
-	content: ' *';
-	color: red;
-  }
+.control.is-required::after{
+  content: "Required";
+  color: red;
+  display: block;
+  font-size: 0.7em;
+}

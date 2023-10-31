@@ -2,17 +2,17 @@
 
 <form action="/nmap" method="post">
   <div class="field">
-    <label class="label">Targets</label>
+    <label class="label">Targets </label>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:targets] %>
-        <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>">
+        <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>" required>
 
         <% @errors[:targets].each do |error| %>
         <p class="help is-danger"><%=h error %></p>
         <% end %>
       <% else %>
-        <input class="input" type="text" name="targets" placeholder="192.168.1.1" value="<%=hattr params[:targets] %>">
+        <input class="input" type="text" name="targets" placeholder="192.168.1.1" value="<%=hattr params[:targets] %>" required>
       <% end %>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="field">
     <label class="label">Ports</label>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:ports] %>
         <input class="input is-danger" type="text" name="ports" value="<%=hattr params[:ports] %>">
 
