@@ -59,8 +59,7 @@ nav.navbar {
 	font-size: 140%;
 }
 
-nav.navbar a.navbar-item,
-nav.navbar a.navbar-link {
+nav.navbar a.navbar-item, nav.navbar a.navbar-link {
 	color: white;
 	font-weight: bold;
 }
