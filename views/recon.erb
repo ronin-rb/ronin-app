@@ -2,9 +2,9 @@
 
 <form id="recon" action="/recon" method="post">
   <div class="field">
-    <label class="label">Scope</label>
+    <label class="label is-required">Scope</label>
 
-    <div class="control is-required">
+    <div class="control">
       <% if @errors && @errors[:scope] %>
         <textarea class="textarea is-danger" name="scope" required><%=h params[:scope] %></textarea>
 

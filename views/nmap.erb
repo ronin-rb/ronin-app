@@ -2,9 +2,9 @@
 
 <form action="/nmap" method="post">
   <div class="field">
-    <label class="label">Targets</label>
+    <label class="label is-required">Targets</label>
 
-    <div class="control is-required">
+    <div class="control">
       <% if @errors && @errors[:targets] %>
         <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>">
 
@@ -18,9 +18,9 @@
   </div>
 
   <div class="field">
-    <label class="label">Ports</label>
+    <label class="label is-required">Ports</label>
 
-    <div class="control is-required">
+    <div class="control">
       <% if @errors && @errors[:ports] %>
         <input class="input is-danger" type="text" name="ports" value="<%=hattr params[:ports] %>">
 

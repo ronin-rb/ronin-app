@@ -4,7 +4,7 @@
   <div class="field">
     <label class="label">URI</label>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:uri] %>
         <input class="input is-danger" type="text" name="uri" placeholder="https://example.com/path/to/repo.git OR git@example.com:path/to/repo.git" value="<%=hattr params[:uri] %>">
 
