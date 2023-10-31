@@ -6,7 +6,7 @@
 
     <div class="control is-required">
       <% if @errors && @errors[:targets] %>
-        <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>" required>
+        <input class="input is-danger" type="text" name="targets" value="<%=hattr params[:targets] %>">
 
         <% @errors[:targets].each do |error| %>
         <p class="help is-danger"><%=h error %></p>
