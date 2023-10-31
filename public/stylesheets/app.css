@@ -157,9 +157,11 @@ body.dark-mode main a {
   color: var(--dark-mode-fg-color);
 }
 
-.control.is-required::after{
-  content: "Required";
+.control.is-required::before {
+  content: "*";
   color: red;
   display: block;
-  font-size: 0.7em;
+  position: absolute;
+  font-size: 1.2rem;
+  margin-left: -0.8em;
 }
