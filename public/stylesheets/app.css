@@ -156,17 +156,18 @@ body.dark-mode main a {
 	color: var(--dark-mode-fg-color);
 }
 
-.label.is-required::after, .select.is-required::after {
+.label.is-required::after {
 	content: "*";
 	color: red;
-	display: incline;
+	display: inline;
 	font-size: 1.2rem;
-	/* margin-left: -0.8em; */
 }
-.control.is-required::before {
-	content: "*";
-	color: red;
-	display: incline;
-	font-size: 1.2rem;
-	margin-left: -0.8em;
+
+.control.is-required::after {
+    content: "*";
+    color: red;
+    display: inline;
+    font-size: 1.2rem;
+    right: 0.2rem;
+	position: absolute;
 }
