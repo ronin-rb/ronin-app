@@ -168,6 +168,6 @@ body.dark-mode main a {
     color: red;
     display: inline;
     font-size: 1.2rem;
-    right: 0.2rem;
 	position: absolute;
+    right: 0.2rem;
 }
