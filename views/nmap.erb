@@ -2,7 +2,7 @@
 
 <form action="/nmap" method="post">
   <div class="field">
-    <label class="label">Targets</label>
+    <label class="label is-required">Targets</label>
 
     <div class="control">
       <% if @errors && @errors[:targets] %>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="field">
-    <label class="label">Ports</label>
+    <label class="label is-required">Ports</label>
 
     <div class="control">
       <% if @errors && @errors[:ports] %>

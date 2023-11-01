@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:target] %>
         <input class="input is-danger" type="text" name="target" placeholder="example.com OR www.example.com OR https://example.com/" value="<%=hattr params[:target] %>">
 

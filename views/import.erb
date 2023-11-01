@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="control">
+    <div class="control is-required">
       <% if @errors && @errors[:path] %>
         <input class="input is-danger" type="text" name="path" value="<%=hattr params[:path] %>">
 
