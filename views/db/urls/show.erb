@@ -96,3 +96,7 @@
     </tr>
   </tbody>
 </table>
+
+<%= partial(:notes, notes: @url.notes) %>
+
+<%= partial(:add_note, parent: @url) %>

@@ -45,3 +45,7 @@
     </tr>
   </tbody>
 </table>
+
+<%= partial(:notes, notes: @host_name.notes) %>
+
+<%= partial(:add_note, parent: @host_name) %>

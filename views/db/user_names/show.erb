@@ -41,3 +41,7 @@
     </tr>
   </tbody>
 </table>
+
+<%= partial(:notes, notes: @user_name.notes) %>
+
+<%= partial(:add_note, parent: @user_name) %>

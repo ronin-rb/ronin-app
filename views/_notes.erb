@@ -1,0 +1,43 @@
+<% if notes.present? %>
+  <h3>Notes</h3>
+    <% notes.each do |note| %>
+      <div class="box">
+        <div class="columns is-full">
+          <div class="column">
+            <h4 class="mb-0"><%= note.body %></h4>
+            <small>Created at: <%= note.created_at %></small>
+          </div>
+          <div class="column is-one-fifth has-text-right">
+            <button class="button is-danger is-small delete-note " data-note-id=<%= note.id %>>X</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+
+<script>
+  const deleteButtons = document.querySelectorAll('.delete-note');
+  const path = '<%= request.path_info %>'
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const noteId = button.getAttribute('data-note-id');
+      deleteNote(noteId, button)
+    });
+  });
+
+  function deleteNote(noteId, button) {
+    fetch(`${path}/notes/${noteId}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        button.parentElement.parentElement.remove();
+      } else {
+        console.error('Failed to delete note');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>

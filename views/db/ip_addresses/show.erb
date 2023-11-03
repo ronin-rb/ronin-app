@@ -91,3 +91,7 @@
     </tr>
   </tbody>
 </table>
+
+<%= partial(:notes, notes: @ip_address.notes) %>
+
+<%= partial(:add_note, parent: @ip_address) %>

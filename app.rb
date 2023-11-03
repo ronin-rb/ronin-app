@@ -341,6 +341,48 @@ class App < Sinatra::Base
     end
   end
 
+  {
+    host_names:      Ronin::DB::HostName,
+    mac_addresses:   Ronin::DB::MACAddress,
+    ip_addresses:    Ronin::DB::IPAddress,
+    host_names:      Ronin::DB::HostName,
+    ports:           Ronin::DB::Port,
+    services:        Ronin::DB::Service,
+    open_ports:      Ronin::DB::OpenPort,
+    credentials:     Ronin::DB::Credential,
+    urls:            Ronin::DB::URL,
+    user_names:      Ronin::DB::UserName,
+    email_addresses: Ronin::DB::EmailAddress,
+    passwords:       Ronin::DB::Password,
+    advisories:      Ronin::DB::Advisory
+  }.each do |name, model|
+    post "/db/#{name}/:id/notes" do
+      @record = model.find(params[:id])
+  
+      if @record
+        if @record.notes.create!(body: params[:body])
+          flash[:success] = "Note added successfully."
+        else
+          flash[:danger] = "Something went wrong!"
+        end
+        
+        redirect "/db/#{name}/#{params[:id]}"
+      else
+        halt 404
+      end
+    end
+  
+    delete "/db/#{name}/:id/notes/:note_id" do
+      @record = model.find(params[:id])
+
+      if @record
+        @record.notes.destroy(params[:note_id])
+      else
+        halt 404
+      end
+    end
+  end
+
   get '/db/asns' do
     @asns = Ronin::DB::ASN.all
 
