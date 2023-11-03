@@ -342,7 +342,6 @@ class App < Sinatra::Base
   end
 
   {
-    host_names:      Ronin::DB::HostName,
     mac_addresses:   Ronin::DB::MACAddress,
     ip_addresses:    Ronin::DB::IPAddress,
     host_names:      Ronin::DB::HostName,
@@ -358,20 +357,20 @@ class App < Sinatra::Base
   }.each do |name, model|
     post "/db/#{name}/:id/notes" do
       @record = model.find(params[:id])
-  
+
       if @record
         if @record.notes.create!(body: params[:body])
           flash[:success] = "Note added successfully."
         else
           flash[:danger] = "Something went wrong!"
         end
-        
+
         redirect "/db/#{name}/#{params[:id]}"
       else
         halt 404
       end
     end
-  
+
     delete "/db/#{name}/:id/notes/:note_id" do
       @record = model.find(params[:id])
 
