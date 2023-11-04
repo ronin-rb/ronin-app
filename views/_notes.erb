@@ -1,4 +1,6 @@
-<% if notes.present? %>
+<script type="text/javascript" src="/javascript/notes.js"></script>
+
+<% unless notes.empty? %>
   <h3>Notes</h3>
     <% notes.each do |note| %>
       <div class="box">
@@ -15,29 +17,4 @@
     <% end %>
 <% end %>
 
-<script>
-  const deleteButtons = document.querySelectorAll('.delete-note');
-  const path = '<%= request.path_info %>'
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const noteId = button.getAttribute('data-note-id');
-      deleteNote(noteId, button)
-    });
-  });
-
-  function deleteNote(noteId, button) {
-    fetch(`${path}/notes/${noteId}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        button.parentElement.parentElement.remove();
-      } else {
-        console.error('Failed to delete note');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
-</script>
+<%= partial(:add_note) %>

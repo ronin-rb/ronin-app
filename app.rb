@@ -362,7 +362,7 @@ class App < Sinatra::Base
         if @record.notes.create!(body: params[:body])
           flash[:success] = "Note added successfully."
         else
-          flash[:danger] = "Something went wrong!"
+          flash[:danger] = "Failed to create Note."
         end
 
         redirect "/db/#{name}/#{params[:id]}"
