@@ -17,4 +17,18 @@
     <% end %>
 <% end %>
 
-<%= partial(:add_note) %>
+<div class="control mt-4">
+  <form action=<%="#{request.path_info}/notes"%> method="POST">
+    <div class="media-content">
+      <div class="field">
+          <textarea class="textarea" name="body" placeholder="Add a note..."></textarea>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button type="submit" class="button is-primary">Add note</button>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+
