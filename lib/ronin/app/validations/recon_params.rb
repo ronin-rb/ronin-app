@@ -38,6 +38,7 @@ module Ronin
 
         params do
           required(:scope).filled(Types::Args).each(:filled?)
+          optional(:ignore).filled(Types::Args).each(:filled?)
 
           optional(:max_depth).maybe(:integer)
         end
@@ -47,6 +48,16 @@ module Ronin
 
           unless bad_values.empty?
             key.failure("value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL: #{bad_values.join(', ')}")
+          end
+        end
+
+        rule(:ignore) do
+          if value
+            bad_values = value.grep_v(VALUE_REGEX)
+
+            unless bad_values.empty?
+              key.failure("ignore value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL: #{bad_values.join(', ')}")
+            end
           end
         end
 

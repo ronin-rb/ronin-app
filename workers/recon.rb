@@ -52,8 +52,10 @@ module Workers
     def perform(params)
       kwargs  = validate(params)
       values  = kwargs[:scope].map(&Ronin::Recon::Value.method(:parse))
+      ignore  = kwargs[:ignore].map(&Ronin::Recon::Value.method(:parse))
 
-      Ronin::Recon::Engine.run(values, max_depth: kwargs[:max_depth]) do |engine|
+      Ronin::Recon::Engine.run(values, ignore:    ignore,
+                                       max_depth: kwargs[:max_depth]) do |engine|
         engine.on(:value) do |value,parent|
           Ronin::Recon::Importer.import_value(value)
         end

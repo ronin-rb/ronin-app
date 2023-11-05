@@ -64,6 +64,100 @@ describe Ronin::App::Validations::ReconParams do
       end
     end
 
+    describe ":ignore" do
+      it "must require a non-empty value for :ignore" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: ''
+          }
+        )
+
+        expect(result).to be_failure
+        expect(result.errors[:ignore]).to eq(["must be filled"])
+      end
+
+      it "must accept IP range(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "192.168.1.1/24 10.0.0.1/30"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must accept IP(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "192.168.1.1 10.0.0.1"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must accept website base URL(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "https://example.com http://github.com/"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must accept wildcard domain(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "*.example.com *.foo.github.com"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must accept hostnames(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "www.example.com foo.bar.github.com"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must accept domains(s)" do
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: "example.com github.com"
+          }
+        )
+
+        expect(result).to be_success
+      end
+
+      it "must must all other unrecognized Strings" do
+        bad_values = %w[foo 1234]
+
+        result = subject.call(
+          {
+            scope:  'example.com',
+            ignore: bad_values.join(' ')
+          }
+        )
+
+        expect(result).to be_failure
+        expect(result.errors[:ignore]).to eq(["ignore value must be an IP address, CIDR IP range, domain, sub-domain, wildcard hostname, or website base URL: #{bad_values.join(', ')}"])
+      end
+    end
+
     describe ":max_depth" do
       context "when :max_depth is set" do
         it "must be an Integer" do
