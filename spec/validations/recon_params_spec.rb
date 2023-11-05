@@ -161,21 +161,36 @@ describe Ronin::App::Validations::ReconParams do
     describe ":max_depth" do
       context "when :max_depth is set" do
         it "must be an Integer" do
-          result = subject.call({max_depth: "foo"})
+          result = subject.call(
+            {
+              scope:     'example.com',
+              max_depth: "foo"
+            }
+          )
 
           expect(result).to be_failure
           expect(result.errors[:max_depth]).to eq(["must be an integer"])
         end
 
         it "must be greater than 1" do
-          result = subject.call({max_depth: "0"})
+          result = subject.call(
+            {
+              scope:     'example.com',
+              max_depth: "0"
+            }
+          )
 
           expect(result).to be_failure
           expect(result.errors[:max_depth]).to eq(["max_depth must be greater than 1"])
         end
 
         it "must not accept negative values" do
-          result = subject.call({max_depth: "-1"})
+          result = subject.call(
+            {
+              scope:     'example.com',
+              max_depth: "-1"
+            }
+          )
 
           expect(result).to be_failure
           expect(result.errors[:max_depth]).to eq(["max_depth must be greater than 1"])
