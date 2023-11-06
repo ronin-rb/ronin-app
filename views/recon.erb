@@ -22,13 +22,13 @@
 
     <div class="control">
       <% if @errors && @errors[:ignore] %>
-        <textarea class="textarea is-danger" name="ignore" required><%=h params[:ignore] %></textarea>
+        <textarea class="textarea is-danger" name="ignore"><%=h params[:ignore] %></textarea>
 
         <% @errors[:ignore].each do |error| %>
         <p class="help is-danger"><%=h error %></p>
         <% end %>
       <% else %>
-        <textarea class="textarea" name="ignore" placeholder="example.com, www.example.com, *.example.com,  192.168.1.1, 192.168.1.0/24, https://example.com, ..." required><%=h params[:ignore] %></textarea>
+        <textarea class="textarea" name="ignore" placeholder="example.com, www.example.com, *.example.com,  192.168.1.1, 192.168.1.0/24, https://example.com, ..."><%=h params[:ignore] %></textarea>
       <% end %>
     </div>
   </div>
