@@ -1,0 +1,33 @@
+<script type="text/javascript" src="/javascript/notes.js"></script>
+
+<% unless notes.empty? %>
+  <h3>Notes</h3>
+    <% notes.each do |note| %>
+      <div class="box">
+        <div class="columns is-full">
+          <div class="column">
+            <h4 class="mb-0"><%= note.body %></h4>
+            <small>Created at: <%= note.created_at %></small>
+          </div>
+          <div class="column is-one-fifth has-text-right">
+            <button class="button is-danger is-small delete-note " data-note-id=<%= note.id %>>X</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+
+<div class="control mt-4">
+  <form action=<%="#{request.path_info}/notes"%> method="POST">
+    <div class="media-content">
+      <div class="field">
+          <textarea class="textarea" name="body" placeholder="Add a note..."></textarea>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button type="submit" class="button is-primary">Add note</button>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
