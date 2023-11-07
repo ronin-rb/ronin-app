@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'sidekiq'
-require 'sidekiq/api'
 require 'redis/namespace'
 
 redis_config = {
