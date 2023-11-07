@@ -43,6 +43,7 @@ require 'ronin/app/validations/nmap_params'
 require 'ronin/app/validations/masscan_params'
 require 'ronin/app/validations/import_params'
 require 'ronin/app/validations/spider_params'
+require 'ronin/app/validations/vulns_params'
 
 # schema builders
 require 'ronin/app/schemas/payloads/encoders/encode_schema'
@@ -62,6 +63,7 @@ require './workers/masscan'
 require './workers/import'
 require './workers/spider'
 require './workers/recon'
+require './workers/vulns'
 
 require 'ronin/app/version'
 
@@ -761,6 +763,29 @@ class App < Sinatra::Base
 
       flash[:danger] = 'Failed to submit spider scan!'
       halt 400, erb(:spider)
+    end
+  end
+
+  get '/vulns' do
+    erb :vulns
+  end
+
+  post '/vulns' do
+    result = Validations::VulnsParams.call(params)
+
+    if result.success?
+      @jid = Workers::Vulns.perform_async(result.to_h)
+
+      type   = result[:type]
+      target = result[:target]
+
+      flash[:success] = "Vulnerabilities scanner of #{type} #{target} enqueued"
+      redirect '/vulns'
+    else
+      @errors = result.errors
+
+      flash[:danger] = 'Failed to submit vulnerabilities scan!'
+      halt 400, erb(:vulns)
     end
   end
 
