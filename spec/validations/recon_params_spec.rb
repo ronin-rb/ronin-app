@@ -65,7 +65,7 @@ describe Ronin::App::Validations::ReconParams do
     end
 
     describe ":ignore" do
-      it "must require a non-empty value for :ignore" do
+      it "must allow an empty value for :ignore" do
         result = subject.call(
           {
             scope:  'example.com',
@@ -73,8 +73,7 @@ describe Ronin::App::Validations::ReconParams do
           }
         )
 
-        expect(result).to be_failure
-        expect(result.errors[:ignore]).to eq(["must be filled"])
+        expect(result).to be_success
       end
 
       it "must accept IP range(s)" do

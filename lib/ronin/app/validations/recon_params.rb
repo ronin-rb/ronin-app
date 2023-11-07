@@ -38,7 +38,7 @@ module Ronin
 
         params do
           required(:scope).filled(Types::Args).each(:filled?)
-          optional(:ignore).filled(Types::Args).each(:filled?)
+          optional(:ignore).maybe(Types::Args).each(:filled?)
 
           optional(:max_depth).maybe(:integer)
         end
@@ -52,7 +52,7 @@ module Ronin
         end
 
         rule(:ignore) do
-          if value
+          if value && !value.empty?
             bad_values = value.grep_v(VALUE_REGEX)
 
             unless bad_values.empty?
