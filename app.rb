@@ -753,9 +753,10 @@ class App < Sinatra::Base
     if result.success?
       @jid = Workers::Spider.perform_async(result.to_h)
 
-      url = result[:url]
+      type   = result[:type]
+      target = result[:target]
 
-      flash[:success] = "Web spider of URL #{url} enqueued"
+      flash[:success] = "Web spider of #{type} #{target} enqueued"
       redirect '/spider'
     else
       @errors = result.errors
@@ -775,10 +776,9 @@ class App < Sinatra::Base
     if result.success?
       @jid = Workers::Vulns.perform_async(result.to_h)
 
-      type   = result[:type]
-      target = result[:target]
+      url = result[:url]
 
-      flash[:success] = "Vulnerabilities scanner of #{type} #{target} enqueued"
+      flash[:success] = "Vulnerabilities scanner of URL #{url} enqueued"
       redirect '/vulns'
     else
       @errors = result.errors
