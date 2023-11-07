@@ -753,10 +753,9 @@ class App < Sinatra::Base
     if result.success?
       @jid = Workers::Spider.perform_async(result.to_h)
 
-      type   = result[:type]
-      target = result[:target]
+      url = result[:url]
 
-      flash[:success] = "Web spider of #{type} #{target} enqueued"
+      flash[:success] = "Web spider of URL #{url} enqueued"
       redirect '/spider'
     else
       @errors = result.errors

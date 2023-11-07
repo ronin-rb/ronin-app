@@ -38,7 +38,7 @@ module Workers
 
     def perform(params)
       kwargs = validate(params)
-      url = kwargs[:url]
+      url    = kwargs[:url]
 
       Ronin::Vulns::URLScanner.scan(url)
     end
