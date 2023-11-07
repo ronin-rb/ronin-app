@@ -5,12 +5,15 @@
     <div>
       <div>
         <h2 class="my-0"><%= worker[:class] %></h2>
-        <p class="mb-0">queue: <%= worker[:queue] %></p>
+        <p class="mb-0"><b>queue:</b> <%= worker[:queue] %></p>
         
-        <p>arguments: </p>
-        <% worker[:args].each do |arg| %>
-          <p><%= arg %>: <%= arg %></p>
-        <% end %>
+        <p><b>arguments:</b>
+          <% worker[:args].each do |arg| %>
+            <% arg.each do |k, v| %>
+              <%= k %>: <%= v %>
+            <% end %>
+          <% end %>
+        </p>
         
         <hr>
         <div class="columns">
