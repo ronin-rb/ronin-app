@@ -773,7 +773,6 @@ class App < Sinatra::Base
 
   get '/queue' do
     @workers = Sidekiq::Workers.new.map do |_p, _t, worker|
-
       payload = JSON.parse(worker["payload"])
       {
         queue:       worker["queue"],
