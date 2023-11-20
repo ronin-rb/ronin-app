@@ -12,3 +12,5 @@
 <% @asns.each do |asn| %>
   <p><a href="/db/asns/<%=h asn.id %>"><%=h asn %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

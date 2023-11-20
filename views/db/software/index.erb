@@ -12,3 +12,5 @@
 <% @software.each do |software| %>
   <p><a href="/db/software/<%=h software.id %>"><%=h software %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

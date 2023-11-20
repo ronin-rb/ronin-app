@@ -12,3 +12,5 @@
 <% @ports.each do |port| %>
   <p><a href="/db/ports/<%=h port.id %>"><%=h port %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

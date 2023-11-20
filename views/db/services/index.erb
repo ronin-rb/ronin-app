@@ -12,3 +12,5 @@
 <% @services.each do |service| %>
   <p><a href="/db/services/<%=h service.id %>"><%=h service %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

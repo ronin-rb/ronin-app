@@ -56,4 +56,5 @@ group :development do
   gem 'rubocop-ronin',    require: false, platform: :mri
 
   gem 'foreman',          '~> 0.80', require: false
+  gem 'pagy',             '~> 6.2'
 end

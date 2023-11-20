@@ -12,3 +12,5 @@
 <% @ip_addresses.each do |ip_address| %>
   <p><a href="/db/ip_addresses/<%=h ip_address.id %>"><%=h ip_address %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

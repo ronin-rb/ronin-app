@@ -12,3 +12,5 @@
 <% @oses.each do |os| %>
   <p><a href="/db/oses/<%=h os.id %>"><%=h os %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>

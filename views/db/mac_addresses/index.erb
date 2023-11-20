@@ -12,3 +12,5 @@
 <% @mac_addresses.each do |mac_address| %>
   <p><a href="/db/mac_addresses/<%=h mac_address.id %>"><%=h mac_address %></a></p>
 <% end %>
+
+<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
