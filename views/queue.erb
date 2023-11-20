@@ -1,0 +1,28 @@
+<h1>Currently running jobs</h1>
+
+<% @workers.each do |worker| %>
+  <div class="box">
+    <div>
+      <div>
+        <h2 class="my-0"><%= worker[:class] %></h2>
+        <p class="mb-0"><strong>QUEUE:</strong> <%= worker[:queue] %></p>
+        
+        <p>
+          <strong>ARGUMENTS:</strong>
+          <% worker[:args].each do |arg| %>
+            <% arg.each do |key, value| %>
+              <strong><%= key %></strong>: <kbd><%= value %></kbd>
+            <% end %>
+          <% end %>
+        </p>
+        
+        <hr>
+        <div class="columns">
+          <div class="column is-one-third py-0"><strong>Created at:</strong> <%= worker[:created_at] %></div>
+          <div class="column is-one-third py-0"><strong>Enqueued at:</strong> <%= worker[:enqueued_at] %></div>
+          <div class="column is-one-third py-0"><strong>Run at:</strong> <%= worker[:run_at] %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

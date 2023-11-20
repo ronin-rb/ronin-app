@@ -64,6 +64,7 @@ require './workers/spider'
 require './workers/recon'
 
 require 'ronin/app/version'
+require 'sidekiq/api'
 
 # others
 require 'pagy'
@@ -776,6 +777,22 @@ class App < Sinatra::Base
     @lockfile = Bundler::LockfileParser.new(File.read(Bundler.default_lockfile))
 
     erb :about
+  end
+
+  get '/queue' do
+    @workers = Sidekiq::Workers.new.map do |_process_id, _thread_id, worker|
+      payload = JSON.parse(worker["payload"])
+      {
+        queue:       worker["queue"],
+        class:       payload["class"],
+        args:        payload["args"],
+        created_at:  Time.at(payload["created_at"]),
+        enqueued_at: Time.at(payload["enqueued_at"]),
+        run_at:      Time.at(worker["run_at"])
+      }
+    end
+
+    erb :queue
   end
 
   private
