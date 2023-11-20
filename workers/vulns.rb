@@ -34,13 +34,44 @@ module Workers
 
     Params = Dry::Schema::JSON() do
       required(:url).filled(:string)
+
+      optional(:lfi).hash  do
+        optional(:os).maybe(:string)
+        optional(:depth).maybe(:integer)
+        optional(:filter_bypass).maybe(:string)
+      end
+
+      optional(:rfi).hash  do
+        optional(:filter_bypass).maybe(:string)
+        optional(:test_script_url).maybe(:string)
+      end
+
+      optional(:sqli).hash  do
+        optional(:escape_quote).maybe(:bool)
+        optional(:escape_parens).maybe(:bool)
+        optional(:terminate).maybe(:bool)
+      end
+
+      optional(:ssti).hash  do
+        optional(:escape).maybe(:string) #?
+        optional(:test).maybe(:string) #?
+      end
+
+      optional(:open_redirect).hash  do
+        optional(:test_url).maybe(:string)
+      end
     end
 
     def perform(params)
-      kwargs = validate(params)
-      url    = kwargs[:url]
+      kwargs        = validate(params)
+      url           = kwargs[:url]
+      lfi           = kwargs[:lfi]
+      rfi           = kwargs[:rfi]
+      sqli          = kwargs[:sqli]
+      ssti          = kwargs[:ssti]
+      open_redirect = kwargs[:open_redirect]
 
-      Ronin::Vulns::URLScanner.scan(url)
+      Ronin::Vulns::URLScanner.scan(url, lfi:, rfi:, sqli:, ssti:, open_redirect:)
     end
 
     #
