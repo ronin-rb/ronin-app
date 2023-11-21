@@ -13,7 +13,8 @@ gem 'sidekiq', require: false
 #
 # Ronin dependencies
 #
-# gem 'ronin-support',    '~> 1.0', github: 'ronin-rb/ronin-support'
+gem 'ronin-support',    '~> 1.1', github: 'ronin-rb/ronin-support',
+                                  branch: '1.1.0'
 gem 'ronin-core',       '~> 0.2', github: 'ronin-rb/ronin-core',
                                   branch: '0.2.0'
 gem 'ronin-db',         '~> 0.2', github: 'ronin-rb/ronin-db',

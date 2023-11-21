@@ -35,7 +35,7 @@ dependencies:
   sidekiq: ~> 7.0
   puma: ~> 6.0
   # Ronin dependencies:
-  ronin-support: ~> 1.0
+  ronin-support: ~> 1.1
   ronin-core: ~> 0.2
   ronin-db-activerecord: ~> 0.2
   ronin-db: ~> 0.2
