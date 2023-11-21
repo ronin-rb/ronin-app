@@ -12,3 +12,5 @@
 <% @software_vendors.each do |software_vendor| %>
   <p><a href="/db/software_vendors/<%=h software_vendor.id %>"><%=h software_vendor %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

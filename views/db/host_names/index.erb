@@ -12,3 +12,5 @@
 <% @host_names.each do |host_name| %>
   <p><a href="/db/host_names/<%=h host_name.id %>"><%=h host_name %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>
