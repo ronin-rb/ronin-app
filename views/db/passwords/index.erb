@@ -13,4 +13,4 @@
   <p><a href="/db/passwords/<%=h password.id %>"><%=h password %></a></p>
 <% end %>
 
-<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
+<%= partial(:pagination, pagy: @pagy) %>

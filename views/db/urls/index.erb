@@ -13,4 +13,4 @@
   <p><a href="/db/urls/<%=h url.id %>"><%=h url %></a></p>
 <% end %>
 
-<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
+<%= partial(:pagination, pagy: @pagy) %>

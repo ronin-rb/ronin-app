@@ -69,6 +69,7 @@ require 'sidekiq/api'
 # others
 require 'pagy'
 require 'pagy/extras/bulma'
+
 #
 # Main app class.
 #
@@ -797,6 +798,9 @@ class App < Sinatra::Base
 
   private
 
+  #
+  # Returns the hash of variables used to initialize the Pagy object.
+  #
   def pagy_get_vars(collection, vars)
     {
       count: collection.count,

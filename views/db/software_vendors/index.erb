@@ -13,4 +13,4 @@
   <p><a href="/db/software_vendors/<%=h software_vendor.id %>"><%=h software_vendor %></a></p>
 <% end %>
 
-<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
+<%= partial(:pagination, pagy: @pagy) %>

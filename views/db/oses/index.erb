@@ -13,4 +13,4 @@
   <p><a href="/db/oses/<%=h os.id %>"><%=h os %></a></p>
 <% end %>
 
-<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
+<%= partial(:pagination, pagy: @pagy) %>

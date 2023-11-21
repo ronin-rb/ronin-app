@@ -13,4 +13,4 @@
   <p><a href="/db/open_ports/<%=h open_port.id %>"><%=h open_port %></a></p>
 <% end %>
 
-<%= pagy_bulma_nav(@pagy) if @pagy.pages > 1 %>
+<%= partial(:pagination, pagy: @pagy) %>
