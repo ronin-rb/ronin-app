@@ -54,7 +54,7 @@ http://localhost:1337, if ran in a real terminal.
 * [redis-server][redis] >= 6.2
 * [nmap]
 * [masscan]
-* [Ruby] >= 3.1.0
+* [Ruby] >= 3.0.0
 
 ## Security
 
