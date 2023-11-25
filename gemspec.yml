@@ -42,7 +42,6 @@ dependencies:
   ronin-payloads: ~> 0.1
   ronin-exploits: ~> 1.0
   ronin-vulns: ~> 0.1
-  ronin-web: ~> 1.0
   ronin-web-spider: ~> 0.2
   ronin-nmap: ~> 0.1
   ronin-masscan: ~> 0.1
