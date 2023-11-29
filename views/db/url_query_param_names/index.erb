@@ -12,3 +12,5 @@
 <% @url_query_param_names.each do |url_query_param_name| %>
   <p><a href="/db/url_query_param_names/<%=h url_query_param_name.id %>"><%=h url_query_param_name %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

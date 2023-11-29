@@ -12,3 +12,5 @@
 <% @passwords.each do |password| %>
   <p><a href="/db/passwords/<%=h password.id %>"><%=h password %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

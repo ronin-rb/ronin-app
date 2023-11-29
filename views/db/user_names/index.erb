@@ -12,3 +12,5 @@
 <% @user_names.each do |user_name| %>
   <p><a href="/db/user_names/<%=h user_name.id %>"><%=h user_name %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

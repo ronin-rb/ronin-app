@@ -68,12 +68,17 @@ require './workers/vulns'
 require 'ronin/app/version'
 require 'sidekiq/api'
 
+# others
+require 'pagy'
+require 'pagy/extras/bulma'
+
 #
 # Main app class.
 #
 class App < Sinatra::Base
 
   include Ronin::App
+  include Pagy::Backend
 
   configure do
     enable :sessions
@@ -84,6 +89,10 @@ class App < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
+  end
+
+  helpers do
+    include Pagy::Frontend
   end
 
   get '/' do
@@ -329,7 +338,7 @@ class App < Sinatra::Base
   end
 
   get '/db/host_names' do
-    @host_names = Ronin::DB::HostName.all
+    @pagy, @host_names = pagy(Ronin::DB::HostName)
 
     erb :"db/host_names/index"
   end
@@ -386,7 +395,7 @@ class App < Sinatra::Base
   end
 
   get '/db/asns' do
-    @asns = Ronin::DB::ASN.all
+    @pagy, @asns = pagy(Ronin::DB::ASN)
 
     erb :"db/asns/index"
   end
@@ -402,7 +411,7 @@ class App < Sinatra::Base
   end
 
   get '/db/ip_addresses' do
-    @ip_addresses = Ronin::DB::IPAddress.all
+    @pagy, @ip_addresses = pagy(Ronin::DB::IPAddress)
 
     erb :"db/ip_addresses/index"
   end
@@ -418,7 +427,7 @@ class App < Sinatra::Base
   end
 
   get '/db/mac_addresses' do
-    @mac_addresses = Ronin::DB::MACAddress.all
+    @pagy, @mac_addresses = pagy(Ronin::DB::MACAddress)
 
     erb :"db/mac_addresses/index"
   end
@@ -434,7 +443,7 @@ class App < Sinatra::Base
   end
 
   get '/db/open_ports' do
-    @open_ports = Ronin::DB::OpenPort.all
+    @pagy, @open_ports = pagy(Ronin::DB::OpenPort)
 
     erb :"db/open_ports/index"
   end
@@ -450,7 +459,7 @@ class App < Sinatra::Base
   end
 
   get '/db/ports' do
-    @ports = Ronin::DB::Port.all
+    @pagy, @ports = pagy(Ronin::DB::Port)
 
     erb :"db/ports/index"
   end
@@ -466,7 +475,7 @@ class App < Sinatra::Base
   end
 
   get '/db/services' do
-    @services = Ronin::DB::Service.all
+    @pagy, @services = pagy(Ronin::DB::Service)
 
     erb :"db/services/index"
   end
@@ -482,7 +491,7 @@ class App < Sinatra::Base
   end
 
   get '/db/urls' do
-    @urls = Ronin::DB::URL.all
+    @pagy, @urls = pagy(Ronin::DB::URL)
 
     erb :"db/urls/index"
   end
@@ -498,7 +507,7 @@ class App < Sinatra::Base
   end
 
   get '/db/url_schemes' do
-    @url_schemes = Ronin::DB::URLScheme.all
+    @pagy, @url_schemes = pagy(Ronin::DB::URLScheme)
 
     erb :"db/url_schemes/index"
   end
@@ -514,7 +523,7 @@ class App < Sinatra::Base
   end
 
   get '/db/url_query_param_names' do
-    @url_query_param_names = Ronin::DB::URLQueryParamName.all
+    @pagy, @url_query_param_names = pagy(Ronin::DB::URLQueryParamName)
 
     erb :"db/url_query_param_names/index"
   end
@@ -530,7 +539,7 @@ class App < Sinatra::Base
   end
 
   get '/db/email_addresses' do
-    @email_addresses = Ronin::DB::EmailAddress.all
+    @pagy, @email_addresses = pagy(Ronin::DB::EmailAddress)
 
     erb :"db/email_addresses/index"
   end
@@ -546,7 +555,7 @@ class App < Sinatra::Base
   end
 
   get '/db/user_names' do
-    @user_names = Ronin::DB::UserName.all
+    @pagy, @user_names = pagy(Ronin::DB::UserName)
 
     erb :"db/user_names/index"
   end
@@ -562,7 +571,7 @@ class App < Sinatra::Base
   end
 
   get '/db/passwords' do
-    @passwords = Ronin::DB::Password.all
+    @pagy, @passwords = pagy(Ronin::DB::Password)
 
     erb :"db/passwords/index"
   end
@@ -578,7 +587,7 @@ class App < Sinatra::Base
   end
 
   get '/db/credentials' do
-    @credentials = Ronin::DB::Credential.all
+    @pagy, @credentials = pagy(Ronin::DB::Credential)
 
     erb :"db/credentials/index"
   end
@@ -594,7 +603,7 @@ class App < Sinatra::Base
   end
 
   get '/db/advisories' do
-    @advisories = Ronin::DB::Advisory.all
+    @pagy, @advisories = pagy(Ronin::DB::Advisory)
 
     erb :"db/advisories/index"
   end
@@ -610,7 +619,7 @@ class App < Sinatra::Base
   end
 
   get '/db/software' do
-    @software = Ronin::DB::Software.all
+    @pagy, @software = pagy(Ronin::DB::Software)
 
     erb :"db/software/index"
   end
@@ -626,7 +635,7 @@ class App < Sinatra::Base
   end
 
   get '/db/software_vendors' do
-    @software_vendors = Ronin::DB::SoftwareVendor.all
+    @pagy, @software_vendors = pagy(Ronin::DB::SoftwareVendor)
 
     erb :"db/software_vendors/index"
   end
@@ -638,7 +647,7 @@ class App < Sinatra::Base
   end
 
   get '/db/oses' do
-    @oses = Ronin::DB::OS.all
+    @pagy, @oses = pagy(Ronin::DB::OS)
 
     erb :"db/oses/index"
   end
@@ -809,5 +818,18 @@ class App < Sinatra::Base
     end
 
     erb :queue
+  end
+
+  private
+
+  #
+  # Returns the hash of variables used to initialize the Pagy object.
+  #
+  def pagy_get_vars(collection, vars)
+    {
+      count: collection.count,
+      page:  params["page"],
+      items: vars[:items] || 25
+    }
   end
 end

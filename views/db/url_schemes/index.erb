@@ -12,3 +12,5 @@
 <% @url_schemes.each do |url_scheme| %>
   <p><a href="/db/url_schemes/<%=h url_scheme.id %>"><%=h url_scheme %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

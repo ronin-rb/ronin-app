@@ -12,3 +12,5 @@
 <% @services.each do |service| %>
   <p><a href="/db/services/<%=h service.id %>"><%=h service %></a></p>
 <% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>
