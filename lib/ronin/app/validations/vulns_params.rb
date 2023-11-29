@@ -38,23 +38,23 @@ module Ronin
             optional(:filter_bypass).maybe(:string)
           end
 
-          optional(:rfi).hash  do
+          optional(:rfi).hash do
             optional(:filter_bypass).maybe(:string)
             optional(:test_script_url).maybe(:string)
           end
 
-          optional(:sqli).hash  do
+          optional(:sqli).hash do
             optional(:escape_quote).maybe(:bool)
             optional(:escape_parens).maybe(:bool)
             optional(:terminate).maybe(:bool)
           end
 
-          optional(:ssti).hash  do
-            optional(:escape).maybe(:string) #?
-            optional(:test).maybe(:string) #?
+          optional(:ssti).hash do
+            optional(:escape).maybe(:string) # ?
+            optional(:test).maybe(:string) # ?
           end
 
-          optional(:open_redirect).hash  do
+          optional(:open_redirect).hash do
             optional(:test_url).maybe(:string)
           end
         end
