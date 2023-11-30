@@ -665,13 +665,13 @@ class App < Sinatra::Base
 
   get '/db/vulns' do
     @pagy, @vulns = pagy(Ronin::DB::WebVuln)
-  
+
     erb :"db/vulns/index"
   end
-  
+
   get '/db/vulns/:id' do
     @vuln = Ronin::DB::WebVuln.find(params[:id])
-  
+
     if @vuln
       erb :"db/vulns/show"
     else
