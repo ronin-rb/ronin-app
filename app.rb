@@ -333,6 +333,7 @@ class App < Sinatra::Base
     @software_count             = Ronin::DB::Software.count
     @software_vendor_count      = Ronin::DB::SoftwareVendor.count
     @oses_count                 = Ronin::DB::OS.count
+    @vulns_count                = Ronin::DB::WebVuln.count
 
     erb :db
   end
@@ -657,6 +658,22 @@ class App < Sinatra::Base
 
     if @os
       erb :"db/oses/show"
+    else
+      halt 404
+    end
+  end
+
+  get '/db/vulns' do
+    @pagy, @vulns = pagy(Ronin::DB::WebVuln)
+  
+    erb :"db/vulns/index"
+  end
+  
+  get '/db/vulns/:id' do
+    @vuln = Ronin::DB::WebVuln.find(params[:id])
+  
+    if @vuln
+      erb :"db/vulns/show"
     else
       halt 404
     end

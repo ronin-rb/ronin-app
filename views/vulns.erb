@@ -31,14 +31,14 @@
         <label class="label">Os</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:lfi, :os) %>
+          <% if @errors && @errors[:lfi]&.dig(:os) %>
             <input class="input is-danger" type="text" name="lfi[os]" value="<%=hattr params.dig(:lfi, :os) %>">
 
             <% @errors[:lfi][:os].each do |error| %>
               <p class="help is-danger"><%=h error %></p>
             <% end %>
           <% else %>
-            <input class="input" type="text" name="lfi[os]" placeholder=":unix" value="<%=hattr params.dig(:lfi, :os) %>">
+            <input class="input" type="text" name="lfi[os]" placeholder="unix or windows" value="<%=hattr params.dig(:lfi, :os) %>">
           <% end %>
         </div>
       </div>
@@ -47,7 +47,7 @@
         <label class="label">Depth</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:lfi, :depth) %>
+          <% if @errors && @errors[:lfi]&.dig(:depth) %>
             <input class="input is-danger" type="text" name="lfi[depth]" value="<%=hattr params.dig(:lfi, :depth) %>">
 
             <% @errors[:lfi][:depth].each do |error| %>
@@ -63,14 +63,14 @@
         <label class="label">Filter Bypass</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:rfi, :filter_bypass) %>
+          <% if @errors && @errors[:lfi]&.dig(:filter_bypass) %>
             <input class="input is-danger" type="text" name="lfi[filter_bypass]" value="<%=hattr params.dig(:lfi, :filter_bypass) %>">
 
             <% @errors[:lfi][:filter_bypass].each do |error| %>
               <p class="help is-danger"><%=h error %></p>
             <% end %>
           <% else %>
-            <input class="input" type="text" name="lfi[filter_bypass]" placeholder=":nullbyte, :double_escape, :base64, :rot13 or :zlib" value="<%=hattr params.dig(:lfi, :filter_bypass) %>">
+            <input class="input" type="text" name="lfi[filter_bypass]" placeholder="nullbyte, double_escape, base64, rot13 or zlib" value="<%=hattr params.dig(:lfi, :filter_bypass) %>">
           <% end %>
         </div>
       </div>
@@ -81,14 +81,14 @@
         <label class="label">Filter Bypass</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:rfi, :filter_bypass) %>
+          <% if @errors && @errors[:rfi]&.dig(:filter_bypass) %>
             <input class="input is-danger" type="text" name="rfi[filter_bypass]" value="<%=hattr params.dig(:rfi, :filter_bypass) %>">
 
             <% @errors[:rfi][:filter_bypass].each do |error| %>
               <p class="help is-danger"><%=h error %></p>
             <% end %>
           <% else %>
-            <input class="input" type="text" name="rfi[filter_bypass]" placeholder=":double_encode, :suffix_escape or :null_byte" value="<%=hattr params.dig(:rfi, :filter_bypass) %>">
+            <input class="input" type="text" name="rfi[filter_bypass]" placeholder="double_encode, suffix_escape or null_byte" value="<%=hattr params.dig(:rfi, :filter_bypass) %>">
           <% end %>
         </div>
       </div>
@@ -97,7 +97,7 @@
         <label class="label">Test Script URL</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:rfi, :test_script_url) %>
+          <% if @errors && @errors[:rfi]&.dig(:test_script_url) %>
             <input class="input is-danger" type="text" name="rfi[test_script_url]" value="<%=hattr params.dig(:rfi, :test_script_url)%>">
 
             <% @errors[:rfi][:test_script_url].each do |error| %>
@@ -132,30 +132,19 @@
         <label class="label">Escape</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:ssti, :escape) %>
+          <% if @errors && @errors[:ssti]&.dig(:escape) %>
             <input class="input is-danger" type="text" name="ssti[escape]" value="<%=hattr params.dig(:ssti, :escape) %>">
 
             <% @errors[:ssti][:escape].each do |error| %>
               <p class="help is-danger"><%=h error %></p>
             <% end %>
           <% else %>
-            <input class="input" type="text" name="ssti[escape]" value="<%=hattr params.dig(:ssti, :escape) %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Test</label>
-
-        <div class="control">
-          <% if @errors && @errors.dig(:ssti, :test) %>
-            <input class="input is-danger" type="text" name="ssti[test]" value="<%=hattr params.dig(:ssti, :test)%>">
-
-            <% @errors[:ssti][:test].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="ssti[test]" value="<%=hattr params.dig(:ssti, :test)%>">
+            <input class="input"
+                   type="text"
+                   name="ssti[escape]"
+                   placeholder="double_curly_braces, dollar_curly_braces, dollar_double_curly_braces, pound_curly_braces or angle_brackets_percent"
+                   value="<%=hattr params.dig(:ssti, :escape) %>"
+            >
           <% end %>
         </div>
       </div>
@@ -166,7 +155,7 @@
         <label class="label">Test URL</label>
 
         <div class="control">
-          <% if @errors && @errors.dig(:open_redirect, :test_url) %>
+          <% if @errors && @errors[:open_redirect]&.dig(:test_url) %>
             <input class="input is-danger" type="text" name="open_redirect[test_url]" value="<%=hattr params.dig(:open_redirect, :test_url)%>">
 
             <% @errors[:open_redirect][:test_url].each do |error| %>

@@ -19,16 +19,19 @@
 #
 
 require 'sidekiq'
-require 'ronin/vulns/vuln'
+require 'dry-schema'
+
+require 'ronin/vulns/url_scanner'
+require 'ronin/vulns/importer'
+require 'ronin/app/types/vulns'
 
 module Workers
   #
-  # A worker that updates all [ronin repos][ronin-repos].
-  #
-  # [ronin-repos]: https://github.com/ronin-rb/ronin-repos#readme
+  # Vulnerabilities scanner worker.
   #
   class Vulns
 
+    include Ronin::App
     include Sidekiq::Worker
     sidekiq_options queue: :vulns, retry: false, backtrace: true
 
@@ -36,13 +39,13 @@ module Workers
       required(:url).filled(:string)
 
       optional(:lfi).hash do
-        optional(:os).maybe(:string)
+        optional(:os).maybe(Types::Vulns::LFI::OSType)
         optional(:depth).maybe(:integer)
-        optional(:filter_bypass).maybe(:string)
+        optional(:filter_bypass).maybe(Types::Vulns::LFI::FilterBypassType)
       end
 
       optional(:rfi).hash do
-        optional(:filter_bypass).maybe(:string)
+        optional(:filter_bypass).maybe(Types::Vulns::RFI::FilterBypassType)
         optional(:test_script_url).maybe(:string)
       end
 
@@ -53,25 +56,27 @@ module Workers
       end
 
       optional(:ssti).hash do
-        optional(:escape).maybe(:string) # ?
-        optional(:test).maybe(:string) # ?
+        optional(:escape).maybe(Types::Vulns::SSTI::EscapeType)
       end
 
       optional(:open_redirect).hash do
         optional(:test_url).maybe(:string)
       end
+
+      before(:value_coercer) do |result|
+        result.to_h.map do |_, value|
+          value.is_a?(Hash) ? value.compact! : value
+        end
+      end
     end
 
     def perform(params)
-      kwargs        = validate(params)
-      url           = kwargs[:url]
-      lfi           = kwargs[:lfi]
-      rfi           = kwargs[:rfi]
-      sqli          = kwargs[:sqli]
-      ssti          = kwargs[:ssti]
-      open_redirect = kwargs[:open_redirect]
+      kwargs = validate(params)
+      url    = kwargs.delete(:url)
 
-      Ronin::Vulns::URLScanner.scan(url, lfi:, rfi:, sqli:, ssti:, open_redirect:)
+      Ronin::Vulns::URLScanner.scan(url, **kwargs) do |vuln|
+        Ronin::Vulns::Importer.import(vuln)
+      end
     end
 
     #

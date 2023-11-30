@@ -19,7 +19,7 @@
 #
 
 require 'dry/validation'
-require 'ronin/app/types/spider'
+require 'ronin/app/types/vulns'
 
 module Ronin
   module App
@@ -33,13 +33,13 @@ module Ronin
           required(:url).filled(:string)
 
           optional(:lfi).hash do
-            optional(:os).maybe(:string)
+            optional(:os).maybe(Types::Vulns::LFI::OSType)
             optional(:depth).maybe(:integer)
-            optional(:filter_bypass).maybe(:string)
+            optional(:filter_bypass).maybe(Types::Vulns::LFI::FilterBypassType)
           end
 
           optional(:rfi).hash do
-            optional(:filter_bypass).maybe(:string)
+            optional(:filter_bypass).maybe(Types::Vulns::RFI::FilterBypassType)
             optional(:test_script_url).maybe(:string)
           end
 
@@ -50,8 +50,7 @@ module Ronin
           end
 
           optional(:ssti).hash do
-            optional(:escape).maybe(:string) # ?
-            optional(:test).maybe(:string) # ?
+            optional(:escape).maybe(Types::Vulns::SSTI::EscapeType)
           end
 
           optional(:open_redirect).hash do
