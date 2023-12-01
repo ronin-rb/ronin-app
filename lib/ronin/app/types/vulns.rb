@@ -29,7 +29,10 @@ module Ronin
       module Vulns
         module LFI
           # The type of OS
-          OSType = Types::String.enum('unix', 'windows')
+          OSType = Types::Symbol.enum(
+            unix: 'unix',
+            window: 'windows'
+          )
 
           # The lfi filter bypass technique type
           FilterBypassType = Types::String.enum('null_byte', 'double_escape', 'base64', 'rot13', 'zlib')
