@@ -30,27 +30,37 @@ module Ronin
         module LFI
           # The type of OS
           OSType = Types::Symbol.enum(
-            unix: 'unix',
-            window: 'windows'
+            unix:    'unix',
+            windows: 'windows'
           )
 
           # The lfi filter bypass technique type
-          FilterBypassType = Types::String.enum('null_byte', 'double_escape', 'base64', 'rot13', 'zlib')
+          FilterBypassType = Types::Symbol.enum(
+            null_byte:     'null_byte',
+            double_escape: 'double_escape',
+            base64:        'base64',
+            rot13:         'rot13',
+            zlib:          'zlib'
+          )
         end
 
         module RFI
           # The rfi filter bypass technique type
-          FilterBypassType = Types::String.enum('null_byte', 'double_encode')
+          FilterBypassType = Types::Symbol.enum(
+            null_byte: 'null_byte',
+            double_encode: 'double_encode',
+            suffix_escape: 'suffix_escape'
+          )
         end
 
         module SSTI
           # The type of SSTI escape expression
-          EscapeType = Types::String.enum(
-            'double_curly_braces',
-            'dollar_curly_braces',
-            'dollar_double_curly_braces',
-            'pound_curly_braces',
-            'angle_brackets_percent'
+          EscapeType = Types::Symbol.enum(
+            double_curly_braces:        'double_curly_braces',
+            dollar_curly_braces:        'dollar_curly_braces',
+            dollar_double_curly_braces: 'dollar_double_curly_braces',
+            pound_curly_braces:         'pound_curly_braces',
+            angle_brackets_percent:     'angle_brackets_percent'
           )
         end
       end
