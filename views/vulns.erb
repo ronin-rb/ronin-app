@@ -31,15 +31,10 @@
         <label class="label">Os</label>
 
         <div class="control">
-          <% if @errors && @errors[:lfi]&.dig(:os) %>
-            <input class="input is-danger" type="text" name="lfi[os]" value="<%=hattr params.dig(:lfi, :os) %>">
-
-            <% @errors[:lfi][:os].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="lfi[os]" placeholder="unix or windows" value="<%=hattr params.dig(:lfi, :os) %>">
-          <% end %>
+          <select class="select" name="lfi[os]">
+            <option value="unix">unix</option>
+            <option value="windows>">windows</option>
+          </select
         </div>
       </div>
 
@@ -63,15 +58,14 @@
         <label class="label">Filter Bypass</label>
 
         <div class="control">
-          <% if @errors && @errors[:lfi]&.dig(:filter_bypass) %>
-            <input class="input is-danger" type="text" name="lfi[filter_bypass]" value="<%=hattr params.dig(:lfi, :filter_bypass) %>">
-
-            <% @errors[:lfi][:filter_bypass].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="lfi[filter_bypass]" placeholder="nullbyte, double_escape, base64, rot13 or zlib" value="<%=hattr params.dig(:lfi, :filter_bypass) %>">
-          <% end %>
+          <select class="select" name="lfi[filter_bypass]">
+            <option value="" />
+            <option value="nullbyte">nullbyte</option>
+            <option value="double_escape>">double_escape</option>
+            <option value="base64>">base64</option>
+            <option value="rot13>">rot13</option>
+            <option value="zlib>">zlib</option>
+          </select>
         </div>
       </div>
 
@@ -81,15 +75,12 @@
         <label class="label">Filter Bypass</label>
 
         <div class="control">
-          <% if @errors && @errors[:rfi]&.dig(:filter_bypass) %>
-            <input class="input is-danger" type="text" name="rfi[filter_bypass]" value="<%=hattr params.dig(:rfi, :filter_bypass) %>">
-
-            <% @errors[:rfi][:filter_bypass].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="rfi[filter_bypass]" placeholder="double_encode, suffix_escape or null_byte" value="<%=hattr params.dig(:rfi, :filter_bypass) %>">
-          <% end %>
+          <select class="select" name="rfi[filter_bypass]">
+            <option value="" />
+            <option value="double_encode">double_encode</option>
+            <option value="suffix_escape>">suffix_escape</option>
+            <option value="null_byte>">null_byte</option>
+          </select>
         </div>
       </div>
 
@@ -132,20 +123,14 @@
         <label class="label">Escape</label>
 
         <div class="control">
-          <% if @errors && @errors[:ssti]&.dig(:escape) %>
-            <input class="input is-danger" type="text" name="ssti[escape]" value="<%=hattr params.dig(:ssti, :escape) %>">
-
-            <% @errors[:ssti][:escape].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input"
-                   type="text"
-                   name="ssti[escape]"
-                   placeholder="double_curly_braces, dollar_curly_braces, dollar_double_curly_braces, pound_curly_braces or angle_brackets_percent"
-                   value="<%=hattr params.dig(:ssti, :escape) %>"
-            >
-          <% end %>
+          <select class="select" name="ssti[escape]">
+            <option value="" />
+            <option value="double_curly_braces">double_curly_braces</option>
+            <option value="dollar_curly_braces>">dollar_curly_braces</option>
+            <option value="dollar_double_curly_braces>">dollar_double_curly_braces</option>
+            <option value="pound_curly_braces>">pound_curly_braces</option>
+            <option value="angle_brackets_percent>">angle_brackets_percent</option>
+          </select>
         </div>
       </div>
 
