@@ -11,45 +11,45 @@ Starts the local Ronin web application.
 ## OPTIONS
 
 `-H`, `--host` *IP*
-  The IP address to listen on. Defaults to `localhost` if not specified.
+: The IP address to listen on. Defaults to `localhost` if not specified.
 
 `-p`, `--port` *PORT*
-  The port to listen on. Defaults to `1337` if not specified.
+: The port to listen on. Defaults to `1337` if not specified.
 
 `--db` *NAME*
-  Specifies the `ronin-db` database name for the app to connect to.
+: Specifies the `ronin-db` database name for the app to connect to.
 
 `--db-uri` *URI*
-  Specifies a database URI for the app to connect to.
+: Specifies a database URI for the app to connect to.
 
   * **sqlite3**: `sqlite3:relative/path.db` or `sqlite3:///absolute/path.db`
   * **mysql**: `mysql://user:password@host/database`
   * **postgres**: `postgres://user:password@host/database`
 
 `-V`, `--version`
-  Prints the `ronin-app` version.
+: Prints the `ronin-app` version.
 
 `-h`, `--help`
-  Prints help information.
+: Prints help information.
 
 ## ENVIRONMENT
 
 *HOME*
-  Alternate location for the user's home directory.
+: Alternate location for the user's home directory.
 
 *XDG_CONFIG_HOME*
-  Alternate location for the `~/.config` directory.
+: Alternate location for the `~/.config` directory.
 
 *XDG_DATA_HOME*
-  Alternate location for the `~/.local/share` directory.
+: Alternate location for the `~/.local/share` directory.
 
 ## FILES
 
 `~/.local/share/ronin-db/database.sqlite3`
-  The default sqlite3 database file.
+: The default sqlite3 database file.
 
 `~/.config/ronin-db/database.yml`
-  Optional database configuration.
+: Optional database configuration.
 
 ## AUTHOR
 

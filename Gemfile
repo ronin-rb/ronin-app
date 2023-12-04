@@ -44,7 +44,7 @@ group :development do
   gem 'simplecov',        '~> 0.20', require: false
 
   gem 'kramdown',         '~> 2.0', require: false
-  gem 'kramdown-man',     '~> 0.1', require: false
+  gem 'kramdown-man',     '~> 1.0', require: false
 
   gem 'redcarpet',        require: false, platform: :mri
   gem 'yard',             '~> 0.9', require: false
