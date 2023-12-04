@@ -53,6 +53,12 @@ module Ronin
             optional(:escape).maybe(Types::Vulns::SSTI::EscapeType)
           end
 
+          optional(:command_injection).hash do
+            optional(:escape_quote).maybe(:string)
+            optional(:escape_operator).maybe(:string)
+            optional(:terminate).maybe(:string)
+          end
+
           optional(:open_redirect).hash do
             optional(:test_url).maybe(:string)
           end

@@ -134,6 +134,56 @@
         </div>
       </div>
 
+      <h3>Command Injection</h3>
+
+      <div class="field">
+        <label class="label">Escape Quote Character</label>
+
+        <div class="control">
+          <% if @errors && @errors[:command_injection]&.dig(:escape_quote) %>
+            <input class="input is-danger" type="text" name="command_injection[escape_quote]" size="1" value="<%=hattr params.dig(:command_injection, :escape_quote)%>">
+
+            <% @errors[:command_injection][:escape_quote].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="command_injection[escape_quote]" size="1" value="<%=hattr params.dig(:command_injection, :escape_quote) %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Escape Operator Character</label>
+
+        <div class="control">
+          <% if @errors && @errors[:command_injection]&.dig(:escape_operator) %>
+            <input class="input is-danger" type="text" name="command_injection[escape_operator]" size="1" value="<%=hattr params.dig(:command_injection, :escape_operator)%>">
+
+            <% @errors[:command_injection][:escape_operator].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="command_injection[escape_operator]" size="1" value="<%=hattr params.dig(:command_injection, :escape_operator) %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Terminator Character</label>
+
+        <div class="control">
+          <% if @errors && @errors[:command_injection]&.dig(:terminator) %>
+            <input class="input is-danger" type="text" name="command_injection[terminator]" size="1" value="<%=hattr params.dig(:command_injection, :terminator)%>">
+
+            <% @errors[:command_injection][:terminator].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="command_injection[terminator]" size="1" value="<%=hattr params.dig(:command_injection, :terminator) %>">
+          <% end %>
+        </div>
+      </div>
+
       <h3>Open Redirect</h3>
 
       <div class="field">
