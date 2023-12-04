@@ -32,9 +32,9 @@
 
         <div class="control">
           <select class="select" name="lfi[os]">
-            <option value="unix">unix</option>
-            <option value="windows">windows</option>
-          </select
+            <option value="unix" <%= " checked" if params.dig(:lfi, :os)  == 'unix' %>>unix</option>
+            <option value="windows" <%= " checked" if params.dig(:lfi, :os)  == 'windows' %>>windows</option>
+          </select>
         </div>
       </div>
 
@@ -60,11 +60,11 @@
         <div class="control">
           <select class="select" name="lfi[filter_bypass]">
             <option value="" />
-            <option value="nullbyte">nullbyte</option>
-            <option value="double_escape">double_escape</option>
-            <option value="base64">base64</option>
-            <option value="rot13">rot13</option>
-            <option value="zlib">zlib</option>
+            <option value="nullbyte"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'nullbyte' %>>nullbyte</option>
+            <option value="double_escape"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'double_escape' %>>double_escape</option>
+            <option value="base64"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'base64' %>>base64</option>
+            <option value="rot13"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'rot13' %>>rot13</option>
+            <option value="zlib"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'zlib' %>>zlib</option>
           </select>
         </div>
       </div>
@@ -77,9 +77,9 @@
         <div class="control">
           <select class="select" name="rfi[filter_bypass]">
             <option value="" />
-            <option value="double_encode">double_encode</option>
-            <option value="suffix_escape">suffix_escape</option>
-            <option value="null_byte">null_byte</option>
+            <option value="double_encode"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'double_encode' %>>double_encode</option>
+            <option value="suffix_escape"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'suffix_escape' %>>suffix_escape</option>
+            <option value="null_byte"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'null_byte' %>>null_byte</option>
           </select>
         </div>
       </div>
@@ -125,11 +125,11 @@
         <div class="control">
           <select class="select" name="ssti[escape]">
             <option value="" />
-            <option value="double_curly_braces">double_curly_braces</option>
-            <option value="dollar_curly_braces">dollar_curly_braces</option>
-            <option value="dollar_double_curly_braces">dollar_double_curly_braces</option>
-            <option value="pound_curly_braces">pound_curly_braces</option>
-            <option value="angle_brackets_percent">angle_brackets_percent</option>
+            <option value="double_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'double_curly_braces' %>>double_curly_braces</option>
+            <option value="dollar_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'dollar_curly_braces' %>>dollar_curly_braces</option>
+            <option value="dollar_double_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'dollar_double_curly_braces' %>>dollar_double_curly_braces</option>
+            <option value="pound_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'pound_curly_braces' %>>pound_curly_braces</option>
+            <option value="angle_brackets_percent"<%= " checked" if params.dig(:ssti, :escape)  == 'angle_brackets_percent' %>>angle_brackets_percent</option>
           </select>
         </div>
       </div>

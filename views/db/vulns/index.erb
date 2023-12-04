@@ -5,13 +5,12 @@
       <li><a href="/db">Database</a></li>
     </ul>
   </nav>
-  <% end %>
+<% end %>
   
-  <h1>Vulnerabilities</h1>
-  
-  <% @vulns.each do |vuln| %>
-    <p><a href="/db/vulns/<%=h vuln.id %>"><%=h vuln.url %></a></p>
-  <% end %>
+<h1>Vulnerabilities</h1>
 
-  <%= partial(:pagination, pagy: @pagy) %>
-  
+<% @vulns.each do |vuln| %>
+  <p><a href="/db/vulns/<%=h vuln.id %>"><%=h vuln.url %></a></p>
+<% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

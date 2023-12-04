@@ -6,97 +6,96 @@
       <li><a href="/db/vulns">Vulnerabilities</a></li>
     </ul>
   </nav>
-  <% end %>
-  
-  <h1>Vulnerability: <%=h @vuln.url %></h1>
+<% end %>
 
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><strong>Type:</strong></td>
-        <td><%=h @vuln.type %></td>
-      </tr>
+<h1>Vulnerability: <%=h @vuln.url %></h1>
 
-      <tr>
-        <td><strong>URL:</strong></td>
-        <td><a href="/db/urls/<%= @vuln.url_id %>"><%= h @vuln.url %></a></td>
-      </tr>
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Type:</strong></td>
+      <td><%=h @vuln.type %></td>
+    </tr>
 
-      <tr>
-        <td><strong>Query Param:</strong></td>
-        <td><%=h @vuln.query_param %></td>
-      </tr>
+    <tr>
+      <td><strong>URL:</strong></td>
+      <td><a href="/db/urls/<%= @vuln.url_id %>"><%= h @vuln.url %></a></td>
+    </tr>
 
-      <tr>
-        <td><strong>Header Name::</strong></td>
-        <td><%=h @vuln.header_name %></td>
-      </tr>
+    <tr>
+      <td><strong>Query Param:</strong></td>
+      <td><%=h @vuln.query_param %></td>
+    </tr>
 
-      <tr>
-        <td><strong>Cookie Param:</strong></td>
-        <td><%=h @vuln.cookie_param %></td>
-      </tr>
+    <tr>
+      <td><strong>Header Name::</strong></td>
+      <td><%=h @vuln.header_name %></td>
+    </tr>
 
-      <tr>
-        <td><strong>Form Param:</strong></td>
-        <td><%=h @vuln.form_param %></td>
-      </tr>
+    <tr>
+      <td><strong>Cookie Param:</strong></td>
+      <td><%=h @vuln.cookie_param %></td>
+    </tr>
 
-      <tr>
-        <td><strong>Request Method:</strong></td>
-        <td><%=h @vuln.request_method %></td>
-      </tr>
+    <tr>
+      <td><strong>Form Param:</strong></td>
+      <td><%=h @vuln.form_param %></td>
+    </tr>
 
-      <tr>
-        <td><strong>LFI OS:</strong></td>
-        <td><%=h @vuln.lfi_os %></td>
-      </tr>
+    <tr>
+      <td><strong>Request Method:</strong></td>
+      <td><%=h @vuln.request_method %></td>
+    </tr>
 
-      <tr>
-        <td><strong>LFI Depth:</strong></td>
-        <td><%=h @vuln.lfi_depth %></td>
-      </tr>
+    <tr>
+      <td><strong>LFI OS:</strong></td>
+      <td><%=h @vuln.lfi_os %></td>
+    </tr>
 
-      <tr>
-        <td><strong>LFI Filter Bypass:</strong></td>
-        <td><%=h @vuln.lfi_filter_bypass %></td>
-      </tr>
+    <tr>
+      <td><strong>LFI Depth:</strong></td>
+      <td><%=h @vuln.lfi_depth %></td>
+    </tr>
 
-      <tr>
-        <td><strong>RFI Script Lang:</strong></td>
-        <td><%=h @vuln.rfi_script_lang %></td>
-      </tr>
+    <tr>
+      <td><strong>LFI Filter Bypass:</strong></td>
+      <td><%=h @vuln.lfi_filter_bypass %></td>
+    </tr>
 
-      <tr>
-        <td><strong>RFI Filter Bypass:</strong></td>
-        <td><%=h @vuln.rfi_filter_bypass %></td>
-      </tr>
+    <tr>
+      <td><strong>RFI Script Lang:</strong></td>
+      <td><%=h @vuln.rfi_script_lang %></td>
+    </tr>
 
-      <tr>
-        <td><strong>SSTI Escape Type:</strong></td>
-        <td><%=h @vuln.ssti_escape_type %></td>
-      </tr>
+    <tr>
+      <td><strong>RFI Filter Bypass:</strong></td>
+      <td><%=h @vuln.rfi_filter_bypass %></td>
+    </tr>
 
-      <tr>
-        <td><strong>SQLI Escape Quote:</strong></td>
-        <td><%=h @vuln.sqli_escape_quote %></td>
-      </tr>
+    <tr>
+      <td><strong>SSTI Escape Type:</strong></td>
+      <td><%=h @vuln.ssti_escape_type %></td>
+    </tr>
 
-      <tr>
-        <td><strong>SQLI Escape Parens:</strong></td>
-        <td><%=h @vuln.sqli_escape_parens %></td>
-      </tr>
+    <tr>
+      <td><strong>SQLI Escape Quote:</strong></td>
+      <td><%=h @vuln.sqli_escape_quote %></td>
+    </tr>
 
-      <tr>
-        <td><strong>SQLI Terminate:</strong></td>
-        <td><%=h @vuln.sqli_terminate %></td>
-      </tr>
+    <tr>
+      <td><strong>SQLI Escape Parens:</strong></td>
+      <td><%=h @vuln.sqli_escape_parens %></td>
+    </tr>
 
-      <tr>
-        <td><strong>Created:</strong></td>
-        <td><%=h @vuln.created_at %></td>
-      </tr>
-    </tbody>
-  </table>
-  
+    <tr>
+      <td><strong>SQLI Terminate:</strong></td>
+      <td><%=h @vuln.sqli_terminate %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @vuln.created_at %></td>
+    </tr>
+  </tbody>
+</table>
   
