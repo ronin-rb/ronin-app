@@ -43,6 +43,7 @@ require 'ronin/app/validations/nmap_params'
 require 'ronin/app/validations/masscan_params'
 require 'ronin/app/validations/import_params'
 require 'ronin/app/validations/spider_params'
+require 'ronin/app/validations/vulns_params'
 
 # schema builders
 require 'ronin/app/schemas/payloads/encoders/encode_schema'
@@ -62,6 +63,7 @@ require './workers/masscan'
 require './workers/import'
 require './workers/spider'
 require './workers/recon'
+require './workers/vulns'
 
 require 'ronin/app/version'
 require 'sidekiq/api'
@@ -331,6 +333,7 @@ class App < Sinatra::Base
     @software_count             = Ronin::DB::Software.count
     @software_vendor_count      = Ronin::DB::SoftwareVendor.count
     @oses_count                 = Ronin::DB::OS.count
+    @vulns_count                = Ronin::DB::WebVuln.count
 
     erb :db
   end
@@ -660,6 +663,22 @@ class App < Sinatra::Base
     end
   end
 
+  get '/db/vulns' do
+    @pagy, @vulns = pagy(Ronin::DB::WebVuln)
+
+    erb :"db/vulns/index"
+  end
+
+  get '/db/vulns/:id' do
+    @vuln = Ronin::DB::WebVuln.find(params[:id])
+
+    if @vuln
+      erb :"db/vulns/show"
+    else
+      halt 404
+    end
+  end
+
   get '/recon' do
     erb :recon
   end
@@ -771,6 +790,28 @@ class App < Sinatra::Base
 
       flash[:danger] = 'Failed to submit spider scan!'
       halt 400, erb(:spider)
+    end
+  end
+
+  get '/vulns' do
+    erb :vulns
+  end
+
+  post '/vulns' do
+    result = Validations::VulnsParams.call(params)
+
+    if result.success?
+      @jid = Workers::Vulns.perform_async(result.to_h)
+
+      url = result[:url]
+
+      flash[:success] = "Vulnerabilities scanner of URL #{url} enqueued"
+      redirect '/vulns'
+    else
+      @errors = result.errors
+
+      flash[:danger] = 'Failed to submit vulnerabilities scan!'
+      halt 400, erb(:vulns)
     end
   end
 

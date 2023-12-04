@@ -1,0 +1,156 @@
+<h1>Vulnerabilities</h1>
+
+<form id="recon" action="/vulns" method="post">
+  <div class="field">
+    <label class="label is-required">URL</label>
+
+    <div class="control">
+      <% if @errors && @errors[:url] %>
+        <input class="input is-danger" name="url" required><%=h params[:url] %></input>
+
+        <% @errors[:url].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" name="url" placeholder="https://example.com" required><%=h params[:url] %></input>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Scan</button>
+  </div>
+
+  <div class="advanced">
+    <a class="advanced-toggle">Advanced Options</a>
+
+    <div class="advanced-content">
+      <h3>LFI</h3>
+
+      <div class="field">
+        <label class="label">Os</label>
+
+        <div class="control">
+          <select class="select" name="lfi[os]">
+            <option value="unix" <%= " checked" if params.dig(:lfi, :os)  == 'unix' %>>unix</option>
+            <option value="windows" <%= " checked" if params.dig(:lfi, :os)  == 'windows' %>>windows</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Depth</label>
+
+        <div class="control">
+          <% if @errors && @errors[:lfi]&.dig(:depth) %>
+            <input class="input is-danger" type="text" name="lfi[depth]" value="<%=hattr params.dig(:lfi, :depth) %>">
+
+            <% @errors[:lfi][:depth].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="lfi[depth]" placeholder="6" value="<%=hattr params.dig(:lfi, :depth) %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Filter Bypass</label>
+
+        <div class="control">
+          <select class="select" name="lfi[filter_bypass]">
+            <option value="" />
+            <option value="nullbyte"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'nullbyte' %>>nullbyte</option>
+            <option value="double_escape"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'double_escape' %>>double_escape</option>
+            <option value="base64"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'base64' %>>base64</option>
+            <option value="rot13"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'rot13' %>>rot13</option>
+            <option value="zlib"<%= " checked" if params.dig(:lfi, :filter_bypass)  == 'zlib' %>>zlib</option>
+          </select>
+        </div>
+      </div>
+
+      <h3>RFI</h3>
+
+      <div class="field">
+        <label class="label">Filter Bypass</label>
+
+        <div class="control">
+          <select class="select" name="rfi[filter_bypass]">
+            <option value="" />
+            <option value="double_encode"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'double_encode' %>>double_encode</option>
+            <option value="suffix_escape"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'suffix_escape' %>>suffix_escape</option>
+            <option value="null_byte"<%= " checked" if params.dig(:rfi, :filter_bypass)  == 'null_byte' %>>null_byte</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Test Script URL</label>
+
+        <div class="control">
+          <% if @errors && @errors[:rfi]&.dig(:test_script_url) %>
+            <input class="input is-danger" type="text" name="rfi[test_script_url]" value="<%=hattr params.dig(:rfi, :test_script_url)%>">
+
+            <% @errors[:rfi][:test_script_url].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="rfi[test_script_url]" value="<%=hattr params.dig(:rfi, :test_script_url) %>">
+          <% end %>
+        </div>
+      </div>
+
+      <h3>SQLI</h3>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Escape Quote: </label>
+        <input class="checkbox" type="checkbox" name="sqli[escape_quote]"<%= " checked" if params.dig(:sqli, :terminate) %>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Escape Parens: </label>
+        <input class="checkbox" type="checkbox" name="sqli[escape_parens]"<%= " checked" if params.dig(:sqli, :terminate) %>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Terminate: </label>
+        <input class="checkbox" type="checkbox" name="sqli[terminate]"<%= " checked" if params.dig(:sqli, :terminate) %>
+      </div>
+
+      <h3>SSTI</h3>
+
+      <div class="field">
+        <label class="label">Escape</label>
+
+        <div class="control">
+          <select class="select" name="ssti[escape]">
+            <option value="" />
+            <option value="double_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'double_curly_braces' %>>double_curly_braces</option>
+            <option value="dollar_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'dollar_curly_braces' %>>dollar_curly_braces</option>
+            <option value="dollar_double_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'dollar_double_curly_braces' %>>dollar_double_curly_braces</option>
+            <option value="pound_curly_braces"<%= " checked" if params.dig(:ssti, :escape)  == 'pound_curly_braces' %>>pound_curly_braces</option>
+            <option value="angle_brackets_percent"<%= " checked" if params.dig(:ssti, :escape)  == 'angle_brackets_percent' %>>angle_brackets_percent</option>
+          </select>
+        </div>
+      </div>
+
+      <h3>Open Redirect</h3>
+
+      <div class="field">
+        <label class="label">Test URL</label>
+
+        <div class="control">
+          <% if @errors && @errors[:open_redirect]&.dig(:test_url) %>
+            <input class="input is-danger" type="text" name="open_redirect[test_url]" value="<%=hattr params.dig(:open_redirect, :test_url)%>">
+
+            <% @errors[:open_redirect][:test_url].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="open_redirect[test_url]" value="<%=hattr params.dig(:open_redirect, :test_url)%>">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -25,7 +25,8 @@ gem 'ronin-db-activerecord', '~> 0.2', github: 'ronin-rb/ronin-db-activerecord',
 
 gem 'ronin-payloads',   '~> 0.1', github: 'ronin-rb/ronin-payloads'
 # gem 'ronin-exploits',   '~> 1.0', github: 'ronin-rb/ronin-exploits'
-# gem 'ronin-vulns',      '~> 0.1', github: 'ronin-rb/ronin-vulns'
+gem 'ronin-vulns',      '~> 0.2', github: 'ronin-rb/ronin-vulns',
+                                  branch: '0.2.0'
 gem 'ronin-web-spider', '~> 0.2', github: 'ronin-rb/ronin-web-spider',
                                   branch: '0.2.0'
 gem 'ronin-recon',      '~> 0.1', github: 'ronin-rb/ronin-recon'
