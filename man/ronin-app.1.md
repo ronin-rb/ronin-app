@@ -1,5 +1,9 @@
 # ronin-app 1 "2023-08-30" Ronin App "User Manuals"
 
+## NAME
+
+ronin-app - A local web interface for Ronin
+
 ## SYNOPSIS
 
 `ronin-app` [*options*] [*COMMAND*]
