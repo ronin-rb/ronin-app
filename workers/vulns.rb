@@ -59,7 +59,7 @@ module Workers
         optional(:escape).maybe(Types::Vulns::SSTI::EscapeType)
       end
 
-      optional(:command_injection) do
+      optional(:command_injection).hash do
         optional(:escape_quote).maybe(:string)
         optional(:escape_operator).maybe(:string)
         optional(:terminate).maybe(:string)
