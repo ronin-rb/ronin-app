@@ -169,3 +169,9 @@ body.dark-mode main a {
 	right: 0.2rem;
 	top: 0;
 }
+
+.navbar-dropdown {
+	background-color: black;
+	padding-top: 0;
+	border-top: 0;
+}
