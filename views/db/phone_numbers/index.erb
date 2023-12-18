@@ -1,0 +1,16 @@
+<% content_for :breadcrumbs  do %>
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/db">Database</a></li>
+    </ul>
+  </nav>
+<% end %>
+  
+<h1>Phone Numbers</h1>
+
+<% @phone_numbers.each do |phone_number| %>
+  <p><a href="/db/phone_numbers/<%=h phone_number.id %>"><%=h phone_number %></a></p>
+<% end %>
+
+<%= partial(:pagination, pagy: @pagy) %>

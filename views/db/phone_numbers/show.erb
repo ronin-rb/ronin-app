@@ -1,0 +1,60 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/phone_numbers">Phone Numbers</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Phone Number: <%=h @phone_number %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Number:</strong></td>
+      <td><%=h @phone_number.number %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Country Code:</strong></td>
+      <td><%=h @phone_number.country_code %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Area Code:</strong></td>
+      <td><%=h @phone_number.area_code %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Prefix:</strong></td>
+      <td><%=h @phone_number.prefix %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Line Number:</strong></td>
+      <td><%=h @phone_number.line_number %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @phone_number.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>People:</strong></td>
+      <td>
+        <% @phone_number.people.each do |person| %>
+          <p>
+            <a href="/db/people/<%=h person.id %>">
+              <%=h person %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= partial(:notes, notes: @phone_number.notes) %>
