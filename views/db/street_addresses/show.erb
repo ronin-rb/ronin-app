@@ -1,0 +1,73 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/street_addresses">Street Addresses</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Street Address: <%=h @street_address %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%=h @street_address.address %></td>
+    </tr>
+
+    <tr>
+      <td><strong>City:</strong></td>
+      <td><%=h @street_address.city %></td>
+    </tr>
+
+    <tr>
+      <td><strong>State:</strong></td>
+      <td><%=h @street_address.state %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Zipcode:</strong></td>
+      <td><%=h @street_address.zipcode %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Country:</strong></td>
+      <td><%=h @street_address.country %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @street_address.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>People:</strong></td>
+      <td>
+        <% @street_number.people.each do |person| %>
+          <p>
+            <a href="/db/people/<%=h person.id %>">
+              <%=h person %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Organizations:</strong></td>
+      <td>
+        <% @street_number.organizations.each do |organization| %>
+          <p>
+            <a href="/db/organizations/<%=h organization.id %>">
+              <%=h organization %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= partial(:notes, notes: @street_address.notes) %>
