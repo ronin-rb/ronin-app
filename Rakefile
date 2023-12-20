@@ -34,4 +34,9 @@ require 'kramdown/man/task'
 Kramdown::Man::Task.new
 
 require 'ronin/db/tasks'
-Ronin::DB::Tasks.new
+Ronin::DB::Tasks.new(
+  database: {
+    adapter:  :sqlite3,
+    database: 'db/dev.sqlite3'
+  }
+)

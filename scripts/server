@@ -121,8 +121,12 @@ fi
 log "Starting Web server on localhost:${port} and Sidekiq ..."
 
 case "$environment" in
-	development)	bundle exec foreman start -p "$port" -f Procfile.dev ;;
-	production)	bundle exec foreman start -p "$port" ;;
+	development)
+		bundle exec foreman start -p "$port" -f Procfile.dev -e .env.dev
+		;;
+	production)
+		bundle exec foreman start -p "$port"
+		;;
 esac
 
 for pid in "${pids[@]}"; do
