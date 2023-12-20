@@ -1,0 +1,109 @@
+<% content_for :breadcrumbs  do %>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/db">Database</a></li>
+    <li><a href="/db/organizations">Organizations</a></li>
+  </ul>
+</nav>
+<% end %>
+
+<h1>Organization: <%=h @organization %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Type:</strong></td>
+      <td><%=h @organization.type %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Departments:</strong></td>
+      <td>
+        <% @organization.departments.each do |department| %>
+          <p><a href="/db/departments/<%=h department.id %>"><%=h department %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Street Addresses:</strong></td>
+      <td>
+        <% @organization.street_addresses.each do |street_address| %>
+          <p><a href="/db/street_addresses/<%=h street_address.id %>"><%=h street_address %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Email addresses:</strong></td>
+      <td>
+        <% @organization.email_addresses.each do |email_address| %>
+          <p><a href="/db/email_addresses/<%=h email_address.id %>"><%=h email_address %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Phone numbers:</strong></td>
+      <td>
+        <% @organization.phone_numbers.each do |phone_number| %>
+          <p><a href="/db/phone_numbers/<%=h phone_number.id %>"><%=h phone_number %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Members:</strong></td>
+      <td>
+        <% @organization.members.each do |member| %>
+          <p><a href="/db/members/<%=h member.id %>"><%=h member %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Customers:</strong></td>
+      <td>
+        <% @organization.customers.each do |customer| %>
+          <p><a href="/db/customers/<%=h customer.id %>"><%=h customer %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Vendors:</strong></td>
+      <td>
+        <% @organization.vendors.each do |vendor| %>
+          <p><a href="/db/vendors/<%=h vendor.id %>"><%=h vendor %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Host names:</strong></td>
+      <td>
+        <% @organization.host_names.each do |host_name| %>
+          <p><a href="/db/host_names/<%=h host_name.id %>"><%=h host_name %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>IP Addresses:</strong></td>
+      <td>
+        <% @organization.ip_addresses.each do |ip_address| %>
+          <p><a href="/db/ip_addresses/<%=h ip_address.id %>"><%=h ip_address %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @organization.created_at %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= partial(:notes, notes: @organization.notes) %>
+  

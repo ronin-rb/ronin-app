@@ -336,6 +336,7 @@ class App < Sinatra::Base
     @vulns_count                = Ronin::DB::WebVuln.count
     @phone_number_count         = Ronin::DB::PhoneNumber.count
     @street_address_count       = Ronin::DB::StreetAddress.count
+    @organization_count         = Ronin::DB::Organization.count
 
     erb :db
   end
@@ -708,6 +709,22 @@ class App < Sinatra::Base
 
     if @phone_number
       erb :"db/street_addresses/show"
+    else
+      halt 404
+    end
+  end
+
+  get '/db/organizations' do
+    @pagy, @organizations = pagy(Ronin::DB::Organization)
+
+    erb :"db/organizations/index"
+  end
+
+  get '/db/organizations/:id' do
+    @organization = Ronin::DB::Organization.find(params[:id])
+
+    if @organization
+      erb :"db/organizations/show"
     else
       halt 404
     end
