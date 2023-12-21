@@ -78,16 +78,12 @@ http://localhost:1337, if ran in a real terminal.
 
 You can also use [docker-compose] to build and run the app:
 
+[docker-compose]: https://docs.docker.com/compose/install/
+
 ```shell
-$ docker-compose build --build-arg RONIN_UID=$(id -u) --build-arg RONIN_GID=$(id -g)
+$ docker-compose build
 $ docker-compose up
 ```
-
-**Note:** In order for `docker-compose` to use [ronin-db] and [ronin-repos]
-files, in `~/.local/share/ronin-db` and `~/.cache/ronin-repos`, the Docker
-container user must have the same `UID` and `GID` as the host's user.
-
-[docker-compose]: https://docs.docker.com/compose/install/
 
 ### Directory Structure
 

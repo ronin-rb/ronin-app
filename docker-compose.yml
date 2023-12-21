@@ -9,12 +9,7 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - "${HOME}/.config/ronin-db:/home/ronin/.config/ronin-db:z"
-      - "${HOME}/.local/share/ronin-db:/home/ronin/.local/share/ronin-db:z"
-      - "${HOME}/.cache/ronin:/home/ronin/.cache/ronin:z"
-      - "${HOME}/.cache/ronin-repos:/home/ronin/.cache/ronin-repos:z"
-      - "${HOME}/.cache/ronin-nmap:/home/ronin/.cache/ronin-nmap:z"
-      - "${HOME}/.cache/ronin-masscan:/home/ronin/.cache/ronin-masscan:z"
+      - "./db:/app/db:z"
       - "./log:/app/log:z"
       - "./tmp:/app/tmp:z"
     links:
@@ -24,6 +19,7 @@ services:
       - PORT=1337
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - DATABASE_URL=sqlite3:/app/db/production.sqlite3
 
   sidekiq:
     build:
@@ -35,12 +31,7 @@ services:
       - "NET_BIND_SERVICE"
     command: bundle exec sidekiq -C ./config/sidekiq.yml -r ./config/sidekiq.rb -r ./workers.rb -e production
     volumes:
-      - "${HOME}/.config/ronin-db:/home/ronin/.config/ronin-db:z"
-      - "${HOME}/.local/share/ronin-db:/home/ronin/.local/share/ronin-db:z"
-      - "${HOME}/.cache/ronin:/home/ronin/.cache/ronin:z"
-      - "${HOME}/.cache/ronin-repos:/home/ronin/.cache/ronin-repos:z"
-      - "${HOME}/.cache/ronin-nmap:/home/ronin/.cache/ronin-nmap:z"
-      - "${HOME}/.cache/ronin-masscan:/home/ronin/.cache/ronin-masscan:z"
+      - "./db:/app/db:z"
       - "./log:/app/log:z"
       - "./tmp:/app/tmp:z"
     links:
@@ -48,6 +39,7 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - DATABASE_URL=sqlite3:/app/db/production.sqlite3
 
   redis:
     image: redis
