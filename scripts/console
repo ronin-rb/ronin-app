@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+if [[ -n $DATABASE_URL ]]; then
+	export DATABASE_URL="sqlite3:db/dev.sqlite3"
+fi
+
 bundle exec irb -Ilib -r ./app.rb
