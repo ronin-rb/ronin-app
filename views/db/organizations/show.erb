@@ -57,7 +57,7 @@
       <td><strong>Members:</strong></td>
       <td>
         <% @organization.members.each do |member| %>
-          <p><a href="/db/organization_members/<%=h member.id %>"><%=h member %></a></p>
+          <p><a href="/db/organization_members/<%=h member.id %>"><%=h member.person %></a></p>
         <% end %>
       </td>
     </tr>
@@ -89,14 +89,7 @@
       </td>
     </tr>
 
-    <tr>
-      <td><strong>IP Addresses:</strong></td>
-      <td>
-        <% @organization.ip_addresses.each do |ip_address| %>
-          <p><a href="/db/ip_addresses/<%=h ip_address.id %>"><%=h ip_address %></a></p>
-        <% end %>
-      </td>
-    </tr>
+
 
     <tr>
       <td><strong>Created:</strong></td>
