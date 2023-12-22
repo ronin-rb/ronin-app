@@ -18,8 +18,6 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-$LOAD_PATH.unshift(File.join(__dir__,'lib'))
-
 # param validations
 require 'ronin/app/validations/recon_params'
 require 'ronin/app/validations/nmap_params'
