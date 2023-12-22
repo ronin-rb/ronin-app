@@ -86,21 +86,8 @@
       <td>
         <% @person.connected_people.each do |connected_person| %>
           <p>
-            <a href="/db/connected_people/<%=h connected_person.id %>">
+            <a href="/db/people/<%=h connected_person.id %>">
               <%=h connected_person %>
-            </a>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-
-    <tr>
-      <td><strong>Organization Customers:</strong></td>
-      <td>
-        <% @person.organization_customers.each do |organization_customer| %>
-          <p>
-            <a href="/db/organization_customers/<%=h organization_customer.id %>">
-              <%=h organization_customer %>
             </a>
           </p>
         <% end %>
