@@ -731,6 +731,26 @@ class App < Sinatra::Base
     end
   end
 
+  get '/db/organization_departments/:id' do
+    @organization_department = Ronin::DB::OrganizationDepartment.find(params[:id])
+
+    if @organization_department
+      erb :"db/organizations/departments/show"
+    else
+      halt 404
+    end
+  end
+
+  get '/db/organization_members/:id' do
+    @organization_member = Ronin::DB::OrganizationMember.find(params[:id])
+
+    if @organization_member
+      erb :"db/organizations/members/show"
+    else
+      halt 404
+    end
+  end
+  
   get '/db/people' do
     @pagy, @people = pagy(Ronin::DB::Person)
 
