@@ -1,0 +1,117 @@
+<% content_for :breadcrumbs  do %>
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/db">Database</a></li>
+      <li><a href="/db/people">People</a></li>
+    </ul>
+  </nav>
+<% end %>
+
+<h1>Person: <%=h @person %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Prefix:</strong></td>
+      <td><%=h @person.prefix %></td>
+    </tr>
+
+    <tr>
+      <td><strong>First name:</strong></td>
+      <td><%=h @person.first_name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Middle name:</strong></td>
+      <td><%=h @person.middle_name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Middle initial:</strong></td>
+      <td><%=h @person.middle_initial %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Last name:</strong></td>
+      <td><%=h @person.last_name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Suffix:</strong></td>
+      <td><%=h @person.suffix %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Street Addresses:</strong></td>
+      <td>
+        <% @person.street_addresses.each do |street_address| %>
+          <p>
+            <a href="/db/street_addresses/<%=h street_address.id %>">
+              <%=h street_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Phone Numbers:</strong></td>
+      <td>
+        <% @person.phone_numbers.each do |phone_number| %>
+          <p>
+            <a href="/db/phone_numbers/<%=h phone_number.id %>">
+              <%=h phone_number %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Email Addresses:</strong></td>
+      <td>
+        <% @person.email_addresses.each do |email_address| %>
+          <p>
+            <a href="/db/email_addresses/<%=h email_address.id %>">
+              <%=h email_address %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Connected People:</strong></td>
+      <td>
+        <% @person.connected_people.each do |connected_person| %>
+          <p>
+            <a href="/db/people/<%=h connected_person.id %>">
+              <%=h connected_person %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Vendors:</strong></td>
+      <td>
+        <% @person.vendors.each do |vendor| %>
+          <p>
+            <a href="/db/departments/<%=h vendor.id %>">
+              <%=h vendor %>
+            </a>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created at:</strong></td>
+      <td><%=h @person.created_at %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= partial(:notes, notes: @person.notes) %>

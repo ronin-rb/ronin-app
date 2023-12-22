@@ -337,6 +337,7 @@ class App < Sinatra::Base
     @phone_number_count         = Ronin::DB::PhoneNumber.count
     @street_address_count       = Ronin::DB::StreetAddress.count
     @organization_count         = Ronin::DB::Organization.count
+    @people_count               = Ronin::DB::Person.count
 
     erb :db
   end
@@ -745,6 +746,22 @@ class App < Sinatra::Base
 
     if @organization_member
       erb :"db/organizations/members/show"
+    else
+      halt 404
+    end
+  end
+  
+  get '/db/people' do
+    @pagy, @people = pagy(Ronin::DB::Person)
+
+    erb :"db/people/index"
+  end
+
+  get '/db/people/:id' do
+    @person = Ronin::DB::Person.find(params[:id])
+
+    if @person
+      erb :"db/people/show"
     else
       halt 404
     end
