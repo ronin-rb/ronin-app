@@ -1,0 +1,87 @@
+<% content_for :breadcrumbs  do %>
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/db">Database</a></li>
+      <li><a href="/db/organizations">Organization Member</a></li>
+    </ul>
+  </nav>
+<% end %>
+
+<h1>Organization Member: <%=h @organization_member.person %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Active:</strong></td>
+      <td><%=h @organization_member.active %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Type:</strong></td>
+      <td><%=h @organization_member.type %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Role:</strong></td>
+      <td><%=h @organization_member.role %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Title:</strong></td>
+      <td><%=h @organization_member.title %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Rank:</strong></td>
+      <td><%=h @organization_member.rank %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Person:</strong></td>
+      <td><a href="/db/people/<%=h @organization_member.person.id %>"><%=h @organization_member.person %></a></td>
+    </tr>
+
+    <tr>
+      <td><strong>Department:</strong></td>
+      <td>
+        <% if @organization_member.department %>
+          <a href="/db/departments/<%=h @organization_member.department.id %>"><%=h @organization_member.department %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Organization:</strong></td>
+      <td><a href="/db/organizations/<%=h @organization_member.organization.id %>"><%=h @organization_member.organization %></a></td>
+    </tr>
+
+    <tr>
+      <td><strong>Email Address:</strong></td>
+      <td>
+        <% if @organization_member.email_address %>
+          <a href="/db/email_addresses/<%=h @organization_member.email_address.id %>"><%=h @organization_member.email_address %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Phone Number:</strong></td>
+      <td>
+        <% if @organization_member.phone_number %>
+          <a href="/db/phone_numbers/<%=h @organization_member.phone_number.id %>"><%=h @organization_member.phone_number %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created at:</strong></td>
+      <td><%=h @organization_member.created_at %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Updated at:</strong></td>
+      <td><%=h @organization_member.updated_at %></td>
+    </tr>
+  </tbody>
+</table>

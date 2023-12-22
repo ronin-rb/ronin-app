@@ -1,0 +1,82 @@
+<% content_for :breadcrumbs  do %>
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/db">Database</a></li>
+      <li><a href="/db/organizations/<%=h @organization_department.organization.id %>"><%=h @organization_department.organization %></a></li>
+      <% if @organization_department.parent_department %>
+        <li><a href="/db/organization_departments/<%=h @organization_department.parent_department.id %>"><%=h @organization_department.parent_department %></a></li>
+      <% end %>
+    </ul>
+  </nav>
+<% end %>
+
+<h1>Organization Department: <%=h @organization_department %></h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Organization:</strong></td>
+      <td><a href="/db/organizations/<%=h @organization_department.organization.id %>"><%=h @organization_department.organization %></a></td>
+    </tr>
+
+    <tr>
+      <td><strong>Parent Department:</strong></td>
+      <td>
+        <% if @organization_department.parent_department %>
+          <a href="/db/organization_departments/<%=h @organization_department.parent_department.id %>"><%=h @organization_department.parent_department %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Street Address:</strong></td>
+      <td>
+        <% if @organization_department.street_address %>
+          <a href="/db/street_addresses/<%=h @organization_department.street_address.id %>"><%=h @organization_department.street_address %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Email Address:</strong></td>
+      <td>
+        <% if @organization_department.email_address %>
+          <a href="/db/email_addresses/<%=h @organization_department.email_address.id %>"><%=h @organization_department.email_address %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Phone Number:</strong></td>
+      <td>
+        <% if @organization_department.phone_number %>
+          <a href="/db/phone_numbers/<%=h @organization_department.phone_number.id %>"><%=h @organization_department.phone_number %></a>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Subdepartments:</strong></td>
+      <td>
+        <% @organization_department.subdepartments.each do |subdepartment| %>
+          <p><a href="/db/organization_departments/<%=h subdepartment.id %>"><%=h subdepartment %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Members:</strong></td>
+      <td>
+        <% @organization_department.members.each do |member| %>
+          <p><a href="/db/organization_members/<%=h member.id %>"><%=h member %></a></p>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Created:</strong></td>
+      <td><%=h @organization_department.created_at %></td>
+    </tr>
+  </tbody>
+</table>
