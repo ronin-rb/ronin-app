@@ -3,7 +3,10 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/db">Database</a></li>
-      <li><a href="/db/organizations">Organization Department</a></li>
+      <li><a href="/db/organizations/<%=h @organization_department.organization.id %>"><%=h @organization_department.organization %></a></li>
+      <% if @organization_department.parent_department %>
+        <li><a href="/db/organization_departments/<%=h @organization_department.parent_department.id %>"><%=h @organization_department.parent_department %></a></li>
+      <% end %>
     </ul>
   </nav>
 <% end %>
@@ -21,7 +24,7 @@
       <td><strong>Parent Department:</strong></td>
       <td>
         <% if @organization_department.parent_department %>
-          <a href="/db/email_addresses/<%=h @organization_department.parent_department.id %>"><%=h @organization_department.parent_department %></a>
+          <a href="/db/organization_departments/<%=h @organization_department.parent_department.id %>"><%=h @organization_department.parent_department %></a>
         <% end %>
       </td>
     </tr>
