@@ -750,7 +750,7 @@ class App < Sinatra::Base
       halt 404
     end
   end
-  
+
   get '/db/people' do
     @pagy, @people = pagy(Ronin::DB::Person)
 
