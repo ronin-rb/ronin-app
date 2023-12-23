@@ -94,7 +94,8 @@ $ docker-compose up
 * `config.ru` - The main entry point for `rackup`/`puma`.
 * `config/` - Contains all app configuration files.
 * `lib/ronin/app/helpers/` - Contains all Sinatra helper modules which define methods that
-* `app.rb` - The main Rack app that contains all of the HTTP routes.
+* `app.rb` - The main Rack app that contains HTTP routes.
+* `app/` - Contains sub-App classes that contains grouped HTTP routes
 * `workers.rb` - The main entry point for Sidekiq which loads all worker classes
   from `lib/workers/`.
 * `workers/` - Contains all Sidekiq worker classes.
