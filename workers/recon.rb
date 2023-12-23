@@ -37,6 +37,8 @@ module Workers
     # The accepted JSON params which will be passed to {Recon#perform}.
     Params = Dry::Schema::JSON() do
       required(:scope).array(:string).each(:filled?)
+
+      optional(:ignore).maybe(:array)
       optional(:max_depth).maybe(:integer)
     end
 
@@ -50,9 +52,12 @@ module Workers
     #   The params could not be validated or coerced.
     #
     def perform(params)
-      kwargs  = validate(params)
-      values  = kwargs[:scope].map(&Ronin::Recon::Value.method(:parse))
-      ignore  = kwargs[:ignore].map(&Ronin::Recon::Value.method(:parse))
+      kwargs            = validate(params)
+      values            = kwargs[:scope].map(&Ronin::Recon::Value.method(:parse))
+      ignore            = []
+      if (ignore_kwargs = kwargs[:ignore])
+        ignore = ignore_kwargs.map(&Ronin::Recon::Value.method(:parse))
+      end
 
       Ronin::Recon::Engine.run(values, ignore:    ignore,
                                        max_depth: kwargs[:max_depth]) do |engine|
