@@ -52,12 +52,14 @@ module Workers
     #   The params could not be validated or coerced.
     #
     def perform(params)
-      kwargs            = validate(params)
-      values            = kwargs[:scope].map(&Ronin::Recon::Value.method(:parse))
-      ignore            = []
-      if (ignore_kwargs = kwargs[:ignore])
-        ignore = ignore_kwargs.map(&Ronin::Recon::Value.method(:parse))
-      end
+      kwargs = validate(params)
+      values = kwargs[:scope].map(&Ronin::Recon::Value.method(:parse))
+
+      ignore = if (ignore_kwargs = kwargs[:ignore])
+                 ignore_kwargs.map(&Ronin::Recon::Value.method(:parse))
+               else
+                 []
+               end
 
       Ronin::Recon::Engine.run(values, ignore:    ignore,
                                        max_depth: kwargs[:max_depth]) do |engine|
