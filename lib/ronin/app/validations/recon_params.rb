@@ -38,8 +38,8 @@ module Ronin
 
         params do
           required(:scope).filled(Types::Args).each(:filled?)
-          optional(:ignore).filled(Types::Args).each(:filled?)
 
+          optional(:ignore).maybe(Types::Args)
           optional(:max_depth).maybe(:integer)
         end
 
