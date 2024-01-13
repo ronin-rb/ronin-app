@@ -2,7 +2,7 @@
 #
 # ronin-app - a local web app for Ronin.
 #
-# Copyright (C) 2023 Hal Brodigan (postmodern.mod3@gmail.com)
+# Copyright (C) 2023-2024 Hal Brodigan (postmodern.mod3@gmail.com)
 #
 # ronin-app is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
