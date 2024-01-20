@@ -493,4 +493,56 @@ class App < Sinatra::Base
       halt 404
     end
   end
+
+  {
+    host_names:            Ronin::DB::HostName,
+    asns:                  Ronin::DB::ASN,
+    ip_addresses:          Ronin::DB::IPAddress,
+    mac_addresses:         Ronin::DB::MACAddress,
+    open_ports:            Ronin::DB::OpenPort,
+    ports:                 Ronin::DB::Port,
+    services:              Ronin::DB::Service,
+    urls:                  Ronin::DB::URL,
+    url_schemes:           Ronin::DB::URLScheme,
+    url_query_param_names: Ronin::DB::URLQueryParamName,
+    email_addresses:       Ronin::DB::EmailAddress,
+    user_names:            Ronin::DB::UserName,
+    passwords:             Ronin::DB::Password,
+    credentials:           Ronin::DB::Credential,
+    advisories:            Ronin::DB::Advisory,
+    softwares:             Ronin::DB::Software,
+    software_vendors:      Ronin::DB::SoftwareVendor,
+    oses:                  Ronin::DB::OS,
+    vulns:                 Ronin::DB::WebVuln,
+    phone_numbers:         Ronin::DB::PhoneNumber,
+    street_addresses:      Ronin::DB::StreetAddress,
+    organizations:         Ronin::DB::Organization,
+    people:                Ronin::DB::Person
+  }.each do |name, model|
+    delete "/db/#{name}" do
+      if model.destroy_all
+        flash[:success] = "Records deleted successfully."
+      else
+        flash[:danger] = "Failed to delete records."
+      end
+
+      redirect "/db/#{name}"
+    end
+
+    delete "/db/#{name}/:id" do
+      @record = model.find(params[:id])
+
+      if @record
+        if @record.destroy
+          flash[:success] = "Record deleted successfully."
+
+          redirect "/db/#{name}"
+        else
+          flash[:danger] = "Failed to delete record."
+        end
+      else
+        halt 404
+      end
+    end
+  end
 end
