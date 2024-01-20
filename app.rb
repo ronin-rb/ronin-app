@@ -72,6 +72,7 @@ class App < Sinatra::Base
 
   configure do
     enable :sessions
+    enable :method_override
     register Sinatra::Flash
     helpers Sinatra::ContentFor
     helpers Helpers::HTML
