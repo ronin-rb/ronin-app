@@ -7,7 +7,10 @@
   </nav>
 <% end %>
   
-<h1>Vulnerabilities</h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Vulnerabilities</h1>
+  <%= partial(:delete_all, path: "vulns") %>
+</div>
 
 <% @vulns.each do |vuln| %>
   <p><a href="/db/vulns/<%=h vuln.id %>"><%=h vuln.url %></a></p>

@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>Password: <%=h @password %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Password: <%=h @password %></h1>
+  <%= partial(:delete, record: @password, path: "passwords") %>
+</div>
 
 <table class="table">
   <tbody>

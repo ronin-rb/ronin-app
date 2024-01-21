@@ -6,8 +6,11 @@
     </ul>
   </nav>
 <% end %>
-  
-<h1>Street Addresses</h1>
+
+<div class="is-flex is-justify-content-space-between">
+  <h1>Street Addresses</h1>
+  <%= partial(:delete_all, path: "street_addresses") %>
+</div>
 
 <% @street_addresses.each do |street_address| %>
   <p><a href="/db/street_addresses/<%=h street_address.id %>"><%=h street_address %></a></p>

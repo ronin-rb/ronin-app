@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>Software Vendor: <%=h @software_vendor %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Software Vendor: <%=h @software_vendor %></h1>
+  <%= partial(:delete, record: @software_vendor, path: "software_vendors") %>
+</div>
 
 <table class="table">
   <tbody>

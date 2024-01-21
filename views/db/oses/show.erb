@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>OS: <%=h @os %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>OS: <%=h @os %></h1>
+  <%= partial(:delete, record: @os, path: "oses") %>
+</div>
 
 <table class="table">
   <tbody>
