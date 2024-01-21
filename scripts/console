@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -z "$DATABASE_URL" ]] && [[ -n "$DATABASE_NAME" ]]; then
+if [[ -z "$DATABASE_URL" ]] && [[ -z "$DATABASE_NAME" ]]; then
 	export DATABASE_URL="sqlite3:db/dev.sqlite3"
 fi
 
