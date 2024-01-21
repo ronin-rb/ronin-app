@@ -22,7 +22,8 @@
   </div>
 
   <div class="control">
-    <form action="/repos" method="DELETE">
+    <form action="/repos" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
       <button type="submit" class="button is-danger">Purge</button>
     </form>
   </div>

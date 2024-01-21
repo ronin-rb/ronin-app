@@ -31,7 +31,8 @@
   </div>
 
   <div class="control">
-    <form action="/repos/<%=hattr @repo.name %>" method="DELETE">
+    <form action="/repos/<%=hattr @repo.name %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
       <button type="submit" class="button is-danger">Remove</button>
     </form>
   </div>
