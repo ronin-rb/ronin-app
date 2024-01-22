@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h3>Open Port: <%=h @open_port %></h3>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Open Port: <%=h @open_port %></h1>
+  <%= partial(:delete, record: @open_port, path: "open_ports") %>
+</div>
 
 <table class="table">
   <tbody>

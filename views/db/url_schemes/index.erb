@@ -7,7 +7,10 @@
 </nav>
 <% end %>
 
-<h1>URL Schemes</h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>URL Schemes</h1>
+  <%= partial(:delete_all, path: "url_schemes") %>
+</div>
 
 <% @url_schemes.each do |url_scheme| %>
   <p><a href="/db/url_schemes/<%=h url_scheme.id %>"><%=h url_scheme %></a></p>

@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>Phone Number: <%=h @phone_number %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Phone Number: <%=h @phone_number %></h1>
+  <%= partial(:delete, record: @phone_number, path: "phone_numbers") %>
+</div>
 
 <table class="table">
   <tbody>

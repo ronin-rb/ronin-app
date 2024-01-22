@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>URL Query Param Name: <%=h @url_query_param_name %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>URL Query Param Name: <%=h @url_query_param_name %></h1>
+  <%= partial(:delete, record: @url_query_param_name, path: "url_query_param_names") %>
+</div>
 
 <table class="table">
   <tbody>

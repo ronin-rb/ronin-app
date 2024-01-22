@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>URL Scheme: <%=h @url_scheme %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>URL Scheme: <%=h @url_scheme %></h1>
+  <%= partial(:delete, record: @url_scheme, path: "url_schemes") %>
+</div>
 
 <table class="table">
   <tbody>

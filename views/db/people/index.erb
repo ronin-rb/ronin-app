@@ -7,7 +7,10 @@
   </nav>
 <% end %>
 
-<h1>People</h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>People</h1>
+  <%= partial(:delete_all, path: "people") %>
+</div>
 
 <% @people.each do |person| %>
   <p><a href="/db/people/<%=h person.id %>"><%=h person %></a></p>

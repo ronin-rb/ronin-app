@@ -510,7 +510,7 @@ class App < Sinatra::Base
     passwords:             Ronin::DB::Password,
     credentials:           Ronin::DB::Credential,
     advisories:            Ronin::DB::Advisory,
-    softwares:             Ronin::DB::Software,
+    software:              Ronin::DB::Software,
     software_vendors:      Ronin::DB::SoftwareVendor,
     oses:                  Ronin::DB::OS,
     vulns:                 Ronin::DB::WebVuln,

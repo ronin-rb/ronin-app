@@ -8,7 +8,10 @@
 </nav>
 <% end %>
 
-<h1>ASN: <%=h @asn %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>ASN: <%=h @asn %></h1>
+  <%= partial(:delete, record: @asn, path: "asns") %>
+</div>
 
 <table class="table">
   <tbody>
