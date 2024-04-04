@@ -12,6 +12,17 @@
   <%= partial(:delete_all, path: "urls") %>
 </div>
 
+<form action="/db/urls/import" method="post" class="mb-5">
+  <div class="field has-addons">
+    <div class="mr-1">
+      <input class="input" name="url" placeholder="http://example.com/"></input>
+    </div>
+    <div>
+      <button type="submit" class="button is-primary">Import</button>
+    </div>
+  </div>
+</form>
+
 <% @urls.each do |url| %>
   <p><a href="/db/urls/<%=h url.id %>"><%=h url %></a></p>
 <% end %>

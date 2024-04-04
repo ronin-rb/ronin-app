@@ -12,6 +12,17 @@
   <%= partial(:delete_all, path: "people") %>
 </div>
 
+<form action="/db/people/import" method="post" class="mb-5">
+  <div class="field has-addons">
+    <div class="mr-1">
+      <input class="input" name="person" placeholder="Foo Bar"></input>
+    </div>
+    <div>
+      <button type="submit" class="button is-primary">Import</button>
+    </div>
+  </div>
+</form>
+
 <% @people.each do |person| %>
   <p><a href="/db/people/<%=h person.id %>"><%=h person %></a></p>
 <% end %>

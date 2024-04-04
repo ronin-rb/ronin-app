@@ -85,6 +85,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/host_names/import' do
+    begin
+      host_name = Ronin::DB::HostName.import(params[:host_name])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/host_names"
+    end
+
+    if host_name.save
+      redirect "/db/host_names/#{host_name.id}"
+    else
+      flash[:danger] = "Failed to import a host name."
+      redirect "db/host_names"
+    end
+  end
+
   {
     mac_addresses:   Ronin::DB::MACAddress,
     ip_addresses:    Ronin::DB::IPAddress,
@@ -206,6 +222,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/ports/import' do
+    begin
+      port = Ronin::DB::Port.import(params[:port])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/ports"
+    end
+
+    if port.save
+      redirect "/db/ports/#{port.id}"
+    else
+      flash[:danger] = 'Failed to import a port.'
+      redirect "db/ports"
+    end
+  end
+
   get '/db/services' do
     @pagy, @services = pagy(Ronin::DB::Service)
 
@@ -222,6 +254,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/services/import' do
+    begin
+      service = Ronin::DB::Service.import(params[:service])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/services"
+    end
+
+    if service.save
+      redirect "/db/services/#{service.id}"
+    else
+      flash[:danger] = 'Failed to import a service.'
+      redirect "db/services"
+    end
+  end
+
   get '/db/urls' do
     @pagy, @urls = pagy(Ronin::DB::URL)
 
@@ -235,6 +283,22 @@ class App < Sinatra::Base
       erb :"db/urls/show"
     else
       halt 404
+    end
+  end
+
+  post '/db/urls/import' do
+    begin
+      url = Ronin::DB::URL.import(params[:url])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/urls"
+    end
+
+    if url.save
+      redirect "/db/urls/#{url.id}"
+    else
+      flash[:danger] = 'Failed to import a url.'
+      redirect "db/urls"
     end
   end
 
@@ -286,6 +350,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/email_addresses/import' do
+    begin
+      email_address = Ronin::DB::EmailAddress.import(params[:email_address])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/email_addresses"
+    end
+
+    if email_address.save
+      redirect "/db/email_addresses/#{email_address.id}"
+    else
+      flash[:danger] = "Failed to import a email address."
+      redirect "db/email_addresses"
+    end
+  end
+
   get '/db/user_names' do
     @pagy, @user_names = pagy(Ronin::DB::UserName)
 
@@ -299,6 +379,22 @@ class App < Sinatra::Base
       erb :"db/user_names/show"
     else
       halt 404
+    end
+  end
+
+  post '/db/user_names/import' do
+    begin
+      user_name = Ronin::DB::UserName.import(params[:user_name])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/user_names"
+    end
+
+    if user_name.save
+      redirect "/db/user_names/#{user_name.id}"
+    else
+      flash[:danger] = 'Failed to import a username.'
+      redirect "db/user_names"
     end
   end
 
@@ -318,6 +414,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/passwords/import' do
+    begin
+      password = Ronin::DB::Password.import(params[:password])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/passwords"
+    end
+
+    if password.save
+      redirect "/db/passwords/#{password.id}"
+    else
+      flash[:danger] = "Failed to import a password."
+      redirect "db/passwords"
+    end
+  end
+
   get '/db/credentials' do
     @pagy, @credentials = pagy(Ronin::DB::Credential)
 
@@ -334,6 +446,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/credentials/import' do
+    begin
+      credential = Ronin::DB::Credential.import(params[:cred])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/credentials"
+    end
+
+    if credential.save
+      redirect "/db/credentials/#{credential.id}"
+    else
+      flash[:danger] = "Failed to import a credential."
+      redirect "db/credentials"
+    end
+  end
+
   get '/db/advisories' do
     @pagy, @advisories = pagy(Ronin::DB::Advisory)
 
@@ -347,6 +475,22 @@ class App < Sinatra::Base
       erb :"db/advisories/show"
     else
       halt 404
+    end
+  end
+
+  post '/db/advisories/import' do
+    begin
+      advisory = Ronin::DB::Advisory.import(params[:id])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/advisories"
+    end
+
+    if advisory.save
+      redirect "/db/advisories/#{advisory.id}"
+    else
+      flash[:danger] = "Failed to import an advisory."
+      redirect "db/advisories"
     end
   end
 
@@ -426,6 +570,22 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/phone_numbers/import' do
+    begin
+      phone_number = Ronin::DB::PhoneNumber.import(params[:phone_number])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/phone_numbers"
+    end
+
+    if phone_number.save
+      redirect "/db/phone_numbers/#{phone_number.id}"
+    else
+      flash[:danger] = "Failed to import a phone number."
+      redirect "db/phone_numbers"
+    end
+  end
+
   get '/db/street_addresses' do
     @pagy, @street_addresses = pagy(Ronin::DB::StreetAddress)
 
@@ -455,6 +615,22 @@ class App < Sinatra::Base
       erb :"db/organizations/show"
     else
       halt 404
+    end
+  end
+
+  post '/db/organizations/import' do
+    begin
+      organization = Ronin::DB::Organization.import(params[:name])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/organizations"
+    end
+
+    if organization.save
+      redirect "/db/organizations/#{organization.id}"
+    else
+      flash[:danger] = "Failed to import a ogranization."
+      redirect "db/organizations"
     end
   end
 
@@ -491,6 +667,22 @@ class App < Sinatra::Base
       erb :"db/people/show"
     else
       halt 404
+    end
+  end
+
+  post '/db/people/import' do
+    begin
+      person = Ronin::DB::Person.import(params[:person])
+    rescue ArgumentError => e
+      flash[:danger] = e.message
+      redirect "db/people"
+    end
+
+    if person.save
+      redirect "/db/people/#{person.id}"
+    else
+      flash[:danger] = "Failed to import a person."
+      redirect "db/people"
     end
   end
 
