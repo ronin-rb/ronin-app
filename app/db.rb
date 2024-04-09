@@ -85,6 +85,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/host_names/import' do
+    begin
+      host_name = Ronin::DB::HostName.find_or_import(params[:host_name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/host_names"
+    end
+
+    redirect "/db/host_names/#{host_name.id}"
+  end
+
   {
     mac_addresses:   Ronin::DB::MACAddress,
     ip_addresses:    Ronin::DB::IPAddress,
@@ -206,6 +217,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/ports/import' do
+    begin
+      port = Ronin::DB::Port.find_or_import(params[:port])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/ports"
+    end
+
+    redirect "/db/ports/#{port.id}"
+  end
+
   get '/db/services' do
     @pagy, @services = pagy(Ronin::DB::Service)
 
@@ -222,6 +244,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/services/import' do
+    begin
+      service = Ronin::DB::Service.find_or_import(params[:service])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/services"
+    end
+
+    redirect "/db/services/#{service.id}"
+  end
+
   get '/db/urls' do
     @pagy, @urls = pagy(Ronin::DB::URL)
 
@@ -236,6 +269,17 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  post '/db/urls/import' do
+    begin
+      url = Ronin::DB::URL.find_or_import(params[:url])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/urls"
+    end
+
+    redirect "/db/urls/#{url.id}"
   end
 
   get '/db/url_schemes' do
@@ -286,6 +330,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/email_addresses/import' do
+    begin
+      email_address = Ronin::DB::EmailAddress.find_or_import(params[:email_address])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/email_addresses"
+    end
+
+    redirect "/db/email_addresses/#{email_address.id}"
+  end
+
   get '/db/user_names' do
     @pagy, @user_names = pagy(Ronin::DB::UserName)
 
@@ -300,6 +355,17 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  post '/db/user_names/import' do
+    begin
+      user_name = Ronin::DB::UserName.find_or_import(params[:user_name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/user_names"
+    end
+
+    redirect "/db/user_names/#{user_name.id}"
   end
 
   get '/db/passwords' do
@@ -318,6 +384,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/passwords/import' do
+    begin
+      password = Ronin::DB::Password.find_or_import(params[:password])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/passwords"
+    end
+
+    redirect "/db/passwords/#{password.id}"
+  end
+
   get '/db/credentials' do
     @pagy, @credentials = pagy(Ronin::DB::Credential)
 
@@ -334,6 +411,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/credentials/import' do
+    begin
+      credential = Ronin::DB::Credential.find_or_import(params[:cred])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/credentials"
+    end
+
+    redirect "/db/credentials/#{credential.id}"
+  end
+
   get '/db/advisories' do
     @pagy, @advisories = pagy(Ronin::DB::Advisory)
 
@@ -348,6 +436,17 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  post '/db/advisories/import' do
+    begin
+      advisory = Ronin::DB::Advisory.find_or_import(params[:id])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/advisories"
+    end
+
+    redirect "/db/advisories/#{advisory.id}"
   end
 
   get '/db/software' do
@@ -426,6 +525,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/db/phone_numbers/import' do
+    begin
+      phone_number = Ronin::DB::PhoneNumber.find_or_import(params[:phone_number])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/phone_numbers"
+    end
+
+    redirect "/db/phone_numbers/#{phone_number.id}"
+  end
+
   get '/db/street_addresses' do
     @pagy, @street_addresses = pagy(Ronin::DB::StreetAddress)
 
@@ -456,6 +566,17 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  post '/db/organizations/import' do
+    begin
+      organization = Ronin::DB::Organization.find_or_import(params[:name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/organizations"
+    end
+
+    redirect "/db/organizations/#{organization.id}"
   end
 
   get '/db/organization_departments/:id' do
@@ -492,6 +613,17 @@ class App < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  post '/db/people/import' do
+    begin
+      person = Ronin::DB::Person.find_or_import(params[:person])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
+      redirect "db/people"
+    end
+
+    redirect "/db/people/#{person.id}"
   end
 
   {

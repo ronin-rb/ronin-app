@@ -12,6 +12,17 @@
   <%= partial(:delete_all, path: "ports") %>
 </div>
 
+<form action="/db/ports/import" method="post" class="mb-5">
+  <div class="field has-addons">
+    <div class="mr-1">
+      <input class="input" name="port" placeholder="22"></input>
+    </div>
+    <div>
+      <button type="submit" class="button is-primary">Import</button>
+    </div>
+  </div>
+</form>
+
 <% @ports.each do |port| %>
   <p><a href="/db/ports/<%=h port.id %>"><%=h port %></a></p>
 <% end %>

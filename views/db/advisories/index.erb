@@ -12,6 +12,17 @@
   <%= partial(:delete_all, path: "advisories") %>
 </div>
 
+<form action="/db/advisories/import" method="post" class="mb-5">
+  <div class="field has-addons">
+    <div class="mr-1">
+      <input class="input" name="id" placeholder="ID"></input>
+    </div>
+    <div>
+      <button type="submit" class="button is-primary">Import</button>
+    </div>
+  </div>
+</form>
+
 <% @advisories.each do |advisory| %>
   <p><a href="/db/advisories/<%=h advisory.id %>"><%=h advisory %></a></p>
 <% end %>

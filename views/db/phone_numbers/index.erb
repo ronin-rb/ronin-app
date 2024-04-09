@@ -12,6 +12,17 @@
   <%= partial(:delete_all, path: "phone_numbers") %>
 </div>
 
+<form action="/db/phone_numbers/import" method="post" class="mb-5">
+  <div class="field has-addons">
+    <div class="mr-1">
+      <input class="input" name="phone_number" placeholder="+1 123 456-7890"></input>
+    </div>
+    <div>
+      <button type="submit" class="button is-primary">Import</button>
+    </div>
+  </div>
+</form>
+
 <% @phone_numbers.each do |phone_number| %>
   <p><a href="/db/phone_numbers/<%=h phone_number.id %>"><%=h phone_number %></a></p>
 <% end %>

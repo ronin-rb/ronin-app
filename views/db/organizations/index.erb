@@ -6,12 +6,23 @@
     </ul>
   </nav>
   <% end %>
-  
+
   <h1>Organizations</h1>
-  
+
+  <form action="/db/organizations/import" method="post" class="mb-5">
+    <div class="field has-addons">
+      <div class="mr-1">
+        <input class="input" name="name" placeholder="Org Name"></input>
+      </div>
+      <div>
+        <button type="submit" class="button is-primary">Import</button>
+      </div>
+    </div>
+  </form>
+
   <% @organizations.each do |organization| %>
     <p><a href="/db/organizations/<%=h organization.id %>"><%=h organization %></a></p>
   <% end %>
-  
+
   <%= partial(:pagination, pagy: @pagy) %>
   
