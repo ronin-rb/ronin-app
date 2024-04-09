@@ -87,18 +87,13 @@ class App < Sinatra::Base
 
   post '/db/host_names/import' do
     begin
-      host_name = Ronin::DB::HostName.import(params[:host_name])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      host_name = Ronin::DB::HostName.find_or_import(params[:host_name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/host_names"
     end
 
-    if host_name.save
-      redirect "/db/host_names/#{host_name.id}"
-    else
-      flash[:danger] = "Failed to import a host name."
-      redirect "db/host_names"
-    end
+    redirect "/db/host_names/#{host_name.id}"
   end
 
   {
@@ -224,18 +219,13 @@ class App < Sinatra::Base
 
   post '/db/ports/import' do
     begin
-      port = Ronin::DB::Port.import(params[:port])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      port = Ronin::DB::Port.find_or_import(params[:port])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/ports"
     end
 
-    if port.save
-      redirect "/db/ports/#{port.id}"
-    else
-      flash[:danger] = 'Failed to import a port.'
-      redirect "db/ports"
-    end
+    redirect "/db/ports/#{port.id}"
   end
 
   get '/db/services' do
@@ -256,18 +246,13 @@ class App < Sinatra::Base
 
   post '/db/services/import' do
     begin
-      service = Ronin::DB::Service.import(params[:service])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      service = Ronin::DB::Service.find_or_import(params[:service])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/services"
     end
 
-    if service.save
-      redirect "/db/services/#{service.id}"
-    else
-      flash[:danger] = 'Failed to import a service.'
-      redirect "db/services"
-    end
+    redirect "/db/services/#{service.id}"
   end
 
   get '/db/urls' do
@@ -288,18 +273,13 @@ class App < Sinatra::Base
 
   post '/db/urls/import' do
     begin
-      url = Ronin::DB::URL.import(params[:url])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      url = Ronin::DB::URL.find_or_import(params[:url])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/urls"
     end
 
-    if url.save
-      redirect "/db/urls/#{url.id}"
-    else
-      flash[:danger] = 'Failed to import a url.'
-      redirect "db/urls"
-    end
+    redirect "/db/urls/#{url.id}"
   end
 
   get '/db/url_schemes' do
@@ -352,18 +332,13 @@ class App < Sinatra::Base
 
   post '/db/email_addresses/import' do
     begin
-      email_address = Ronin::DB::EmailAddress.import(params[:email_address])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      email_address = Ronin::DB::EmailAddress.find_or_import(params[:email_address])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/email_addresses"
     end
 
-    if email_address.save
-      redirect "/db/email_addresses/#{email_address.id}"
-    else
-      flash[:danger] = "Failed to import a email address."
-      redirect "db/email_addresses"
-    end
+    redirect "/db/email_addresses/#{email_address.id}"
   end
 
   get '/db/user_names' do
@@ -384,18 +359,13 @@ class App < Sinatra::Base
 
   post '/db/user_names/import' do
     begin
-      user_name = Ronin::DB::UserName.import(params[:user_name])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      user_name = Ronin::DB::UserName.find_or_import(params[:user_name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/user_names"
     end
 
-    if user_name.save
-      redirect "/db/user_names/#{user_name.id}"
-    else
-      flash[:danger] = 'Failed to import a username.'
-      redirect "db/user_names"
-    end
+    redirect "/db/user_names/#{user_name.id}"
   end
 
   get '/db/passwords' do
@@ -416,18 +386,13 @@ class App < Sinatra::Base
 
   post '/db/passwords/import' do
     begin
-      password = Ronin::DB::Password.import(params[:password])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      password = Ronin::DB::Password.find_or_import(params[:password])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/passwords"
     end
 
-    if password.save
-      redirect "/db/passwords/#{password.id}"
-    else
-      flash[:danger] = "Failed to import a password."
-      redirect "db/passwords"
-    end
+    redirect "/db/passwords/#{password.id}"
   end
 
   get '/db/credentials' do
@@ -448,18 +413,13 @@ class App < Sinatra::Base
 
   post '/db/credentials/import' do
     begin
-      credential = Ronin::DB::Credential.import(params[:cred])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      credential = Ronin::DB::Credential.find_or_import(params[:cred])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/credentials"
     end
 
-    if credential.save
-      redirect "/db/credentials/#{credential.id}"
-    else
-      flash[:danger] = "Failed to import a credential."
-      redirect "db/credentials"
-    end
+    redirect "/db/credentials/#{credential.id}"
   end
 
   get '/db/advisories' do
@@ -480,18 +440,13 @@ class App < Sinatra::Base
 
   post '/db/advisories/import' do
     begin
-      advisory = Ronin::DB::Advisory.import(params[:id])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      advisory = Ronin::DB::Advisory.find_or_import(params[:id])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/advisories"
     end
 
-    if advisory.save
-      redirect "/db/advisories/#{advisory.id}"
-    else
-      flash[:danger] = "Failed to import an advisory."
-      redirect "db/advisories"
-    end
+    redirect "/db/advisories/#{advisory.id}"
   end
 
   get '/db/software' do
@@ -572,18 +527,13 @@ class App < Sinatra::Base
 
   post '/db/phone_numbers/import' do
     begin
-      phone_number = Ronin::DB::PhoneNumber.import(params[:phone_number])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      phone_number = Ronin::DB::PhoneNumber.find_or_import(params[:phone_number])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/phone_numbers"
     end
 
-    if phone_number.save
-      redirect "/db/phone_numbers/#{phone_number.id}"
-    else
-      flash[:danger] = "Failed to import a phone number."
-      redirect "db/phone_numbers"
-    end
+    redirect "/db/phone_numbers/#{phone_number.id}"
   end
 
   get '/db/street_addresses' do
@@ -620,18 +570,13 @@ class App < Sinatra::Base
 
   post '/db/organizations/import' do
     begin
-      organization = Ronin::DB::Organization.import(params[:name])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      organization = Ronin::DB::Organization.find_or_import(params[:name])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/organizations"
     end
 
-    if organization.save
-      redirect "/db/organizations/#{organization.id}"
-    else
-      flash[:danger] = "Failed to import a ogranization."
-      redirect "db/organizations"
-    end
+    redirect "/db/organizations/#{organization.id}"
   end
 
   get '/db/organization_departments/:id' do
@@ -672,18 +617,13 @@ class App < Sinatra::Base
 
   post '/db/people/import' do
     begin
-      person = Ronin::DB::Person.import(params[:person])
-    rescue ArgumentError => e
-      flash[:danger] = e.message
+      person = Ronin::DB::Person.find_or_import(params[:person])
+    rescue ArgumentError => error
+      flash[:danger] = error.message
       redirect "db/people"
     end
 
-    if person.save
-      redirect "/db/people/#{person.id}"
-    else
-      flash[:danger] = "Failed to import a person."
-      redirect "db/people"
-    end
+    redirect "/db/people/#{person.id}"
   end
 
   {
