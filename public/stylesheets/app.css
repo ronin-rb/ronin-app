@@ -3,6 +3,7 @@
 	--fg-color: black;
 	--dark-mode-bg-color: #0f0f1b;
 	--dark-mode-fg-color: white;
+	--dark-mode-secondary-bg-color: #141425;
 }
 
 body {
@@ -174,4 +175,31 @@ body.dark-mode main a {
 	background-color: black;
 	padding-top: 0;
 	border-top: 0;
+}
+
+body.dark-mode .dropdown-content {
+	background-color: var(--dark-mode-secondary-bg-color);
+}
+
+.dropdown-item {
+	text-decoration: none !important;
+	padding: 8px 32px !important;
+	text-align: center !important;
+}
+
+.dropdown-item.delete-note:hover {
+	background-color: hsl(348, 100%, 61%) !important;
+	color: var(--dark-mode-fg-color) !important;
+}
+
+.dropdown-menu {
+	min-width: 0 !important;
+}
+
+.dropdown.three-dots {
+	cursor: pointer;
+}
+
+.dropdown.three-dots:hover {
+	color: rgb(105, 105, 198) !important;
 }

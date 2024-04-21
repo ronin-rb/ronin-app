@@ -126,6 +126,14 @@ class App < Sinatra::Base
     end
   end
 
+  put "/db/notes/:id" do
+    @record = Ronin::DB::Note.find_by(params[:id])
+
+    unless @record || @record.update(params)
+      halt 404
+    end
+  end
+
   get '/db/asns' do
     @pagy, @asns = pagy(Ronin::DB::ASN)
 
