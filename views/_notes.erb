@@ -4,10 +4,10 @@
   <h3>Notes</h3>
 
   <% notes.each do |note| %>
-    <div data-note-id=<%= note.id %> class="note-div box p-0">
+    <div data-note-id=<%=hattr note.id %> class="note-div box p-0">
       <div class="columns note-header m-0 p-1">
         <div class="column created-at is-half px-3 py-0">
-          <small class="is-size-7">Created at: <%= note.created_at %></small>
+          <small class="is-size-7">Created at: <%=h note.created_at %></small>
         </div>
 
         <div class="column has-text-right p-0 pr-1 mt-0">
@@ -29,13 +29,13 @@
 
       <div class="columns is-full">
         <div class="column">
-          <div class="note-body mb-0 p-4"><%= note.body %></div>
+          <div class="note-body mb-0 p-4"><%=h note.body %></div>
 
           <div class="note-form" style="display: none">
             <div class="control">
               <div class="media-content">
                 <div class="field mb-0 p-2">
-                  <textarea class="textarea" name="body" placeholder="Edit a note..."><%= note.body %></textarea>
+                  <textarea class="textarea" name="body" placeholder="Edit a note..."><%=h note.body %></textarea>
                 </div>
 
                 <div class="field is-flex is-justify-content-flex-end px-2 pb-2">
