@@ -188,3 +188,10 @@ body.dark-mode main a {
 .advanced-content .tabs ul li {
 	padding: 4px 0;
 }
+
+.content-tab {
+  display: none;
+}
+.content-tab.is-active {
+  display: block;
+}

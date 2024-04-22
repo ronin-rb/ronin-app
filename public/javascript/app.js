@@ -75,7 +75,6 @@ ready(() => {
     });
   });
 
-
   const tabs = (document.querySelectorAll('.advanced-content .tabs li') || [])
   const tabContentBoxes = document.querySelectorAll('#tab-content .content-tab')
 
