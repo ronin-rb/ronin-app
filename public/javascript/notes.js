@@ -1,7 +1,22 @@
 class Note {
-  constructor(id, noteDiv) {
-    this.id = id
-    this.noteDiv = noteDiv
+  constructor(noteDiv) {
+    this.noteDiv = noteDiv;
+    this.id = noteDiv.getAttribute('data-note-id');
+
+    (noteDiv.querySelectorAll('.edit-note') || []).forEach(editNoteButton => {
+      editNoteButton.addEventListener('click', () => {
+        this.toggleEditForm()
+      })
+    })
+
+    noteDiv.querySelector('.delete-note').addEventListener('click', () => {
+      this.delete()
+    })
+
+    noteDiv.querySelector('.update-note').addEventListener('click', () => {
+      this.toggleEditForm()
+      this.update()
+    })
   }
 
   update() {
@@ -53,28 +68,16 @@ class Note {
   }
 }
 
-const Notes = {
-  init() {
+class Notes {
+  constructor() {
+    this.notes = [];
+
     (document.querySelectorAll('.note-div') || []).forEach(noteDiv => {
-      const noteId = noteDiv.getAttribute('data-note-id')
-      const note = new Note(noteId, noteDiv)
-
-      noteDiv.querySelector('.delete-note').addEventListener('click', () => {
-        note.delete()
-      });
-
-      (noteDiv.querySelectorAll('.edit-note') || []).forEach(editNoteButton => {
-        editNoteButton.addEventListener('click', () => {
-          note.toggleEditForm()
-        })
-      })
-
-      noteDiv.querySelector('.update-note').addEventListener('click', () => {
-        note.toggleEditForm()
-        note.update()
-      })
+      this.notes.push(new Note(noteDiv))
     })
   }
 };
 
-ready(Notes.init);
+ready(() => {
+  new Notes();
+});
