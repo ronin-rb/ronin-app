@@ -74,4 +74,19 @@ ready(() => {
       }
     });
   });
+
+  (document.querySelectorAll('.dropdown') || []).forEach(dropdown => {
+    dropdown.addEventListener('click', function(event) {
+      event.stopPropagation();
+      dropdown.classList.toggle('is-active');
+    });
+  })
+
+  document.addEventListener('click', function (event) {
+    (document.querySelectorAll('.dropdown') || []).forEach(dropdown => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('is-active')
+      }
+    })
+  })
 });

@@ -137,6 +137,14 @@ class App < Sinatra::Base
     end
   end
 
+  put "/db/notes/:id" do
+    @record = Ronin::DB::Note.find(params[:id])
+
+    unless @record.update(body: params[:body])
+      halt 400
+    end
+  end
+
   get '/db/asns' do
     @pagy, @asns = pagy(Ronin::DB::ASN)
 
