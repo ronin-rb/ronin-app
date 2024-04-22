@@ -127,10 +127,10 @@ class App < Sinatra::Base
   end
 
   put "/db/notes/:id" do
-    @record = Ronin::DB::Note.find_by(params[:id])
+    @record = Ronin::DB::Note.find(params[:id])
 
-    unless @record || @record.update(params)
-      halt 404
+    unless @record.update(body: params[:body])
+      halt 400
     end
   end
 

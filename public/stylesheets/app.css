@@ -4,6 +4,7 @@
 	--dark-mode-bg-color: #0f0f1b;
 	--dark-mode-fg-color: white;
 	--dark-mode-secondary-bg-color: #141425;
+	--danger-color: hsl(348, 100%, 61%);
 }
 
 body {
@@ -188,7 +189,7 @@ body.dark-mode .dropdown-content {
 }
 
 .dropdown-item.delete-note:hover {
-	background-color: hsl(348, 100%, 61%) !important;
+	background-color: var(--danger-color) !important;
 	color: var(--dark-mode-fg-color) !important;
 }
 
@@ -196,10 +197,30 @@ body.dark-mode .dropdown-content {
 	min-width: 0 !important;
 }
 
-.dropdown.three-dots {
+.icon {
 	cursor: pointer;
 }
 
-.dropdown.three-dots:hover {
-	color: rgb(105, 105, 198) !important;
+.three-dots-icon {
+	min-width: 16px;
+	height: 16px;
+	background-image: url('/images/three-dots.svg');
+	background-size: cover;
+	display: inline-block;
+}
+
+.note-header {
+	background-color: #3e3e67 !important;
+}
+
+body.dark-mode .note-header {
+	background-color: #1c1c39 !important;
+}
+
+.note-div {
+	border: 1px solid #1c1c39 !important;
+}
+
+.note-header .created-at small {
+	color: white !important;
 }

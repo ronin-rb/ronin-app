@@ -1,62 +1,14 @@
-const Notes = {
-  init() {
-    (document.querySelectorAll('.delete-note') || []).forEach(button => {
-      button.addEventListener('click', () => {
-        const noteId = button.getAttribute('data-note-id');
-        Notes.delete(noteId, button)
-      });
-    });
+class Note {
+  constructor(id, noteDiv) {
+    this.id = id
+    this.noteDiv = noteDiv
+  }
 
-    (document.querySelectorAll('.edit-note') || []).forEach(button => {
-      button.addEventListener('click', () => {
-        const noteId = button.getAttribute('data-note-id')
-        Notes.toggleEditForm(noteId)
-      })
-    });
+  update() {
+    const body = this.noteDiv.querySelector('.note-body')
+    const newValue = this.noteDiv.querySelector('.textarea').value
 
-    (document.querySelectorAll('.update-note') || []).forEach(button => {
-      button.addEventListener('click', () => {
-        const noteId = button.getAttribute('data-note-id')
-        Notes.toggleEditForm(noteId)
-        Notes.update(noteId)
-      })
-    });
-  },
-
-  delete(noteId, button) {
-    fetch(`${document.location}/notes/${noteId}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        button.parentElement.parentElement.remove();
-      } else {
-        console.error('Failed to delete note');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  },
-
-  toggleEditForm(noteId) {
-    const editForm = document.getElementById(`note-edit-form-${noteId}`)
-    const body = document.getElementById(`note-edit-body-${noteId}`)
-
-    if (editForm.style.display === 'none') {
-      body.style.display = 'none';
-      editForm.style.display = 'block';
-    } else {
-      body.style.display = 'block';
-      editForm.style.display = 'none';
-    }
-  },
-
-  update(noteId) {
-    const body = document.getElementById(`note-edit-body-${noteId}`)
-    const newValue = document.getElementById(`note-edit-textarea-${noteId}`).value
-
-    fetch(`${document.location.origin}/db/notes/${noteId}?` + new URLSearchParams({ body: newValue }), {
+    fetch(`${document.location.origin}/db/notes/${this.id}?` + new URLSearchParams({ body: newValue }), {
       method: 'PUT'
     })
     .then(response => {
@@ -67,8 +19,61 @@ const Notes = {
       }
     })
     .catch(error => {
+      console.error('Error: ', error);
+    });
+  }
+
+  delete() {
+    fetch(`${document.location}/notes/${this.id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        this.noteDiv.remove();
+      } else {
+        console.error('Failed to delete note');
+      }
+    })
+    .catch(error => {
       console.error('Error:', error);
     });
+  }
+
+  toggleEditForm() {
+    const editForm = this.noteDiv.querySelector('.note-form')
+    const body = this.noteDiv.querySelector('.note-body')
+
+    if (editForm.style.display === 'none') {
+      body.style.display = 'none';
+      editForm.style.display = 'block';
+    } else {
+      body.style.display = 'block';
+      editForm.style.display = 'none';
+    }
+  }
+}
+
+const Notes = {
+  init() {
+    (document.querySelectorAll('.note-div') || []).forEach(noteDiv => {
+      const noteId = noteDiv.getAttribute('data-note-id')
+      const note = new Note(noteId, noteDiv)
+
+      noteDiv.querySelector('.delete-note').addEventListener('click', () => {
+        note.delete()
+      });
+
+      (noteDiv.querySelectorAll('.edit-note') || []).forEach(editNoteButton => {
+        editNoteButton.addEventListener('click', () => {
+          note.toggleEditForm()
+        })
+      })
+
+      noteDiv.querySelector('.update-note').addEventListener('click', () => {
+        note.toggleEditForm()
+        note.update()
+      })
+    })
   }
 };
 

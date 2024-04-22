@@ -4,9 +4,9 @@
   <h3>Notes</h3>
 
   <% notes.each do |note| %>
-    <div class="box p-0" style="border: 1px solid #1c1c39">
-      <div class="columns m-0 p-1" style="background-color: #1c1c39">
-        <div class="column is-half px-3 py-0">
+    <div data-note-id=<%= note.id %> class="note-div box p-0">
+      <div class="columns note-header m-0 p-1">
+        <div class="column created-at is-half px-3 py-0">
           <small class="is-size-7">Created at: <%= note.created_at %></small>
         </div>
 
@@ -14,13 +14,13 @@
           <div class="dropdown three-dots is-right">
             <div class="dropdown-trigger">
               <span class="icon is-small">
-                <i class="fas fa-ellipsis-h"></i>
+                <div class="three-dots-icon"></div>
               </span>
             </div>
             <div class="dropdown-menu" id="dropdown-menu6" role="menu">
               <div class="dropdown-content">
-                <a class="dropdown-item py-2 edit-note" data-note-id=<%= note.id %>>Edit</a>
-                <a class="dropdown-item py-2 delete-note has-text-danger" data-note-id=<%= note.id %>>Delete</a>
+                <a class="dropdown-item py-2 edit-note">Edit</a>
+                <a class="dropdown-item py-2 delete-note has-text-danger">Delete</a>
               </div>
             </div>
           </div>
@@ -29,18 +29,18 @@
 
       <div class="columns is-full">
         <div class="column">
-          <div id="note-edit-body-<%= note.id %>" class="mb-0 p-4"><%= note.body %></div>
+          <div class="note-body mb-0 p-4"><%= note.body %></div>
 
-          <div id="note-edit-form-<%= note.id %>" style="display: none">
+          <div class="note-form" style="display: none">
             <div class="control">
               <div class="media-content">
                 <div class="field mb-0 p-2">
-                  <textarea id="note-edit-textarea-<%= note.id %>" class="textarea" name="body" placeholder="Edit a note..."><%= note.body %></textarea>
+                  <textarea class="textarea" name="body" placeholder="Edit a note..."><%= note.body %></textarea>
                 </div>
 
                 <div class="field is-flex is-justify-content-flex-end px-2 pb-2">
-                  <button class="edit-note button is-small is-danger mr-2" data-note-id=<%= note.id %>>Discard</button>
-                  <button class="update-note button is-small is-primary" data-note-id=<%= note.id %> data-note-body=<%= note.body %>>Save</button>
+                  <button class="edit-note button is-small is-danger mr-2">Discard</button>
+                  <button class="update-note button is-small is-primary"data-note-body=<%= note.body %>>Save</button>
                 </div>
               </div>
             </div>
