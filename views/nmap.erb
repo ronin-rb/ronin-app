@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
 <h1>nmap</h1>
 
 <form action="/nmap" method="post">
@@ -43,20 +44,20 @@
     <div class="advanced-content mt-3">
       <div class="tabs m-0">
         <ul>
-          <li class="is-active"><a id="target">Target</a></li>
-          <li><a id="host-discovery">Host Discovery</a></li>
-          <li><a id="port-scanning">Port Scanning</a></li>
-          <li><a id="scan-order">Scan Order</a></li>
-          <li><a id="service-scan">Service Scan</a></li>
-          <li><a id="os-detection">OS Detection</a></li>
-          <li><a id="timing-and-performance">Timing and Performance</a></li>
-          <li><a id="evasion-and-spoofing">Evasion and Spoofing</a></li>
-          <li><a id="misc">Misc</a></li>
+          <li class="is-active"><a data-tab-id="target">Target</a></li>
+          <li><a data-tab-id="host-discovery">Host Discovery</a></li>
+          <li><a data-tab-id="port-scanning">Port Scanning</a></li>
+          <li><a data-tab-id="scan-order">Scan Order</a></li>
+          <li><a data-tab-id="service-scan">Service Scan</a></li>
+          <li><a data-tab-id="os-detection">OS Detection</a></li>
+          <li><a data-tab-id="timing-and-performance">Timing and Performance</a></li>
+          <li><a data-tab-id="evasion-and-spoofing">Evasion and Spoofing</a></li>
+          <li><a data-tab-id="misc">Misc</a></li>
         </ul>
       </div>
 
       <div class="tabs-content px-4 py-5" id="tab-content">
-        <div id="target-tab" class="content-tab is-active">
+        <div id="target" class="content-tab is-active">
           <div class="field">
             <label class="label">Target File</label>
 
@@ -122,7 +123,7 @@
           </div>
         </div>
 
-        <div id="host-discovery-tab" class="content-tab">
+        <div id="host-discovery" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">Ping Scan:</label>
             <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
@@ -220,7 +221,7 @@
           </div>
         </div>
 
-        <div id="port-scanning-tab" class="content-tab">
+        <div id="port-scanning" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">SYN Scan:</label>
             <input class="checkbox" type="checkbox" name="syn_scan"<%= " checked" if params[:syn_scan] %>>
@@ -336,7 +337,7 @@
           </div>
         </div>
 
-        <div id="scan-order-tab" class="content-tab">
+        <div id="scan-order" class="content-tab">
           <div class="field">
             <label class="label">Exclude Ports</label>
 
@@ -396,7 +397,7 @@
           </div>
         </div>
 
-        <div id="service-scan-tab" class="content-tab">
+        <div id="service-scan" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">Service Scan:</label>
             <input class="checkbox" type="checkbox" name="service_scan"<%= " checked" if params[:service_scan] %>>
@@ -433,7 +434,7 @@
           </div>
         </div>
 
-        <div id="os-detection-tab" class="content-tab">
+        <div id="os-detection" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">OS Fingerprint:</label>
             <input class="checkbox" type="checkbox" name="os_fingerprint"<%= " checked" if params[:os_fingerprint] %>>
@@ -460,7 +461,7 @@
           </div>
         </div>
 
-        <div id="timing-and-performance-tab" class="content-tab">
+        <div id="timing-and-performance" class="content-tab">
           <div class="field">
             <label class="label">Minimum Host Group:</label>
 
@@ -721,7 +722,7 @@
           </div>
         </div>
 
-        <div id="evasion-and-spoofing-tab" class="content-tab">
+        <div id="evasion-and-spoofing" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">Packet Fragments:</label>
             <input class="checkbox" type="checkbox" name="packet_fragments"<%= " checked" if params[:packet_fragments] %>>
@@ -924,7 +925,7 @@
           </div>
         </div>
 
-        <div id="misc-tab" class="content-tab">
+        <div id="misc" class="content-tab">
           <div class="field">
             <label class="has-text-weight-semibold">IPv6 Scanning:</label>
             <input class="checkbox" type="checkbox" name="ipv6"<%= " checked" if params[:ipv6] %>>

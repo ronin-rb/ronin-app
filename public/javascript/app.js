@@ -74,23 +74,4 @@ ready(() => {
       }
     });
   });
-
-  const tabs = (document.querySelectorAll('.advanced-content .tabs li') || [])
-  const tabContentBoxes = document.querySelectorAll('#tab-content .content-tab')
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(item => item.classList.remove('is-active'));
-      tab.classList.add('is-active');
-
-      const target = tab.querySelector('a').id + "-tab"
-      tabContentBoxes.forEach(contentBox => {
-        if (contentBox.id === target) {
-          contentBox.classList.add('is-active');
-        } else {
-          contentBox.classList.remove('is-active');
-        }
-      });
-    });
-  });
 });
