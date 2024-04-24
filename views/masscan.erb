@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
 <h1>masscan</h1>
 
 <form action="/masscan" method="post">
@@ -36,411 +37,425 @@
   </div>
 
   <div class="advanced">
-    <a class="advanced-toggle">Advanced Options</a>
-
     <div class="advanced-content">
-      <div class="field">
-        <label class="has-text-weight-semibold">Ping:</label>
-        <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
+      <div class="tabs is-centered m-0">
+        <ul>
+          <li class="is-active"><a data-tab-id="general">General</a></li>
+          <li><a data-tab-id="timing">Timing</a></li>
+          <li><a data-tab-id="routing">Routing</a></li>
+          <li><a data-tab-id="exclude-include">Exclude/Include</a></li>
+          <li><a data-tab-id="payload-file">Payload File</a></li>
+          <li><a data-tab-id="http">HTTP</a></li>
+          <li><a data-tab-id="logging">Logging</a></li>
+          <li><a data-tab-id="tuning">Tuning</a></li>
+          <li><a data-tab-id="randomization">Randomization</a></li>
+        </ul>
       </div>
 
-      <div class="field">
-        <label class="has-text-weight-semibold">Banners:</label>
-        <input class="checkbox" type="checkbox" name="banners"<%= " checked" if params[:banners] %>>
-      </div>
+      <div class="tabs-content px-4 py-5" id="tab-content">
+        <div id="general" class="content-tab is-active">
+          <div class="field">
+            <label class="has-text-weight-semibold">Ping:</label>
+            <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
+          </div>
 
-      <div class="field">
-        <label class="label">Config File:</label>
-        <div class="control">
-          <% if @errors && @errors[:config_file] %>
-            <input class="input is-danger" type="text" name="config_file" placeholder="/path/to/config_file" value="<%=hattr params[:config_file] %>">
+          <div class="field">
+            <label class="has-text-weight-semibold">Banners:</label>
+            <input class="checkbox" type="checkbox" name="banners"<%= " checked" if params[:banners] %>>
+          </div>
 
-            <% @errors[:config_file].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="config_file" placeholder="/path/to/config_file" value="<%=hattr params[:config_file] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">Config File:</label>
+            <div class="control">
+              <% if @errors && @errors[:config_file] %>
+                <input class="input is-danger" type="text" name="config_file" placeholder="/path/to/config_file" value="<%=hattr params[:config_file] %>">
+
+                <% @errors[:config_file].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="config_file" placeholder="/path/to/config_file" value="<%=hattr params[:config_file] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <h3>Timing Options:</h3>
+        <div id="timing" class="content-tab">
+          <div class="field">
+            <label class="label">Rate:</label>
+            <div class="control">
+              <% if @errors && @errors[:rate] %>
+                <input class="input is-danger" type="text" name="rate" placeholder="10" value="<%=hattr params[:rate] %>">
 
-      <div class="field">
-        <label class="label">Rate:</label>
-        <div class="control">
-          <% if @errors && @errors[:rate] %>
-            <input class="input is-danger" type="text" name="rate" placeholder="10" value="<%=hattr params[:rate] %>">
+                <% @errors[:rate].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="rate" placeholder="10" value="<%=hattr params[:rate] %>">
+              <% end %>
+            </div>
+          </div>
 
-            <% @errors[:rate].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="rate" placeholder="10" value="<%=hattr params[:rate] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">Wait:</label>
+            <div class="control">
+              <% if @errors && @errors[:wait] %>
+                <input class="input is-danger" type="text" name="wait" placeholder="NUM" value="<%=hattr params[:wait] %>">
+
+                <% @errors[:wait].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="wait" placeholder="NUM" value="<%=hattr params[:wait] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Retries:</label>
+            <div class="control">
+              <% if @errors && @errors[:retries] %>
+                <input class="input is-danger" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
+
+                <% @errors[:retries].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Wait:</label>
-        <div class="control">
-          <% if @errors && @errors[:wait] %>
-            <input class="input is-danger" type="text" name="wait" placeholder="NUM" value="<%=hattr params[:wait] %>">
+        <div id="routing" class="content-tab">
+          <div class="field">
+            <label class="label">Adapter:</label>
+            <div class="control">
+              <% if @errors && @errors[:adapter] %>
+                <input class="input is-danger" type="text" name="adapter" placeholder="enp1s0" value="<%=hattr params[:adapter] %>">
 
-            <% @errors[:wait].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="wait" placeholder="NUM" value="<%=hattr params[:wait] %>">
-          <% end %>
+                <% @errors[:adapter].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="adapter" placeholder="enp1s0" value="<%=hattr params[:adapter] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Adapter IP:</label>
+            <div class="control">
+              <% if @errors && @errors[:adapter_ip] %>
+                <input class="input is-danger" type="text" name="adapter_ip" placeholder="X.X.X.X" value="<%=hattr params[:adapter_ip] %>">
+
+                <% @errors[:adapter].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="adapter_ip" placeholder="X.X.X.X" value="<%=hattr params[:adapter_ip] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Adapter Port:</label>
+            <div class="control">
+              <% if @errors && @errors[:adapter_port] %>
+                <input class="input is-danger" type="text" name="adapter_port" placeholder="PORT" value="<%=hattr params[:adapter_port] %>">
+
+                <% @errors[:adapter_port].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="adapter_port" placeholder="PORT" value="<%=hattr params[:adapter_port] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Adapter MAC:</label>
+            <div class="control">
+              <% if @errors && @errors[:adapter_mac] %>
+                <input class="input is-danger" type="text" name="adapter_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:adapter_mac] %>">
+
+                <% @errors[:adapter_mac].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="adapter_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:adapter_mac] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Adapter VLAN:</label>
+            <div class="control">
+              <% if @errors && @errors[:adapter_vlan] %>
+                <input class="input is-danger" type="text" name="adapter_vlan" placeholder="VLAN ID" value="<%=hattr params[:adapter_vlan] %>">
+
+                <% @errors[:adapter_vlan].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="adapter_vlan" placeholder="VLAN ID" value="<%=hattr params[:adapter_vlan] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Router MAC:</label>
+            <div class="control">
+              <% if @errors && @errors[:router_mac] %>
+                <input class="input is-danger" type="text" name="router_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:router_mac] %>">
+
+                <% @errors[:router_mac].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="router_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:router_mac] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">TTL:</label>
+            <div class="control">
+              <% if @errors && @errors[:ttl] %>
+                <input class="input is-danger" type="text" name="ttl" placeholder="NUM" value="<%=hattr params[:ttl] %>">
+
+                <% @errors[:ttl].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="ttl" placeholder="NUM" value="<%=hattr params[:ttl] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Retries:</label>
-        <div class="control">
-          <% if @errors && @errors[:retries] %>
-            <input class="input is-danger" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
+        <div id="exclude-include" class="content-tab">
+          <div class="field">
+            <label class="label">Exclude:</label>
+            <div class="control">
+              <% if @errors && @errors[:exclude] %>
+                <input class="input is-danger" type="text" name="exclude" placeholder="IP or IP range" value="<%=hattr params[:exclude] %>">
 
-            <% @errors[:retries].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="retries" placeholder="NUM" value="<%=hattr params[:retries] %>">
-          <% end %>
+                <% @errors[:exclude].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="exclude" placeholder="IP or IP range" value="<%=hattr params[:exclude] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Exclude File:</label>
+            <div class="control">
+              <% if @errors && @errors[:exclude_file] %>
+                <input class="input is-danger" type="text" name="exclude_file" placeholder="/path/to/file" value="<%=hattr params[:exclude_file] %>">
+
+                <% @errors[:exclude_file].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="exclude_file" placeholder="/path/to/file" value="<%=hattr params[:exclude_file] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Include File:</label>
+            <div class="control">
+              <% if @errors && @errors[:include_file] %>
+                <input class="input is-danger" type="text" name="include_file" placeholder="/path/to/file" value="<%=hattr params[:include_file] %>">
+
+                <% @errors[:include_file].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="include_file" placeholder="/path/to/file" value="<%=hattr params[:include_file] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <h3>Routing Options:</h3>
+        <div id="payload-file" class="content-tab">
+          <div class="field">
+            <label class="label">PCAP Payloads:</label>
+            <div class="control">
+              <% if @errors && @errors[:pcap_payloads] %>
+                <input class="input is-danger" type="text" name="pcap_payloads" placeholder="/path/to/file" value="<%=hattr params[:pcap_payloads] %>">
 
-      <div class="field">
-        <label class="label">Adapter:</label>
-        <div class="control">
-          <% if @errors && @errors[:adapter] %>
-            <input class="input is-danger" type="text" name="adapter" placeholder="enp1s0" value="<%=hattr params[:adapter] %>">
+                <% @errors[:pcap_payloads].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="pcap_payloads" placeholder="/path/to/file" value="<%=hattr params[:pcap_payloads] %>">
+              <% end %>
+            </div>
+          </div>
 
-            <% @errors[:adapter].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="adapter" placeholder="enp1s0" value="<%=hattr params[:adapter] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">Nmap Payloads:</label>
+            <div class="control">
+              <% if @errors && @errors[:nmap_payloads] %>
+                <input class="input is-danger" type="text" name="nmap_payloads" placeholder="/path/to/file" value="<%=hattr params[:nmap_payloads] %>">
+
+                <% @errors[:nmap_payloads].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="nmap_payloads" placeholder="/path/to/file" value="<%=hattr params[:nmap_payloads] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Adapter IP:</label>
-        <div class="control">
-          <% if @errors && @errors[:adapter_ip] %>
-            <input class="input is-danger" type="text" name="adapter_ip" placeholder="X.X.X.X" value="<%=hattr params[:adapter_ip] %>">
+        <div id="http" class="content-tab">
+          <div class="field">
+            <label class="has-text-weight-semibold">HTTP Method:</label>
+            <select class="select" name="http_method">
+              <option value="">
+              <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
+              <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
+              <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
+              <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
+              <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
+              <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
+              <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
+              <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
+              <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
+              <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
+              <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
+              <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
+              <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
+              <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
+              <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
+            </select>
+          </div>
 
-            <% @errors[:adapter].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="adapter_ip" placeholder="X.X.X.X" value="<%=hattr params[:adapter_ip] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">HTTP User-Agent:</label>
+            <div class="control">
+              <% if @errors && @errors[:http_user_agent] %>
+                <input class="input is-danger" type="text" name="http_user_agent" placeholder="User-Agent string" value="<%=hattr params[:http_user_agent] %>">
+
+                <% @errors[:http_user_agent].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="http_user_agent" placeholder="User-Agent string" value="<%=hattr params[:http_user_agent] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">HTTP Header:</label>
+            <div class="control">
+              <% if @errors && @errors[:http_field] %>
+                <input class="input is-danger" type="text" name="http_field" placeholder="Header:value..." value="<%=hattr params[:http_field] %>">
+
+                <% @errors[:http_field].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="http_field" placeholder="Header:value..." value="<%=hattr params[:http_field] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">HTTP Cookie:</label>
+            <div class="control">
+              <% if @errors && @errors[:http_cookie] %>
+                <input class="input is-danger" type="text" name="http_cookie" placeholder="name=value; ..." value="<%=hattr params[:http_cookie] %>">
+
+                <% @errors[:http_cookie].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="http_cookie" placeholder="name=value; ..." value="<%=hattr params[:http_cookie] %>">
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">HTTP Payload:</label>
+            <div class="control">
+              <% if @errors && @errors[:http_payload] %>
+                <input class="input is-danger" type="text" name="http_payload" value="<%=hattr params[:http_payload] %>">
+
+                <% @errors[:http_payload].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="http_payload" value="<%=hattr params[:http_payload] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Adapter Port:</label>
-        <div class="control">
-          <% if @errors && @errors[:adapter_port] %>
-            <input class="input is-danger" type="text" name="adapter_port" placeholder="PORT" value="<%=hattr params[:adapter_port] %>">
+        <div id="logging" class="content-tab">
+          <div class="field">
+            <label class="has-text-weight-semibold">Packet Trace:</label>
+            <input class="checkbox" type="checkbox" name="packet_trace"<%= " checked" if params[:packet_trace] %>>
+          </div>
 
-            <% @errors[:adapter_port].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="adapter_port" placeholder="PORT" value="<%=hattr params[:adapter_port] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">PCAP Output:</label>
+            <div class="control">
+              <% if @errors && @errors[:pcap] %>
+                <input class="input is-danger" type="text" name="pcap" placeholder="/path/to/file.pcap" value="<%=hattr params[:pcap] %>">
+
+                <% @errors[:pcap].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="pcap" placeholder="/path/to/file.pcap" value="<%=hattr params[:pcap] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Adapter MAC:</label>
-        <div class="control">
-          <% if @errors && @errors[:adapter_mac] %>
-            <input class="input is-danger" type="text" name="adapter_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:adapter_mac] %>">
+        <div id="tuning" class="content-tab">
+          <div class="field">
+            <label class="has-text-weight-semibold">PF_RING:</label>
+            <input class="checkbox" type="checkbox" name="pfring"<%= " checked" if params[:pfring] %>>
+          </div>
 
-            <% @errors[:adapter_mac].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="adapter_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:adapter_mac] %>">
-          <% end %>
+          <div class="field">
+            <label class="label">Shards:</label>
+            <div class="control">
+              <% if @errors && @errors[:shards] %>
+                <input class="input is-danger" type="text" name="shards" placeholder="X/Y" value="<%=hattr params[:shards] %>">
+
+                <% @errors[:shards].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="shards" placeholder="/path/to/file.pcap" value="<%=hattr params[:shards] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Adapter VLAN:</label>
-        <div class="control">
-          <% if @errors && @errors[:adapter_vlan] %>
-            <input class="input is-danger" type="text" name="adapter_vlan" placeholder="VLAN ID" value="<%=hattr params[:adapter_vlan] %>">
+        <div id="randomization" class="content-tab">
+          <div class="field">
+            <label class="label">Seed:</label>
+            <div class="control">
+              <% if @errors && @errors[:seed] %>
+                <input class="input is-danger" type="text" name="seed" placeholder="NUM" value="<%=hattr params[:seed] %>">
 
-            <% @errors[:adapter_vlan].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="adapter_vlan" placeholder="VLAN ID" value="<%=hattr params[:adapter_vlan] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Router MAC:</label>
-        <div class="control">
-          <% if @errors && @errors[:router_mac] %>
-            <input class="input is-danger" type="text" name="router_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:router_mac] %>">
-
-            <% @errors[:router_mac].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="router_mac" placeholder="XX:XX:XX:XX:XX:XX" value="<%=hattr params[:router_mac] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">TTL:</label>
-        <div class="control">
-          <% if @errors && @errors[:ttl] %>
-            <input class="input is-danger" type="text" name="ttl" placeholder="NUM" value="<%=hattr params[:ttl] %>">
-
-            <% @errors[:ttl].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="ttl" placeholder="NUM" value="<%=hattr params[:ttl] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>Exclude/Include Options</h3>
-
-      <div class="field">
-        <label class="label">Exclude:</label>
-        <div class="control">
-          <% if @errors && @errors[:exclude] %>
-            <input class="input is-danger" type="text" name="exclude" placeholder="IP or IP range" value="<%=hattr params[:exclude] %>">
-
-            <% @errors[:exclude].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="exclude" placeholder="IP or IP range" value="<%=hattr params[:exclude] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Exclude File:</label>
-        <div class="control">
-          <% if @errors && @errors[:exclude_file] %>
-            <input class="input is-danger" type="text" name="exclude_file" placeholder="/path/to/file" value="<%=hattr params[:exclude_file] %>">
-
-            <% @errors[:exclude_file].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="exclude_file" placeholder="/path/to/file" value="<%=hattr params[:exclude_file] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Include File:</label>
-        <div class="control">
-          <% if @errors && @errors[:include_file] %>
-            <input class="input is-danger" type="text" name="include_file" placeholder="/path/to/file" value="<%=hattr params[:include_file] %>">
-
-            <% @errors[:include_file].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="include_file" placeholder="/path/to/file" value="<%=hattr params[:include_file] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>Payload File Options:</h3>
-
-      <div class="field">
-        <label class="label">PCAP Payloads:</label>
-        <div class="control">
-          <% if @errors && @errors[:pcap_payloads] %>
-            <input class="input is-danger" type="text" name="pcap_payloads" placeholder="/path/to/file" value="<%=hattr params[:pcap_payloads] %>">
-
-            <% @errors[:pcap_payloads].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="pcap_payloads" placeholder="/path/to/file" value="<%=hattr params[:pcap_payloads] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Nmap Payloads:</label>
-        <div class="control">
-          <% if @errors && @errors[:nmap_payloads] %>
-            <input class="input is-danger" type="text" name="nmap_payloads" placeholder="/path/to/file" value="<%=hattr params[:nmap_payloads] %>">
-
-            <% @errors[:nmap_payloads].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="nmap_payloads" placeholder="/path/to/file" value="<%=hattr params[:nmap_payloads] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>HTTP Options</h3>
-
-      <div class="field">
-        <label class="label">HTTP Method:</label>
-        <div class="control">
-          <select class="select" name="http_method">
-            <option value="">
-            <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
-            <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
-            <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
-            <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
-            <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
-            <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
-            <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
-            <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
-            <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
-            <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
-            <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
-            <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
-            <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
-            <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
-            <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">HTTP User-Agent:</label>
-        <div class="control">
-          <% if @errors && @errors[:http_user_agent] %>
-            <input class="input is-danger" type="text" name="http_user_agent" placeholder="User-Agent string" value="<%=hattr params[:http_user_agent] %>">
-
-            <% @errors[:http_user_agent].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="http_user_agent" placeholder="User-Agent string" value="<%=hattr params[:http_user_agent] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">HTTP Header:</label>
-        <div class="control">
-          <% if @errors && @errors[:http_field] %>
-            <input class="input is-danger" type="text" name="http_field" placeholder="Header:value..." value="<%=hattr params[:http_field] %>">
-
-            <% @errors[:http_field].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="http_field" placeholder="Header:value..." value="<%=hattr params[:http_field] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">HTTP Cookie:</label>
-        <div class="control">
-          <% if @errors && @errors[:http_cookie] %>
-            <input class="input is-danger" type="text" name="http_cookie" placeholder="name=value; ..." value="<%=hattr params[:http_cookie] %>">
-
-            <% @errors[:http_cookie].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="http_cookie" placeholder="name=value; ..." value="<%=hattr params[:http_cookie] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">HTTP Payload:</label>
-        <div class="control">
-          <% if @errors && @errors[:http_payload] %>
-            <input class="input is-danger" type="text" name="http_payload" value="<%=hattr params[:http_payload] %>">
-
-            <% @errors[:http_payload].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="http_payload" value="<%=hattr params[:http_payload] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>Logging Options:</h3>
-
-      <div class="field">
-        <label class="has-text-weight-semibold">Packet Trace:</label>
-        <input class="checkbox" type="checkbox" name="packet_trace"<%= " checked" if params[:packet_trace] %>>
-      </div>
-
-      <div class="field">
-        <label class="label">PCAP Output:</label>
-        <div class="control">
-          <% if @errors && @errors[:pcap] %>
-            <input class="input is-danger" type="text" name="pcap" placeholder="/path/to/file.pcap" value="<%=hattr params[:pcap] %>">
-
-            <% @errors[:pcap].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="pcap" placeholder="/path/to/file.pcap" value="<%=hattr params[:pcap] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>Tuning Options:</h3>
-
-      <div class="field">
-        <label class="has-text-weight-semibold">PF_RING:</label>
-        <input class="checkbox" type="checkbox" name="pfring"<%= " checked" if params[:pfring] %>>
-      </div>
-
-      <div class="field">
-        <label class="label">Shards:</label>
-        <div class="control">
-          <% if @errors && @errors[:shards] %>
-            <input class="input is-danger" type="text" name="shards" placeholder="X/Y" value="<%=hattr params[:shards] %>">
-
-            <% @errors[:shards].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="shards" placeholder="/path/to/file.pcap" value="<%=hattr params[:shards] %>">
-          <% end %>
-        </div>
-      </div>
-
-      <h3>Randomization Options:</h3>
-
-      <div class="field">
-        <label class="label">Seed:</label>
-        <div class="control">
-          <% if @errors && @errors[:seed] %>
-            <input class="input is-danger" type="text" name="seed" placeholder="NUM" value="<%=hattr params[:seed] %>">
-
-            <% @errors[:seed].each do |error| %>
-              <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="seed" placeholder="NUM" value="<%=hattr params[:seed] %>">
-          <% end %>
+                <% @errors[:seed].each do |error| %>
+                  <p class="help is-danger"><%=h error %></p>
+                <% end %>
+              <% else %>
+                <input class="input" type="text" name="seed" placeholder="NUM" value="<%=hattr params[:seed] %>">
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
