@@ -175,3 +175,23 @@ body.dark-mode main a {
 	padding-top: 0;
 	border-top: 0;
 }
+
+.advanced-content .tabs ul li a {
+	text-decoration: none;
+}
+
+.advanced-content .tabs ul {
+	margin-top: 0px !important;
+	border: none;
+}
+
+.advanced-content .tabs ul li {
+	padding: 4px 0;
+}
+
+.content-tab {
+  display: none;
+}
+.content-tab.is-active {
+  display: block;
+}
