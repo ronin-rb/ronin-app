@@ -86,6 +86,8 @@ class App < Sinatra::Base
     include Pagy::Frontend
   end
 
+  after { ActiveRecord::Base.connection_handler.clear_active_connections! }
+
   get '/' do
     erb :index
   end
