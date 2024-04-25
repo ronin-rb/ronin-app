@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
 <h1>Vulnerabilities</h1>
 
 <form id="recon" action="/vulns" method="post">
@@ -21,12 +22,19 @@
     <button type="submit" class="button is-primary">Scan</button>
   </div>
 
-  <div class="advanced">
-    <a class="advanced-toggle">Advanced Options</a>
+  <div class="tabs is-centered m-0">
+    <ul>
+      <li class="is-active"><a data-tab-id="lfi">LFI</a></li>
+      <li><a data-tab-id="rfi">RFI</a></li>
+      <li><a data-tab-id="sqli">SQLI</a></li>
+      <li><a data-tab-id="ssti">SSTI</a></li>
+      <li><a data-tab-id="command-injection">Command Injection</a></li>
+      <li><a data-tab-id="open-redirect">Open Redirect</a></li>
+    </ul>
+  </div>
 
-    <div class="advanced-content">
-      <h3>LFI</h3>
-
+  <div class="tabs-content px-4 py-5" id="tab-content">
+    <div id="lfi" class="content-tab is-active">
       <div class="field">
         <label class="label">Os</label>
 
@@ -68,9 +76,9 @@
           </select>
         </div>
       </div>
+    </div>
 
-      <h3>RFI</h3>
-
+    <div id="rfi" class="content-tab">
       <div class="field">
         <label class="label">Filter Bypass</label>
 
@@ -99,26 +107,26 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>SQLI</h3>
-
+    <div id="sqli" class="content-tab">
       <div class="field">
         <label class="has-text-weight-semibold">Escape Quote: </label>
-        <input class="checkbox" type="checkbox" name="sqli[escape_quote]"<%= " checked" if params.dig(:sqli, :terminate) %>
+        <input class="checkbox" type="checkbox" name="sqli[escape_quote]"<%= " checked" if params.dig(:sqli, :terminate) %>>
       </div>
 
       <div class="field">
         <label class="has-text-weight-semibold">Escape Parens: </label>
-        <input class="checkbox" type="checkbox" name="sqli[escape_parens]"<%= " checked" if params.dig(:sqli, :terminate) %>
+        <input class="checkbox" type="checkbox" name="sqli[escape_parens]"<%= " checked" if params.dig(:sqli, :terminate) %>>
       </div>
 
       <div class="field">
         <label class="has-text-weight-semibold">Terminate: </label>
-        <input class="checkbox" type="checkbox" name="sqli[terminate]"<%= " checked" if params.dig(:sqli, :terminate) %>
+        <input class="checkbox" type="checkbox" name="sqli[terminate]"<%= " checked" if params.dig(:sqli, :terminate) %>>
       </div>
+    </div>
 
-      <h3>SSTI</h3>
-
+    <div id="ssti" class="content-tab">
       <div class="field">
         <label class="label">Escape</label>
 
@@ -133,9 +141,9 @@
           </select>
         </div>
       </div>
+    </div>
 
-      <h3>Command Injection</h3>
-
+    <div id="command-injection" class="content-tab">
       <div class="field">
         <label class="label">Escape Quote Character</label>
 
@@ -183,9 +191,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Open Redirect</h3>
-
+    <div id="open-redirect" class="content-tab">
       <div class="field">
         <label class="label">Test URL</label>
 
