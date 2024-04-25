@@ -37,25 +37,19 @@
     <button type="submit" class="button is-primary">Recon</button>
   </div>
 
-  <div class="advanced">
-    <a class="advanced-toggle">Advanced Options</a>
+  <div class="field">
+    <label class="label">Max Depth</label>
 
-    <div class="advanced-content">
-      <div class="field">
-        <label class="label">Max Depth</label>
+    <div class="control">
+      <% if @errors && @errors[:max_depth] %>
+        <input class="input is-danger" type="text" name="max_depth" value="<%=hattr params[:max_depth] %>">
 
-        <div class="control">
-          <% if @errors && @errors[:max_depth] %>
-            <input class="input is-danger" type="text" name="max_depth" value="<%=hattr params[:max_depth] %>">
-    
-            <% @errors[:max_depth].each do |error| %>
-            <p class="help is-danger"><%=h error %></p>
-            <% end %>
-          <% else %>
-            <input class="input" type="text" name="max_depth" placeholder="3" value="<%=hattr params[:max_depth] %>">
-          <% end %>
-        </div>
-      </div>
+        <% @errors[:max_depth].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="max_depth" placeholder="3" value="<%=hattr params[:max_depth] %>">
+      <% end %>
     </div>
   </div>
 </form>
