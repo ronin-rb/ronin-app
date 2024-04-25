@@ -170,7 +170,7 @@ body.dark-mode main a {
 	top: 0;
 }
 
-.navbar-dropdown {
+nav.navbar .navbar-dropdown {
 	background-color: black;
 	padding-top: 0;
 	border-top: 0;
