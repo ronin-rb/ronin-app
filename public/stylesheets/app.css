@@ -176,6 +176,14 @@ body.dark-mode main a {
 	border-top: 0;
 }
 
+.tabs {
+	margin: 0px !important;
+}
+
+.tabs-content {
+	padding: 1rem 1.5rem !important;
+}
+
 .tabs ul li a {
 	text-decoration: none;
 }
