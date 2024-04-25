@@ -176,16 +176,16 @@ body.dark-mode main a {
 	border-top: 0;
 }
 
-.advanced-content .tabs ul li a {
+.tabs ul li a {
 	text-decoration: none;
 }
 
-.advanced-content .tabs ul {
-	margin-top: 0px !important;
+.tabs ul {
+	margin: 0px !important;
 	border: none;
 }
 
-.advanced-content .tabs ul li {
+.tabs ul li {
 	padding: 4px 0;
 }
 
