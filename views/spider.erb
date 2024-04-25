@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
 <h1>Spider</h1>
 
 <form action="/spider" method="post">
@@ -29,10 +30,19 @@
     <button type="submit" class="button is-primary">Spider</button>
   </div>
 
-  <div class="advanced">
-    <a class="advanced-toggle">Advanced Options</a>
+  <div class="tabs is-centered m-0">
+    <ul>
+      <li class="is-active"><a data-tab-id="general">General</a></li>
+      <li><a data-tab-id="header">Header</a></li>
+      <li><a data-tab-id="timeout">Timeout</a></li>
+      <li><a data-tab-id="limit">Limit</a></li>
+      <li><a data-tab-id="uri-normalization">URI Normalization</a></li>
+      <li><a data-tab-id="allow-ignore">Allow/Ignore</a></li>
+    </ul>
+  </div>
 
-    <div class="advanced-content">
+  <div class="tabs-content px-4 py-5" id="tab-content">
+    <div id="general" class="content-tab is-active">
       <div class="field">
         <label class="label">Proxy:</label>
         <div class="control">
@@ -62,9 +72,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Header Options:</h3>
-
+    <div id="header" class="content-tab">
       <div class="field">
         <label class="label">Host Header:</label>
         <div class="control">
@@ -109,9 +119,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Timeout Options:</h3>
-
+    <div id="timeout" class="content-tab">
       <div class="field">
         <label class="label">Open Timeout:</label>
         <div class="control">
@@ -186,9 +196,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Limit Options:</h3>
-
+    <div id="limit" class="content-tab">
       <div class="field">
         <label class="label">Limit:</label>
         <div class="control">
@@ -218,21 +228,21 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>URI Normalization Options:</h3>
-
+    <div id="uri-normalization" class="content-tab">
       <div class="field">
-        <label class="label">Strip Fragment:</label>
+        <label class="has-text-weight-semibold">Strip Fragment:</label>
         <input class="checkbox" type="checkbox" name="strip_fragment"<%= " checked" if params[:strip_fragment] %>>
       </div>
 
       <div class="field">
-        <label class="label">Strip Query:</label>
+        <label class="has-text-weight-semibold">Strip Query:</label>
         <input class="checkbox" type="checkbox" name="strip_query"<%= " checked" if params[:strip_query] %>>
       </div>
+    </div>
 
-      <h3>Allow/Ignore Options:</h3>
-
+    <div id="allow-ignore" class="content-tab">
       <div class="field">
         <label class="label">Allow Hosts:</label>
         <div class="control">
