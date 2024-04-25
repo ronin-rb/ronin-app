@@ -21,6 +21,13 @@ header {
 	background-color: black;
 }
 
+#logo {
+	margin: 0.5em;
+}
+
+/*
+ * Top nav menu rules.
+ */
 nav#top-menu {
 	margin-left: auto;
 	padding: 0.5em 0.5em;
@@ -49,10 +56,6 @@ button#dark-mode-toggle svg#dark-mode-sun {
 
 button#dark-mode-toggle svg#dark-mode-moon {
 	display: none;
-}
-
-#logo {
-	margin: 0.5em;
 }
 
 /*
@@ -190,6 +193,9 @@ footer.footer {
 	background-color: black;
 }
 
+/*
+ * Dark-mode rules.
+ */
 body.dark-mode {
 	color: var(--dark-mode-fg-color);
 	background-color: var(--dark-mode-bg-color);
