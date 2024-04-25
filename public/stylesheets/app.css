@@ -177,19 +177,15 @@ body.dark-mode main a {
 }
 
 .tabs {
-	margin: 0px !important;
+	margin: 0 !important;
 }
 
 .tabs-content {
 	padding: 1rem 1.5rem !important;
 }
 
-.tabs ul li a {
-	text-decoration: none;
-}
-
 .tabs ul {
-	margin: 0px !important;
+	margin: 0 !important;
 	border: none;
 }
 
@@ -197,9 +193,13 @@ body.dark-mode main a {
 	padding: 4px 0;
 }
 
+.tabs ul li a {
+	text-decoration: none;
+}
+
 .content-tab {
-  display: none;
+	display: none;
 }
 .content-tab.is-active {
-  display: block;
+	display: block;
 }
