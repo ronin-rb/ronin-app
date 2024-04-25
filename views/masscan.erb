@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
 <h1>masscan</h1>
 
 <form action="/masscan" method="post">
@@ -35,10 +36,22 @@
     <button type="submit" class="button is-primary">Scan</button>
   </div>
 
-  <div class="advanced">
-    <a class="advanced-toggle">Advanced Options</a>
+  <div class="tabs is-centered m-0">
+    <ul>
+      <li class="is-active"><a data-tab-id="general">General</a></li>
+      <li><a data-tab-id="timing">Timing</a></li>
+      <li><a data-tab-id="routing">Routing</a></li>
+      <li><a data-tab-id="exclude-include">Exclude/Include</a></li>
+      <li><a data-tab-id="payload-file">Payload File</a></li>
+      <li><a data-tab-id="http">HTTP</a></li>
+      <li><a data-tab-id="logging">Logging</a></li>
+      <li><a data-tab-id="tuning">Tuning</a></li>
+      <li><a data-tab-id="randomization">Randomization</a></li>
+    </ul>
+  </div>
 
-    <div class="advanced-content">
+  <div class="tabs-content px-4 py-5" id="tab-content">
+    <div id="general" class="content-tab is-active">
       <div class="field">
         <label class="has-text-weight-semibold">Ping:</label>
         <input class="checkbox" type="checkbox" name="ping"<%= " checked" if params[:ping] %>>
@@ -63,9 +76,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Timing Options:</h3>
-
+    <div id="timing" class="content-tab">
       <div class="field">
         <label class="label">Rate:</label>
         <div class="control">
@@ -110,9 +123,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Routing Options:</h3>
-
+    <div id="routing" class="content-tab">
       <div class="field">
         <label class="label">Adapter:</label>
         <div class="control">
@@ -217,9 +230,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Exclude/Include Options</h3>
-
+    <div id="exclude-include" class="content-tab">
       <div class="field">
         <label class="label">Exclude:</label>
         <div class="control">
@@ -264,9 +277,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Payload File Options:</h3>
-
+    <div id="payload-file" class="content-tab">
       <div class="field">
         <label class="label">PCAP Payloads:</label>
         <div class="control">
@@ -296,31 +309,29 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>HTTP Options</h3>
-
+    <div id="http" class="content-tab">
       <div class="field">
-        <label class="label">HTTP Method:</label>
-        <div class="control">
-          <select class="select" name="http_method">
-            <option value="">
-            <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
-            <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
-            <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
-            <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
-            <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
-            <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
-            <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
-            <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
-            <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
-            <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
-            <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
-            <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
-            <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
-            <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
-            <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
-          </select>
-        </div>
+        <label class="has-text-weight-semibold">HTTP Method:</label>
+        <select class="select" name="http_method">
+          <option value="">
+          <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
+          <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
+          <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
+          <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
+          <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
+          <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
+          <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
+          <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
+          <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
+          <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
+          <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
+          <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
+          <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
+          <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
+          <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
+        </select>
       </div>
 
       <div class="field">
@@ -382,9 +393,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Logging Options:</h3>
-
+    <div id="logging" class="content-tab">
       <div class="field">
         <label class="has-text-weight-semibold">Packet Trace:</label>
         <input class="checkbox" type="checkbox" name="packet_trace"<%= " checked" if params[:packet_trace] %>>
@@ -404,9 +415,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Tuning Options:</h3>
-
+    <div id="tuning" class="content-tab">
       <div class="field">
         <label class="has-text-weight-semibold">PF_RING:</label>
         <input class="checkbox" type="checkbox" name="pfring"<%= " checked" if params[:pfring] %>>
@@ -426,9 +437,9 @@
           <% end %>
         </div>
       </div>
+    </div>
 
-      <h3>Randomization Options:</h3>
-
+    <div id="randomization" class="content-tab">
       <div class="field">
         <label class="label">Seed:</label>
         <div class="control">
