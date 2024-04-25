@@ -142,6 +142,9 @@ main > nav.breadcrumb a {
 	top: 0;
 }
 
+/*
+ * Content Tab rules.
+ */
 .content .tabs {
 	margin: 0 !important;
 }
