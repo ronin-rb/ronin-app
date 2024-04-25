@@ -92,6 +92,9 @@ main > nav.breadcrumb a {
 	color: var(--fg-color);
 }
 
+/*
+ * Content rules.
+ */
 .content {
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -119,6 +122,50 @@ main > nav.breadcrumb a {
 	padding: 1em 1.5em;
 	margin-bottom: 1em;
 	overflow-x: auto;
+}
+
+
+.content .label.is-required::after,
+.content .control.is-required::after {
+	content: "*";
+	color: red;
+	display: inline;
+	font-size: 1.2rem;
+}
+
+.content .control.is-required::after {
+	position: absolute;
+	right: 0.2rem;
+	top: 0;
+}
+
+.content .tabs {
+	margin: 0 !important;
+}
+
+.content .tabs-content {
+	padding: 1rem 1.5rem !important;
+}
+
+.content .tabs ul {
+	margin: 0 !important;
+	border: none;
+}
+
+.content .tabs ul li {
+	padding: 4px 0;
+}
+
+.content .tabs ul li a {
+	text-decoration: none;
+}
+
+.content .content-tab {
+	display: none;
+}
+
+.content .content-tab.is-active {
+	display: block;
 }
 
 .content .advanced {
@@ -170,46 +217,4 @@ body.dark-mode main label,
 body.dark-mode main strong,
 body.dark-mode main a {
 	color: var(--dark-mode-fg-color);
-}
-
-.label.is-required::after,
-.control.is-required::after {
-	content: "*";
-	color: red;
-	display: inline;
-	font-size: 1.2rem;
-}
-
-.control.is-required::after {
-	position: absolute;
-	right: 0.2rem;
-	top: 0;
-}
-
-.tabs {
-	margin: 0 !important;
-}
-
-.tabs-content {
-	padding: 1rem 1.5rem !important;
-}
-
-.tabs ul {
-	margin: 0 !important;
-	border: none;
-}
-
-.tabs ul li {
-	padding: 4px 0;
-}
-
-.tabs ul li a {
-	text-decoration: none;
-}
-
-.content-tab {
-	display: none;
-}
-.content-tab.is-active {
-	display: block;
 }
