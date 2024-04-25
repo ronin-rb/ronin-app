@@ -171,19 +171,6 @@ main > nav.breadcrumb a {
 	display: block;
 }
 
-.content .advanced {
-	transition: all 0.2s ease-in-out;
-	overflow: hidden;
-}
-
-.content .advanced > a.advanced-toggle {
-	border-bottom: 1px solid #c3c3c3;
-}
-
-.content .advanced.hidden > .advanced-content {
-	display: none;
-}
-
 footer.footer {
 	clear: both;
 	margin-top: 10rem;
