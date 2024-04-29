@@ -14,7 +14,7 @@ const Notes = {
     })
     .then(response => {
       if (response.ok) {
-        button.parentElement.parentElement.remove();
+        button.parentElement.parentElement.parentElement.remove();
       } else {
         console.error('Failed to delete note');
       }

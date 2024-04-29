@@ -129,8 +129,8 @@ class App < Sinatra::Base
     delete "/db/#{name}/:id/notes/:note_id" do
       @record = model.find(params[:id])
 
-      if @record
-        @record.notes.destroy(params[:note_id])
+      if @record && @record.notes.destroy(params[:note_id])
+        redirect "db/#{name}/#{params[:id]}"
       else
         halt 404
       end
