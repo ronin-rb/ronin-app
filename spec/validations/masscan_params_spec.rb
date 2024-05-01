@@ -31,7 +31,7 @@ describe Ronin::App::Validations::MasscanParams do
     describe ":ports" do
       context "and when :ports is a valid masscan ports list" do
         it "must return a valid result" do
-          result = subject.call({ips: ['192.168.1.1'], ports: "1,2,3,4-10"})
+          result = subject.call({ips: '192.168.1.1', ports: "1,2,3,4-10"})
 
           expect(result).to be_success
         end
