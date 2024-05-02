@@ -39,8 +39,8 @@ module Workers
     # The accepted JSON params which will be passed to {Masscan#perform}.
     Params = Dry::Schema::JSON() do
       required(:ips).array(:string).each(:string)
+      required(:ports).filled(:string)
 
-      optional(:ports).maybe(:string)
       optional(:banners).maybe(:bool)
       optional(:rate).maybe(:integer)
       optional(:config_file).maybe(:string)

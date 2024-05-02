@@ -33,8 +33,8 @@ module Ronin
 
         params do
           required(:ips).filled(Types::Args).each(:filled?)
+          required(:ports).filled(:string)
 
-          optional(:ports).maybe(:string)
           optional(:banners).maybe(:bool)
           optional(:rate).maybe(:integer)
           optional(:config_file).maybe(:string)

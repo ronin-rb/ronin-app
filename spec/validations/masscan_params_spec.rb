@@ -5,14 +5,14 @@ describe Ronin::App::Validations::MasscanParams do
   describe "rules" do
     describe ":ips" do
       it "must require an :ips key" do
-        result = subject.call({})
+        result = subject.call({ports: "80,443"})
 
         expect(result).to be_failure
         expect(result.errors[:ips]).to eq(["is missing"])
       end
 
       it "must require a non-empty value for :ips" do
-        result = subject.call({ips: ""})
+        result = subject.call({ips: "", ports: "80,443"})
 
         expect(result).to be_failure
         expect(result.errors[:ips]).to eq(["is missing"])
@@ -21,7 +21,7 @@ describe Ronin::App::Validations::MasscanParams do
       it "must split the String value for :ips into an Array of Strings" do
         ip1    = '192.168.1.1'
         ip2    = '192.168.1.2'
-        result = subject.call({ips: "#{ip1} #{ip2}"})
+        result = subject.call({ips: "#{ip1} #{ip2}", ports: "80,443"})
 
         expect(result).to be_success
         expect(result[:ips]).to eq([ip1, ip2])
@@ -29,6 +29,20 @@ describe Ronin::App::Validations::MasscanParams do
     end
 
     describe ":ports" do
+      it "must require a :ports key" do
+        result = subject.call({ips: "192.168.1.1"})
+
+        expect(result).to be_failure
+        expect(result.errors[:ports]).to eq(["is missing"])
+      end
+
+      it "must require a non-empty value for :ports" do
+        result = subject.call({ips: "192.168.1.1", ports: ""})
+
+        expect(result).to be_failure
+        expect(result.errors[:ports]).to eq(["is missing"])
+      end
+
       context "and when :ports is a valid masscan ports list" do
         it "must return a valid result" do
           result = subject.call({ips: '192.168.1.1', ports: "1,2,3,4-10"})
@@ -48,8 +62,12 @@ describe Ronin::App::Validations::MasscanParams do
     end
 
     shared_examples_for "optional value" do |key|
+      let(:params) do
+        {ips: '192.168.1.1', ports: "80,443"}
+      end
+
       it "must coerce an empty value for #{key.inspect} into nil" do
-        result = subject.call({:ips => "192.168.1.1", key => ""})
+        result = subject.call(params.merge(key => ""))
 
         expect(result).to be_success
         expect(result[key]).to be(nil)
@@ -57,7 +75,6 @@ describe Ronin::App::Validations::MasscanParams do
     end
 
     [
-      :ports,
       :banners,
       :rate,
       :config_file,
@@ -98,8 +115,12 @@ describe Ronin::App::Validations::MasscanParams do
   describe ".call" do
     subject { described_class }
 
+    let(:params) do
+      {ips: '192.168.1.1', ports: "80,443"}
+    end
+
     it "must initialize #{described_class} and call #call" do
-      expect(subject.call({})).to be_kind_of(Dry::Validation::Result)
+      expect(subject.call(params)).to be_kind_of(Dry::Validation::Result)
     end
   end
 end

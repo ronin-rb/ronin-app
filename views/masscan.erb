@@ -18,7 +18,7 @@
   </div>
 
   <div class="field">
-    <label class="label">Ports</label>
+    <label class="label is-required">Ports</label>
     <div class="control">
       <% if @errors && @errors[:ports] %>
         <input class="input is-danger" type="text" name="ports" placeholder="22,25,80,443,8000-9000" value="<%=hattr params[:ports] %>">
