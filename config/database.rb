@@ -11,3 +11,7 @@ pool_size = if ENV['DB_POOL'] then ENV['DB_POOL'].to_i
             end
 
 Ronin::DB.connect(database, pool: pool_size)
+
+at_exit do
+  ActiveRecord::Base.connection_pool.disconnect!
+end
