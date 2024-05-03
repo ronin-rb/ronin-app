@@ -14,6 +14,7 @@ body {
 
 main {
 	clear: both;
+	min-height: 70vh;
 }
 
 header {
@@ -176,7 +177,6 @@ main > nav.breadcrumb a {
 
 footer.footer {
 	clear: both;
-	margin-top: 10rem;
 	color: gray;
 	background-color: var(--fg-color);
 	font-size: medium;
