@@ -39,6 +39,7 @@ require 'ronin/support/encoding'
 # param validations
 require 'ronin/app/validations/install_repo_params'
 require 'ronin/app/validations/import_params'
+require 'ronin/app/validations/http_params'
 
 # schema builders
 require 'ronin/app/schemas/payloads/encoders/encode_schema'
@@ -352,6 +353,27 @@ class App < Sinatra::Base
     end
 
     erb :queue
+  end
+
+  get '/network/http' do
+    erb :"network/http"
+  end
+
+  post '/network/http' do
+    result = Validations::HTTPParams.call(params)
+    if result.success?
+      kwargs = result.to_h
+      method = kwargs.delete(:method)
+      url    = kwargs.delete(:url)
+
+      @http_response = Ronin::Support::Network::HTTP.request(method, url, **kwargs)
+
+      erb :"network/http"
+    else
+      @params = params
+      @errors = result.errors
+      halt 400, erb(:"network/http")
+    end
   end
 
   private
