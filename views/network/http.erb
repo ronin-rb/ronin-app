@@ -1,0 +1,303 @@
+<script type="text/javascript" src="/javascript/tabs.js"></script>
+<h1>HTTP</h1>
+
+<form action="/network/http" method="post">
+  <div class="field">
+    <label class="label is-required">URL</label>
+
+    <div class="control">
+      <% if @errors && @errors[:url] %>
+        <input class="input is-danger" type="text" name="url" value="<%=hattr params[:url] %>">
+
+        <% @errors[:url].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+        <% end %>
+      <% else %>
+        <input class="input" type="text" name="url" placeholder="https://www.example.com" value="<%=hattr params[:url] %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="has-text-weight-semibold">HTTP Method:</label>
+
+    <% if @errors && @errors[:method] %>
+      <select class="select is-danger" name="method">
+        <option value="">
+        <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
+        <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
+        <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
+        <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
+        <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
+        <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
+        <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
+        <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
+        <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
+        <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
+        <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
+        <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
+        <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
+        <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
+        <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
+      </select>
+
+      <% @errors[:method].each do |error| %>
+        <p class="help is-danger"><%=h error %></p>
+      <% end %>
+    <% else %>
+      <select class="select" name="method">
+        <option value="">
+        <option value="COPY"<%= ' selected' if params[:http_method] == 'COPY' %>>COPY</option>
+        <option value="DELETE"<%= ' selected' if params[:http_method] == 'DELETE' %>>DELETE</option>
+        <option value="GET"<%= ' selected' if params[:http_method] == 'GET' %>>GET</option>
+        <option value="HEAD"<%= ' selected' if params[:http_method] == 'HEAD' %>>HEAD</option>
+        <option value="LOCK"<%= ' selected' if params[:http_method] == 'LOCK' %>>LOCK</option>
+        <option value="MKCOL"<%= ' selected' if params[:http_method] == 'MKCOL' %>>MKCOL</option>
+        <option value="MOVE"<%= ' selected' if params[:http_method] == 'MOVE' %>>MOVE</option>
+        <option value="OPTIONS"<%= ' selected' if params[:http_method] == 'OPTIONS' %>>OPTIONS</option>
+        <option value="PATCH"<%= ' selected' if params[:http_method] == 'PATCH' %>>PATCH</option>
+        <option value="POST"<%= ' selected' if params[:http_method] == 'POST' %>>POST</option>
+        <option value="PROPFIND"<%= ' selected' if params[:http_method] == 'PROPFIND' %>>PROPFIND</option>
+        <option value="PROPPATCH"<%= ' selected' if params[:http_method] == 'PROPPATCH' %>>PROPPATCH</option>
+        <option value="PUT"<%= ' selected' if params[:http_method] == 'PUT' %>>PUT</option>
+        <option value="TRACE"<%= ' selected' if params[:http_method] == 'TRACE' %>>TRACE</option>
+        <option value="UNLOCK"<%= ' selected' if params[:http_method] == 'UNLOCK' %>>UNLOCK</option>
+      </select>
+    <% end  %>
+  </div>
+
+  <div class="field">
+    <button type="submit" class="button is-primary">Send</button>
+  </div>
+
+  <div class="tabs is-centered">
+    <ul>
+      <li class="is-active"><a data-tab-id="general">General</a></li>
+      <li><a data-tab-id="ssl">SSL</a></li>
+    </ul>
+  </div>
+
+  <div class="tabs-content">
+    <div id="general" class="content-tab is-active">
+      <div class="field">
+        <label class="has-text-weight-semibold">Proxy:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:proxy] %>
+            <input class="input is-danger" type="text" name="proxy" value="<%=hattr params[:proxy] %>">
+
+            <% @errors[:proxy].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="proxy" value="<%=hattr params[:proxy] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Headers:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:headers] %>
+            <textarea class="textarea is-danger" name="headers" placeholder="Content-Type: application/x-www-form-urlencoded, Connection: keep-alive" value="<%=hattr params[:headers] %>"></textarea>
+
+            <% @errors[:headers].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <textarea class="textarea" name="headers" placeholder="Content-Type: application/x-www-form-urlencoded, Connection: keep-alive" value="<%=hattr params[:headers] %>"></textarea>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">User Agent:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:user_agent] %>
+            <input class="input is-danger" type="text" name="user_agent" value="<%=hattr params[:user_agent] %>">
+
+            <% @errors[:user_agent].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="user_agent" value="<%=hattr params[:user_agent] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">User:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:user] %>
+            <input class="input is-danger" type="text" name="user" value="<%=hattr params[:user] %>">
+
+            <% @errors[:user].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="user" value="<%=hattr params[:user] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Password:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:password] %>
+            <input class="input is-danger" type="text" name="password" value="<%=hattr params[:password] %>">
+
+            <% @errors[:password].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="password" value="<%=hattr params[:password] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Cookie:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:cookie] %>
+            <input class="input is-danger" type="text" name="cookie" value="<%=hattr params[:cookie] %>">
+
+            <% @errors[:cookie].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="text" name="cookie" value="<%=hattr params[:cookie] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Body:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:body] %>
+            <textarea class="textarea is-danger" type="text" name="body" value="<%=hattr params[:body] %>"></textarea>
+
+            <% @errors[:body].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <textarea class="textarea" type="text" name="body" value="<%=hattr params[:body] %>"></textarea>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="ssl" class="content-tab">
+      <div class="field">
+        <label class="has-text-weight-semibold">Timeout:</label>
+        
+        <div class="control">
+          <% if @errors && @errors[:ssl]&.dig(:timeout) %>
+            <input class="input is-danger" type="number" name="ssl[timeout]" value="<%=hattr params[:timeout] %>">
+
+            <% @errors[:ssl][:timeout].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="ssl[timeout]" value="<%=hattr params[:timeout] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Version:</label>
+        <select class="select" name="ssl[version]">
+          <option value="">
+          <option value="1.0"<%= ' selected' if params[:ssl]&.dig(:version) == '1.0' %>>1.0</option>
+          <option value="1.1"<%= ' selected' if params[:ssl]&.dig(:version) == '1.1' %>>1.1</option>
+          <option value="1.2"<%= ' selected' if params[:ssl]&.dig(:version) == '1.2' %>>1.2</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Min Version:</label>
+        <select class="select" name="ssl[min_version]">
+          <option value="">
+          <option value="1.0"<%= ' selected' if params[:ssl]&.dig(:version) == '1.0' %>>1.0</option>
+          <option value="1.1"<%= ' selected' if params[:ssl]&.dig(:version) == '1.1' %>>1.1</option>
+          <option value="1.2"<%= ' selected' if params[:ssl]&.dig(:version) == '1.2' %>>1.2</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Max Version:</label>
+        <select class="select" name="ssl[max_version]">
+          <option value="">
+          <option value="1.0"<%= ' selected' if params[:ssl]&.dig(:version) == '1.0' %>>1.0</option>
+          <option value="1.1"<%= ' selected' if params[:ssl]&.dig(:version) == '1.1' %>>1.1</option>
+          <option value="1.2"<%= ' selected' if params[:ssl]&.dig(:version) == '1.2' %>>1.2</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Verify:</label>
+        <select class="select" name="ssl[verify]">
+          <option value="">
+          <option value="none"<%= ' selected' if params[:verify] == 'none' %>>none</option>
+          <option value="peer"<%= ' selected' if params[:verify] == 'peer' %>>peer</option>
+          <option value="fail_if_no_peer_cer"<%= ' selected' if params[:verify] == 'fail_if_no_peer_cer' %>>fail_if_no_peer_cer</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Verify Depth:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:ssl]&.dig(:verify_depth) %>
+            <input class="input is-danger" type="number" name="ssl[verify_depth]" value="<%=hattr params[:verify_depth] %>">
+
+            <% @errors[:ssl][:verify_depth].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="input" type="number" name="ssl[verify_depth]" value="<%=hattr params[:verify_depth] %>">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="has-text-weight-semibold">Verify Hostname:</label>
+
+        <div class="control">
+          <% if @errors && @errors[:ssl]&.dig(:verify_hostname) %>
+            <input class="checkbox is-danger" type="checkbox" name="ssl[verify_hostname]" value="<%=hattr params[:verify_hostname] %>">
+
+            <% @errors[:ssl][:verify_hostname].each do |error| %>
+              <p class="help is-danger"><%=h error %></p>
+            <% end %>
+          <% else %>
+            <input class="checkbox is-danger" type="checkbox" name="ssl[verify_hostname]" value="<%=hattr params[:verify_hostname] %>">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @http_response %>
+  <div>
+    <pre>
+      <%=h @http_response.code %> <%= @http_response.message %>
+    </pre>
+
+    <pre>
+      <% @http_response.each_capitalized do |name, value| %>
+        <%=h name%>: <%=h value %>
+      <% end %>
+    </pre>
+
+    <pre>
+      <%=h @http_response.body %>
+    </pre>
+  </div>
+<% end %>
