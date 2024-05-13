@@ -37,11 +37,13 @@ gem 'ronin-repos',      '~> 0.2', github: 'ronin-rb/ronin-repos',
 
 group :development do
   gem 'rake', require: false
+  gem 'rack-test',        '~> 2.1', require: false
 
   gem 'rubygems-tasks',   '~> 0.2'
 
   gem 'rspec',            '~> 3.0', require: false
   gem 'simplecov',        '~> 0.20', require: false
+  gem 'capybara',         '~> 3.40', require: false
 
   gem 'kramdown',         '~> 2.0', require: false
   gem 'kramdown-man',     '~> 1.0', require: false
