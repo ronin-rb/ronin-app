@@ -543,9 +543,9 @@ class App < Sinatra::Base
   end
 
   get '/db/street_addresses/:id' do
-    @phone_number = Ronin::DB::StreetAddress.find(params[:id])
+    @street_address = Ronin::DB::StreetAddress.find(params[:id])
 
-    if @phone_number
+    if @street_address
       erb :"db/street_addresses/show"
     else
       halt 404
