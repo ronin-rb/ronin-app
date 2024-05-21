@@ -17,20 +17,20 @@
   <tbody>
     <tr>
       <td><strong>Name:</strong></td>
-      <td><%=h @os.name %></td>
+      <td><%=h @software.name %></td>
     </tr>
 
     <tr>
       <td><strong>Version:</strong></td>
-      <td><%=h @os.version %></td>
+      <td><%=h @software.version %></td>
     </tr>
 
     <tr>
       <td><strong>Vendor:</strong></td>
       <td>
-        <% if @os.vendor %>
-          <a href="/db/software_vendors/<%=h @os.vendor.id %>">
-            <%=h @os.vendor %>
+        <% if @software.vendor %>
+          <a href="/db/software_vendors/<%=h @software.vendor.id %>">
+            <%=h @software.vendor %>
           </a>
         <% end %>
       </td>
@@ -39,7 +39,7 @@
     <tr>
       <td><strong>Open Ports:</strong></td>
       <td>
-        <% @os.open_ports.each do |open_port| %>
+        <% @software.open_ports.each do |open_port| %>
           <p>
             <a href="/db/open_ports/<%=h open_port.id %>">
               <%=h open_port %>
