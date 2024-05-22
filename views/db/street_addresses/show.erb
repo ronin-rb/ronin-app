@@ -48,23 +48,10 @@
     <tr>
       <td><strong>People:</strong></td>
       <td>
-        <% @street_number.people.each do |person| %>
+        <% @street_address.people.each do |person| %>
           <p>
             <a href="/db/people/<%=h person.id %>">
               <%=h person %>
-            </a>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-
-    <tr>
-      <td><strong>Organizations:</strong></td>
-      <td>
-        <% @street_number.organizations.each do |organization| %>
-          <p>
-            <a href="/db/organizations/<%=h organization.id %>">
-              <%=h organization %>
             </a>
           </p>
         <% end %>
