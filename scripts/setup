@@ -430,8 +430,8 @@ set_caps
 
 bundle install || fail "Failed to install gems!"
 
-log "Creating the default database ..."
-bundle exec rake db:migrate || fail "Failed to create database!"
+log "Setting up the project ..."
+bundle exec rake setup || fail "Failed to setup project!"
 
 log "ronin-app is now ready to be ran!"
 echo

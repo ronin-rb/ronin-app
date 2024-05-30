@@ -40,3 +40,5 @@ Ronin::DB::Tasks.new(
     database: 'db/dev.sqlite3'
   }
 )
+
+task :setup => %w[man db:migrate]
