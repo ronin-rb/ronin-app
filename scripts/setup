@@ -428,6 +428,12 @@ auto_install_bundler
 install_dependencies
 set_caps
 
+# default to installing gems into vendor/bundle
+if [[ ! -f .bundle/config ]]; then
+	bundle config set --local path vendor/bundle >/dev/null || \
+	  fail "Failed to run 'bundle config'"
+fi
+
 bundle install || fail "Failed to install gems!"
 
 log "Setting up the project ..."
