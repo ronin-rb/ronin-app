@@ -301,7 +301,7 @@ class App < Sinatra::Base
     erb :"exploits/index"
   end
 
-  get %r{/exploits(?<exploit_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
+  get %r{/exploits/(?<exploit_id>[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*)} do
     @exploit = Ronin::Exploits.load_class(params[:exploit_id])
 
     erb :"exploits/show"
