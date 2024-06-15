@@ -25,6 +25,59 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 * Small memory footprint (~184K).
 * Fast (~1.251ms response time).
 
+## Screenshots
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_scanning_nmap.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_scanning_masscan.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_scanning_recon.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_scanning_spider.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_scanning_vulns.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_db.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_db_ip_address.svg" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_repos.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_repos_show.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_payloads.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_payloads_show.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_payloads_build.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_exploits.svg" />
+      </td>
+      <td>
+        <img src="https://raw.githubusercontent.com/ronin-rb/ronin-app/add_screenshots/screenshots/ronin_app_exploits_show.svg" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Synopsis
 
 ```
