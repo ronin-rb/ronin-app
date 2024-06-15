@@ -21,6 +21,9 @@ metadata:
 generated_files:
  - man/ronin-app.1
 
+excluded_files:
+ - screenshots/*.svg
+
 required_ruby_version: ">= 3.1.0"
 
 dependencies:

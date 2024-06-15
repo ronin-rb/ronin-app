@@ -27,6 +27,7 @@ Gem::Specification.new do |gem|
   gem.files  = `git ls-files`.split($/)
   gem.files  = glob[gemspec['files']] if gemspec['files']
   gem.files += Array(gemspec['generated_files'])
+  gem.files -= glob[gemspec['excluded_files']] if gemspec['excluded_files']
   # exclude test files from the packages gem
   gem.files -= glob[gemspec['test_files'] || 'spec/{**/}*']
 
