@@ -22,7 +22,7 @@
 
     <tr>
       <td><strong>Host Name:</strong></td>
-      <td><%=h @url.host_name %></td>
+      <td><a href="/db/host_names/<%=hattr @url.host_name.id %>"><%=h @url.host_name %></a></td>
     </tr>
 
     <tr>
