@@ -56,6 +56,14 @@ http://localhost:1337, if ran in a real terminal.
 * [masscan]
 * [Ruby] >= 3.1.0
 
+**Note:** both `nmap` and `masscan` require additional Linux capabilities in
+order to be ran without `sudo` or `root` privileges.
+
+```shell
+sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip "$(which nmap)"
+sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip "$(which masscan)"
+```
+
 ## Security
 
 * This app is intended to be ran locally.
