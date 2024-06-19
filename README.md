@@ -9,7 +9,8 @@
 ronin-app is a small web application that is meant to be ran locally by the
 user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
 [ronin-payloads], [ronin-exploits], as well as automating
-[ronin-nmap], [ronin-masscan], and [ronin-web-spider].
+[ronin-nmap], [ronin-masscan], [ronin-web-spider], [ronin-recon], and
+[ronin-vulns].
 
 ## Features
 
@@ -207,3 +208,5 @@ along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 [ronin-nmap]: https://github.com/ronin-rb/ronin-nmap#readme
 [ronin-masscan]: https://github.com/ronin-rb/ronin-masscan#readme
 [ronin-web-spider]: https://github.com/ronin-rb/ronin-web-spider#readme
+[ronin-recon]: https://github.com/ronin-rb/ronin-recon#readme
+[ronin-vulns]: https://github.com/ronin-rb/ronin-vulns#readme
