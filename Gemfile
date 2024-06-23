@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'ruby-masscan', '~> 0.3', github: 'postmodern/ruby-masscan',
-                              branch: '0.3.0'
+# gem 'ruby-masscan', '~> 0.3', github: 'postmodern/ruby-masscan',
+#                               branch: 'main'
 
 # NOTE: do not auto-load gems which are meant to be executed at runtime
 gem 'puma',    require: false
