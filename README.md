@@ -23,6 +23,9 @@ user. It provides a web interface to [ronin-support], [ronin-repos], [ronin-db],
   into the [ronin database][ronin-db].
 * Supports automating [spidering websites][ronin-web-spider] and importing all
   visited URLs into the [ronin database][ronin-db].
+* Supports performing recon using [ronin-recon] and importing all discovered
+  hostnames, IPs, and URLs into [ronin database][ronin-db].
+* Supports testing URLs for web vulnerabilities using [ronin-vulns].
 * Small memory footprint (~184K).
 * Fast (~1.251ms response time).
 
