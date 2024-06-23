@@ -23,7 +23,7 @@ gem 'sidekiq', require: false
 # gem 'ronin-db-activerecord', '~> 0.2', github: 'ronin-rb/ronin-db-activerecord',
 #                                        branch: 'main'
 
-# gem 'ronin-payloads',   '~> 0.1', github: 'ronin-rb/ronin-payloads'
+# gem 'ronin-payloads',   '~> 0.2', github: 'ronin-rb/ronin-payloads'
 # gem 'ronin-exploits',   '~> 1.1', github: 'ronin-rb/ronin-exploits',
 #                                   branch: 'main'
 # gem 'ronin-vulns',      '~> 0.2', github: 'ronin-rb/ronin-vulns',

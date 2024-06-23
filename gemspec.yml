@@ -43,7 +43,7 @@ dependencies:
   ronin-core: ~> 0.2.0.rc1
   ronin-db-activerecord: ~> 0.2.0.rc1
   ronin-db: ~> 0.2.0.rc1
-  ronin-payloads: ~> 0.1.0.rc1
+  ronin-payloads: ~> 0.2.0.rc1
   ronin-exploits: ~> 1.1.0.rc1
   ronin-vulns: ~> 0.2.0.rc1
   ronin-web-spider: ~> 0.2.0.rc1
