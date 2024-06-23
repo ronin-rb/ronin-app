@@ -39,17 +39,17 @@ dependencies:
   sidekiq: ~> 7.0
   puma: ~> 6.0
   # Ronin dependencies:
-  ronin-support: ~> 1.1
-  ronin-core: ~> 0.2
-  ronin-db-activerecord: ~> 0.2
-  ronin-db: ~> 0.2
-  ronin-payloads: ~> 0.1
-  ronin-exploits: ~> 1.1
-  ronin-vulns: ~> 0.2
-  ronin-web-spider: ~> 0.2
-  ronin-nmap: ~> 0.1
-  ronin-masscan: ~> 0.1
-  ronin-recon: ~> 0.1
+  ronin-support: ~> 1.1.0.rc1
+  ronin-core: ~> 0.2.0.rc1
+  ronin-db-activerecord: ~> 0.2.0.rc1
+  ronin-db: ~> 0.2.0.rc1
+  ronin-payloads: ~> 0.1.0.rc1
+  ronin-exploits: ~> 1.1.0.rc1
+  ronin-vulns: ~> 0.2.0.rc1
+  ronin-web-spider: ~> 0.2.0.rc1
+  ronin-nmap: ~> 0.1.0.rc1
+  ronin-masscan: ~> 0.1.0.rc1
+  ronin-recon: ~> 0.1.0.rc1
 
 development_dependencies:
   bundler: ~> 2.0
