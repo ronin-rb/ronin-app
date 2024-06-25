@@ -1,7 +1,7 @@
 name: ronin-app
 summary: A local web interface for Ronin
 description: |
- ronin-app is a small web application that is meant to be ran locally by the
+  ronin-app is a small web application that is meant to be ran locally by the
   user. It provides a web interface to ronin-support, ronin-repos, ronin-db,
   ronin-payloads, ronin-exploits, as well as automating
   ronin-nmap, ronin-masscan, ronin-web-spider, ronin-recon, and ronin-vulns.
