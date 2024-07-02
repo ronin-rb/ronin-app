@@ -1,4 +1,7 @@
-<h1>Payload: <%=h @payload.id %></h1>
+<div class="is-flex is-justify-content-space-between">
+  <h1>Payload: <%=h @payload.id %></h1>
+  <a href="/payloads/build/<%=hattr @payload.id %>" class="button is-primary">Build</a>
+</div>
 
 <table class="table">
   <tbody>
