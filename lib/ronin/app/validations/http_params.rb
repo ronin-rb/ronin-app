@@ -29,25 +29,25 @@ module Ronin
       class HTTPParams < Dry::Validation::Contract
 
         HTTPMethods = Types::Symbol.enum(
-          copy: 'COPY',
-          delete: 'DELETE',
-          get: 'GET',
-          head: 'HEAD',
-          lock: 'LOCK',
-          mkcol: 'MKCOL',
-          move: 'MOVE',
-          options: 'OPTIONS',
-          patch: 'PATCH',
-          post: 'POST',
-          propfind: 'PROPFIND',
+          copy:      'COPY',
+          delete:    'DELETE',
+          get:       'GET',
+          head:      'HEAD',
+          lock:      'LOCK',
+          mkcol:     'MKCOL',
+          move:      'MOVE',
+          options:   'OPTIONS',
+          patch:     'PATCH',
+          post:      'POST',
+          propfind:  'PROPFIND',
           proppatch: 'PROPPATCH',
-          put: 'PUT',
-          trace: 'TRACE',
-          unlock: 'UNLOCK'
+          put:       'PUT',
+          trace:     'TRACE',
+          unlock:    'UNLOCK'
         )
 
         Versions = (Types::Float | Types::Integer).enum(
-          1 => '1.0',
+          1   => '1.0',
           1.1 => '1.1',
           1.2 => '1.2'
         )
@@ -58,9 +58,9 @@ module Ronin
           fail_if_no_peer_cer: 'fail_if_no_peer_cer'
         )
 
-        Headers = Types::Hash.constructor do |input, type|
+        Headers = Types::Hash.constructor do |input,type|
           if input.is_a?(String)
-            input.split(',').each_with_object({}) do |header, memory|
+            input.split(',').each_with_object({}) do |header,memory|
               key, value        = header.split(':', 2)
               memory[key.strip] = value.strip if key && value
             end

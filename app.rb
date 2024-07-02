@@ -361,12 +361,13 @@ class App < Sinatra::Base
 
   post '/network/http' do
     result = Validations::HTTPParams.call(params)
+
     if result.success?
       kwargs = result.to_h
       method = kwargs.delete(:method)
       url    = kwargs.delete(:url)
 
-      @http_response = Ronin::Support::Network::HTTP.request(method, url, **kwargs)
+      @http_response = Ronin::Support::Network::HTTP.request(method,url,**kwargs)
 
       erb :"network/http"
     else
