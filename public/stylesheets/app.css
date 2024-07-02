@@ -167,6 +167,10 @@ main > nav.breadcrumb a {
 	text-decoration: none;
 }
 
+.content .tabs ul li a:hover {
+	background-color: var(--fg-color);
+}
+
 .content .content-tab {
 	display: none;
 }
@@ -213,4 +217,9 @@ body.dark-mode main label,
 body.dark-mode main strong,
 body.dark-mode main a {
 	color: var(--dark-mode-fg-color);
+}
+
+body.dark-mode .content .tabs ul li a:hover {
+	color: var(--dark-mode-bg-color);
+	background-color: var(--dark-mode-fg-color);
 }
