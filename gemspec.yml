@@ -41,6 +41,7 @@ dependencies:
   # Ronin dependencies:
   ronin-support: ~> 1.1.0.rc1
   ronin-core: ~> 0.2.0.rc1
+  ronin-repos: ~> 0.2.0.rc1
   ronin-db-activerecord: ~> 0.2.0.rc1
   ronin-db: ~> 0.2.0.rc1
   ronin-payloads: ~> 0.2.0.rc1
