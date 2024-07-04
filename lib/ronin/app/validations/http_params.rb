@@ -53,9 +53,9 @@ module Ronin
         )
 
         VerificationModes = Types::Symbol.enum(
-          none:                'none',
-          peer:                'peer',
-          fail_if_no_peer_cer: 'fail_if_no_peer_cer'
+          none:                 'none',
+          peer:                 'peer',
+          fail_if_no_peer_cert: 'fail_if_no_peer_cert'
         )
 
         Headers = Types::Hash.constructor do |input,type|
