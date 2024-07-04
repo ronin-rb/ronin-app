@@ -243,9 +243,9 @@
         <label class="has-text-weight-semibold">Verify:</label>
         <select class="select" name="ssl[verify]">
           <option value="">
-          <option value="none"<%= ' selected' if params[:verify] == 'none' %>>none</option>
-          <option value="peer"<%= ' selected' if params[:verify] == 'peer' %>>peer</option>
-          <option value="fail_if_no_peer_cert"<%= ' selected' if params[:verify] == 'fail_if_no_peer_cert' %>>fail_if_no_peer_cert</option>
+          <option value="none"<%= ' selected' if params[:verify] == 'none' %>>None</option>
+          <option value="peer"<%= ' selected' if params[:verify] == 'peer' %>>Peer</option>
+          <option value="fail_if_no_peer_cert"<%= ' selected' if params[:verify] == 'fail_if_no_peer_cert' %>>Fail if no peer cert</option>
         </select>
       </div>
 
