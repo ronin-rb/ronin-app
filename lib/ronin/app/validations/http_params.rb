@@ -60,10 +60,22 @@ module Ronin
 
         Headers = Types::Hash.constructor do |input,type|
           if input.is_a?(String)
-            input.split(',').each_with_object({}) do |header,memory|
-              key, value        = header.split(':', 2)
-              memory[key.strip] = value.strip if key && value
+            headers = {}
+
+            input.each_line(chomp: true) do |line|
+              name, value = line.split(/:\s*/,2)
+
+              case (previous_value = headers[name])
+              when nil # no value yet
+                headers[name] = value
+              when String # previous value
+                headers[name] = [previous_value, value]
+              when Array # multiple previous values
+                previous_value << value
+              end
             end
+
+            headers
           elsif type.valid?(input)
             input
           else
