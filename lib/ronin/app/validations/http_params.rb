@@ -62,7 +62,7 @@ module Ronin
           if input.is_a?(String)
             headers = {}
 
-            input.each_line(chomp: true) do |line|
+            input.strip.each_line(chomp: true) do |line|
               name, value = line.split(/:\s*/,2)
 
               case (previous_value = headers[name])
@@ -75,7 +75,7 @@ module Ronin
               end
             end
 
-            headers
+            headers unless headers.empty?
           elsif type.valid?(input)
             input
           else
