@@ -6,7 +6,7 @@ description: |
   ronin-payloads, ronin-exploits, as well as automating
   ronin-nmap, ronin-masscan, ronin-web-spider, ronin-recon, and ronin-vulns.
 
-license: AGPL-3.0
+license: AGPL-3.0-or-later
 authors: Postmodern
 email: postmodern.mod3@gmail.com
 homepage: https://ronin-rb.dev/
