@@ -18,8 +18,9 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+require_relative '../types/vulns'
+
 require 'dry/validation'
-require 'ronin/app/types/vulns'
 
 module Ronin
   module App

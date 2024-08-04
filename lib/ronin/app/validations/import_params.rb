@@ -18,7 +18,7 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/app/types/import'
+require_relative '../types/import'
 
 require 'dry/validation'
 require 'set'

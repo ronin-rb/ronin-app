@@ -18,8 +18,9 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+require_relative '../types/spider'
+
 require 'dry/validation'
-require 'ronin/app/types/spider'
 
 module Ronin
   module App

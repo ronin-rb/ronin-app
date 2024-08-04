@@ -18,7 +18,7 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/app/types'
+require_relative '../types'
 
 require 'nmap/command'
 

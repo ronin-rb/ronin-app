@@ -27,8 +27,8 @@ require 'sinatra/flash'
 require 'sinatra/reloader'
 
 # configuration
-require './config/database'
-require './config/sidekiq'
+require_relative 'config/database'
+require_relative 'config/sidekiq'
 
 # ronin libraries
 require 'ronin/repos'
@@ -49,12 +49,12 @@ require 'ronin/app/schemas/payloads/build_schema'
 require 'ronin/app/helpers/html'
 
 # worker classes
-require './workers/install_repo'
-require './workers/update_repo'
-require './workers/update_repos'
-require './workers/remove_repo'
-require './workers/purge_repos'
-require './workers/import'
+require_relative 'workers/install_repo'
+require_relative 'workers/update_repo'
+require_relative 'workers/update_repos'
+require_relative 'workers/remove_repo'
+require_relative 'workers/purge_repos'
+require_relative 'workers/import'
 
 require 'ronin/app/version'
 require 'sidekiq/api'

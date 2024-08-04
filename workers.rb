@@ -20,18 +20,18 @@
 
 $LOAD_PATH.unshift(File.join(__dir__,'lib'))
 
-require './config/sidekiq'
-require './config/database'
+require_relative 'config/sidekiq'
+require_relative 'config/database'
 
-require './workers/install_repo'
-require './workers/update_repo'
-require './workers/update_repos'
-require './workers/remove_repo'
-require './workers/purge_repos'
+require_relative 'workers/install_repo'
+require_relative 'workers/update_repo'
+require_relative 'workers/update_repos'
+require_relative 'workers/remove_repo'
+require_relative 'workers/purge_repos'
 
-require './workers/nmap'
-require './workers/masscan'
-require './workers/import'
-require './workers/spider'
-require './workers/recon'
-require './workers/vulns'
+require_relative 'workers/nmap'
+require_relative 'workers/masscan'
+require_relative 'workers/import'
+require_relative 'workers/spider'
+require_relative 'workers/recon'
+require_relative 'workers/vulns'

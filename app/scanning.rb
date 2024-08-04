@@ -29,11 +29,11 @@ require 'ronin/app/validations/vulns_params'
 require 'ronin/app/helpers/html'
 
 # worker classes
-require './workers/nmap'
-require './workers/masscan'
-require './workers/spider'
-require './workers/recon'
-require './workers/vulns'
+require_relative '../workers/nmap'
+require_relative '../workers/masscan'
+require_relative '../workers/spider'
+require_relative '../workers/recon'
+require_relative '../workers/vulns'
 
 #
 # App class containing routes for scanning.

@@ -18,9 +18,9 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'dry/schema'
+require_relative '../../params_schema'
 
-require 'ronin/app/schemas/params_schema'
+require 'dry/schema'
 
 module Ronin
   module App

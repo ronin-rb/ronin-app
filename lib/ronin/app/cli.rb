@@ -21,11 +21,12 @@
 require 'ronin/core/cli/command'
 require 'ronin/core/cli/logging'
 require 'ronin/db/config_file'
-require 'ronin/app/root'
-require 'ronin/app/version'
 
 require 'command_kit/options/version'
 require 'command_kit/open_app'
+
+require_relative 'root'
+require_relative 'version'
 
 module Ronin
   module App

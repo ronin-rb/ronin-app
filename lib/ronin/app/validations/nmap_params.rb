@@ -18,10 +18,10 @@
 # along with ronin-app.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'dry/validation'
-require 'ronin/app/types'
-require 'ronin/app/types/nmap'
+require_relative '../types'
+require_relative '../types/nmap'
 
+require 'dry/validation'
 require 'nmap/command'
 
 module Ronin
