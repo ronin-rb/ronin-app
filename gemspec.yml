@@ -41,13 +41,13 @@ dependencies:
   sidekiq: ~> 7.0
   puma: ~> 6.0
   # Ronin dependencies:
-  ronin-support: ~> 1.1
+  ronin-support: ~> 1.2
   ronin-core: ~> 0.3
   ronin-repos: ~> 0.2
   ronin-db-activerecord: ~> 0.2
   ronin-db: ~> 0.2
   ronin-payloads: ~> 0.3
-  ronin-exploits: ~> 1.1
+  ronin-exploits: ~> 1.2
   ronin-vulns: ~> 0.2
   ronin-web-spider: ~> 0.2
   ronin-nmap: ~> 0.1
