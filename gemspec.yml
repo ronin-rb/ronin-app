@@ -44,7 +44,7 @@ dependencies:
   ronin-repos: ~> 0.2
   ronin-db-activerecord: ~> 0.2
   ronin-db: ~> 0.2
-  ronin-payloads: ~> 0.2
+  ronin-payloads: ~> 0.3
   ronin-exploits: ~> 1.1
   ronin-vulns: ~> 0.2
   ronin-web-spider: ~> 0.2
