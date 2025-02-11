@@ -47,6 +47,7 @@ require 'ronin/app/schemas/payloads/build_schema'
 
 # helpers
 require 'ronin/app/helpers/html'
+require 'ronin/app/helpers/text'
 
 # worker classes
 require_relative 'workers/install_repo'
@@ -77,6 +78,7 @@ class App < Sinatra::Base
     register Sinatra::Flash
     helpers Sinatra::ContentFor
     helpers Helpers::HTML
+    helpers Helpers::Text
   end
 
   configure :development do
