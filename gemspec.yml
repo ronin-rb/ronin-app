@@ -48,7 +48,7 @@ dependencies:
   ronin-db: ~> 0.2
   ronin-payloads: ~> 0.3
   ronin-exploits: ~> 1.2
-  ronin-vulns: ~> 0.2
+  ronin-vulns: ~> 0.3
   ronin-web-spider: ~> 0.2
   ronin-nmap: ~> 0.1
   ronin-masscan: ~> 0.1
