@@ -13,8 +13,8 @@ gem 'sidekiq', require: false
 #
 # Ronin dependencies
 #
-# gem 'ronin-support',    '~> 1.1', github: 'ronin-rb/ronin-support',
-#                                   branch: 'main'
+gem 'ronin-support',    '~> 1.2', github: 'ronin-rb/ronin-support',
+                                  branch: '1.2.0'
 gem 'ronin-core',       '~> 0.3', github: 'ronin-rb/ronin-core',
                                   branch: '0.3.0'
 # gem 'ronin-db',         '~> 0.2', github: 'ronin-rb/ronin-db',
@@ -25,8 +25,8 @@ gem 'ronin-core',       '~> 0.3', github: 'ronin-rb/ronin-core',
 
 gem 'ronin-payloads',   '~> 0.3', github: 'ronin-rb/ronin-payloads',
                                   branch: '0.3.0'
-# gem 'ronin-exploits',   '~> 1.1', github: 'ronin-rb/ronin-exploits',
-#                                   branch: 'main'
+gem 'ronin-exploits',   '~> 1.2', github: 'ronin-rb/ronin-exploits',
+                                  branch: '1.2.0'
 # gem 'ronin-vulns',      '~> 0.2', github: 'ronin-rb/ronin-vulns',
 #                                   branch: 'main'
 # gem 'ronin-web-spider', '~> 0.2', github: 'ronin-rb/ronin-web-spider',
