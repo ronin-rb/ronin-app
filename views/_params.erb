@@ -16,7 +16,7 @@
           <kbd><%=h name %></kbd>
         </td>
         <td>
-          <kbd><%=h param.type.class.name.split('::').last %></kbd>
+          <kbd><%=h param_type_name(param) %></kbd>
         </td>
         <td>
           <% if param.required? %>
