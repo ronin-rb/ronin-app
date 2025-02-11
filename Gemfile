@@ -23,7 +23,8 @@ gem 'ronin-core',       '~> 0.3', github: 'ronin-rb/ronin-core',
 # gem 'ronin-db-activerecord', '~> 0.2', github: 'ronin-rb/ronin-db-activerecord',
 #                                        branch: 'main'
 
-# gem 'ronin-payloads',   '~> 0.2', github: 'ronin-rb/ronin-payloads'
+gem 'ronin-payloads',   '~> 0.3', github: 'ronin-rb/ronin-payloads',
+                                  branch: '0.3.0'
 # gem 'ronin-exploits',   '~> 1.1', github: 'ronin-rb/ronin-exploits',
 #                                   branch: 'main'
 # gem 'ronin-vulns',      '~> 0.2', github: 'ronin-rb/ronin-vulns',
