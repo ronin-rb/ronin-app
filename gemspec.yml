@@ -50,7 +50,7 @@ dependencies:
   ronin-web-spider: ~> 0.2
   ronin-nmap: ~> 0.1
   ronin-masscan: ~> 0.1
-  ronin-recon: ~> 0.1
+  ronin-recon: ~> 0.2
 
 development_dependencies:
   bundler: ~> 2.0

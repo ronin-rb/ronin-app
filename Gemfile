@@ -31,7 +31,8 @@ gem 'ronin-vulns',      '~> 0.3', github: 'ronin-rb/ronin-vulns',
                                   branch: '0.3.0'
 # gem 'ronin-web-spider', '~> 0.2', github: 'ronin-rb/ronin-web-spider',
 #                                   branch: 'main'
-# gem 'ronin-recon',      '~> 0.1', github: 'ronin-rb/ronin-recon'
+gem 'ronin-recon',      '~> 0.2', github: 'ronin-rb/ronin-recon',
+                                  branch: '0.2.0'
 # gem 'ronin-nmap',       '~> 0.1', github: 'ronin-rb/ronin-nmap'
 # gem 'ronin-masscan',    '~> 0.1', github: 'ronin-rb/ronin-masscan'
 # gem 'ronin-repos',      '~> 0.2', github: 'ronin-rb/ronin-repos',
