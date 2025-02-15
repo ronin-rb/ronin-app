@@ -31,13 +31,11 @@ require_relative 'config/database'
 require_relative 'config/sidekiq'
 
 # ronin libraries
-require 'ronin/repos'
 require 'ronin/payloads'
 require 'ronin/exploits'
 require 'ronin/support/encoding'
 
 # param validations
-require 'ronin/app/validations/install_repo_params'
 require 'ronin/app/validations/import_params'
 require 'ronin/app/validations/http_params'
 
@@ -50,11 +48,6 @@ require 'ronin/app/helpers/html'
 require 'ronin/app/helpers/text'
 
 # worker classes
-require_relative 'workers/install_repo'
-require_relative 'workers/update_repo'
-require_relative 'workers/update_repos'
-require_relative 'workers/remove_repo'
-require_relative 'workers/purge_repos'
 require_relative 'workers/import'
 
 require 'ronin/app/version'
@@ -95,80 +88,6 @@ class App < Sinatra::Base
 
   get '/' do
     erb :index
-  end
-
-  get '/repos' do
-    @repos = Ronin::Repos.cache_dir
-
-    erb :"repos/index"
-  end
-
-  get '/repos/install' do
-    erb :"repos/install"
-  end
-
-  post '/repos/install' do
-    result = Validations::InstallRepoParams.call(params)
-
-    if result.success?
-      Workers::InstallRepo.perform_async(result[:uri],result[:name])
-
-      flash[:success] = "Installing repo at #{result[:uri]}"
-      redirect '/repos'
-    else
-      @errors = result.errors
-
-      flash[:danger] = 'Failed to install repo!'
-      halt 400, erb(:"repos/install")
-    end
-  end
-
-  post '/repos/update' do
-    Workers::UpdateRepos.perform_async
-
-    flash[:success] = 'All repos will be updated'
-    redirect '/repos'
-  end
-
-  delete '/repos' do
-    Workers::PurgeRepos.perform_async
-
-    flash[:success] = 'All repos will be purged'
-    redirect '/repos'
-  end
-
-  get '/repos/:name' do
-    @repos = Ronin::Repos.cache_dir
-
-    begin
-      @repo = @repos[params[:name]]
-
-      erb :"repos/show"
-    rescue Ronin::Repos::RepositoryNotFound
-      halt 404
-    end
-  end
-
-  post '/repos/:name/update' do
-    @repo = Ronin::Repos.cache_dir[params[:name]]
-
-    Workers::UpdateRepo.perform_async(@repo.name)
-
-    flash[:success] = "Repo #{@repo.name} enqueued for update"
-    redirect "/repos/#{params[:name]}"
-  rescue Ronin::Repos::RepositoryNotFound
-    halt 404
-  end
-
-  delete '/repos/:name' do
-    @repo = Ronin::Repos.cache_dir[params[:name]]
-
-    Workers::RemoveRepo.perform_async(@repo.name)
-
-    flash[:success] = "Repo #{@repo.name} enqueued for removal"
-    redirect '/repos'
-  rescue Ronin::Repos::RepositoryNotFound
-    halt 404
   end
 
   get '/payloads' do
@@ -395,3 +314,4 @@ end
 
 require './app/db'
 require './app/scanning'
+require './app/repos'
