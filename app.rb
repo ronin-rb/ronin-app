@@ -180,7 +180,7 @@ class App < Sinatra::Base
   end
 end
 
-require './app/db'
-require './app/scanning'
-require './app/payloads'
-require './app/repos'
+require_relative 'app/db'
+require_relative 'app/scanning'
+require_relative 'app/payloads'
+require_relative 'app/repos'
