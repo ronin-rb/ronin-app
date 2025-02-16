@@ -31,17 +31,12 @@ require_relative 'config/database'
 require_relative 'config/sidekiq'
 
 # ronin libraries
-require 'ronin/payloads'
 require 'ronin/exploits'
 require 'ronin/support/encoding'
 
 # param validations
 require 'ronin/app/validations/import_params'
 require 'ronin/app/validations/http_params'
-
-# schema builders
-require 'ronin/app/schemas/payloads/encoders/encode_schema'
-require 'ronin/app/schemas/payloads/build_schema'
 
 # helpers
 require 'ronin/app/helpers/html'
@@ -88,133 +83,6 @@ class App < Sinatra::Base
 
   get '/' do
     erb :index
-  end
-
-  get '/payloads' do
-    @payloads = Ronin::Payloads.list_files
-
-    erb :"payloads/index"
-  end
-
-  get '/payloads/encoders' do
-    @payload_encoders = Ronin::Payloads::Encoders.list_files
-
-    erb :"payloads/encoders/index"
-  end
-
-  get %r{/payloads/encoders/encode/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @encoder_class = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
-    @encoder       = @encoder_class.new
-
-    erb :"payloads/encoders/encode"
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
-  end
-
-  post %r{/payloads/encoders/encode/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @encoder_class = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
-    @encoder       = @encoder_class.new
-
-    form_schema = Schemas::Payloads::Encoders::EncodeSchema(@encoder_class)
-    result      = form_schema.call(params)
-
-    if result.success?
-      encoder_params = result[:params].to_h
-      encoder_params.compact!
-
-      begin
-        @encoder.params = encoder_params
-      rescue Ronin::Core::Params::ParamError => error
-        flash[:error] = "Failed to set params: #{error.message}"
-
-        halt 400, erb(:"payloads/encoders/encode")
-      end
-
-      begin
-        @encoder.validate
-      rescue => error
-        flash[:error] = "Failed to encode encoder: #{error.message}"
-
-        halt 500, erb(:"payloads/encoders/encode")
-      end
-
-      @encoded_data = @encoder.encode(result[:data])
-
-      erb :"payloads/encoders/encode"
-    else
-      @params = params
-      @errors = result.errors
-
-      halt 400, erb(:"payloads/encoders/encode")
-    end
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
-  end
-
-  get %r{/payloads/encoders/(?<encoder_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @encoder = Ronin::Payloads::Encoders.load_class(params[:encoder_id])
-
-    erb :"payloads/encoders/show"
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
-  end
-
-  get %r{/payloads/build/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @payload_class = Ronin::Payloads.load_class(params[:payload_id])
-    @payload       = @payload_class.new
-
-    erb :"payloads/build"
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
-  end
-
-  post %r{/payloads/build/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @payload_class = Ronin::Payloads.load_class(params[:payload_id])
-    @payload       = @payload_class.new
-
-    form_schema = Schemas::Payloads::BuildSchema(@payload_class)
-    result      = form_schema.call(params)
-
-    if result.success?
-      payload_params = result[:params].to_h
-      payload_params.compact!
-
-      begin
-        @payload.params = payload_params
-      rescue Ronin::Core::Params::ParamError => error
-        flash[:error] = "Failed to set params: #{error.message}"
-
-        halt 400, erb(:"payloads/build")
-      end
-
-      begin
-        @payload.perform_validate
-        @payload.perform_build
-      rescue => error
-        flash[:error] = "Failed to build payload: #{error.message}"
-
-        halt 500, erb(:"payloads/build")
-      end
-
-      @built_payload = @payload.to_s
-
-      erb :"payloads/build"
-    else
-      @params = params
-      @errors = result.errors
-
-      halt 400, erb(:"payloads/build")
-    end
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
-  end
-
-  get %r{/payloads/(?<payload_id>[a-z0-9_-]+(?:/[a-z0-9_-]+)*)} do
-    @payload = Ronin::Payloads.load_class(params[:payload_id])
-
-    erb :"payloads/show"
-  rescue Ronin::Core::ClassRegistry::ClassNotFound
-    halt 404
   end
 
   get '/exploits' do
@@ -314,4 +182,5 @@ end
 
 require './app/db'
 require './app/scanning'
+require './app/payloads'
 require './app/repos'
