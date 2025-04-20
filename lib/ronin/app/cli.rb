@@ -24,6 +24,7 @@ require 'ronin/db/config_file'
 
 require 'command_kit/options/version'
 require 'command_kit/open_app'
+require 'command_kit/env/path'
 
 require_relative 'root'
 require_relative 'version'
@@ -53,6 +54,7 @@ module Ronin
       include Core::CLI::Logging
       include CommandKit::Options::Version
       include CommandKit::OpenApp
+      include CommandKit::Env::Path
 
       command_name 'ronin-app'
 
@@ -104,10 +106,18 @@ module Ronin
         Dir.chdir(ROOT)
 
         begin
-          unless is_redis_running?
-            log_info "Starting Redis server ..."
-            pids << start_redis
-            sleep 1
+          if is_valkey_installed?
+            unless is_valkey_running?
+              log_info "Starting Valkey server ..."
+              pids << start_valkey
+              sleep 1
+            end
+          else
+            unless is_redis_running?
+              log_info "Starting Redis server ..."
+              pids << start_redis
+              sleep 1
+            end
           end
 
           # start the web server process
@@ -143,6 +153,26 @@ module Ronin
       end
 
       #
+      # Determines if the Valkey server is running.
+      #
+      # @return [Boolean]
+      #   Specifies whether the `valkey-server` process is running or not.
+      #
+      def is_valkey_running?
+        !`pgrep valkey-server`.empty?
+      end
+
+      #
+      # Determines if the Valkey server is installed.
+      #
+      # @return [Boolean]
+      #   Specifies whether the `valkey-server` is installed or not.
+      #
+      def is_valkey_installed?
+        command_installed?('valkey-server')
+      end
+
+      #
       # Starts the Redis server.
       #
       # @return [Integer]
@@ -150,6 +180,16 @@ module Ronin
       #
       def start_redis
         Process.spawn('redis-server')
+      end
+
+      #
+      # Starts the Valkey server.
+      #
+      # @return [Integer]
+      #   The PID of the `valkey-server` process.
+      #
+      def start_valkey
+        Process.spawn('valkey-server')
       end
 
       #
