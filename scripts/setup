@@ -218,6 +218,18 @@ function auto_install_git()
 }
 
 #
+# Installs redis-server if valkey-server is not installed.
+#
+function auto_install_datastore()
+{
+	if command -v valkey-server >/dev/null; then
+		log "Skipping redis installation, valkey is already installed."
+	else
+		auto_install_redis
+	fi
+}
+
+#
 # Installs ruby via homebrew and configures it.
 #
 function homebrew_install_ruby()
@@ -418,7 +430,7 @@ function parse_options()
 
 parse_options "$@" || exit $?
 detect_system
-auto_install_redis
+auto_install_datastore
 auto_install_git
 auto_install_gcc
 auto_install_gpp
