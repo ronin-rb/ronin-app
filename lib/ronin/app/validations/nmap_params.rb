@@ -153,13 +153,13 @@ module Ronin
         end
 
         rule(:port_ratio) do
-          if (value && !(value >= 0.0 && value <= 1.0))
+          if (value && !value.between?(0.0, 1.0))
             key.failure('value must be between 0.0 and 1.0')
           end
         end
 
         rule(:version_intensity) do
-          if (value && !(value >= 0 && value <= 9))
+          if (value && !value.between?(0, 9))
             key.failure('value must be between 0 and 9')
           end
         end
