@@ -32,6 +32,7 @@ module Workers
   class Recon
 
     include Sidekiq::Worker
+
     sidekiq_options queue: :recon, retry: false, backtrace: true
 
     # The accepted JSON params which will be passed to {Recon#perform}.

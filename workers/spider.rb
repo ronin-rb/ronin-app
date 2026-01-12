@@ -32,6 +32,7 @@ module Workers
 
     include Ronin::App
     include Sidekiq::Worker
+
     sidekiq_options queue: :spider, retry: false, backtrace: true
 
     Params = Dry::Schema::JSON() do

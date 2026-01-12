@@ -30,6 +30,7 @@ module Workers
   class UpdateRepo
 
     include Sidekiq::Worker
+
     sidekiq_options queue: :repos, retry: false, backtrace: true
 
     def perform(name)

@@ -34,6 +34,7 @@ module Workers
 
     include Ronin::App
     include Sidekiq::Worker
+
     sidekiq_options queue: :scan, retry: false, backtrace: true
 
     # The accepted JSON params which will be passed to {Masscan#perform}.
