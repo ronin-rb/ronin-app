@@ -21,7 +21,6 @@
 require_relative '../types/import'
 
 require 'dry/validation'
-require 'set'
 
 require 'masscan/output_file'
 
