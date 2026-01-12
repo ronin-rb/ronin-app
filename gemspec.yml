@@ -27,6 +27,8 @@ excluded_files:
 required_ruby_version: ">= 3.2.0"
 
 dependencies:
+  # NOTE: required for rack ~> 2.2 on Ruby 4.0.0.
+  ostruct: ~> 0.1
   dry-schema: ~> 1.0
   dry-validation: ~> 1.0
   dry-struct: ~> 1.0
