@@ -111,7 +111,7 @@ http://localhost:1337, if ran in a real terminal.
 * [redis-server][redis] >= 6.2
 * [nmap]
 * [masscan]
-* [Ruby] >= 3.1.0
+* [Ruby] >= 3.2.0
 
 **Note:** both `nmap` and `masscan` require additional Linux capabilities in
 order to be ran without `sudo` or `root` privileges.
