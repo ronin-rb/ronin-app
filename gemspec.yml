@@ -34,8 +34,8 @@ dependencies:
   dry-struct: ~> 1.0
   redis: ~> 5.0
   redis-namespace: ~> 1.10
-  sinatra: ~> 3.0
-  sinatra-contrib: ~> 3.0
+  sinatra: ~> 4.0
+  sinatra-contrib: ~> 4.0
   pagy: ~> 6.2
   sinatra-flash: ~> 0.3
   sidekiq: ~> 7.0
