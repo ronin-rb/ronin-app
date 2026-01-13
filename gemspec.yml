@@ -38,7 +38,7 @@ dependencies:
   sinatra-contrib: ~> 4.0
   pagy: ~> 6.2
   sinatra-flash: ~> 0.3
-  sidekiq: ~> 7.0
+  sidekiq: ~> 8.0
   puma: ~> 6.0
   # Ronin dependencies:
   ronin-support: ~> 1.2
